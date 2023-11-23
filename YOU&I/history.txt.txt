@@ -16,3 +16,7 @@ width : 100% -> 80%으로 바꿈
 eventually.html 연동
 배경화면 group 3,4,5 로 바꿈
 영어 > 한글작성
+
+2023-11-23
+DB 설정 완료
+FrontController, Command 만듬
