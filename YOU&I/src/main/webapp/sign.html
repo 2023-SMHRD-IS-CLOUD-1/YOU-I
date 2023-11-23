@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="assets/css/sign.css" />
+</head>
+<body>
+<div class="left" id="imageContainer">
+        <img src="./images/group3.jpg" alt="이미지 설명" class="slide-image">
+        <img src="./images/group4.jpg" alt="이미지 설명" class="slide-image">
+        <img src="./images/group5.jpg" alt="이미지 설명" class="slide-image">
+    </div>
+    <div class="right">
+        <div class="signup-container">
+            <form>
+                <div class="input-group">
+                    <label for="username">아이디</label>
+                    <input type="text" id="username" name="username" required placeholder="아이디">
+                </div>
+                <div class="input-group">
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" name="password" required placeholder="비밀번호">
+                </div>
+                <div class="input-group">
+                    <label for="password">비밀번호 확인</label>
+                    <input type="password" id="password2" name="password" required placeholder="비밀번호">
+                </div>
+                <div class="input-group">
+                    <label for="nickname">닉네임</label>
+                    <input type="text" id="nickname" name="nickname" required placeholder="닉네임">
+                </div>
+                    <label for="gender">성별</label>
+                        남자<input type="radio" id="male" name="gender">
+                        여자<input type="radio" id="female" name="gender">
+                <div class="input-group">
+                    <label for="dob">생년월일</label>
+                    <input type="date" id="dob" name="dob">
+                </div>
+                <div class="input-group">
+                    <label for="phone">전화번호</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="전화번호" maxlength="13">
+                </div>
+    
+                <div id="drop-area" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)" ondragenter="dragEnterHandler(event)" ondragleave="dragLeaveHandler(event)">
+                    <p>프로필 사진 업로드</p>
+                    <input type="file" id="fileInput" style="display:none;" accept="image/*">
+                    <img id="uploadedImage" alt="Uploaded Image">
+                  </div>
+                
+                <div class="input-group">
+                    <label for="hobbies">관심취미</label>
+                    <select name="hobby" id="hooby">
+                        <option value="">축구</option>
+                        <option value="">농구</option>
+                        <option value="">야구</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="location">지역</label>
+                    <select name="area" id="area">
+                        <option value="">서울</option>
+                        <option value="">광주</option>
+                        <option value="">부산</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="signup-btn" onclick="signup()">회원가입</button>
+            </form>
+        </div>
+    </div>
+    <script src="./assets/js/sign.js"></script>
+</body>
+</html>
