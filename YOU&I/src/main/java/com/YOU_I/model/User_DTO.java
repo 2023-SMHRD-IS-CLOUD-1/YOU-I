@@ -1,5 +1,5 @@
 package com.YOU_I.model;
 
-public class DTO {
+public class User_DTO {
 
 }
