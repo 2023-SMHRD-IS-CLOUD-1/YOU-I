@@ -19,6 +19,17 @@ WHERE id = #{id} AND pw = #{pw}
 
 </select>
 
+<insert id="addGroup" parameterType="com.YOU_I.model.Group_DTO">
+        <!-- <selectKey> 요소를 추가하여 실제 삽입 전에 시퀀스 tbl_group_SEQ.NEXTVAL에서 다음 값 가져오기를 수행
+         이 값은 그런 다음 group_DTO 객체의 groupNo 속성에 설정됨. --> 
+        <selectKey keyProperty="groupNo" resultType="java.lang.Long" order="BEFORE">
+            SELECT tbl_group_SEQ.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO tbl_group (group_no, group_name, group_category, created_at)
+        VALUES (#{groupNo}, #{groupName}, #{groupCategory}, #{createdAt, jdbcType=TIMESTAMP});
+ </insert>
+
+
 
 
 

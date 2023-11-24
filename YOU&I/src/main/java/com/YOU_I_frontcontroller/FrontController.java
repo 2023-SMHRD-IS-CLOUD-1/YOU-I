@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.YOU_I.controller.Command;
 import com.YOU_I.controller.JoinService;
 import com.YOU_I.controller.LoginService;
+import com.YOU_I.controller.addGroupService;
 
 
 @WebServlet("*.do")
@@ -28,7 +29,7 @@ public class FrontController extends HttpServlet {
 		map = new HashMap<String, Command>();
 		map.put("Join.do", new JoinService());
 		map.put("Login.do", new LoginService());
-		
+		map.put("addGroup.do", new addGroupService());
 		
 	}
 	
