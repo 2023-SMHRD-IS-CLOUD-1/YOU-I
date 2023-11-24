@@ -13,7 +13,7 @@
     </div>
     <div class="right">
         <div class="login-container" id="loginForm">
-            <form>
+            <form action="Login.do" method="post">
                 <div class="input-group">
                     <label for="username">아이디</label>
                     <input type="text" id="username" name="userId" required placeholder="아이디">
@@ -23,7 +23,7 @@
                     <input type="password" id="password" name="password" required placeholder="비밀번호">
                 </div>
                 <input type="submit" class="login-btn" id="loginButton" value="로그인">
-                <button type="button" class="signup-btn" id="signupButton">회원가입</button>
+                <a href="http://localhost:8081/test/Gosign.do"><button type="button" class="signup-btn" id="signupButton">회원가입</button></a>
             </form>
             <br>
             <h6>소셜 계정으로 로그인</h6>
