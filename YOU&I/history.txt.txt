@@ -35,3 +35,5 @@ frontcontroller login sign 페이지 입력완료
 user dao login sign 함수 생성
 mapper sql 문 작성
 controller joinservice loginservice 만듬
+login html 홈페이지 name 변경 WEB-INF폴더로 변경
+sign html 홈페이지 name 변경 WEB_INF폴더로 변경
