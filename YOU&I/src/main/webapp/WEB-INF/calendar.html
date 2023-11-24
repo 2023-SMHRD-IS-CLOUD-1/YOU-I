@@ -37,7 +37,7 @@
     </div>
 
     <!-- modal 추가 -->
-    <form>
+    <form action="addSchedule.do" method="post">
         <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -57,11 +57,11 @@
                             <label for="taskId" class="col-form-label">종료 날짜</label>
                             <input type="date" class="form-control" id="calendar_end_date" name="calendar_end_date">
                             <label for="taskId" class="col-form-label">일정 메모</label>
-                            <textarea name="" id="calendar_memo" cols="60" rows="7"></textarea>
+                            <textarea name="calendar_memo" id="calendar_memo" cols="60" rows="7"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-warning" id="addCalendar">추가</button>
+                        <button type="submit" class="btn btn-warning" id="addCalendar">추가</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"
                             id="sprintSettingModalClose">취소</button>
                     </div>

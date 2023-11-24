@@ -26,9 +26,13 @@ WHERE id = #{id} AND pw = #{pw}
             SELECT tbl_group_SEQ.NEXTVAL FROM DUAL
         </selectKey>
         INSERT INTO tbl_group (group_no, group_name, group_category, created_at)
-        VALUES (#{groupNo}, #{groupName}, #{groupCategory}, #{createdAt, jdbcType=TIMESTAMP});
+        VALUES (#{groupNo}, #{groupName}, #{groupCategory}, #{createdAt, jdbcType=TIMESTAMP})
  </insert>
 
+<insert id="addSchedule" parameterType="com.YOU_I.model.calendar_DTO">
+    INSERT INTO tbl_schedule (sche_title, sche_content, sche_st_date, sche_end_date, group_no) 
+    VALUES (#{scheTitle}, #{scheContent}, #{scheStDate, jdbcType=DATE}, #{scheEndDate, jdbcType=DATE}, 1)
+</insert>
 
 
 
