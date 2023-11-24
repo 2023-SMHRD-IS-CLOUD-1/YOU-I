@@ -4,7 +4,20 @@
 
 <mapper namespace="com.YOU_I.model.DAO">
 
+<insert id="user_join" parameterType="com.YOU_I.model.User_DTO">
 
+INSERT INTO TBL_USER(ID, PW, GENDER, NICK, REGION, HOBBY, PHONE, TUTORIAL_ST, PROFILE_IMG, USER_ROLE, JOINED_AT)
+VALUES(#{id}, #{pw}, #{gender}, #{nick}, #{region}, #{hobby}, #{phone}, #{tutorialSt}, #{profileImg}, #{userRole} ,#{joinedAt})
+
+</insert>
+
+<select id="user_login" parameterType="com.YOU_I.model.User_DTO" resultType="com.YOU_I.model.User_DTO">
+
+SELECT ID
+FROM TBL_USER
+WHERE id = #{id} AND pw = #{pw}
+
+</select>
 
 
 

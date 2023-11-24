@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.YOU_I.controller.Command;
 import com.YOU_I.controller.JoinService;
+import com.YOU_I.controller.LoginService;
 
 
 @WebServlet("*.do")
@@ -25,6 +26,7 @@ public class FrontController extends HttpServlet {
 	
 		map = new HashMap<String, Command>();
 		map.put("Join.do", new JoinService());
+		map.put("Login.do", new LoginService());
 		
 		
 	}
@@ -40,21 +42,24 @@ public class FrontController extends HttpServlet {
 		int cp_lenght = cp.length() + 1;
 		String finaluri = uri.substring(cp_lenght);
 		
+		System.out.println(finaluri);
 		String path = null;
-		
 		Command com = null;
+		
 		
 		if(finaluri.contains("Go")) {
 			
 			path = finaluri.substring(2).replaceAll(".do","");
+			System.out.println("Go"+path);
 		} else {
 			com = map.get(finaluri);
 			path = com.execute(request, response);
-			
+			System.out.println("NoGo"+path);
 		}
 		
 		if(path == null) {
 		} else if (path.contains("redirect:/")) {
+			System.out.println(path.substring(10));
 			response.sendRedirect(path.substring(10));
 		} else {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/" + path + ".html");
