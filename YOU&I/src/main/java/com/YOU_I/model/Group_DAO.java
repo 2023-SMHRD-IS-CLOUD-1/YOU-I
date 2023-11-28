@@ -1,5 +1,7 @@
 package com.YOU_I.model;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -14,4 +16,21 @@ public class Group_DAO {
 		sqlSession.close();
 		return row;
 	}
+	
+	public List<Group_DTO> rank() {
+		SqlSession sqlSession = factory.openSession();
+		List<Group_DTO> gr_dto1 = sqlSession.selectList("rank");
+		sqlSession.close();
+		return gr_dto1;
+
+	}
+
+	public List<Group_DTO> rankCt(Group_DTO gr_dto) {
+		SqlSession sqlSession = factory.openSession();
+		List<Group_DTO> gr_dto2 = sqlSession.selectList("rankCt",gr_dto);
+		sqlSession.close();
+		return gr_dto2;
+
+	}
+
 }
