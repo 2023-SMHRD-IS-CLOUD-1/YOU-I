@@ -37,3 +37,12 @@ mapper sql 문 작성
 controller joinservice loginservice 만듬
 login html 홈페이지 name 변경 WEB-INF폴더로 변경
 sign html 홈페이지 name 변경 WEB_INF폴더로 변경
+===================================================
+2023-11-27~28
+model calendar_DAO , calendar_DTO 작성
+컨트롤러 addScheduleService-> DB연동 완료
+컨트롤러 selectAllScheduleService -> DB연동 완료
+mapper sql문 insert, select문 작성
+frontcontroller addSchedule,selectAllSchedule 삽입
+
+
