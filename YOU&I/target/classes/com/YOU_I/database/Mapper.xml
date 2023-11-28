@@ -34,7 +34,15 @@ WHERE id = #{id} AND pw = #{pw}
     VALUES (#{scheTitle}, #{scheContent}, #{scheStDate, jdbcType=DATE}, #{scheEndDate, jdbcType=DATE}, 1)
 </insert>
 
-
+<select id="getSchedules" resultType="com.YOU_I.model.calendar_DTO">
+    SELECT
+        SCHE_NO AS scheNo,
+        SCHE_TITLE AS scheTitle,
+        SCHE_ST_DATE AS scheStDate,
+        SCHE_END_DATE AS scheEndDate,
+        SCHE_CONTENT AS scheContent
+    FROM TBL_SCHEDULE
+</select>
 
 
 

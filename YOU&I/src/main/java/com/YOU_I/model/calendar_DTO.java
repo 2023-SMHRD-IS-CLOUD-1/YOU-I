@@ -2,16 +2,25 @@ package com.YOU_I.model;
 
 import java.sql.Date;
 
+import com.google.gson.annotations.SerializedName;
+
 public class calendar_DTO {
 
-	
+	@SerializedName("SCHE_NO")
 	private Long scheNo; // NUMBER(18, 0)
+	@SerializedName("SCHE_TITLE")
     private String scheTitle; // VARCHAR2(1500)
+	@SerializedName("SCHE_CONTENT")
     private String scheContent; // CLOB
+	@SerializedName("SCHE_ST_DATE")
     private Date scheStDate; // DATE
+	@SerializedName("SCHE_END_DATE")
     private Date scheEndDate; // DATE
+	@SerializedName("GROUP_NO")
     private Long groupNo; // NUMBER(18, 0)
+	@SerializedName("SCHE_COLOR")
     private String scheColor; // VARCHAR2(12)
+	private char scheDoneCheck;
 	public Long getScheNo() {
 		return scheNo;
 	}
@@ -53,6 +62,12 @@ public class calendar_DTO {
 	}
 	public void setScheColor(String scheColor) {
 		this.scheColor = scheColor;
+	}
+	public char getScheDoneCheck() {
+		return scheDoneCheck;
+	}
+	public void setScheDoneCheck(char scheDoneCheck) {
+		this.scheDoneCheck = scheDoneCheck;
 	}
     
     

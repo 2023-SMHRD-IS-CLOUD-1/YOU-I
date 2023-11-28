@@ -15,6 +15,7 @@ import com.YOU_I.controller.JoinService;
 import com.YOU_I.controller.LoginService;
 import com.YOU_I.controller.addGroupService;
 import com.YOU_I.controller.addScheduleService;
+import com.YOU_I.controller.selectAllScheduleService;
 
 
 @WebServlet("*.do")
@@ -32,6 +33,7 @@ public class FrontController extends HttpServlet {
 		map.put("Login.do", new LoginService());
 		map.put("addGroup.do", new addGroupService());
 		map.put("addSchedule.do", new addScheduleService());
+		map.put("selectAllScheduleService.do", new selectAllScheduleService());
 	}
 	
 		

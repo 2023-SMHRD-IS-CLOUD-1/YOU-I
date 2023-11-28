@@ -1,5 +1,7 @@
 package com.YOU_I.model;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -12,5 +14,12 @@ public class calendar_DAO {
 		int row = sqlSession.insert("addSchedule", dto);
 		sqlSession.close();
 		return row;
+	}
+	public List<calendar_DTO> getSchedules() {
+	    SqlSession sqlSession = factory.openSession(true);
+	    List<calendar_DTO> schedules = sqlSession.selectList("getSchedules");
+	    sqlSession.close();
+	    System.out.println(schedules);
+	    return schedules;
 	}
 }

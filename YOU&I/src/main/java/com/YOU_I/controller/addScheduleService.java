@@ -17,7 +17,7 @@ public class addScheduleService implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+    	response.addHeader("Access-Control-Allow-Origin","*");
         request.setCharacterEncoding("utf-8");
         String content = request.getParameter("calendar_content");
         String startDateString = request.getParameter("calendar_start_date");
