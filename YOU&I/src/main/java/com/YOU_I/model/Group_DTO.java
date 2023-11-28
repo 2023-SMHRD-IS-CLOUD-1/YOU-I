@@ -3,16 +3,16 @@ package com.YOU_I.model;
 import java.sql.Date;
 
 public class Group_DTO {
-	private Long groupNo;
+	private int groupNo;
     private String groupName;
     private String groupCategory;
-    private Long groupLikes;
+    private int groupLikes;
     private Date createdAt;
     private int groupMembershipFee;
-	public Long getGroupNo() {
+	public int getGroupNo() {
 		return groupNo;
 	}
-	public void setGroupNo(Long groupNo) {
+	public void setGroupNo(int groupNo) {
 		this.groupNo = groupNo;
 	}
 	public String getGroupName() {
@@ -27,10 +27,10 @@ public class Group_DTO {
 	public void setGroupCategory(String groupCategory) {
 		this.groupCategory = groupCategory;
 	}
-	public Long getGroupLikes() {
+	public int getGroupLikes() {
 		return groupLikes;
 	}
-	public void setGroupLikes(Long groupLikes) {
+	public void setGroupLikes(int groupLikes) {
 		this.groupLikes = groupLikes;
 	}
 	public Date getCreatedAt() {
