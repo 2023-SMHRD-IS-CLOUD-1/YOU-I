@@ -16,20 +16,21 @@ document.addEventListener('DOMContentLoaded', function() {
 				contentType: 'application/json;charset=utf-8',
 				dataType: 'json',
 				success: function(data) {
+					
 					console.log(data)
-					// 각 데이터 항목을 FullCalendar 이벤트로 변환
-					for (var i = 0; i < data.length; i++) {
-						var obj = {
-							"title": data[i].SCHE_TITLE,
-							"start": convertToFullCalendarFormat(data[i].SCHE_ST_DATE),
-							"end": convertToFullCalendarFormat(data[i].SCHE_END_DATE),  // 이벤트의 종료일자가 필요한 경우 수정
+					var events = data.map(function(item) {
+						// 각 데이터 항목을 FullCalendar 이벤트로 변환
+						var fullCalendarDate = convertToFullCalendarFormat(item.SCHE_ST_DATE);
+						return {
+							"title": item.SCHE_TITLE,
+							"start": fullCalendarDate,
+							"end": convertToFullCalendarFormat(item.SCHE_END_DATE),  // 이벤트의 종료일자가 필요한 경우 수정
 							extendedProps: {
-								memo: data[i].SCHE_CONTENT
+								memo: item.SCHE_CONTENT
 							}
 						};
-					calendar.addEvent(obj);
-					}
-
+					});
+					calendar.addEvent(events);
 				}
 			})
 		],
@@ -208,33 +209,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 	});
-	function convertToFullCalendarFormat(koreanDate) {
-		// 한국어 월을 영어로 변환
-		var monthMapping = {
-			'1월': '01',
-			'2월': '02',
-			'3월': '03',
-			'4월': '04',
-			'5월': '05',
-			'6월': '06',
-			'7월': '07',
-			'8월': '08',
-			'9월': '09',
-			'10월': '10',
-			'11월': '11',
-			'12월': '12'
-		};
-
-
-		var parts = koreanDate.split(' ');
-		var month = monthMapping[parts[0]];
-		var day = parts[1].replace(',', '');
-		var year = parts[2];
-
-		// FullCalendar 형식으로 변환
-		var fullCalendarDate = year + '-' + month + '-' + day;
-		return fullCalendarDate;
-	}
 	function openMemoModal(event) {
 		// 메모 모달 열기
 		$('#memoModal').modal('show');
@@ -242,7 +216,33 @@ document.addEventListener('DOMContentLoaded', function() {
 		// 메모 모달 내용 설정
 		$("#memoModal .modal-body").text(event.extendedProps.memo);
 	}
+	function convertToFullCalendarFormat(koreanDate) {
+	// 한국어 월을 영어로 변환
+	var monthMapping = {
+		'1월': '01',
+		'2월': '02',
+		'3월': '03',
+		'4월': '04',
+		'5월': '05',
+		'6월': '06',
+		'7월': '07',
+		'8월': '08',
+		'9월': '09',
+		'10월': '10',
+		'11월': '11',
+		'12월': '12'
+	};
 
+
+	var parts = koreanDate.split(' ');
+	var month = monthMapping[parts[0]];
+	var day = parts[1].replace(',', '');
+	var year = parts[2];
+
+	// FullCalendar 형식으로 변환
+	var fullCalendarDate = year + '-' + month + '-' + day;
+	return fullCalendarDate;
+}
 
 
 	calendar.render();
