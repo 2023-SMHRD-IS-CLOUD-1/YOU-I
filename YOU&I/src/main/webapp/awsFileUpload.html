@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.809.0.min.js"></script>
+	<script src="./assets/js/jquery.min.js"></script>
+</head>
+
+<body>
+
+	<input id="files" type="file" name="filename" />
+	<button id="button">업로드</button>
+	<form name="fileUpload" action="Upload.do" method="post">
+		<input type="hidden" id="fileroot" name="filename" value="실패야">
+		<input type="hidden" id="fileOriroot" name="fileOriName" value="실패야2">
+		<input type="hidden" id="fileDate" name="fileDate" value="실패야2">
+		<input type="hidden" id="fileS3root" name="fileS3root" value="group1">
+	</form>
+
+	<div>
+		<img src="">
+
+	</div>
+
+
+	<script>
+		let date = new Date();
+		console.log(date);
+		let year = date.getFullYear();
+		let month = date.getMonth() + 1;
+		let day = date.getDate();
+
+		console.log(year + "_" + month + "_" + day);
+		const putFile = file => {
+			let fileS3GroupRoot = document.getElementById("fileS3root");
+			console.log(fileS3GroupRoot);
+			const albumBucketName = 'you-i'; // S3의 버킷 이름
+			const region = 'ap-northeast-2'; // 서울
+			const accessKeyId = 'AKIAS2TBJHQUIT2KMAMT'; // IAM에서 생성한 사용자의 accessKeyId
+			const secretAccessKey = 'CVhXVkdniOuMbuDBUcEi474/HNYKPQcxvac7jlz+'; // IAM에서 생성한 사용자의 secretAccessKey
+
+			AWS.config.update({
+				region,
+				accessKeyId,
+				secretAccessKey
+			});
+
+			let randomRoot = guid();
+
+			const upload = new AWS.S3.ManagedUpload({
+				params: {
+					Bucket: albumBucketName,
+					Key: 'profile/'+ 'fileS3GroupRoot/' + randomRoot + '_' + year + '_' + month + '_' + day + '_' + file.name,
+					Body: file,
+					ACL: "public-read"
+				}
+			});
+
+			const promise = upload.promise();
+
+			promise.then(
+				function (data) {
+					console.log("Successfully uploaded photo.");
+				},
+				function (err) {
+					return console.log("There was an error uploading your photo: ", err.message);
+				}
+			);
+			return ['profile/'+ 'fileS3GroupRoot/' + randomRoot + '_' + year + '_' + month + '_' + day + '_' + file.name, file.name, year + '_' + month + '_' + day]
+		};
+		function guid() {
+			function s4() {
+				return ((1 + Math.random()) * 0x10000 | 0).toString(16).substring(1);
+			}
+			return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+		}
+
+
+
+
+
+
+	</script>
+	<script>
+		const files = document.getElementById('files');
+		files.addEventListener('input', () => {
+			const input = document.getElementById('files');
+			const fileRoot = putFile(input.files[0]);
+			console.log(fileRoot[0], fileRoot[1], fileRoot[2])
+			const fileUpload = document.fileUpload;
+			fileUpload.filename.value = fileRoot[0];
+			fileUpload.fileOriName.value = fileRoot[1];
+			fileUpload.fileDate.value = fileRoot[2];
+
+
+		})
+		const button = document.getElementById('button');
+		button.addEventListener('click', () => {
+			console.log(fileUpload.filename.value);
+			fileUpload.submit();
+		})
+	</script>
+	<script>
+		
+		$.ajax()
+		
+	</script>
+
+	
+
+</body>
+
+</html>

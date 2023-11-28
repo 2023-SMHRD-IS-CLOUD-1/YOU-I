@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.YOU_I.controller.Command;
 import com.YOU_I.controller.JoinService;
 import com.YOU_I.controller.LoginService;
+import com.YOU_I.controller.UploadService;
 import com.YOU_I.controller.addGroupService;
 import com.YOU_I.controller.addScheduleService;
 import com.YOU_I.controller.rankCtService;
@@ -38,6 +39,7 @@ public class FrontController extends HttpServlet {
 		map.put("selectAllScheduleService.do", new selectAllScheduleService());
 		map.put("rank.do", new rankService());
 		map.put("rankCt.do", new rankCtService());
+		map.put("Upload.do", new UploadService());
 	}
 	
 		
