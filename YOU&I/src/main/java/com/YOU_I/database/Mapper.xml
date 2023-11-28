@@ -77,27 +77,23 @@
 		WHERE
 		GROUP_CATEGORY = #{groupCategory, jdbcType=VARCHAR}
 		ORDER BY
-		GROUP_LIKES DESC
-		)
+		GROUP_LIKES DESC)
 		WHERE ROWNUM &lt;= 4
 	</select>
 
 
 	<insert id="fileUpload" parameterType="com.YOU_I.model.File_DTO">
 
-		INSERT INTO TBL_FILE(COMM_NO, FILE_NAME, FILE_ORI_NAME, FILE_THUMB,
-		FILE_S3_PATH, FILE_SIZE, EXT, UPLOADED_AT)
-		VALUES(#{commNo} , #{fileName}, #{fileOriName}, #{fileThumb}, #{fileS3Path},
-		#{fileSize}, #{ext}, #{uploadedAt})
+INSERT INTO TBL_FILE(COMM_NO, FILE_NAME, FILE_ORI_NAME, FILE_THUMB, FILE_S3_PATH, FILE_SIZE, EXT, UPLOADED_AT)
+VALUES(#{commNo} , #{fileName}, #{fileOriName}, #{fileThumb}, #{fileS3Path}, #{fileSize}, #{ext}, #{uploadedAt})
 
-	</insert>
+</insert>
 	
 
 	<insert id="addGroup" parameterType="com.YOU_I.model.Group_DTO">
 		
 			
-		INSERT INTO tbl_group (group_name, group_category
-		)
+		INSERT INTO tbl_group (group_name, group_category)
 		VALUES (#{groupName}, #{groupCategory})
 	</insert>
 	
