@@ -22,7 +22,6 @@
 
 	</select>
 
-<<<<<<< HEAD
 <insert id="addGroup" parameterType="com.YOU_I.model.Group_DTO">
         INSERT INTO tbl_group (group_name, group_category)
         VALUES (#{groupName}, #{groupCategory})
@@ -93,6 +92,14 @@
 
 	</insert>
 	
+
+	<insert id="addGroup" parameterType="com.YOU_I.model.Group_DTO">
+		
+			
+		INSERT INTO tbl_group (group_name, group_category
+		)
+		VALUES (#{groupName}, #{groupCategory})
+	</insert>
 	
 
 
