@@ -26,7 +26,7 @@ public class addGroupService implements Command {
 		Group_DAO dao = new Group_DAO();
 		dao.addGroup(dto);
 		
-		return "redirect:/Gomain.do";
+		return "mainpg";
 		
 	}
 
