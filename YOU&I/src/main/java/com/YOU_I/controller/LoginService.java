@@ -36,6 +36,7 @@ public class LoginService implements Command {
 			
 			request.setAttribute("Login", result_DTO);
 			return "redirect:/Gologin_success.do";
+			//메인페이지로 넘어가게 변경해야함
 		} else {
 			return "redirect:/Gologin.do";
 		}
