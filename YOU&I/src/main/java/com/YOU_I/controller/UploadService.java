@@ -36,7 +36,7 @@ public class UploadService implements Command {
 		f_dto.setCommNo(14);
 		f_dto.setFileName(fileRoot);
 		f_dto.setFileOriName(fileOriRoot);
-		f_dto.setFileThumb("resize_profile"+ThumFileRoot);
+		f_dto.setFileThumb(ThumFileRoot);
 		f_dto.setFileS3Path(fileS3Root);
 		f_dto.setFileSize(0);
 		f_dto.setExt(fileExtension);
@@ -46,7 +46,7 @@ public class UploadService implements Command {
 		System.out.println(f_dto.getCommNo());
 		System.out.println(f_dto.getFileName());
 		System.out.println(f_dto.getFileOriName());
-		System.out.println("resize_profile"+f_dto.getFileThumb());
+		System.out.println(f_dto.getFileThumb());
 		System.out.println(f_dto.getFileS3Path());
 		System.out.println(f_dto.getFileSize());	
 		System.out.println(f_dto.getExt());
