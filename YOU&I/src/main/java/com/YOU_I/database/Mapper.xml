@@ -44,6 +44,41 @@ WHERE id = #{id} AND pw = #{pw}
     FROM TBL_SCHEDULE
 </select>
 
+<select id="rank" resultMap="gr_rank">
+		SELECT ROWNUM , GROUP_CATEGORY,
+		GROUP_LIKES, GROUP_NAME
+		FROM (
+		SELECT
+		GROUP_CATEGORY, GROUP_LIKES,
+		GROUP_NAME
+		FROM TBL_GROUP
+		ORDER BY
+		GROUP_LIKES DESC
+		)
+		WHERE ROWNUM &lt;=4
+	</select>
+
+
+	<resultMap type="com.YOU_I.model.Group_DTO" id="gr_rank">
+		<result property="groupCategory" column="GROUP_CATEGORY" />
+		<result property="groupLikes" column="GROUP_LIKES" />
+		<result property="groupName" column="GROUP_NAME" />
+	</resultMap>
+
+	<select id="rankCt" parameterType="java.lang.String"
+		resultMap="gr_rank">
+		SELECT ROWNUM, GROUP_CATEGORY, GROUP_LIKES, GROUP_NAME
+		FROM (
+		SELECT GROUP_CATEGORY, GROUP_LIKES, GROUP_NAME
+		FROM TBL_GROUP
+		WHERE GROUP_CATEGORY = #{groupCategory, jdbcType=VARCHAR}
+		ORDER BY GROUP_LIKES DESC
+		)
+		WHERE ROWNUM &lt;= 4
+	</select>
+
+
+
 
 
 
