@@ -4,47 +4,57 @@
 
 <mapper namespace="com.YOU_I.model.DAO">
 
-<insert id="user_join" parameterType="com.YOU_I.model.User_DTO">
+	<insert id="user_join" parameterType="com.YOU_I.model.User_DTO">
 
-INSERT INTO TBL_USER(ID, PW, GENDER, NICK, REGION, HOBBY, PHONE, TUTORIAL_ST, PROFILE_IMG, USER_ROLE, JOINED_AT)
-VALUES(#{id}, #{pw}, #{gender}, #{nick}, #{region}, #{hobby}, #{phone}, #{tutorialSt}, #{profileImg}, #{userRole} ,#{joinedAt})
+		INSERT INTO TBL_USER(ID, PW, GENDER, NICK, REGION, HOBBY, PHONE,
+		TUTORIAL_ST, PROFILE_IMG, USER_ROLE, JOINED_AT)
+		VALUES(#{id}, #{pw}, #{gender}, #{nick}, #{region}, #{hobby}, #{phone},
+		#{tutorialSt}, #{profileImg}, #{userRole} ,#{joinedAt})
 
-</insert>
+	</insert>
 
-<select id="user_login" parameterType="com.YOU_I.model.User_DTO" resultType="com.YOU_I.model.User_DTO">
+	<select id="user_login" parameterType="com.YOU_I.model.User_DTO"
+		resultType="com.YOU_I.model.User_DTO">
 
-SELECT ID
-FROM TBL_USER
-WHERE id = #{id} AND pw = #{pw}
+		SELECT ID
+		FROM TBL_USER
+		WHERE id = #{id} AND pw = #{pw}
 
-</select>
+	</select>
 
-<insert id="addGroup" parameterType="com.YOU_I.model.Group_DTO">
-        <!-- <selectKey> 요소를 추가하여 실제 삽입 전에 시퀀스 tbl_group_SEQ.NEXTVAL에서 다음 값 가져오기를 수행
-         이 값은 그런 다음 group_DTO 객체의 groupNo 속성에 설정됨. --> 
-        <selectKey keyProperty="groupNo" resultType="java.lang.Long" order="BEFORE">
-            SELECT tbl_group_SEQ.NEXTVAL FROM DUAL
-        </selectKey>
-        INSERT INTO tbl_group (group_no, group_name, group_category, created_at)
-        VALUES (#{groupNo}, #{groupName}, #{groupCategory}, #{createdAt, jdbcType=TIMESTAMP})
- </insert>
+	<insert id="addGroup" parameterType="com.YOU_I.model.Group_DTO">
+		<!-- <selectKey> 요소를 추가하여 실제 삽입 전에 시퀀스 tbl_group_SEQ.NEXTVAL에서 다음 값 가져오기를 
+			수행 이 값은 그런 다음 group_DTO 객체의 groupNo 속성에 설정됨. -->
+		<selectKey keyProperty="groupNo" resultType="java.lang.Long"
+			order="BEFORE">
+			SELECT tbl_group_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO tbl_group (group_no, group_name, group_category,
+		created_at)
+		VALUES (#{groupNo}, #{groupName}, #{groupCategory}, #{createdAt,
+		jdbcType=TIMESTAMP})
+	</insert>
 
-<insert id="addSchedule" parameterType="com.YOU_I.model.calendar_DTO">
-    INSERT INTO tbl_schedule (sche_title, sche_content, sche_st_date, sche_end_date, group_no) 
-    VALUES (#{scheTitle}, #{scheContent}, #{scheStDate, jdbcType=DATE}, #{scheEndDate, jdbcType=DATE}, 1)
-</insert>
+	<insert id="addSchedule"
+		parameterType="com.YOU_I.model.calendar_DTO">
+		INSERT INTO tbl_schedule (sche_title, sche_content, sche_st_date,
+		sche_end_date, group_no)
+		VALUES (#{scheTitle}, #{scheContent}, #{scheStDate, jdbcType=DATE},
+		#{scheEndDate, jdbcType=DATE}, 1)
+	</insert>
 
-<select id="getSchedules" resultType="com.YOU_I.model.calendar_DTO">
-    SELECT
-        SCHE_NO AS scheNo,
-        SCHE_TITLE AS scheTitle,
-        SCHE_ST_DATE AS scheStDate,
-        SCHE_END_DATE AS scheEndDate,
-        SCHE_CONTENT AS scheContent
-    FROM TBL_SCHEDULE
-</select>
+	<select id="getSchedules"
+		resultType="com.YOU_I.model.calendar_DTO">
+		SELECT
+		SCHE_NO AS scheNo,
+		SCHE_TITLE AS scheTitle,
+		SCHE_ST_DATE AS scheStDate,
+		SCHE_END_DATE AS scheEndDate,
+		SCHE_CONTENT AS scheContent
+		FROM TBL_SCHEDULE
+	</select>
 
-<select id="rank" resultMap="gr_rank">
+	<select id="rank" resultMap="gr_rank">
 		SELECT ROWNUM , GROUP_CATEGORY,
 		GROUP_LIKES, GROUP_NAME
 		FROM (
@@ -71,14 +81,23 @@ WHERE id = #{id} AND pw = #{pw}
 		FROM (
 		SELECT GROUP_CATEGORY, GROUP_LIKES, GROUP_NAME
 		FROM TBL_GROUP
-		WHERE GROUP_CATEGORY = #{groupCategory, jdbcType=VARCHAR}
-		ORDER BY GROUP_LIKES DESC
+		WHERE
+		GROUP_CATEGORY = #{groupCategory, jdbcType=VARCHAR}
+		ORDER BY
+		GROUP_LIKES DESC
 		)
 		WHERE ROWNUM &lt;= 4
 	</select>
 
 
+	<insert id="fileUpload" parameterType="com.YOU_I.model.File_DTO">
 
+		INSERT INTO TBL_FILE(COMM_NO, FILE_NAME, FILE_ORI_NAME, FILE_THUMB,
+		FILE_S3_PATH, FILE_SIZE, EXT, UPLOADED_AT)
+		VALUES(#{commNo} , #{fileName}, #{fileOriName}, #{fileThumb}, #{fileS3Path},
+		#{fileSize}, #{ext}, #{uploadedAt})
+
+	</insert>
 
 
 
