@@ -12,6 +12,7 @@ public class calendar_DAO {
 	public int addSchedule(calendar_DTO dto) {
 		SqlSession sqlSession = factory.openSession(true);
 		int row = sqlSession.insert("addSchedule", dto);
+		System.out.println(row);
 		sqlSession.close();
 		return row;
 	}
@@ -19,7 +20,6 @@ public class calendar_DAO {
 	    SqlSession sqlSession = factory.openSession(true);
 	    List<calendar_DTO> schedules = sqlSession.selectList("getSchedules");
 	    sqlSession.close();
-	    System.out.println(schedules);
 	    return schedules;
 	}
 }

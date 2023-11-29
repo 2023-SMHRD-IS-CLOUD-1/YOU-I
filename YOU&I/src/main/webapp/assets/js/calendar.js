@@ -6,34 +6,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	var calendarEl = document.getElementById('calendar');
 	var calendar = new FullCalendar.Calendar(calendarEl, {
-		timeZone: 'UTC',
 		initialView: 'dayGridMonth',
 		selectable: true, // 드래그 가능하도록 설정
-		events: [                           // 일정 데이터 추가 , DB의 event를 가져오려면 JSON 형식으로 변환해 events에 넣어주기 
+		events: function(info, successCallback, failureCallback) {
 			$.ajax({
 				url: 'selectAllScheduleService.do',
-				type: 'GET',
+				type: 'POST',
 				contentType: 'application/json;charset=utf-8',
 				dataType: 'json',
 				success: function(data) {
-					
-					console.log(data)
-					var events = data.map(function(item) {
-						// 각 데이터 항목을 FullCalendar 이벤트로 변환
-						var fullCalendarDate = convertToFullCalendarFormat(item.SCHE_ST_DATE);
-						return {
-							"title": item.SCHE_TITLE,
-							"start": fullCalendarDate,
-							"end": convertToFullCalendarFormat(item.SCHE_END_DATE),  // 이벤트의 종료일자가 필요한 경우 수정
+					var events = [];
+					for (var i = 0; i < data.length; i++) {
+						var event = {
+							"title": data[i].SCHE_TITLE,
+							"start": convertToFullCalendarFormat(data[i].SCHE_ST_DATE),
+							"end": convertToFullCalendarFormat(data[i].SCHE_END_DATE),
 							extendedProps: {
-								memo: item.SCHE_CONTENT
+								memo: data[i].SCHE_CONTENT
 							}
-						};
-					});
-					calendar.addEvent(events);
-				}
+						}
+						events.push(event);
+					}
+					successCallback(events);
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.error("AJAX 오류 발생: " + textStatus, errorThrown);
+				},
 			})
-		],
+		},
+
 		headerToolbar: {
 			center: 'addEventButton deleteEventButton'
 		},
@@ -55,21 +56,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
 						if (content == null || content == "") {
 							alert("내용을 입력하세요.");
+							console.log("X")
 						} else if (start_date == "" || end_date == "") {
 							alert("날짜를 입력하세요.");
+							console.log("X")
 						} else if (new Date(end_date) - new Date(start_date) < 0) {
 							alert("종료일이 시작일보다 먼저입니다.");
+							console.log("X")
 						} else {
-							var obj = {
-								"title": content,
-								"start": start_date,
-								"end": end_date,
-								extendedProps: {
-									memo: memo
-								}
-							};
-							calendar.addEvent(obj);
-							console.log(obj);
+							console.log("X")
+							$.ajax({
+								url: 'http://localhost:8081/YOU_I/GoaddSchedule.do',
+								type: 'POST',
+								dataType: 'json',
+								contentType: 'application/json;charset=utf-8',
+								data: {
+									calendar_content: content,
+									calendar_start_date: start_date,
+									calendar_end_date: end_date,
+									calendar_memo: memo
+								},
+								success: function() {
+									console.log("통신성공")
+									var obj = {
+										"title": content,
+										"start": start_date,
+										"end": end_date,
+										extendedProps: {
+											memo: memo
+										},
+									}; calendar.addEvent(obj);
+								}, error: function(jqXHR, textStatus, errorThrown) {
+									console.error("AJAX 오류 발생: " + textStatus, errorThrown);
+									console.log(jqXHR.responseText);
+								},
+							})
+
 							$("#calendarModal").modal("hide");
 							$('#calendarModal').on('hidden.bs.modal', function() {
 								// 입력 필드 초기화
@@ -136,6 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			$("#addCalendar").on("click", function() {
 				info.dayEl.style.backgroundColor = '#fff';
 				var content = $("#calendar_content").val();
+				console.log(typeof(content));
 				var start_date = $("#calendar_start_date").val();
 				var end_date = $("#calendar_end_date").val();
 				var memo = $("#calendar_memo").val();
@@ -146,16 +169,31 @@ document.addEventListener('DOMContentLoaded', function() {
 				} else if (new Date(end_date) - new Date(start_date) < 0) {
 					alert("종료일이 시작일보다 먼저입니다.");
 				} else {
-					var obj = {
-						"title": content,
-						"start": start_date,
-						"end": end_date,
-						extendedProps: {
-							memo: memo
-						}
-					}
-					calendar.addEvent(obj);
-					console.log(obj);
+					console.log(content, start_date, end_date, memo)
+					$.ajax({
+						url: 'addSchedule.do',
+						type: 'POST',
+						dataType: 'json',
+						data: {
+							calendar_content: content,
+							calendar_start_date: start_date,
+							calendar_end_date: end_date,
+							calendar_memo: memo
+						},
+						success: function() {
+							console.log("통신성공")
+							var obj = {
+								"title": content,
+								"start": start_date,
+								"end": end_date,
+								extendedProps: {
+									memo: memo
+								},
+							}; calendar.addEvent(obj);
+						}, error: function(jqXHR, textStatus, errorThrown) {
+							console.log(jqXHR.responseText);
+						},
+					})
 					$("#calendarModal").modal("hide");
 					$('#calendarModal').on('hidden.bs.modal', function() {
 						// 입력 필드 초기화
@@ -185,17 +223,32 @@ document.addEventListener('DOMContentLoaded', function() {
 				} else if (new Date(end_date) - new Date(start_date) < 0) {
 					alert("종료일이 시작일보다 먼저입니다.");
 				} else {
-					var obj = {
-						"title": content,
-						"start": start_date,
-						"end": end_date,
-						extendedProps: {
-							memo: memo
+					$.ajax({
+						url: 'addschedule.do',
+						type: 'POST',
+						dataType: 'json',
+						contentType: 'application/json;charset=utf-8',
+						data: {
+							calendar_content: content,
+							calendar_start_date: start_date,
+							calendar_end_date: end_date,
+							calendar_memo: memo
 						},
-						completed: false
-					}
-					calendar.addEvent(obj);
-					console.log(obj);
+						success: function() {
+							console.log("통신성공")
+							var obj = {
+								"title": content,
+								"start": start_date,
+								"end": end_date,
+								extendedProps: {
+									memo: memo
+								},
+							}; calendar.addEvent(obj);
+						}, error: function(jqXHR, textStatus, errorThrown) {
+							console.error("AJAX 오류 발생: " + textStatus, errorThrown);
+							console.log(jqXHR.responseText);
+						},
+					})
 					$("#calendarModal").modal("hide");
 					$('#calendarModal').on('hidden.bs.modal', function() {
 						// 입력 필드 초기화
@@ -217,32 +270,32 @@ document.addEventListener('DOMContentLoaded', function() {
 		$("#memoModal .modal-body").text(event.extendedProps.memo);
 	}
 	function convertToFullCalendarFormat(koreanDate) {
-	// 한국어 월을 영어로 변환
-	var monthMapping = {
-		'1월': '01',
-		'2월': '02',
-		'3월': '03',
-		'4월': '04',
-		'5월': '05',
-		'6월': '06',
-		'7월': '07',
-		'8월': '08',
-		'9월': '09',
-		'10월': '10',
-		'11월': '11',
-		'12월': '12'
-	};
+		// 한국어 월을 영어로 변환
+		var monthMapping = {
+			'1월': '01',
+			'2월': '02',
+			'3월': '03',
+			'4월': '04',
+			'5월': '05',
+			'6월': '06',
+			'7월': '07',
+			'8월': '08',
+			'9월': '09',
+			'10월': '10',
+			'11월': '11',
+			'12월': '12'
+		};
 
 
-	var parts = koreanDate.split(' ');
-	var month = monthMapping[parts[0]];
-	var day = parts[1].replace(',', '');
-	var year = parts[2];
+		var parts = koreanDate.split(' ');
+		var month = monthMapping[parts[0]];
+		var day = parts[1].replace(',', '');
+		var year = parts[2];
 
-	// FullCalendar 형식으로 변환
-	var fullCalendarDate = year + '-' + month + '-' + day;
-	return fullCalendarDate;
-}
+		// FullCalendar 형식으로 변환
+		var fullCalendarDate = year + '-' + month + '-' + day;
+		return fullCalendarDate;
+	}
 
 
 	calendar.render();

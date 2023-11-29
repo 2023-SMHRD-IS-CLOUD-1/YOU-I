@@ -42,6 +42,7 @@ public class FrontController extends HttpServlet {
 		map.put("rankCt.do", new rankCtService());
 		map.put("Upload.do", new UploadService());
 		map.put("community.do", new communityService());
+		
 	}
 	
 		
@@ -67,10 +68,12 @@ public class FrontController extends HttpServlet {
 		} else {
 			com = map.get(finaluri);
 			path = com.execute(request, response);
+			System.out.println("error");
 			System.out.println("NoGo"+path);
 		}
 		
 		if(path == null) {
+			System.out.println("ajax");
 		} else if (path.contains("redirect:/")) {
 			System.out.println(path.substring(10));
 			response.sendRedirect(path.substring(10));

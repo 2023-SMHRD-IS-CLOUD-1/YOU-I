@@ -24,6 +24,7 @@
 		INSERT INTO tbl_schedule (sche_title, sche_content, sche_st_date, sche_end_date, group_no)
 		VALUES (#{scheTitle}, #{scheContent}, #{scheStDate, jdbcType=DATE}, #{scheEndDate, jdbcType=DATE}, 1)
 	</insert>
+	
 
 	<select id="getSchedules" resultType="com.YOU_I.model.calendar_DTO">
 		SELECT SCHE_NO AS scheNo, SCHE_TITLE AS scheTitle, SCHE_ST_DATE AS scheStDate, SCHE_END_DATE AS scheEndDate, SCHE_CONTENT AS scheContent
@@ -66,12 +67,13 @@ VALUES(#{commNo} , #{fileName}, #{fileOriName}, #{fileThumb}, #{fileS3Path}, #{f
 </insert>
 	
 
-	<insert id="addGroup" parameterType="com.YOU_I.model.Group_DTO">
-		
-			
-		INSERT INTO tbl_group (group_name, group_category)
-		VALUES (#{groupName}, #{groupCategory})
-	</insert>
+	<insert id="addGroup" parameterType="com.YOU_I.model.Group_DTO" useGeneratedKeys="true" keyProperty="groupNo">
+    <!-- INSERT 문 수행 -->
+    INSERT INTO tbl_group (group_name) VALUES (#{groupName}) 
+    <selectKey keyProperty="groupNo" resultType="int" order="AFTER">
+        SELECT tbl_group_SEQ.CURRVAL AS groupNo FROM DUAL
+    </selectKey>
+</insert>
 	<insert id="commContent" parameterType="com.YOU_I.model.community_DTO">
 	insert into tbl_community (group_no,comm_title,comm_content,id) values(2,'title',#{commContent},'id 0117')
 	</insert>
@@ -87,7 +89,14 @@ VALUES(#{commNo} , #{fileName}, #{fileOriName}, #{fileThumb}, #{fileS3Path}, #{f
 
 
 
-
+	<!-- 
+	<parameterMap type="com.YOU_I.model.calendar_DTO" id="addschedule">
+	<parameter property="scheTitle"/>
+	<parameter property="scheContent"/>
+	<parameter property="scheStDate, jdbcType=DATE"/>
+	<parameter property="scheEndDate, jdbcType=DATE"/>
+	</parameterMap>
+ -->
 
 
 </mapper>
