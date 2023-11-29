@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.YOU_I.model.calendar_DAO;
 import com.YOU_I.model.calendar_DTO;
+import com.google.gson.Gson;
 
 public class addScheduleService implements Command {
 
@@ -29,7 +32,7 @@ public class addScheduleService implements Command {
         String endDateString = request.getParameter("calendar_end_date");
         System.out.println(endDateString+"확인용");
         String memo = request.getParameter("calendar_memo");
-        //int groupNo = (int) session.getAttribute("groupNo");
+        int groupNo = (int) session.getAttribute("groupNo");
         calendar_DTO dto = new calendar_DTO();
         dto.setScheTitle(content);
 
@@ -42,10 +45,12 @@ public class addScheduleService implements Command {
         }
 
         dto.setScheContent(memo);
-        //dto.setGroupNo((long) groupNo);
+        dto.setGroupNo((long) groupNo);
         
         calendar_DAO dao = new calendar_DAO();
         dao.addSchedule(dto);
+        
+        sendJsonResponse(response, "success");
 
         return null;
     }
@@ -64,6 +69,15 @@ public class addScheduleService implements Command {
             e.printStackTrace();
             return null;
         }
+    }
+    private void sendJsonResponse(HttpServletResponse response, String status) throws IOException {
+        response.setContentType("application/json");
+        response.setCharacterEncoding("utf-8");
+
+        Map<String, String> jsonResponse = new HashMap<>();
+        jsonResponse.put("status", status);
+
+        response.getWriter().write(new Gson().toJson(jsonResponse));
     }
     
     

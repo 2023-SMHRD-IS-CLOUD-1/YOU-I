@@ -64,12 +64,11 @@ document.addEventListener('DOMContentLoaded', function() {
 							alert("종료일이 시작일보다 먼저입니다.");
 							console.log("X")
 						} else {
-							console.log("X")
+							console.log(content, start_date, end_date, memo)
 							$.ajax({
-								url: 'http://localhost:8081/YOU_I/GoaddSchedule.do',
+								url: 'addSchedule.do',
 								type: 'POST',
 								dataType: 'json',
-								contentType: 'application/json;charset=utf-8',
 								data: {
 									calendar_content: content,
 									calendar_start_date: start_date,
@@ -158,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			$("#addCalendar").on("click", function() {
 				info.dayEl.style.backgroundColor = '#fff';
 				var content = $("#calendar_content").val();
-				console.log(typeof(content));
+				console.log(typeof (content));
 				var start_date = $("#calendar_start_date").val();
 				var end_date = $("#calendar_end_date").val();
 				var memo = $("#calendar_memo").val();
@@ -191,6 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
 								},
 							}; calendar.addEvent(obj);
 						}, error: function(jqXHR, textStatus, errorThrown) {
+							console.error("AJAX 오류 발생: " + textStatus, errorThrown);
 							console.log(jqXHR.responseText);
 						},
 					})
@@ -223,11 +223,11 @@ document.addEventListener('DOMContentLoaded', function() {
 				} else if (new Date(end_date) - new Date(start_date) < 0) {
 					alert("종료일이 시작일보다 먼저입니다.");
 				} else {
+					console.log(content, start_date, end_date, memo)
 					$.ajax({
-						url: 'addschedule.do',
+						url: 'addSchedule.do',
 						type: 'POST',
 						dataType: 'json',
-						contentType: 'application/json;charset=utf-8',
 						data: {
 							calendar_content: content,
 							calendar_start_date: start_date,
