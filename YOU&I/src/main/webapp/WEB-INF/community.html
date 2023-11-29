@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<!--
+    Striped by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>Striped by HTML5 UP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <style>
+        #post-form {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-content {
+            width: 910px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            white-space: pre-wrap;
+            /* 변경된 부분 */
+            overflow: hidden;
+            min-height: 100px;
+            color: #333;
+        }
+
+        #new-post-form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        #new-post-form button {
+            align-self: flex-end;
+        }
+
+
+
+        #user-profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        #user-profile img {
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        #user-profile h3 {
+            margin: 0;
+        }
+
+        #posts-container {
+            max-width: 600px;
+            margin: 20px 0;
+            white-space: pre;
+        }
+
+        .post {
+            margin: auto;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            /* 가로 범위 조정 */
+            max-width: 2000px;
+            /* 최대 가로 폭 설정 */
+            min-width: 1000px;
+            /* 최소 가로 폭 설정 */
+            /* 최대 tpfh 폭 설정 */
+            min-height: 100px;
+
+            /* 최소 가로 폭 설정 */
+            height: auto;
+            /* 세로 범위를 콘텐츠에 맞게 자동 조정 */
+            background-color: white;
+            color: #333;
+        }
+
+
+
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .post-avatar {
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .post-nickname {
+            font-weight: bold;
+        }
+
+        .preserve-space {
+            white-space: pre;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+        }
+
+        .comment-input {
+            width: 500px;
+        }
+
+        .like-button {
+            cursor: pointer;
+            width: 30px;
+            /* 이미지의 크기에 맞게 조정 */
+            height: 30px;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/6611/6611465.png');
+            /* 이미지 파일의 경로로 바꿔주세요 */
+            background-size: cover;
+            /* 이미지를 버튼 크기에 맞게 조정 */
+            border: none;
+            /* 기본 버튼 스타일 제거 */
+            padding: 0;
+            /* 내부 여백 제거 */
+        }
+
+        .like-count {
+            margin-right: 10px;
+        }
+    </style>
+    
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/util.js"></script>
+</head>
+
+
+<body class="is-preload">
+    
+
+    <!-- Content -->
+    <div id="content">
+        <!-- 배너 이미지 -->
+        <img src="images/bg01.jpg" alt="배너 이미지" style="width: 1300px; height: 150px;" />
+        <div id="user-profile">
+            <img id="user-avatar"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSht57fvmxTIjl86JFQ2SIsSsVLFHZBP-pR4pMAssOpqQ&s"
+                alt="프로필 사진" width="50" height="50">
+            <h3 id="user-nickname">기본 닉네임</h3>
+        </div>
+
+        <div id="post-form">
+            <h2>글작성</h2>
+            <form id="new-post-form" action="community.do" method="post" name="postSubmitform">
+                <textarea id="post-content" name="commContent" rows="4" required onclick="openModal()"></textarea>
+                <br>
+                <button id="postSubmit" type="submit">게시</button>
+            </form>
+        </div>
+        <div class="overlay" id="overlay"></div>
+        <div class="modal" id="modal">
+            <h2>글쓰기</h2>
+            <form id="modal-form">
+                <label for="modal-content">내용:</label>
+                <textarea id="modal-content" name="modal-content" rows="30" cols="200" required></textarea>
+                <br>
+                <button type="button" onclick="closeModal()">닫기</button>
+                <button type="button" onclick="updateTextarea()">저장</button>
+            </form>
+        </div>
+        <form>
+            <div id="posts-container">
+                <!-- 게시물이 표시될 영역 -->
+        </form>
+    </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+
+        <!-- Logo -->
+        <h1 id="logo"><a href="#">YOU & I</a></h1>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li><a href="#">프로필설정</a></li>
+                <li><a href="#">멤버</a></li>
+                <li><a href="#">게시글</a></li>
+                <li><a href="#">사진첩</a></li>
+                <li><a href="#">채팅방</a></li>
+            </ul>
+        </nav>
+
+        <!-- Search -->
+        <section class="box search">
+            <form method="post" action="#">
+                <input type="text" class="text" name="search" placeholder="소모임 검색" />
+            </form>
+        </section>
+
+        <!-- Text -->
+        <section class="box text-style1">
+            <div class="inner">
+                <p>
+                    <strong>공지사항 !</strong>
+                </p>
+                <p>
+                    12월 2일 토요일수업 잊지말기!
+                </p>
+            </div>
+        </section>
+
+
+        <section class="box calendar">
+            <div class="inner">
+                <table>
+                    <caption><span class="month">July</span><span class="year"> 2014</span></caption>
+                    <thead>
+                        <tr>
+                            <th scope="col" title="Monday">M</th>
+                            <th scope="col" title="Tuesday">T</th>
+                            <th scope="col" title="Wednesday">W</th>
+                            <th scope="col" title="Thursday">T</th>
+                            <th scope="col" title="Friday">F</th>
+                            <th scope="col" title="Saturday">S</th>
+                            <th scope="col" title="Sunday">S</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3" class="pad"><span>&nbsp;</span></td>
+                            <td><span>1</span></td>
+                            <td><span>2</span></td>
+                            <td><span>3</span></td>
+                            <td><span>4</span></td>
+                        </tr>
+                        <tr>
+                            <td><span>5</span></td>
+                            <td><a href="#">6</a></td>
+                            <td><span>7</span></td>
+                            <td><span>8</span></td>
+                            <td><span>9</span></td>
+                            <td><a href="#">10</a></td>
+                            <td><span>11</span></td>
+                        </tr>
+                        <tr>
+                            <td><span>12</span></td>
+                            <td><span>13</span></td>
+                            <td class="today"><a href="#">14</a></td>
+                            <td><span>15</span></td>
+                            <td><span>16</span></td>
+                            <td><span>17</span></td>
+                            <td><span>18</span></td>
+                        </tr>
+                        <tr>
+                            <td><span>19</span></td>
+                            <td><span>20</span></td>
+                            <td><span>21</span></td>
+                            <td><span>22</span></td>
+                            <td><a href="#">23</a></td>
+                            <td><span>24</span></td>
+                            <td><a href="#">25</a></td>
+                        </tr>
+                        <tr>
+                            <td><span>26</span></td>
+                            <td><span>27</span></td>
+                            <td><span>28</span></td>
+                            <td><span>29</span></td>
+                            <td><span>30</span></td>
+                            <td class="pad" colspan="2"><span>&nbsp;</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Copyright -->
+        <ul id="copyright">
+            <li>&copy; Untitled.</li>
+            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+
+    </div>
+
+    <!-- Scripts -->
+    <script>console.log("확인용")</script>
+    
+
+    <script>
+        let date = new Date();
+        let result_date = String(date).split(" ");
+        let day = result_date[2];
+        let month = result_date[1];
+        let year = result_date[3];
+
+        console.log(day);
+
+        $(".month").html(day + " ");
+        $(".day").html(month + " ");
+        $(".year").html(year + " ");
+
+
+        // 초기에는 빈 배열로 시작합니다.
+        var posts = [];
+
+												
+
+        function savePostToMemory(content) {
+            var timestamp = new Date().getTime();
+            var post = {
+                content: content,
+                timestamp: timestamp,
+                comments: []  // 댓글을 저장할 배열을 추가
+            };
+            posts.unshift(post);
+            displayPostsFromMemory();
+        }
+        function displayPostsFromMemory() {
+            var postsContainer = document.getElementById('posts-container');
+            postsContainer.innerHTML = '';
+
+            for (var i = 0; i < posts.length; i++) {
+                var post = posts[i];
+                var postElement = createPostElement(post, i);
+                postsContainer.appendChild(postElement);
+            }
+        }
+
+        function createPostElement(post, index) {
+            var postElement = document.createElement('div');
+            postElement.className = 'post';
+            postElement.dataset.index = index;  // 게시물의 인덱스를 저장
+
+            // 게시물 헤더 추가
+            var postHeader = document.createElement('div');
+            postHeader.className = 'post-header';
+
+            var postAvatar = document.createElement('img');
+            postAvatar.className = 'post-avatar';
+            postAvatar.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSht57fvmxTIjl86JFQ2SIsSsVLFHZBP-pR4pMAssOpqQ&s';
+            postAvatar.alt = '프로필 사진';
+            postAvatar.width = 30;
+            postAvatar.height = 30;
+
+            var postNickname = document.createElement('div');
+            postNickname.className = 'post-nickname';
+            postNickname.textContent = '기본 닉네임';
+
+            postHeader.appendChild(postAvatar);
+            postHeader.appendChild(postNickname);
+            postElement.appendChild(postHeader);
+
+
+
+            // 좋아요 버튼 추가
+            var likeButton = document.createElement('button');
+            likeButton.className = 'like-button';
+            likeButton.textContent = '';
+            likeButton.onclick = function () {
+                likePost(index); // 포스트 인덱스를 전달하여 likePost 함수 호출
+            };
+
+
+            // 좋아요 카운트
+            var likeCount = document.createElement('span');
+            likeCount.className = 'like-count';
+            likeCount.textContent = post.likes || 0;
+
+            // 게시물 내용 추가
+            var postContentElement = document.createElement('div');
+            postContentElement.className = 'post-content';
+            postContentElement.textContent = post.content;
+            postElement.appendChild(postContentElement);
+            var likeButtonContainer = document.createElement('div');
+            postElement.appendChild(likeCount);
+            likeButtonContainer.appendChild(likeButton);
+            postElement.appendChild(likeButtonContainer);
+
+
+            // 댓글 표시 영역 추가
+            var commentsContainer = document.createElement('div');
+            commentsContainer.className = 'comments-container';
+            postElement.appendChild(commentsContainer);
+
+            // 댓글 목록 추가
+            var commentList = document.createElement('ul');
+            commentList.className = 'comment-list';
+            commentsContainer.appendChild(commentList);
+
+            // 댓글 입력창 추가
+            var commentInput = document.createElement('textarea');
+            commentInput.className = 'comment-input';
+            commentInput.id = 'comment-input2';
+            commentInput.placeholder = '댓글을 입력하세요';
+            commentsContainer.appendChild(commentInput);
+
+            // 댓글 추가 버튼 추가
+            var addCommentButton = document.createElement('button');
+            addCommentButton.textContent = '댓글 추가';
+            addCommentButton.onclick = function () {
+                addComment(postElement, commentInput);
+            };
+            commentsContainer.appendChild(addCommentButton);
+
+            // 게시물의 댓글 목록 표시
+            displayComments(post.comments, commentList);
+
+            return postElement;
+        }
+
+        function displayComments(comments, commentList) {
+            commentList.innerHTML = '';
+
+            for (var i = 0; i < comments.length; i++) {
+                var comment = comments[i];
+                var commentElement = document.createElement('li');
+                var userComment = document.createElement('span');
+                userComment.textContent = userNickname + ': ';
+                commentElement.appendChild(userComment);
+                var commentText = document.createElement('span');
+                commentText.textContent = comment;
+                commentElement.appendChild(commentText);
+                commentList.appendChild(commentElement);
+            }
+        }
+
+
+
+        // 프로필 정보 표시
+        var userNicknameElement = document.getElementById('user-nickname');
+        var userAvatarElement = document.getElementById('user-avatar');
+
+
+
+        document.getElementById('new-post-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var postContent = document.getElementById('post-content').value;
+
+            if (postContent.trim() !== '') {
+                // 메모리에 게시물을 저장합니다.
+                savePostToMemory(postContent);
+
+                // 폼 재설정
+                document.getElementById('new-post-form').reset();
+
+                // 알람창 띄우기
+                alert('게시되었습니다!');
+            } else {
+                alert('게시물 내용을 입력하세요.');
+            }
+        });
+        
+        document.getElementById('postSubmit').addEventListener('click', () =>{
+			
+			const submit = document.postSubmitform;
+			submit.submit();
+			
+		});
+
+
+        // 프로필 정보 표시
+        var userNicknameElement = document.getElementById('user-nickname');
+        var userAvatarElement = document.getElementById('user-avatar');
+
+        // 데이터베이스에서 사용자 정보 가져오기 (가정)
+        var userProfile = {
+            nickname: "ㅋㅋ",
+            avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSht57fvmxTIjl86JFQ2SIsSsVLFHZBP-pR4pMAssOpqQ&s" // 데이터베이스에 저장된 경로를 사용
+        };
+
+        // 가져온 정보로 프로필 업데이트
+        userNicknameElement.textContent = userProfile.nickname;
+        userAvatarElement.src = userProfile.avatar;
+        var postContent = document.getElementById('post-content').value;
+        var postElement = document.createElement('div');
+        var postContentElement = document.createElement('div');
+        var postsContainer = document.getElementById('posts-container');
+
+        postContentElement.className = 'post-content';  // 'post-content' 클래스 추가
+        postContentElement.textContent = postContent;
+        postElement.appendChild(postContentElement);
+        postsContainer.appendChild(postElement);
+
+        function openModal() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('modal').style.display = 'block';
+
+            // 현재 텍스트 창 내용을 모달에 미리 채우려는 경우
+            var postContent = document.getElementById('post-content').value;
+            document.getElementById('modal-content').value = postContent;
+        }
+
+        function closeModal() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function updateTextarea() {
+            var modalContent = document.getElementById('modal-content').value;
+            document.getElementById('post-content').value = modalContent;
+            closeModal();
+        }
+        // 사용자의 닉네임 가져오기 (가정)
+        var userNickname = "ㅋㅋ";
+
+        function addComment(postElement, commentInput) {
+            var commentValue = commentInput.value;
+
+            if (commentValue.trim() !== '') {
+                var postIndex = postElement.dataset.index;
+                var newComment = commentValue;
+
+                posts[postIndex].comments.push(newComment);
+
+                var commentsContainer = postElement.querySelector('.comment-list');
+                displayComments(posts[postIndex].comments, commentsContainer);
+
+                commentInput.value = '';
+                alert('댓글이 추가되었습니다!');
+            } else {
+                alert('댓글 내용을 입력하세요.');
+            }
+        }
+        function likePost(postIndex) {
+            var post = posts[postIndex];
+            post.likes = post.likes || 0;
+            post.likes++;
+
+            // UI에서 좋아요 카운트 업데이트
+            var postElement = document.querySelector('.post[data-index="' + postIndex + '"]');
+            var likeCountElement = postElement.querySelector('.like-count');
+            likeCountElement.textContent = post.likes;
+
+            // 클릭 상태를 true로 업데이트하고 버튼을 비활성화
+            // likeStatus[postIndex] = true;
+            var likeButton = postElement.querySelector('.like-button');
+            likeButton.disabled = true;
+        }
+
+
+
+
+
+
+    </script>
+
+
+</body>

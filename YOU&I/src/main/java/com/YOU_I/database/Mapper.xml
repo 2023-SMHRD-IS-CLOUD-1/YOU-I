@@ -72,7 +72,9 @@ VALUES(#{commNo} , #{fileName}, #{fileOriName}, #{fileThumb}, #{fileS3Path}, #{f
 		INSERT INTO tbl_group (group_name, group_category)
 		VALUES (#{groupName}, #{groupCategory})
 	</insert>
-	
+	<insert id="commContent" parameterType="com.YOU_I.model.community_DTO">
+	insert into tbl_community (group_no,comm_title,comm_content,id) values(2,'title',#{commContent},'id 0117')
+	</insert>
 
 
 
