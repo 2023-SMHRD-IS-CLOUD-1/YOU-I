@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--
+	Striped by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Striped by HTML5 UP</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css">
+
+<style>
+	
+</style>
+</head>
+
+<body class="is-preload">
+
+	<!-- Content -->
+	<div id="content">
+		<!-- 배너 이미지 -->
+		<img src="images/bg01.jpg" alt="배너 이미지" style="width: 1300px; height: 150px;" />
+	</div>
+
+	<!-- Sidebar -->
+	<div id="sidebar">
+
+		<!-- Logo -->
+		<h1 id="logo"><a href="#">YOU & I</a></h1>
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul>
+				<li><a href="#">프로필설정</a></li>
+				<li><a href="#">멤버</a></li>
+				<li><a href="#">게시글</a></li>
+				<li><a href="#">사진첩</a></li>
+				<li><a href="#">채팅방</a></li>
+			</ul>
+		</nav>
+
+		<!-- Search -->
+		<section class="box search">
+			<form method="post" action="#">
+				<input type="text" class="text" name="search" placeholder="소모임 검색" />
+			</form>
+		</section>
+
+		<!-- Text -->
+		<section class="box text-style1">
+			<div class="inner">
+				<p>
+					<strong>공지사항 !</strong>
+				</p>
+				<p>
+					12월 2일 토요일수업 잊지말기!
+				</p>
+			</div>
+		</section>
+
+		<!-- Recent Posts -->
+		<!-- 
+		<section class="box recent-posts">
+			
+			<header>
+				<h2>Recent Posts</h2>
+			</header>
+			<ul>
+				<li><a href="#">Lorem ipsum dolor</a></li>
+				<li><a href="#">Feugiat nisl aliquam</a></li>
+				<li><a href="#">Sed dolore magna</a></li>
+				<li><a href="#">Malesuada commodo</a></li>
+				<li><a href="#">Ipsum metus nullam</a></li>
+			</ul>
+			
+		</section>
+
+		<!-- Recent Comments ->
+		<section class="box recent-comments">
+			<header>
+				<h2>Recent Comments</h2>
+			</header>
+			<ul>
+				<li>case on <a href="#">Lorem ipsum dolor</a></li>
+				<li>molly on <a href="#">Sed dolore magna</a></li>
+				<li>case on <a href="#">Sed dolore magna</a></li>
+			</ul>
+		</section>
+		-->
+		<!-- Calendar -->
+		<section class="box calendar">
+			<div class="inner">
+				<table>
+					<caption><span class="month">July</span><span class="year"> 2014</span></caption>
+					<thead>
+						<tr>
+							<th scope="col" title="Monday">M</th>
+							<th scope="col" title="Tuesday">T</th>
+							<th scope="col" title="Wednesday">W</th>
+							<th scope="col" title="Thursday">T</th>
+							<th scope="col" title="Friday">F</th>
+							<th scope="col" title="Saturday">S</th>
+							<th scope="col" title="Sunday">S</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="3" class="pad"><span>&nbsp;</span></td>
+							<td><span>1</span></td>
+							<td><span>2</span></td>
+							<td><span>3</span></td>
+							<td><span>4</span></td>
+						</tr>
+						<tr>
+							<td><span>5</span></td>
+							<td><a href="#">6</a></td>
+							<td><span>7</span></td>
+							<td><span>8</span></td>
+							<td><span>9</span></td>
+							<td><a href="#">10</a></td>
+							<td><span>11</span></td>
+						</tr>
+						<tr>
+							<td><span>12</span></td>
+							<td><span>13</span></td>
+							<td class="today"><a href="#">14</a></td>
+							<td><span>15</span></td>
+							<td><span>16</span></td>
+							<td><span>17</span></td>
+							<td><span>18</span></td>
+						</tr>
+						<tr>
+							<td><span>19</span></td>
+							<td><span>20</span></td>
+							<td><span>21</span></td>
+							<td><span>22</span></td>
+							<td><a href="#">23</a></td>
+							<td><span>24</span></td>
+							<td><a href="#">25</a></td>
+						</tr>
+						<tr>
+							<td><span>26</span></td>
+							<td><span>27</span></td>
+							<td><span>28</span></td>
+							<td><span>29</span></td>
+							<td><span>30</span></td>
+							<td class="pad" colspan="2"><span>&nbsp;</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<!-- Copyright -->
+		<ul id="copyright">
+			<li>&copy; Untitled.</li>
+			<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+		</ul>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/util.js"></script>
+	<script>
+		let date = new Date();
+		let result_date = String(date).split(" ");
+		let day = result_date[2];
+		let month = result_date[1];
+		let year = result_date[3];
+
+		console.log(day);
+
+		$(".month").html(day + " ");
+		$(".day").html(month + " ");
+		$(".year").html(year + " ");
+
+	</script>
+ <script>
+	
+</script>
+
+</body>
+
+</html>
