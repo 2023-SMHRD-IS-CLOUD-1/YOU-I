@@ -32,18 +32,26 @@
 	</select>
 
 	<select id="rank" resultMap="gr_rank">
-		SELECT ROWNUM , GROUP_CATEGORY, GROUP_LIKES, GROUP_NAME
-		FROM (SELECT GROUP_CATEGORY, GROUP_LIKES, GROUP_NAME
-		FROM TBL_GROUP
+
+		SELECT GROUP_LIKES, GROUP_NAME,
+		HOBBY_NAME, GROUP_INFO
+		FROM (SELECT
+		A.GROUP_LIKES, A.GROUP_NAME,
+		B.HOBBY_NAME, A.GROUP_INFO
+		FROM TBL_GROUP A INNER JOIN TBL_HOBBY B
+		ON
+		A.HOBBY_NO = B.HOBBY_NO
 		ORDER BY GROUP_LIKES DESC)
 		WHERE ROWNUM &lt;=4
+
 	</select>
 
 
 	<resultMap type="com.YOU_I.model.Group_DTO" id="gr_rank">
-		<result property="groupCategory" column="GROUP_CATEGORY" />
+		<result property="hobbyName" column="HOBBY_NAME" />
 		<result property="groupLikes" column="GROUP_LIKES" />
 		<result property="groupName" column="GROUP_NAME" />
+		<result property="groupInfo" column="GROUP_INFO" />
 	</resultMap>
 
 	<select id="rankCt" parameterType="java.lang.String" resultMap="gr_rank">

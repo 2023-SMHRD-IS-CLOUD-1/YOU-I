@@ -25,7 +25,7 @@ public class rankCtService implements Command {
 		System.out.println("요청받은 데이터 >> " + data);
 		
 		Group_DTO gr_dto = new Group_DTO();
-		gr_dto.setGroupCategory(data);
+		//gr_dto.setGroupCategory(data);
 		
 		
 		Group_DAO dao = new Group_DAO();

@@ -1,50 +1,93 @@
 package com.YOU_I.model;
 
-import java.sql.Date;
 
 public class Group_DTO {
 	private int groupNo;
+
+    // 그룹 이름 
     private String groupName;
-    private String groupCategory;
+
+    // 취미 번호 
+    private int hobbyNo;
+    
+    // 취미 이름
+    private String hobbyName;
+
+    public String getHobbyName() {
+		return hobbyName;
+	}
+
+	public void setHobbyName(String hobbyName) {
+		this.hobbyName = hobbyName;
+	}
+
+	// 좋아요수 
     private int groupLikes;
-    private Date createdAt;
-    private int groupMembershipFee;
-	public int getGroupNo() {
-		return groupNo;
-	}
-	public void setGroupNo(int groupNo) {
-		this.groupNo = groupNo;
-	}
-	public String getGroupName() {
-		return groupName;
-	}
-	public void setGroupName(String groupName) {
-		this.groupName = groupName;
-	}
-	public String getGroupCategory() {
-		return groupCategory;
-	}
-	public void setGroupCategory(String groupCategory) {
-		this.groupCategory = groupCategory;
-	}
-	public int getGroupLikes() {
-		return groupLikes;
-	}
-	public void setGroupLikes(int groupLikes) {
-		this.groupLikes = groupLikes;
-	}
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-	public int getGroupMembershipFee() {
-		return groupMembershipFee;
-	}
-	public void setGroupMembershipFee(int groupMembershipFee) {
-		this.groupMembershipFee = groupMembershipFee;
-	}
+
+    // 만든 날짜 
+    private String createdAt;
+
+    // 가입비 
+    private Integer groupMembershipFee;
+
+    // 그룹 소개 
+    private String groupInfo;
+
+    public int getGroupNo() {
+        return groupNo;
+    }
+
+    public void setGroupNo(int groupNo) {
+        this.groupNo = groupNo;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
+    public int getHobbyNo() {
+        return hobbyNo;
+    }
+
+    public void setHobbyNo(int hobbyNo) {
+        this.hobbyNo = hobbyNo;
+    }
+
+    public int getGroupLikes() {
+        return groupLikes;
+    }
+
+    public void setGroupLikes(int groupLikes) {
+        this.groupLikes = groupLikes;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Integer getGroupMembershipFee() {
+        return groupMembershipFee;
+    }
+
+    public void setGroupMembershipFee(Integer groupMembershipFee) {
+        this.groupMembershipFee = groupMembershipFee;
+    }
+
+    public String getGroupInfo() {
+        return groupInfo;
+    }
+
+    public void setGroupInfo(String groupInfo) {
+        this.groupInfo = groupInfo;
+    }
     
     
 	

@@ -1,6 +1,6 @@
 function mainpop(){
 	
-    var sub = document.getElementById("sub");
+    var sub = document.getElementById("popupsub");
     sub.onclick = function() {
 	  document.getElementById("main").style.display = 'block';
       document.getElementById('pop1').style.display = 'none';

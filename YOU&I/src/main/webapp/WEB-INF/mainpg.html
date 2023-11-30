@@ -71,46 +71,47 @@
             <td align="left" id="category">취미</td>
           </tr>
 
+<tr>
+          <td align="left" id="check" style="height: 360px; max-height: 360px; vertical-align: top;">
+						
+						<!--
+						<label>축구/풋살</label>
+						<input type="radio" name="sports" value="socc" onclick="logText(this)">
+						<label>자전거</label>
+						<input type="radio" name="sports" value="bicycle" onclick="logText(this)">
+						<label>볼링</label>
+						<input type="radio" name="sports" value="bowl" onclick="logText(this)">
+						<label>등산</label>
+						<input type="radio" name="sports" value="mclimbing" onclick="logText(this)">
+						<label>독서</label>
+						<input type="radio" name="sports" value="book" onclick="logText(this)">
+						<label>캠핑</label>
+						<input type="radio" name="sports" value="camp" onclick="logText(this)">
+						<label>배드민턴</label>
+						<input type="radio" name="sports" value="badmin" onclick="logText(this)">
+						<label>요가/필라테스</label>
+						<input type="radio" name="sports" value="yoga" onclick="logText(this)">
+						<label>수영/스쿠버다이빙</label>
+						<input type="radio" name="sports" value="swim" onclick="logText(this)">
+						<label>탁구</label>
+						<input type="radio" name="sports" value="pingpong" onclick="logText(this)">
+						<label>복싱</label>
+						<input type="radio" name="sports" value="boxing" onclick="logText(this)">
+						<label>클라이밍</label>
+						<input type="radio" name="sports" value="climbing" onclick="logText(this)">
+						<label>골프</label>
+						<input type="radio" name="sports" value="golf" onclick="logText(this)">
+	-->					
+					</td>
+				</tr>
 
-          <tr>
-            <td align="left" id="check" rowspan="2">
-             <label>축구/풋살</label>
-             <input type="radio"  name="sports" value="socc"  onclick="logText(this)">
-             <label>자전거</label>
-             <input type="radio"  name="sports" value="bicycle" onclick="logText(this)">
-             <label>볼링</label>
-             <input type="radio"  name="sports" value="bowl" onclick="logText(this)">
-             <label>등산</label>
-             <input type="radio"  name="sports" value="mclimbing" onclick="logText(this)">
-             <label>독서</label>
-             <input type="radio" name="sports" value="book" onclick="logText(this)">
-             <label>캠핑</label>
-             <input type="radio"  name="sports" value="camp" onclick="logText(this)">
-             <label>배드민턴</label>
-             <input type="radio"  name="sports" value="badmin" onclick="logText(this)">
-             <label>요가/필라테스</label>
-             <input type="radio"  name="sports" value="yoga" onclick="logText(this)">
-             <label>수영/스쿠버다이빙</label>
-             <input type="radio"  name="sports" value="swim" onclick="logText(this)">
-             <label>탁구</label>
-             <input type="radio" name="sports" value="pingpong" onclick="logText(this)">
-             <label>복싱</label>
-             <input type="radio" name="sports" value="boxing" onclick="logText(this)">
-             <label>클라이밍</label>
-             <input type="radio" name="sports" value="climbing" onclick="logText(this)">
-             <label>골프</label>
-             <input type="radio"  name="sports" value="golf" onclick="logText(this)">
 
-            </td>
-          </tr>
+			</table>
+				<td><input type="submit" id="popupsub" class="popupsub" style="margin-top: 6px;" value="결정"></td>
+		</form>
+	</div>
 
-          
-            <td><input type="submit" id="sub"></td>
-        </table>
-      </form>
-    </div>
-
-  </div>
+	</div>
   
   
   
@@ -156,25 +157,45 @@
 
   
     <div class="main" id="main">
-    <div class="container1">
-      <div class="item color1">
-        <div class="pt0">
-        </div>
-      </div>
-      <div class="item color2">
-        <div class="pt1">
-        </div>
-      </div>
-      <div class="item color3">
-        <div class="pt2">
-        </div>
-      </div>
-      <div class="item color4">
-        <div class="pt3">
-        </div>
-      </div>
-    </div>
-  </div>
+		<div class="container1">
+			<div class="item color1">
+				<div class="pt0">
+					<table class="grouptable">
+						<tr class="groupinfo0">
+						<td rowspan="4"><div id="groupimg1" class="groupimg">사진들어오는곳</div></td></tr>
+						
+					</table>
+				</div>
+			</div>
+			<div class="item color2">
+				<div class="pt1">
+					<table class="grouptable">
+						<tr class="groupinfo1">
+						<td rowspan="4"><div id="groupimg2" class="groupimg">사진들어오는곳</div></td></tr>
+						
+					</table>
+				</div>
+			</div>
+			<div class="item color3">
+				<div class="pt2">
+					<table class="grouptable">
+						<tr class="groupinfo2">
+						<td rowspan="4"><div id="groupimg3" class="groupimg">사진들어오는곳</div></td></tr>
+						
+					</table>
+				</div>
+			</div>
+			<div class="item color4">
+				<div class="pt3">
+					<table class="grouptable">
+						<tr class="groupinfo3">
+						<td rowspan="4"><div id="groupimg4" class="groupimg">사진들어오는곳</div></td></tr>
+						
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 
@@ -247,7 +268,36 @@
   <script src="assets/js/mainpgjs/mainpop.js"></script>
   <script src="assets/js/mainpgjs/mainrank.js"></script>
   
-  
+  <script>
+	
+	$("#clkbtn").on("click", () => {
+		
+		var data = {data : "SelectAllHobbyName"};
+		console.log("ajax 보낼 준비 완료");
+		$(".onbtn").remove();
+		$.ajax({
+			url : "http://localhost:8081/YOU_I/SelectAllHobbyName.do",
+			data : data,
+			dataType : "json",
+			success : function(res){
+				console.log(res);
+				res.forEach(function (res) {
+
+						$("#check").append("<button class='onbtn first'>" + res.hobbyName + "</button>");
+						
+					});
+			},
+			error : function(e){
+				console.log(e);
+			}
+		})
+		
+	})
+	
+	
+	
+	
+</script>
   
   <script>
 	  var label = "";
@@ -267,26 +317,23 @@
             
 
             $.ajax({
-                url: "http://localhost:8081/YOU_I/rankCt.do",
+				url: "http://localhost:8081/YOU_I/rankCt.do",
 
-                data: sendObj,
+				data: sendObj,
 
-                dataType : "json",
-                success: function (res) {
-               
-            console.log(res);
-            
-            
-            
-               for(let i=0; res.length;i++){
-				  $(".pt1"+i).append($("<div>" + res[i].groupCategory+ "</div>"));
-                  $(".pt1"+i).append($("<div>" + res[i].groupName + "</div>"));
-                  $(".pt1"+i).append($("<div>" + res[i].groupLikes + "</div>"));
-				  }
+				dataType: "json",
+				success: function (res) {
 
-            
-            
-        },
+					var i = 0;
+					res.forEach(function (res) {
+
+						$(".pt" + i).append("<div>" + res.hobbyName + "</div>");
+						$(".pt" + i).append("<div>" + res.groupName + "</div>");
+						$(".pt" + i).append("<div>" + res.groupLikes + "</div>");
+						i++;
+					});
+
+				},
 
 
                 error : function(e){
