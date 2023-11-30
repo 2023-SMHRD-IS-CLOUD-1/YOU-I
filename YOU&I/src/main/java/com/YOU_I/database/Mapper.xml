@@ -87,6 +87,15 @@ VALUES(#{commNo} , #{fileName}, #{fileOriName}, #{fileThumb}, #{fileS3Path}, #{f
 	</insert>
 
 
+<select id="SelectAllHobbyName" resultMap="SelectAllHobby" >
+		SELECT HOBBY_NO, HOBBY_NAME
+		FROM TBL_HOBBY
+	</select>
+
+	<resultMap type="com.YOU_I.model.Hobby_DTO" id="SelectAllHobby">
+		<result property="hobbyNo" column="HOBBY_NO" />
+		<result property="hobbyName" column="HOBBY_NAME" />
+	</resultMap>
 
 
 
