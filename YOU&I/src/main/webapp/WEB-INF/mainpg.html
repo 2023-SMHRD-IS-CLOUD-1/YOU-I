@@ -2,391 +2,397 @@
 <html lang="en">
 
 <head>
-	<title>mainpage</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>mainpage</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-	<link rel="stylesheet" href="assets/css/mainpg/open-iconic-bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/mainpg/animate.css">
+   <link rel="stylesheet" href="assets/css/mainpg/open-iconic-bootstrap.min.css">
+   <link rel="stylesheet" href="assets/css/mainpg/animate.css">
 
-	<link rel="stylesheet" href="assets/css/mainpg/owl.carousel.min.css">
-	<link rel="stylesheet" href="assets/css/mainpg/owl.theme.default.min.css">
-	<link rel="stylesheet" href="assets/css/mainpg/magnific-popup.css">
+   <link rel="stylesheet" href="assets/css/mainpg/owl.carousel.min.css">
+   <link rel="stylesheet" href="assets/css/mainpg/owl.theme.default.min.css">
+   <link rel="stylesheet" href="assets/css/mainpg/magnific-popup.css">
 
-	<link rel="stylesheet" href="assets/css/mainpg/aos.css">
+   <link rel="stylesheet" href="assets/css/mainpg/aos.css">
 
-	<link rel="stylesheet" href="assets/css/mainpg/ionicons.min.css">
+   <link rel="stylesheet" href="assets/css/mainpg/ionicons.min.css">
 
-	<link rel="stylesheet" href="assets/css/mainpg/bootstrap-datepicker.css">
-	<link rel="stylesheet" href="assets/css/mainpg/jquery.timepicker.css">
+   <link rel="stylesheet" href="assets/css/mainpg/bootstrap-datepicker.css">
+   <link rel="stylesheet" href="assets/css/mainpg/jquery.timepicker.css">
 
 
-	<link rel="stylesheet" href="assets/css/mainpg/flaticon.css">
-	<link rel="stylesheet" href="assets/css/mainpg/icomoon.css">
-	<link rel="stylesheet" href="assets/css/mainpg/style.css">
+   <link rel="stylesheet" href="assets/css/mainpg/flaticon.css">
+   <link rel="stylesheet" href="assets/css/mainpg/icomoon.css">
+   <link rel="stylesheet" href="assets/css/mainpg/style.css">
+
+
+
 </head>
 
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-		<div class="container">
-			<a class="navbar-brand" href="index.html">YOU&I</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-				aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="oi oi-menu"></span> Menu
-			</button>
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-					<li class="nav-item"><a href="Gologin.do" class="nav-link">로그인</a></li>
-					<li class="nav-item"><a href="project.html" class="nav-link">모임 찾기</a></li>
-					<li class="nav-item"><a href="services.html" class="nav-link">프로필 설정</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
-	<div class="banner">
-		<img src="assets/css/images/march.png" alt="배너 이미지">
-	</div>
-	<!-- <div style=" width: 90%;  height: 300px; margin-left: 5%; background-image: url('images/march.png'); background-repeat: no-repeat;"></div> -->
-	<!-- END nav -->
-
-
-
-
-	<div class="row no-gutters" style="height: 100px;"></div>
-
-	<div class="pl-md-5 ml-md-5 mb-5" id="whatcl">
-		<a id='ckb'>What are your hobbies?</a>
-		<a href="#pop1" class="btn" id="clkbtn">click</a>
-	</div>
-
-	<div class="popup" id="pop1">
-		<form action="#" id="myForm" onsubmit="return false">
-			<table>
-				<tr bgcolor="whitesmoke">
-					<td align="left" id="category">취미</td>
-				</tr>
-
-				<tr>
-					<td align="left" id="check" style="height: 360px; max-height: 360px; vertical-align: top;">
-
-						<!--
-						<label>축구/풋살</label>
-						<input type="radio" name="sports" value="socc" onclick="logText(this)">
-						<label>자전거</label>
-						<input type="radio" name="sports" value="bicycle" onclick="logText(this)">
-						<label>볼링</label>
-						<input type="radio" name="sports" value="bowl" onclick="logText(this)">
-						<label>등산</label>
-						<input type="radio" name="sports" value="mclimbing" onclick="logText(this)">
-						<label>독서</label>
-						<input type="radio" name="sports" value="book" onclick="logText(this)">
-						<label>캠핑</label>
-						<input type="radio" name="sports" value="camp" onclick="logText(this)">
-						<label>배드민턴</label>
-						<input type="radio" name="sports" value="badmin" onclick="logText(this)">
-						<label>요가/필라테스</label>
-						<input type="radio" name="sports" value="yoga" onclick="logText(this)">
-						<label>수영/스쿠버다이빙</label>
-						<input type="radio" name="sports" value="swim" onclick="logText(this)">
-						<label>탁구</label>
-						<input type="radio" name="sports" value="pingpong" onclick="logText(this)">
-						<label>복싱</label>
-						<input type="radio" name="sports" value="boxing" onclick="logText(this)">
-						<label>클라이밍</label>
-						<input type="radio" name="sports" value="climbing" onclick="logText(this)">
-						<label>골프</label>
-						<input type="radio" name="sports" value="golf" onclick="logText(this)">
-	-->
-					</td>
-				</tr>
-
-
-			</table>
-			<td><input type="submit" id="popupsub" class="popupsub" style="margin-top: 6px;" value="결정"></td>
-		</form>
-	</div>
-
-	</div>
-
-
-
-
-	<div class="main" id="main">
-		<div class="container1">
-			<div class="item color1">
-				<div class="pt0">
-					<table class="grouptable">
-						<tr class="groupinfo0">
-							<td rowspan="4">
-								<div id="groupimg1" class="groupimg"></div>
-							</td>
-						</tr>
-
-					</table>
-				</div>
-			</div>
-			<div class="item color2">
-				<div class="pt1">
-					<table class="grouptable">
-						<tr class="groupinfo1">
-							<td rowspan="4">
-								<div id="groupimg2" class="groupimg"></div>
-							</td>
-						</tr>
-
-					</table>
-				</div>
-			</div>
-			<div class="item color3">
-				<div class="pt2">
-					<table class="grouptable">
-						<tr class="groupinfo2">
-							<td rowspan="4">
-								<div id="groupimg3" class="groupimg"></div>
-							</td>
-						</tr>
-
-					</table>
-				</div>
-			</div>
-			<div class="item color4">
-				<div class="pt3">
-					<table class="grouptable">
-						<tr class="groupinfo3">
-							<td rowspan="4">
-								<div id="groupimg4" class="groupimg"></div>
-							</td>
-						</tr>
-
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-
-
-
-
-
-	<footer class="ftco-footer ftco-bg-dark ftco-section">
-		<div class="container">
-			<div class="row mb-5">
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4">
-					</div>
-				</div>
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4 ml-md-4">
-					</div>
-				</div>
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4">
-					</div>
-				</div>
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4">
-						<form action="#" class="subscribe-form">
-							<div class="form-group">
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 text-center">
+   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar"
+      style="margin-bottom: 30px;">
+      <div class="container">
+         <a class="navbar-brand" href="index.html">YOU&I</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+            aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+         </button>
+         <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+               <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+               <li class="nav-item"><a href="Gologin.do" class="nav-link">로그인</a></li>
+               <li class="nav-item"><a href="project.html" class="nav-link">모임 찾기</a></li>
+               <li class="nav-item"><a href="services.html" class="nav-link">프로필 설정</a></li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+
+   <div class="banner">
+      <img src="assets/css/images/march.png" alt="배너 이미지">
+   </div>
+   <!-- <div style=" width: 90%;  height: 300px; margin-left: 5%; background-image: url('images/march.png'); background-repeat: no-repeat;"></div> -->
+   <!-- END nav -->
+
+
+
+
+   <div class="row no-gutters" style="height: 100px;"></div>
+
+   <div class="pl-md-5 ml-md-5 mb-5" id="whatcl">
+      <a id='ckb'>What are your hobbies?</a>
+      <a href="#pop1" class="btn" id="clkbtn">click</a>
+   </div>
+
+   <div class="popup" id="pop1">
+      <form action="#" id="myForm" onsubmit="return false">
+         <table>
+            <tr bgcolor="whitesmoke">
+               <td align="left" id="category">취미</td>
+            </tr>
+
+
+            <tr>
+               <td align="left" id="check" style="height: 360px; max-height: 360px; vertical-align: top;">
+
+                  <!--
+                  <label>축구/풋살</label>
+                  <input type="radio" name="sports" value="socc" onclick="logText(this)">
+                  <label>자전거</label>
+                  <input type="radio" name="sports" value="bicycle" onclick="logText(this)">
+                  <label>볼링</label>
+                  <input type="radio" name="sports" value="bowl" onclick="logText(this)">
+                  <label>등산</label>
+                  <input type="radio" name="sports" value="mclimbing" onclick="logText(this)">
+                  <label>독서</label>
+                  <input type="radio" name="sports" value="book" onclick="logText(this)">
+                  <label>캠핑</label>
+                  <input type="radio" name="sports" value="camp" onclick="logText(this)">
+                  <label>배드민턴</label>
+                  <input type="radio" name="sports" value="badmin" onclick="logText(this)">
+                  <label>요가/필라테스</label>
+                  <input type="radio" name="sports" value="yoga" onclick="logText(this)">
+                  <label>수영/스쿠버다이빙</label>
+                  <input type="radio" name="sports" value="swim" onclick="logText(this)">
+                  <label>탁구</label>
+                  <input type="radio" name="sports" value="pingpong" onclick="logText(this)">
+                  <label>복싱</label>
+                  <input type="radio" name="sports" value="boxing" onclick="logText(this)">
+                  <label>클라이밍</label>
+                  <input type="radio" name="sports" value="climbing" onclick="logText(this)">
+                  <label>골프</label>
+                  <input type="radio" name="sports" value="golf" onclick="logText(this)">
+   -->
+               </td>
+            </tr>
+
+
+         </table>
+         <td><input type="submit" id="popupsub" class="popupsub" style="margin-top: 6px;" value="결정"></td>
+      </form>
+   </div>
+
+   </div>
+
+
+
+
+   <div class="main" id="main">
+      <div class="container1">
+         <div class="item color1">
+            <div class="pt0">
+               <table class="grouptable">
+                  <tr class="groupinfo0">
+                     <td rowspan="4">
+                        <div id="groupimg1" class="groupimg"></div>
+                     </td>
+                  </tr>
+
+               </table>
+            </div>
+         </div>
+         <div class="item color2">
+            <div class="pt1">
+               <table class="grouptable">
+                  <tr class="groupinfo1">
+                     <td rowspan="4">
+                        <div id="groupimg2" class="groupimg"></div>
+                     </td>
+                  </tr>
+
+               </table>
+            </div>
+         </div>
+         <div class="item color3">
+            <div class="pt2">
+               <table class="grouptable">
+                  <tr class="groupinfo2">
+                     <td rowspan="4">
+                        <div id="groupimg3" class="groupimg"></div>
+                     </td>
+                  </tr>
+
+               </table>
+            </div>
+         </div>
+         <div class="item color4">
+            <div class="pt3">
+               <table class="grouptable">
+                  <tr class="groupinfo3">
+                     <td rowspan="4">
+                        <div id="groupimg4" class="groupimg"></div>
+                     </td>
+                  </tr>
+
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+
+
+
+
+
+
+
+
+
+   <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+         <div class="row mb-5">
+            <div class="col-md">
+               <div class="ftco-footer-widget mb-4">
+               </div>
+            </div>
+            <div class="col-md">
+               <div class="ftco-footer-widget mb-4 ml-md-4">
+               </div>
+            </div>
+            <div class="col-md">
+               <div class="ftco-footer-widget mb-4">
+               </div>
+            </div>
+            <div class="col-md">
+               <div class="ftco-footer-widget mb-4">
+                  <form action="#" class="subscribe-form">
+                     <div class="form-group">
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12 text-center">
 
-					<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
+               <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+               </p>
+            </div>
+         </div>
+      </div>
+   </footer>
 
-
 
-	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-				stroke="#F96D00" />
-		</svg></div>
 
+   <!-- loader -->
+   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+         <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+         <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+            stroke="#F96D00" />
+      </svg></div>
 
-	<script src="assets/js/mainpgjs/jquery-3.2.1.min.js"></script>
-	<script src="assets/js/mainpgjs/jquery-migrate-3.0.1.min.js"></script>
-	<script src="assets/js/mainpgjs/popper.min.js"></script>
-	<script src="assets/js/mainpgjs/bootstrap.min.js"></script>
-	<script src="assets/js/mainpgjs/jquery.easing.1.3.js"></script>
-	<script src="assets/js/mainpgjs/jquery.waypoints.min.js"></script>
-	<script src="assets/js/mainpgjs/jquery.stellar.min.js"></script>
-	<script src="assets/js/mainpgjs/owl.carousel.min.js"></script>
-	<script src="assets/js/mainpgjs/jquery.magnific-popup.min.js"></script>
-	<script src="assets/js/mainpgjs/aos.js"></script>
-	<script src="assets/js/mainpgjs/jquery.animateNumber.min.js"></script>
-	<script src="assets/js/mainpgjs/bootstrap-datepicker.js"></script>
-	<script src="assets/js/mainpgjs/scrollax.min.js"></script>
-	<script src="assets/js/mainpgjs/google-map.js"></script>
-	<script src="assets/js/mainpgjs/mainpg.js"></script>
-	<script src="assets/js/mainpgjs/mainpop.js"></script>
-	<script src="assets/js/mainpgjs/mainrank.js"></script>
-	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.809.0.min.js"></script>
-	<script src="assets/js/awsjs/imageTake.js"></script>
 
-	<script>
+   <script src="assets/js/mainpgjs/jquery-3.2.1.min.js"></script>
+   <script src="assets/js/mainpgjs/jquery-migrate-3.0.1.min.js"></script>
+   <script src="assets/js/mainpgjs/popper.min.js"></script>
+   <script src="assets/js/mainpgjs/bootstrap.min.js"></script>
+   <script src="assets/js/mainpgjs/jquery.easing.1.3.js"></script>
+   <script src="assets/js/mainpgjs/jquery.waypoints.min.js"></script>
+   <script src="assets/js/mainpgjs/jquery.stellar.min.js"></script>
+   <script src="assets/js/mainpgjs/owl.carousel.min.js"></script>
+   <script src="assets/js/mainpgjs/jquery.magnific-popup.min.js"></script>
+   <script src="assets/js/mainpgjs/aos.js"></script>
+   <script src="assets/js/mainpgjs/jquery.animateNumber.min.js"></script>
+   <script src="assets/js/mainpgjs/bootstrap-datepicker.js"></script>
+   <script src="assets/js/mainpgjs/scrollax.min.js"></script>
+   <script src="assets/js/mainpgjs/google-map.js"></script>
+   <script src="assets/js/mainpgjs/mainpg.js"></script>
+   <script src="assets/js/mainpgjs/mainpop.js"></script>
+   <script src="assets/js/mainpgjs/mainrank.js"></script>
+   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.809.0.min.js"></script>
+   <script src="assets/js/awsjs/imageTake.js"></script>
 
-		$(document).ready(function () {
+   <script>
 
-			var data = {data: "SelectAllHobbyName"};
-			console.log("ajax 보낼 준비 완료");
-			$(".onbtn").remove();
-			$.ajax({
-				url: "http://localhost:8081/YOU_I/SelectAllHobbyName.do",
-				data: data,
-				dataType: "json",
-				success: function (res) {
-					console.log(res);
-					res.forEach(function (res) {
+      $(document).ready(function () {
 
-						$("#check").append("<button class='onbtn first'>" + res.hobbyName + "</button>");
+         var data = {data: "SelectAllHobbyName"};
+         console.log("ajax 보낼 준비 완료");
+         $(".onbtn").remove();
+         $.ajax({
+            url: "http://localhost:8081/YOU_I/SelectAllHobbyName.do",
+            data: data,
+            dataType: "json",
+            success: function (res) {
+               console.log(res);
+               res.forEach(function (res) {
 
-					});
-				},
-				error: function (e) {
-					console.log(e);
-				}
-			})
-
-
-
-		})
-
-
-
-
-
-
-	</script>
-
-
-
-
-
-
-
-
-	<script>
-		var wantHobbyGroup = null;
-		$(document).on("click", ".onbtn", (e) => {
-			wantHobbyGroup = e.target.innerHTML;
-			console.log(wantHobbyGroup);
-
-		})
-		var k = 5;
-		var i = 5;
-		var l = 5;
-		$("#popupsub").on("click", popsub);
-		function popsub() {
-
-
-			console.log(wantHobbyGroup);
-
-			var sendObj = {data: wantHobbyGroup};
-			var Groupno = new Array;
-			var StringNo = null;
-			$.ajax({
-				url: "http://localhost:8081/YOU_I/rankCt.do",
-
-				data: sendObj,
-
-				dataType: "json",
-				success: function (res) {
-					var j = 1;
-					StringNo = "";
-
-					$("#whatcl").after(
-						`<div class="main no${k}">` + `<div class= "container1" >`)
-
-
-					res.forEach(function (res) {
-						var temp = res.groupNo
-						StringNo += temp + ",";
-						Groupno.push(StringNo);
-						console.log(Groupno);
-						tag = [`<div class='item color${j}'>` + `<div class='pt${i}'>` + `<table class='grouptable'>` + `<tr class='groupinfo${i}'>` + `<td rowspan=4>` + `<div id='groupimg${i}' class='groupimg'></div>`]
-
-						tag += "<tr><td class='grouptd'>" + res.hobbyName + "</td></tr>"
-						tag += "<tr><td class='grouptd'>" + res.groupName + "</td></tr>"
-						tag += "<tr><td class='grouptd'>" + res.groupInfo + "</td></tr>"
-
-
-						$(`body > div.main.no${k} > div`).append(tag);
-
-						//$(".container1").append("<div class='pt'"+i+">");
-						//$(".container1").append("<table class='grouptable'>");
-						//$(".container1").append("<tr class=groupinfo"+i+">");
-						//$(".container1").append("<td rowspan=4>");
-						//$(".container1").append("<div id=groupimg"+i+" class=groupimg>사진들어오는곳</div>");
-
-						//$(".container1").append("<tr><td class='grouptd'>" + res.hobbyName + "</td></tr>");
-						//$(".container1").append("<tr><td class='grouptd'>" + res.groupName + "</td></tr>");
-						//$(".container1").append("<tr><td class='grouptd'>" + res.groupLikes + "</td></tr>");
-
-						//$(".container1").append("</td></tr></table></div></div>");
-						$("#groupimg" + i).append(`<img id=groupThum${i} style="style=object-fit: fill; width:155px;height:155px" src="assets/css/images/defaultimg.jpg">`);
-						i++
-						j++
-					});
-					k++;
-					imagetake(StringNo);
-
-				},
-
-				error: function (e) {
-					console.log(e);
-
-				}
-			})
-		}
-		function imagetake(StringNo) {
-			console.log(StringNo);
-			var Groupnodata = {data: StringNo}
-			var bucketUrl = "https://s3.ap-northeast-2.amazonaws.com/you-i/"
-			$.ajax({
-
-				url: "http://localhost:8081/YOU_I/GroupImageTake.do",
-				data: Groupnodata,
-				dataType: "json",
-				success: function (res) {
-					res.forEach(function (res) {
-						try{
-						console.log("https://s3.ap-northeast-2.amazonaws.com/you-i/resize_profile" + res.fileThumb)
-						var imagePath = "resize_profile" + res.fileThumb;
-						var finalUrl = bucketUrl + encodeURIComponent(imagePath);
-						$("#groupThum" + l).attr("src",finalUrl);
-						
-						l++;}
-						catch(e){
-							console.log("사진없음")
-						}
-					})
-				},
-				error: function (e) {
-					console.log(e);
-				}
-			})
-
-
-		}
-	</script>
+                  $("#check").append("<button class='onbtn first'>" + res.hobbyName + "</button>");
+
+               });
+            },
+            error: function (e) {
+               console.log(e);
+            }
+         })
+
+
+
+      })
+
+
+
+
+
+
+   </script>
+
+
+
+
+
+
+
+
+   <script>
+      var wantHobbyGroup = null;
+      $(document).on("click", ".onbtn", (e) => {
+         wantHobbyGroup = e.target.innerHTML;
+         console.log(wantHobbyGroup);
+
+      })
+      var k = 5;
+      var i = 5;
+      var l = 5;
+      $("#popupsub").on("click", popsub);
+      function popsub() {
+
+
+         console.log(wantHobbyGroup);
+
+         var sendObj = {data: wantHobbyGroup};
+         var Groupno = new Array;
+         var StringNo = null;
+         $.ajax({
+            url: "http://localhost:8081/YOU_I/rankCt.do",
+
+            data: sendObj,
+
+            dataType: "json",
+            success: function (res) {
+               var j = 1;
+               StringNo = "";
+
+               $("#whatcl").after(
+                  `<div class="main no${k}">` + `<div class= "container1" >`)
+
+
+               res.forEach(function (res) {
+                  var temp = res.groupNo
+                  StringNo += temp + ",";
+                  Groupno.push(StringNo);
+                  console.log(Groupno);
+                  tag = [`<div class='item color${j}'>` + `<div class='pt${i}'>` + `<table class='grouptable'>` + `<tr class='groupinfo${i}'>` + `<td rowspan=4>` + `<div id='groupimg${i}' class='groupimg'></div>`]
+
+                  tag += "<tr><td class='grouptd'>" + res.hobbyName + "</td></tr>"
+                  tag += "<tr><td class='grouptd'>" + res.groupName + "</td></tr>"
+                  tag += "<tr><td class='grouptd'>" + res.groupInfo + "</td></tr>"
+
+
+                  $(`body > div.main.no${k} > div`).append(tag);
+
+                  //$(".container1").append("<div class='pt'"+i+">");
+                  //$(".container1").append("<table class='grouptable'>");
+                  //$(".container1").append("<tr class=groupinfo"+i+">");
+                  //$(".container1").append("<td rowspan=4>");
+                  //$(".container1").append("<div id=groupimg"+i+" class=groupimg>사진들어오는곳</div>");
+
+                  //$(".container1").append("<tr><td class='grouptd'>" + res.hobbyName + "</td></tr>");
+                  //$(".container1").append("<tr><td class='grouptd'>" + res.groupName + "</td></tr>");
+                  //$(".container1").append("<tr><td class='grouptd'>" + res.groupLikes + "</td></tr>");
+
+                  //$(".container1").append("</td></tr></table></div></div>");
+                  $("#groupimg" + i).append(`<img id=groupThum${i} style="style=object-fit: fill; width:155px;height:155px" src="assets/css/images/defaultimg.jpg">`);
+                  i++
+                  j++
+               });
+               k++;
+               imagetake(StringNo);
+
+            },
+
+            error: function (e) {
+               console.log(e);
+
+            }
+         })
+      }
+      function imagetake(StringNo) {
+         console.log(StringNo);
+         var Groupnodata = {data: StringNo}
+         var bucketUrl = "https://s3.ap-northeast-2.amazonaws.com/you-i/"
+         $.ajax({
+
+            url: "http://localhost:8081/YOU_I/GroupImageTake.do",
+            data: Groupnodata,
+            dataType: "json",
+            success: function (res) {
+               res.forEach(function (res) {
+                  try{
+                  console.log("https://s3.ap-northeast-2.amazonaws.com/you-i/resize_profile" + res.fileThumb)
+                  var imagePath = "resize_profile" + res.fileThumb;
+                  var finalUrl = bucketUrl + encodeURIComponent(imagePath);
+                  $("#groupThum" + l).attr("src",finalUrl);
+                  
+                  l++;}
+                  catch(e){
+                     console.log("사진없음")
+                  }
+               })
+            },
+            error: function (e) {
+               console.log(e);
+            }
+         })
+
+
+      }
+   </script>
 
 </body>
 
