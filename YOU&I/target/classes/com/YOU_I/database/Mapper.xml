@@ -149,10 +149,7 @@
 	</select>
 
 	<insert id="groupKing" parameterType="com.YOU_I.model.join_DTO">
-		insert into
-		tbl_joining(id,group_no,level_no) values('id
-		0118',#{groupNo},21)
-
+		insert into tbl_joining(id,group_no,level_no) values('id 0118',#{groupNo},21)
 	</insert>
 
 	<select id="GroupImageTake" parameterType="java.lang.String"
