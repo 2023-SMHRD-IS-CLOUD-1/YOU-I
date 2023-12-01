@@ -1,0 +1,307 @@
+
+#header {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: xx-large;
+    background-color: rgb(224, 112, 0);
+    height: 90px;
+    margin-left: -10px;
+    margin-right: -5px;
+    margin-top: -10px;
+    text-align: left;
+}
+
+
+
+#pftb {
+    position: relative;
+    width: 1000px;
+    height: 800px;
+    border-collapse: collapse;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+.td1{
+	border: 5px solid rgb(255, 255, 255);
+    padding: 24px;
+    font-size: x-large;
+    text-align: center;
+    font-weight: normal;
+    
+    background-color: rgb(253, 248, 240);
+    width: 15%;
+    font-weight: 900;
+    color: rgb(68, 74, 74);
+    border: 3px solid white;
+}
+
+
+.td2 {
+	border: 5px solid rgb(255, 255, 255);
+    padding: 24px;
+    font-size: x-large;
+    text-align: center;
+    font-weight: normal;
+    
+    margin-left: 20px;
+    text-align: left;
+    width: 85%;
+    border: 0px;
+}
+
+
+
+.ip {
+    margin-left: 10px;
+    height: 35px;
+    width: 500px;
+    border: 3px solid #ccc; 
+    font-size: large;
+
+}
+
+#uploadedImage {
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+}
+
+#mybtn {
+    width: 100px;
+    height:50px;
+    border-radius: 50px;
+    background-color: blanchedalmond;
+    border: 2px solid blanchedalmond;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: large;
+}
+#mybtn:hover{
+	cursor: pointer;
+}
+#out{
+ 	width: 100px;
+    height:50px;
+    border-radius: 50px;
+    background-color: blanchedalmond;
+    border: 2px solid blanchedalmond;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: large;
+    margin-left: 10px;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    color: black;
+	
+}
+	
+
+.btns{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	margin-left: 180px;
+    margin-top: 141px;
+    
+}
+
+select {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    outline: 0;
+    padding: 11px;
+    border-radius: 9px;
+    width: 150px;
+    font-size: medium;
+    border:3px solid #ccc;
+    font-weight: bold;
+}
+
+
+#pfimg{
+    height: 200px;
+}
+
+.mypCt{
+	margin-left: 10px;
+	margin-right: 8px;
+	width: 200px;
+}
+
+#logo{
+    position: absolute;
+    margin-left: 45px;
+    margin-top: 20px;
+    color:  white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 1000;
+    text-decoration: none;
+}
+
+#drop-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#drop-area {
+    width: 130px;
+    height: 130px;
+    border: 3px solid #ccc;
+    border-radius: 50%;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    margin-left: 30px;
+    transition: background-color 0.1s ease;
+}
+
+
+
+#pic{
+    text-align: center;
+    margin-top: 33%;
+    font-weight: bold;
+}
+#drop-area:hover {
+    background-color: rgb(255, 128, 64);
+    border: 3px solid  rgb(255, 128, 64);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  
+  }
+
+ #remo{
+    position: absolute;
+    left: 500px;
+    top: 90px;
+    width: 90px;
+    height: 45px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+    border: 3px solid rgb(224, 112, 0);
+    background-color: rgb(224, 112, 0);
+ }
+ #remo:hover{
+	 background-color: white;
+	 color: black;
+	 cursor: pointer;
+ }
+
+ .form1{
+	 position: relative;
+	 margin-left: 800px;
+    top: 118px;
+ }
+ 
+ #mypg{
+	 position: absolute;
+	 margin-left: 150px;
+    margin-top: 50px;
+	 font-size: xx-large;
+	 font-weight: bold;
+    font-family:Pretendard;
+ }
+
+.select-container{
+	border: 2px oldlace;
+	border-radius: 20px;
+}
+
+.popup {
+            position: fixed;
+			left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 300px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0;
+            background-color: white;
+ }
+
+
+ .popup:target {
+            opacity: 1;
+}
+
+#pop1{
+	display: none;
+}
+
+#outTb{
+	position: absolute;
+	width: 350px;
+	height: 200px;
+    font-size: large;
+    font-weight: 800;
+    margin-left: 5px;
+    
+}
+
+#tdPop1{
+	align-content:center;
+	background-color: rgb(192, 192, 192);
+	width: 30%;
+	}
+
+
+#tdPop2{
+	align-content:center;
+	background-color:rgb(233, 233, 233);
+	width: 70%;
+	
+	}
+	
+.inPop{
+	height: 25px;
+	width: 200px;
+}
+
+#popupsub{
+	position: absolute;
+	top: 246px;
+	right: 196px;
+	width: 60px;
+	height: 31px;
+	border-radius: 10px;
+	font-size: medium;
+	border: 2px solid black;
+}
+
+#popupsub:hover{
+	background-color: darkslategray;
+	cursor: pointer;
+}
+#cancel:hover{
+	background-color: darkslategray;
+	cursor: pointer;
+}
+
+#cancel{
+	position: absolute;
+	top: 246px;
+	right: 125px;
+	width: 60px;
+	height: 31px;
+	border-radius: 10px;
+	font-size: medium;
+	border: 2px solid black;
+}
+
