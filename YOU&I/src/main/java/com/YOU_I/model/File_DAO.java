@@ -17,4 +17,20 @@ public class File_DAO {
 		System.out.println(result + "2");
 		return result;
 	}
+public File_DTO GroupImageTake(String data){
+		
+		SqlSession sqlSession = factory.openSession();
+		System.out.println(data);
+		try {
+		File_DTO result = (File_DTO)sqlSession.selectOne("GroupImageTake",data);
+		sqlSession.close();
+		System.out.println(result.getFileNo() + "결과값");
+		return result;
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			
+			return null;
+		}
+	}
 }

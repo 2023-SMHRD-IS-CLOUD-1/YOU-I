@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.YOU_I.controller.Command;
+import com.YOU_I.controller.GroupImageTakeService;
 import com.YOU_I.controller.JoinService;
 import com.YOU_I.controller.LoginService;
 import com.YOU_I.controller.SelectAllHobbyNameService;
@@ -48,6 +49,7 @@ public class FrontController extends HttpServlet {
 		map.put("SelectAllHobbyName.do", new SelectAllHobbyNameService());
 		map.put("searchGroup.do", new searchGroupService());
 		map.put("groupKing.do", new groupKingService());
+		map.put("GroupImageTake.do", new GroupImageTakeService());
 	}
 	
 		

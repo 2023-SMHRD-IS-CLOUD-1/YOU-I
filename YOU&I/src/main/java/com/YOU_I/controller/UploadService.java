@@ -58,9 +58,9 @@ public class UploadService implements Command {
 		int result = f_dao.fileUpload(f_dto);
 		System.out.println(result);
 		if(result >0) {
-			return "redirect:/Gologin_success.do";
+			return "redirect:/awsFileUpload.html";
 		} else {
-			return "redirect:/Gologin.do";
+			return "redirect:/awsFileUpload.html";
 		}
 			
 		

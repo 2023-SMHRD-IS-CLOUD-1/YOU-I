@@ -43,9 +43,9 @@
 }
 
 
-body>div:nth-child(6) {
+/*body>div:nth-child(6) {
   background-color: #ccc;
-}
+}*/
 
 .btn:hover {
   background-color: #f8d7da;
@@ -186,7 +186,7 @@ input[type="checkbox"] {
   width: 1500px;
   border-radius: 40px;
   background-color: #e2e6ea;
-  margin-bottom: 200px;
+  margin-bottom: 150px;
   
   text-align: center;
 	display: flex;

@@ -6,12 +6,17 @@
 
 	<insert id="user_join" parameterType="com.YOU_I.model.User_DTO">
 
-		INSERT INTO TBL_USER(ID, PW, GENDER, NICK, REGION, HOBBY, PHONE, TUTORIAL_ST, PROFILE_IMG, USER_ROLE, JOINED_AT)
-		VALUES(#{id}, #{pw}, #{gender}, #{nick}, #{region}, #{hobby}, #{phone}, #{tutorialSt}, #{profileImg}, #{userRole} ,#{joinedAt})
+		INSERT INTO TBL_USER(ID,
+		PW, GENDER, NICK, REGION, HOBBY, PHONE, TUTORIAL_ST, PROFILE_IMG,
+		USER_ROLE, JOINED_AT)
+		VALUES(#{id}, #{pw}, #{gender}, #{nick},
+		#{region}, #{hobby}, #{phone}, #{tutorialSt}, #{profileImg},
+		#{userRole} ,#{joinedAt})
 
 	</insert>
 
-	<select id="user_login" parameterType="com.YOU_I.model.User_DTO" resultType="com.YOU_I.model.User_DTO">
+	<select id="user_login" parameterType="com.YOU_I.model.User_DTO"
+		resultType="com.YOU_I.model.User_DTO">
 
 		SELECT ID
 		FROM TBL_USER
@@ -20,29 +25,40 @@
 	</select>
 
 
-	<insert id="addSchedule" parameterType="com.YOU_I.model.calendar_DTO">
-		INSERT INTO tbl_schedule (sche_title, sche_content, sche_st_date, sche_end_date, group_no)
-		VALUES (#{scheTitle}, #{scheContent}, #{scheStDate, jdbcType=DATE}, #{scheEndDate, jdbcType=DATE}, #{groupNo})
+	<insert id="addSchedule"
+		parameterType="com.YOU_I.model.calendar_DTO">
+		INSERT INTO tbl_schedule (sche_title, sche_content,
+		sche_st_date, sche_end_date, group_no)
+		VALUES (#{scheTitle},
+		#{scheContent}, #{scheStDate, jdbcType=DATE}, #{scheEndDate,
+		jdbcType=DATE}, #{groupNo})
 	</insert>
-	
 
-	<select id="getSchedules" resultType="com.YOU_I.model.calendar_DTO">
-		SELECT SCHE_NO AS scheNo, SCHE_TITLE AS scheTitle, SCHE_ST_DATE AS scheStDate, SCHE_END_DATE AS scheEndDate, SCHE_CONTENT AS scheContent
+
+	<select id="getSchedules"
+		resultType="com.YOU_I.model.calendar_DTO">
+		SELECT SCHE_NO AS scheNo, SCHE_TITLE AS scheTitle,
+		SCHE_ST_DATE AS scheStDate, SCHE_END_DATE AS scheEndDate, SCHE_CONTENT
+		AS scheContent
 		FROM TBL_SCHEDULE
 	</select>
 
 	<select id="rank" resultMap="gr_rank">
 
 		SELECT GROUP_LIKES, GROUP_NAME,
-		HOBBY_NAME, GROUP_INFO
+		HOBBY_NAME, GROUP_INFO, GROUP_NO
 		FROM (SELECT
-		A.GROUP_LIKES, A.GROUP_NAME,
-		B.HOBBY_NAME, A.GROUP_INFO
-		FROM TBL_GROUP A INNER JOIN TBL_HOBBY B
+		A.GROUP_LIKES,
+		A.GROUP_NAME,
+		B.HOBBY_NAME, A.GROUP_INFO, A.GROUP_NO
+		FROM TBL_GROUP A
+		INNER JOIN TBL_HOBBY B
 		ON
 		A.HOBBY_NO = B.HOBBY_NO
-		ORDER BY GROUP_LIKES DESC)
+		ORDER BY GROUP_LIKES
+		DESC)
 		WHERE ROWNUM &lt;=4
+
 
 	</select>
 
@@ -52,62 +68,116 @@
 		<result property="groupLikes" column="GROUP_LIKES" />
 		<result property="groupName" column="GROUP_NAME" />
 		<result property="groupInfo" column="GROUP_INFO" />
+		<result property="groupNo" column="GROUP_NO" />
 	</resultMap>
 
-	<select id="rankCt" parameterType="java.lang.String" resultMap="gr_rank">
-		SELECT ROWNUM, GROUP_CATEGORY, GROUP_LIKES, GROUP_NAME
-		FROM (
-		SELECT GROUP_CATEGORY, GROUP_LIKES, GROUP_NAME
-		FROM TBL_GROUP
-		WHERE
-		GROUP_CATEGORY = #{groupCategory, jdbcType=VARCHAR}
+	<select id="rankCt" parameterType="com.YOU_I.model.Group_DTO"
+		resultMap="gr_rankCt">
+		SELECT GROUP_LIKES, GROUP_NAME , HOBBY_NAME, GROUP_INFO,
+		GROUP_NO
+		FROM
+		( SELECT A.GROUP_LIKES, A.GROUP_NAME, B.HOBBY_NAME,
+		A.GROUP_INFO , A.GROUP_NO
+		FROM
+		TBL_GROUP A INNER JOIN TBL_HOBBY B
+		ON
+		A.HOBBY_NO = B.HOBBY_NO
 		ORDER BY
 		GROUP_LIKES DESC)
-		WHERE ROWNUM &lt;= 4
+		WHERE HOBBY_NAME =
+		#{hobbyName} AND ROWNUM &lt;= 4
 	</select>
+	<resultMap type="com.YOU_I.model.Group_DTO" id="gr_rankCt">
+		<result property="hobbyName" column="HOBBY_NAME" />
+		<result property="groupLikes" column="GROUP_LIKES" />
+		<result property="groupName" column="GROUP_NAME" />
+		<result property="groupInfo" column="GROUP_INFO" />
+		<result property="groupNo" column="GROUP_NO" />
+	</resultMap>
 
 
 	<insert id="fileUpload" parameterType="com.YOU_I.model.File_DTO">
 
-INSERT INTO TBL_FILE(COMM_NO, FILE_NAME, FILE_ORI_NAME, FILE_THUMB, FILE_S3_PATH, FILE_SIZE, EXT, UPLOADED_AT)
-VALUES(#{commNo} , #{fileName}, #{fileOriName}, #{fileThumb}, #{fileS3Path}, #{fileSize}, #{ext}, #{uploadedAt})
+		INSERT INTO
+		TBL_FILE(COMM_NO, FILE_NAME, FILE_ORI_NAME, FILE_THUMB,
+		FILE_S3_PATH,
+		FILE_SIZE, EXT, UPLOADED_AT)
+		VALUES(#{commNo} , #{fileName},
+		#{fileOriName}, #{fileThumb}, #{fileS3Path},
+		#{fileSize}, #{ext},
+		#{uploadedAt})
 
-</insert>
-	
-
-	<insert id="addGroup" parameterType="com.YOU_I.model.Group_DTO" useGeneratedKeys="true" keyProperty="groupNo">
-    <!-- INSERT 문 수행 -->
-    INSERT INTO tbl_group (group_name) VALUES (#{groupName}) 
-    <selectKey keyProperty="groupNo" resultType="int" order="AFTER">
-        SELECT tbl_group_SEQ.CURRVAL AS groupNo FROM DUAL
-    </selectKey>
-</insert>
-	<insert id="commContent" parameterType="com.YOU_I.model.community_DTO">
-	insert into tbl_community (group_no,comm_title,comm_content,id) values(2,'title',#{commContent},'id 0117')
 	</insert>
 
 
-<select id="SelectAllHobbyName" resultMap="SelectAllHobby" >
-		SELECT HOBBY_NO, HOBBY_NAME
+	<insert id="addGroup" parameterType="com.YOU_I.model.Group_DTO"
+		useGeneratedKeys="true" keyProperty="groupNo">
+		<!-- INSERT 문 수행 -->
+		INSERT INTO tbl_group (group_name) VALUES (#{groupName})
+		<selectKey keyProperty="groupNo" resultType="int"
+			order="AFTER">
+			SELECT tbl_group_SEQ.CURRVAL AS groupNo FROM DUAL
+		</selectKey>
+	</insert>
+	<insert id="commContent"
+		parameterType="com.YOU_I.model.community_DTO">
+		insert into tbl_community
+		(group_no,comm_title,comm_content,id)
+		values(2,'title',#{commContent},'id 0117')
+	</insert>
+
+
+	<select id="SelectAllHobbyName" resultMap="SelectAllHobby">
+		SELECT HOBBY_NO,
+		HOBBY_NAME
 		FROM TBL_HOBBY
 	</select>
 
-	<resultMap type="com.YOU_I.model.Hobby_DTO" id="SelectAllHobby">
+	<resultMap type="com.YOU_I.model.Hobby_DTO"
+		id="SelectAllHobby">
 		<result property="hobbyNo" column="HOBBY_NO" />
 		<result property="hobbyName" column="HOBBY_NAME" />
 	</resultMap>
 
 
-<select id="searchGroup" resultType="com.YOU_I.model.Group_DTO">
-  SELECT GROUP_NAME AS groupName
-  FROM TBL_GROUP
-  WHERE GROUP_NAME LIKE '%' || #{groupName, jdbcType=VARCHAR} || '%'
-</select>
+	<select id="searchGroup" resultType="com.YOU_I.model.Group_DTO">
+		SELECT GROUP_NAME AS
+		groupName
+		FROM TBL_GROUP
+		WHERE GROUP_NAME LIKE '%' || #{groupName,
+		jdbcType=VARCHAR} || '%'
+	</select>
 
-<insert id = "groupKing" parameterType="com.YOU_I.model.join_DTO">
-	insert into tbl_joining(id,group_no,level_no) values('id 0118',#{groupNo},21)
+	<insert id="groupKing" parameterType="com.YOU_I.model.join_DTO">
+		insert into
+		tbl_joining(id,group_no,level_no) values('id
+		0118',#{groupNo},21)
 
-</insert>
+	</insert>
+
+	<select id="GroupImageTake" parameterType="java.lang.String"
+		resultMap="GroupImagetake">
+
+		SELECT *
+		FROM TBL_FILE
+		WHERE REGEXP_LIKE(FILE_NAME,
+		#{fileName})
+		AND ROWNUM &lt;= 1
+
+	</select>
+
+	<resultMap type="com.YOU_I.model.File_DTO"
+		id="GroupImagetake">
+		<result property="fileNo" column="FILE_NO" />
+		<result property="commNo" column="COMM_NO" />
+		<result property="fileName" column="FILE_NAME" />
+		<result property="fileOriName" column="FILE_ORI_NAME" />
+		<result property="fileThumb" column="FILE_THUMB" />
+		<result property="fileS3Path" column="FILE_S3_PATH" />
+		<result property="fileSize" column="FILE_SIZE" />
+		<result property="ext" column="EXT" />
+		<result property="uploadedAt" column="UPLOADED_AT" />
+	</resultMap>
 
 
 
@@ -118,14 +188,10 @@ VALUES(#{commNo} , #{fileName}, #{fileOriName}, #{fileThumb}, #{fileS3Path}, #{f
 
 
 
-	<!-- 
-	<parameterMap type="com.YOU_I.model.calendar_DTO" id="addschedule">
-	<parameter property="scheTitle"/>
-	<parameter property="scheContent"/>
-	<parameter property="scheStDate, jdbcType=DATE"/>
-	<parameter property="scheEndDate, jdbcType=DATE"/>
-	</parameterMap>
- -->
+	<!-- <parameterMap type="com.YOU_I.model.calendar_DTO" id="addschedule"> 
+		<parameter property="scheTitle"/> <parameter property="scheContent"/> <parameter 
+		property="scheStDate, jdbcType=DATE"/> <parameter property="scheEndDate, 
+		jdbcType=DATE"/> </parameterMap> -->
 
 
 </mapper>
