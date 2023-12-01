@@ -98,6 +98,12 @@ VALUES(#{commNo} , #{fileName}, #{fileOriName}, #{fileThumb}, #{fileS3Path}, #{f
 	</resultMap>
 
 
+<select id="searchGroup" resultType="com.YOU_I.model.Group_DTO">
+  SELECT GROUP_NAME AS groupName
+  FROM TBL_GROUP
+  WHERE GROUP_NAME LIKE '%' || #{groupName, jdbcType=VARCHAR} || '%'
+</select>
+
 
 
 

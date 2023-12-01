@@ -20,6 +20,7 @@ import com.YOU_I.controller.addScheduleService;
 import com.YOU_I.controller.communityService;
 import com.YOU_I.controller.rankCtService;
 import com.YOU_I.controller.rankService;
+import com.YOU_I.controller.searchGroupService;
 import com.YOU_I.controller.selectAllScheduleService;
 
 
@@ -44,6 +45,7 @@ public class FrontController extends HttpServlet {
 		map.put("Upload.do", new UploadService());
 		map.put("community.do", new communityService());
 		map.put("SelectAllHobbyName.do", new SelectAllHobbyNameService());
+		map.put("searchGroup.do", new searchGroupService());
 	}
 	
 		

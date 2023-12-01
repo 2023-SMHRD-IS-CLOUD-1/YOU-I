@@ -32,5 +32,11 @@ public class Group_DAO {
 		return gr_dto2;
 
 	}
+	public List<Group_DTO> searchGroup(Group_DTO dto){
+		SqlSession sqlSession = factory.openSession();
+		List<Group_DTO> groupList = sqlSession.selectList("searchGroup",dto);
+		sqlSession.close();
+		return groupList;
+	}
 
 }
