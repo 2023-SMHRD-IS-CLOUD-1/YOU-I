@@ -1,8 +1,11 @@
 package com.YOU_I.controller;
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.YOU_I.model.community_DAO;
 import com.YOU_I.model.community_DTO;
@@ -15,11 +18,18 @@ public class communityService implements Command {
 		 request.setCharacterEncoding("utf-8");
 		 System.out.println("oo");
 		String commContent = request.getParameter("commContent");
+		
 		community_DTO dto = new community_DTO();
 		dto.setCommContent(commContent);
 		community_DAO dao = new community_DAO();
 		dao.commContent(dto);
+		int generatedKey = dto.getComm_no();
+		HttpSession session = request.getSession();
+		session.setAttribute("comm_no", generatedKey);
+		System.out.println(generatedKey);
 		return "redirect:/Gocommunity.do";
 	}
-
+	
+	
+	
 }

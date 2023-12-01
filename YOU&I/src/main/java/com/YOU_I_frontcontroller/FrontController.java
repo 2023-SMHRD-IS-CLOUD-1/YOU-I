@@ -18,12 +18,15 @@ import com.YOU_I.controller.SelectAllHobbyNameService;
 import com.YOU_I.controller.UploadService;
 import com.YOU_I.controller.addGroupService;
 import com.YOU_I.controller.addScheduleService;
+import com.YOU_I.controller.commentService;
 import com.YOU_I.controller.communityService;
 import com.YOU_I.controller.groupKingService;
 import com.YOU_I.controller.rankCtService;
 import com.YOU_I.controller.rankService;
 import com.YOU_I.controller.searchGroupService;
 import com.YOU_I.controller.selectAllScheduleService;
+import com.YOU_I.controller.selectCommentService;
+import com.YOU_I.controller.selectCommunityService;
 
 
 @WebServlet("*.do")
@@ -50,6 +53,9 @@ public class FrontController extends HttpServlet {
 		map.put("searchGroup.do", new searchGroupService());
 		map.put("groupKing.do", new groupKingService());
 		map.put("GroupImageTake.do", new GroupImageTakeService());
+		map.put("selectCommunity.do", new selectCommunityService());
+		map.put("comment.do", new commentService());
+		map.put("selectComment.do",new selectCommentService());
 	}
 	
 		

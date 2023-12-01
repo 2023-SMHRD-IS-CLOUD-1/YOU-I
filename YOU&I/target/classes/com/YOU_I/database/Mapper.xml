@@ -121,9 +121,12 @@
 	</insert>
 	<insert id="commContent"
 		parameterType="com.YOU_I.model.community_DTO">
-		insert into tbl_community
-		(group_no,comm_title,comm_content,id)
+		insert into tbl_community (group_no,comm_title,comm_content,id)
 		values(2,'title',#{commContent},'id 0117')
+		<selectKey keyProperty="comm_no" resultType="int"
+			order="AFTER">
+			SELECT tbl_community_SEQ.CURRVAL AS comm_no FROM DUAL
+		</selectKey>
 	</insert>
 
 
@@ -161,6 +164,28 @@
 		#{fileName})
 		AND ROWNUM &lt;= 1
 
+	</select>
+	
+
+	<select id="selectAll"
+		resultType="com.YOU_I.model.community_DTO">
+		select comm_No, id , comm_content AS commContent
+		from
+		tbl_community
+		where group_no=2
+		order by comm_no
+	</select>
+	<insert id="comment"
+		parameterType="com.YOU_I.model.community_DTO">
+		INSERT INTO tbl_comment (comm_no,comment_content,id)
+		VALUES (#{comm_no},#{comment_content},'id 0001')
+	</insert>
+	<select id="selectComment"
+		resultType="com.YOU_I.model.community_DTO">
+		SELECT tbl_community.comm_no, tbl_comment.comment_content, tbl_comment.id
+		FROM tbl_community
+		INNER JOIN tbl_comment ON tbl_community.comm_no = tbl_comment.comm_no
+		order by comm_no
 	</select>
 
 	<resultMap type="com.YOU_I.model.File_DTO"
