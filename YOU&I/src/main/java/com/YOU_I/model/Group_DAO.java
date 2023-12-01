@@ -27,7 +27,9 @@ public class Group_DAO {
 
 	public List<Group_DTO> rankCt(Group_DTO gr_dto) {
 		SqlSession sqlSession = factory.openSession();
+		System.out.println("rankCt DAO 에서 확인" + gr_dto);
 		List<Group_DTO> gr_dto2 = sqlSession.selectList("rankCt",gr_dto);
+		System.out.println(gr_dto2);
 		sqlSession.close();
 		return gr_dto2;
 
