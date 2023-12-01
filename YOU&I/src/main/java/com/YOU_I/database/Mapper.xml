@@ -104,6 +104,12 @@ VALUES(#{commNo} , #{fileName}, #{fileOriName}, #{fileThumb}, #{fileS3Path}, #{f
   WHERE GROUP_NAME LIKE '%' || #{groupName, jdbcType=VARCHAR} || '%'
 </select>
 
+<insert id = "groupKing" parameterType="com.YOU_I.model.join_DTO">
+	insert into tbl_joining(id,group_no,level_no) values('id 0118',#{groupNo},21)
+
+</insert>
+
+
 
 
 

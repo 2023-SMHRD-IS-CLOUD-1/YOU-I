@@ -10,7 +10,7 @@
 	<title></title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/addGroup.css" />
+	<link rel="stylesheet" href="./assets/css/addGroup.css" />
 </head>
 
 <body class="left-sidebar is-preload">
@@ -22,7 +22,7 @@
 
 				<!-- Logo -->
 				<h1 id="logo"><a href="index.html"><img src="assets/css/images/march.png"></a></h1>
-				<p>Create a group</p>
+				<p>Create Your Group</p>
 
 			</div>
 		</section>
@@ -98,13 +98,7 @@
 													<span class="date">관심사</span>
 													<h3>Choose Your interest</h3>
 												</header>
-												<select name="groupCategory" id="hobby">
-													<option value="문화생활">문화생활</option>
-													<option value="봉사활동">봉사활동</option>
-													<option value="스포츠">스포츠</option>
-													<option value="문화생활">문화생활</option>
-													<option value="문화생활">문화생활</option>
-		
+												<select name="hobbyName" id="hobby">
 												</select>
 											</article>
 		
@@ -117,7 +111,7 @@
 													<span class="date">그룹 소개</span>
 													<h3><a href="#">introduce your group</a></h3>
 												</header>
-												<textarea name="" id="" cols="60" rows="5"></textarea>
+												<textarea name="groupInfo" id="groupInfo" cols="60" rows="5"></textarea>
 											</article>
 		
 											<article class="box highlight">
@@ -140,7 +134,27 @@
 					<script src="assets/js/breakpoints.min.js"></script>
 					<script src="assets/js/util.js"></script>
 					<script src="assets/js/main.js"></script>
-
+					<script>
+						$(document).ready( function (event) {
+						    console.log("화면로드완료");
+						    $.ajax({
+						        url: 'SelectAllHobbyName.do',
+						        dataType: 'json',
+						        success: function (res) {
+						            console.log(res[0].hobbyName);
+						            $("#hobby").empty();
+						
+						            $.each(res, function (i, item) {
+						                $("#hobby").append("<option value=" + item.hobbyNo + ">" + item.hobbyName + "</option>");
+						            });
+						        },
+						        error: function (jqXHR, textStatus, errorThrown) {
+						            console.error("AJAX 오류 발생: " + textStatus, errorThrown);
+						            console.log(jqXHR.responseText);
+						        }
+						    });
+						});
+					</script>
 </body>
 
 </html>
