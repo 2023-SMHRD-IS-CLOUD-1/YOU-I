@@ -200,6 +200,32 @@
 		<result property="ext" column="EXT" />
 		<result property="uploadedAt" column="UPLOADED_AT" />
 	</resultMap>
+	
+		<select id="mypgCt1" resultMap="SelectAllHobby">
+		SELECT HOBBY_NO,
+		HOBBY_NAME
+		FROM
+		TBL_HOBBY
+	</select>
+
+	<update id="update" parameterType="com.YOU_I.model.User_DTO">
+		UPDATE tbl_user
+		SET nick=#{nick}, phone=#{phone}, region=#{region}, hobby=#{hobby}
+		WHERE id = #{id}
+	</update>
+
+	<select id="userMypg" parameterType="com.YOU_I.model.User_DTO"
+		resultType="com.YOU_I.model.User_DTO">
+		SELECT id, nick, phone, region, hobby
+		FROM TBL_USER
+		WHERE id = #{id}
+	</select>
+	
+	<delete id= "unregister" parameterType="com.YOU_I.model.User_DTO">
+	DELETE FROM TBL_USER
+    WHERE id = #{id} AND pw = #{pw}
+	</delete>
+	
 
 
 

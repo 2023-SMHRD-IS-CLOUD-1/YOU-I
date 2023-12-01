@@ -20,5 +20,16 @@ public class Hobby_DAO {
 		
 		return result;
 	}
+
+		public List<Hobby_DTO> mypgCt() {
+
+		SqlSession sqlSession = factory.openSession();
+		List<Hobby_DTO> result = sqlSession.selectList("mypgCt1");
+		System.out.println(result);
+		sqlSession.close();
+
+		return result;
+	}
+
 	
 }
