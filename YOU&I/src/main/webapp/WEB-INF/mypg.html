@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--폰트 font-family: 'Gowun Batang', serif;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Orbit', sans-serif;-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Nanum+Gothic:wght@700&family=Noto+Sans+KR:wght@300&family=Orbit&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/mypg/mypg.css">
+
+
+</head>
+
+<body>
+        <div id="header">
+            <h3><a href="Gomainpg.do" id="logo">YOU&I</a></h3>
+        </div>
+        
+			<div id="mypg"></div>
+			
+			
+            <form class="form1">
+                <table id="pftb">
+                    <tr>
+                        <td class="td1">
+                            프로필 사진
+                        </td>
+                        <td class="td2" id="pfimg">
+							<div >
+                            <div>
+                            <div id="drop-area" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)"
+                                ondragenter="dragEnterHandler(event)" ondragleave="dragLeaveHandler(event)">
+                                <input type="file" id="fileInput" style="display:none;" accept="image/*">
+                                <img id="uploadedImage" alt="Uploaded Image" style="margin: 0;">
+                                <p id="pic">사진 변경</p>
+                            </div>
+                        </div>
+                            <button id="remo">삭제</button>
+                        </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="td1">
+                            닉네임
+                        </td>
+                       
+                        <td class="td2">
+							<div>
+                            <input  type="text" class="ip" id="ip0" >
+							</div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="td1">
+                            전화번호
+                        </td>
+                        <td class="td2">
+							<div>
+                            <input  type="text" class="ip" id="ip1">
+							</div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="td1">
+                            활동지역
+                        </td>
+                        <td class="td2">
+							<div>
+                            <input  type="text" class="ip" id="ip2">
+							</div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="td1">
+                            카테고리
+                        </td>
+                        <td class="td2">
+                            <div class="select-container">
+                                <select class="mypCt" id="mypCt0">
+									<option class="mypCtOp" id="mypCtOp1"></option>
+                                </select>
+
+                                <select class="mypCt"  id="mypCt1">
+									<option class="mypCtOp" id="mypCtOp2"></option>
+                                </select>
+
+
+                                <select class="mypCt"  id="mypCt2">
+									<option class="mypCtOp" id="mypCtOp3"></option>
+                                </select>
+                                
+                            </div>
+                        </td>
+
+                    </tr>
+
+                </table>
+            </form>
+        
+    </div>
+    
+
+    <div id="pop1" class="popup">
+		<form action="#" id="" onsubmit="return false">
+        <table id="outTb">
+          <tr>
+			  <td class="tdPop" id="tdPop1">아이디</td>
+			  <td class="tdPop" id="tdPop2"><input type = "text" class="inPop" id="inPop1"></td>
+		  </tr>
+          <tr>
+			  <td class="tdPop" id="tdPop1">비밀번호</td>
+			  <td class="tdPop" id="tdPop2"><input type = "text" class="inPop" id="inPop2"></td>
+		  </tr>
+          
+        </table>
+        <input type="submit" id="popupsub" class="popupsub" value="탈퇴">
+        <input type="submit" id="cancel" value="취소">
+        </form>
+	</div>
+	
+
+    
+    <div class = "btns"> 
+    <button id="mybtn"><a>적용</a></button>
+    <button id="out"><a href="#pop1">회원탈퇴</a></button>
+    </div>
+    
+    
+    <div id="footer"></div>
+
+
+    <script src="assets/js/mypgjs/pgdisa.js"></script>
+    <script src="assets/js/mypgjs/picUp.js"></script>
+    <script src="assets/js/mypgjs/picRemo.js"></script>
+    <script src="assets/js/mainpgjs/jquery-3.2.1.min.js"></script>
+	<script src="assets/js/mypgjs/showMpCt.js"></script>
+	<script src="assets/js/mypgjs/mypgUpdate.js"></script>
+    <script src="assets/js/mypgjs/mypgShow.js"></script>
+    <script src="assets/js/mypgjs/unregister.js"></script>
+    <script src="assets/js/mypgjs/unregisterPop.js"></script>
+   
+	
+	<script>
+		document.getElementById("cancel").onclick=function(){
+			
+			document.getElementById("pop1").style.display='none';
+			
+		}
+	</script>
+	
+	
+
+
+
+</body>
+
+</html>
