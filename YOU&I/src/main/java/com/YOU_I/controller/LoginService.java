@@ -32,7 +32,7 @@ public class LoginService implements Command {
 		User_DTO result_DTO = u_DAO.user_Login(u_DTO);
 
 		if (result_DTO != null) {
-
+			
 			session.setAttribute("Login", u_id);
 			return "redirect:/Gomainpg.do";
 		} else {
