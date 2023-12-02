@@ -1,6 +1,7 @@
 package com.YOU_I.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.YOU_I.model.File_DAO;
 import com.YOU_I.model.File_DTO;
+import com.google.gson.Gson;
 
 public class UploadService implements Command {
 
@@ -16,6 +18,8 @@ public class UploadService implements Command {
 			throws ServletException, IOException {
 		
 		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
 		
 		String fileRoot = request.getParameter("filename");
 		String fileOriRoot = request.getParameter("fileOriName");
@@ -25,13 +29,19 @@ public class UploadService implements Command {
 		
 		File_DTO f_dto = new File_DTO();
 		
+		System.out.println(fileOriRoot+".jpg 자르기 시작");
 		int fileIndex = fileOriRoot.indexOf('.');
+		System.out.println(fileIndex);
 		int fileEndIndex = fileOriRoot.length();
+		System.out.println(fileEndIndex);
 		String fileExtension = fileOriRoot.substring(fileIndex, fileEndIndex);
+		System.out.println(".jpg 자름");
 		
+		System.out.println("파일루트 자르기시작");
 		int ThumFileIndex = fileRoot.indexOf('/');
 		int ThumFileEndIndex = fileRoot.length();
 		String ThumFileRoot = fileRoot.substring(ThumFileIndex, ThumFileEndIndex);
+		System.out.println("파일루트 자름");
 		
 		f_dto.setCommNo(14);
 		f_dto.setFileName(fileRoot);
@@ -58,9 +68,12 @@ public class UploadService implements Command {
 		int result = f_dao.fileUpload(f_dto);
 		System.out.println(result);
 		if(result >0) {
-			return "redirect:/awsFileUpload.html";
+			Gson gson = new Gson();
+			String jsonresult= gson.toJson(result);
+			out.print(jsonresult);
+			return null;
 		} else {
-			return "redirect:/awsFileUpload.html";
+			return null;
 		}
 			
 		

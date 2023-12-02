@@ -226,6 +226,25 @@
     WHERE id = #{id} AND pw = #{pw}
 	</delete>
 	
+		<select id="MyGroup" parameterType="com.YOU_I.model.User_DTO" resultMap="MyGroupRes">
+	SELECT A.ID, A.GROUP_NO, B.GROUP_NAME
+	FROM TBL_JOINING A, TBL_GROUP B
+	WHERE A.GROUP_NO=B.GROUP_NO AND A.ID=#{id}
+	</select>
+	
+
+	<resultMap type="com.YOU_I.model.Group_DTO"
+		id="MyGroupRes">
+		<result property="groupNo" column="GROUP_NO" />
+		<result property="groupName" column="GROUP_NAME" />
+		<result property="hobbyNo" column="HOBBY_NO" />
+		<result property="groupLikes" column="GROUP_LIKES" />
+		<result property="createdAt" column="CREATED_AT" />
+		<result property="groupMembershipFee" column="GROUP_MEMBERSHIP_FEE" />
+		<result property="groupInfo" column="GROUP_INFO" />
+	</resultMap>
+	
+	
 
 
 

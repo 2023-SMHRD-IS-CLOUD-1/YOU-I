@@ -40,5 +40,12 @@ public class Group_DAO {
 		sqlSession.close();
 		return groupList;
 	}
+	
+	public List<Group_DTO> MyGroup(User_DTO u_dt){
+		SqlSession sqlSession = factory.openSession();
+		List<Group_DTO> myGroup = sqlSession.selectList("MyGroup",u_dt);
+		sqlSession.close();
+		return myGroup;
+	}
 
 }

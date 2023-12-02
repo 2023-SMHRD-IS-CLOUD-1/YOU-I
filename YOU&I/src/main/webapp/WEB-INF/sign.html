@@ -1,378 +1,488 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-	
-body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            display: flex;
-        }
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.809.0.min.js"></script>
+	<script src="assets/js/awsjs/UserimageUpload.js"></script>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			height: 100vh;
+			display: flex;
 
-        .left {
-            width: 50%;
-            height: 100%;
-            background-color: #e0e0e0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
+		}
 
-        .left img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            opacity: 1;
-            transition: opacity 2s ease-in-out;
-        }
+		.left {
+			width: 834px;
+			height: 950px;
+			background-color: #e0e0e0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+		}
 
-        .left img:not(:first-child) {
-            opacity: 0;
-        }
+		.left img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+			opacity: 1;
+			transition: opacity 2s ease-in-out;
+		}
 
-        .right {
-            width: 50%;
-            height: 100%;
-            background-color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+		.left img:not(:first-child) {
+			opacity: 0;
+		}
 
-        .signup-container {
-            width: 35%;
-            height: 100%;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: left;
-        }
+		.right {
+			width: 800px;
+			height: 950px;
+			background-color: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: auto;
+		}
 
-        .input-group {
-            margin-bottom: 15px;
-            display: flex;
-            flex-direction: column;
-        }
+		.signup-container {
+			width: 300px;
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			text-align: left;
+			overflow: auto;
+		}
 
-        .input-group label {
-            font-size: 14px;
-            margin-bottom: 5px;
-            color: #333;
-        }
+		.input-group {
+			margin-bottom: 15px;
+			display: flex;
+			flex-direction: column;
+		}
 
-        .input-group input,
-        .input-group select {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-        }
+		.input-group label {
+			font-size: 14px;
+			margin-bottom: 5px;
+			color: #333;
+		}
 
-        .signup-btn {
-            background-color: #333;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 16px;
-            text-align: center;
-            transition: background-color 0.3s ease;
-            text-align: center;
-            margin: 0 auto;
-            display: block;
-        }
+		.input-group input,
+		.input-group select {
+			width: 100%;
+			padding: 8px;
+			box-sizing: border-box;
+			margin-bottom: 10px;
+		}
 
-        .signup-btn:hover {
-            background-color: #2980b9;
-        }
+		.signup-btn {
+			background-color: #333;
+			color: white;
+			padding: 10px 15px;
+			border: none;
+			border-radius: 3px;
+			cursor: pointer;
+			font-size: 16px;
+			transition: background-color 0.3s ease;
+			margin: 0 auto;
+			display: inline-block;
+		}
 
-        #drop-area {
-            width: 100px;
-            height: 100px;
-            border: 2px solid #ccc;
-            border-radius: 50%;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
+		.signup-div {
+			text-align: center;
 
-        #drop-area img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
+		}
 
-        #drop-area.highlight {
-            border-color: #007BFF;
-        }
+		.signup-btn:hover {
+			background-color: #2980b9;
+		}
 
-        .input-group .buttons {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
+		#drop-area {
+			width: 100px;
+			height: 100px;
+			border: 2px solid #ccc;
+			border-radius: 50%;
+			padding: 20px;
+			text-align: center;
+			cursor: pointer;
+			position: relative;
+			overflow: hidden;
+		}
 
-        #resethobbybtn,
-        #selecthobbybtn {
-            width: 49%;
-        }
-        html, body {
-    overflow: hidden;
-}
-</style>
+		#drop-area img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 50%;
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		#drop-area.highlight {
+			border-color: #007BFF;
+		}
+
+		.input-group .buttons {
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+		}
+
+		#resethobbybtn,
+		#selecthobbybtn {
+			width: 49%;
+		}
+	</style>
 </head>
+
 <body>
-<div class="left">
-        <img src="./images/group3.jpg" alt="이미지 설명" class="slide-image">
-        <img src="./images/group4.jpg" alt="이미지 설명" class="slide-image">
-        <img src="./images/group5.jpg" alt="이미지 설명" class="slide-image">
-    </div>
-    <div class="right">
+	<div class="left">
+		<img src="./images/group3.jpg" alt="이미지 설명" class="slide-image">
+		<img src="./images/group4.jpg" alt="이미지 설명" class="slide-image">
+		<img src="./images/group5.jpg" alt="이미지 설명" class="slide-image">
+	</div>
+	<div class="right">
 
-        <div class="signup-container">
-            <form action="Join.do" method="post">
-                <div id="drop-area" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)"
-                    ondragenter="dragEnterHandler(event)" ondragleave="dragLeaveHandler(event)">
-                    <p>프로필 사진 업로드</p>
-                    <input type="file" id="fileInput" style="display:none;" accept="image/*">
-                    <img id="uploadedImage" alt="Uploaded Image">
-                </div>
-                <div class="input-group">
-                    <label for="username">아이디</label>
-                    <input type="text" id="username" name="userId" required placeholder="아이디">
-                </div>
-                <div class="input-group">
-                    <label for="password">비밀번호</label>
-                    <input type="password" id="password" name="password" required placeholder="비밀번호">
-                </div>
-                <div class="input-group">
-                    <label for="password">비밀번호 확인</label>
-                    <input type="password" id="password2" name="password" required placeholder="비밀번호">
-                </div>
-                <div class="input-group">
-                    <label for="nickname">닉네임</label>
-                    <input type="text" id="nickname" name="nickname" required placeholder="닉네임">
-                </div>
-                <label for="gender">성별</label>
-                남자<input type="radio" id="male" name="gender" value="M">
-                여자<input type="radio" id="female" name="gender" value="W">
-                <div class="input-group">
-                    <label for="dob">생년월일</label>
-                    <input type="date" id="dob" name="dob">
-                </div>
-                <div class="input-group">
-                    <label for="phone">전화번호</label>
-                    <input type="tel" id="phone" name="phone" required placeholder="전화번호" maxlength="13">
-                </div>
+		<div class="signup-container">
+			<form action="Join.do" method="post">
+				<div id="drop-area" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)"
+					ondragenter="dragEnterHandler(event)" ondragleave="dragLeaveHandler(event)">
+					<p>프로필 사진 업로드</p>
+					<input type="file" id="fileInput" style="display:none;" accept="image/*">
+					<img id="uploadedImage" alt="Uploaded Image">
+				</div>
+				<div class="input-group">
+					<label for="username">아이디</label>
+					<input type="text" id="username" name="userId" required placeholder="아이디">
+				</div>
+				<div class="input-group">
+					<label for="password">비밀번호</label>
+					<input type="password" id="password" name="password" required placeholder="비밀번호">
+				</div>
+				<div class="input-group">
+					<label for="password">비밀번호 확인</label>
+					<input type="password" id="password2" name="password" required placeholder="비밀번호">
+				</div>
+				<div class="input-group">
+					<label for="nickname">닉네임</label>
+					<input type="text" id="nickname" name="nickname" required placeholder="닉네임">
+				</div>
+				<label for="gender">성별</label>
+				남자<input type="radio" id="male" name="gender" value="M">
+				여자<input type="radio" id="female" name="gender" value="W">
+				<div class="input-group">
+					<label for="dob">생년월일</label>
+					<input type="date" id="dob" name="dob">
+				</div>
+				<div class="input-group">
+					<label for="phone">전화번호</label>
+					<input type="tel" id="phone" name="phone" required placeholder="전화번호" maxlength="13">
+				</div>
 
-                <div class="input-group">
-                    <label for="hobbies">관심취미</label>
-                    <select name="hobbies" id="hobbies">
-                        <!-- JavaScript를 사용하여 동적으로 옵션 추가 -->
-                        <script>
-                            let hobbyList = ["축구", "야구", "농구"];
-                            for (var i = 0; i < hobbyList.length; i++) {
-                                document.write('<option value="' + hobbyList[i] + '">' + hobbyList[i] + '</option>');
-                            }
-                        </script>
-                    </select>
-                </div>
+				<div class="input-group">
+					<label for="hobbies">관심취미</label>
+					<select name="hobbies" id="hobbies">
+						<!-- JavaScript를 사용하여 동적으로 옵션 추가 -->
+						<script>
 
-                <div class="input-group">
-                    <div class="buttons">
-                        <button type="button" id="selecthobbybtn">선택</button>
-                        <button type="button" id="resethobbybtn">초기화</button>
-                    </div>
-                </div>
+							$(document).ready(function () {
 
-                <p id="selectedHobbies">선택한 취미 : </p> <!-- 이 div 요소는 하나만 남기세요 -->
+								var data = {data: "SelectAllHobbyName"};
+								console.log("ajax 보낼 준비 완료");
+								$.ajax({
+									url: "http://localhost:8081/YOU_I/SelectAllHobbyName.do",
+									dataType: "json",
+									success: function (res) {
+										res.forEach(function (res) {
 
-                <div class="input-group">
-                    <label for="location">지역</label>
-                    <select name="area" id="area">
-                        <script>
-                            let areaList = ["서울", "부산", "광주"];
-                            for (var i = 0; i < areaList.length; i++) {
-                                document.write('<option value="' + areaList[i] + '">' + areaList[i] + '</option>');
-                            }
-                        </script>
-                    </select>
-                </div>
+											$("#hobbies").append(`<option value="${res.hobbyName}">${res.hobbyName}</option>`);
+										});
+									},
+									error: function (e) {
+										console.log(e);
+									}
+								})
 
-                <button type="submit" class="signup-btn" onclick="signup()">회원가입</button>
-            </form>
-        </div>
-    </div>
-    <script>
+
+
+							})
+
+						</script>
+					</select>
+				</div>
+
+				<div class="input-group">
+					<div class="buttons">
+						<button type="button" id="selecthobbybtn">선택</button>
+						<button type="button" id="resethobbybtn">초기화</button>
+					</div>
+				</div>
+
+				<p id="selectedHobbies">선택한 취미 : </p> <!-- 이 div 요소는 하나만 남기세요 -->
+
+				<div class="input-group">
+					<label for="location">지역</label>
+					<select name="area" id="area">
+						<script>
+							let areaList = ["광주"];
+							for (var i = 0; i < areaList.length; i++) {
+								document.write('<option value="' + areaList[i] + '">' + areaList[i] + '</option>');
+							}
+						</script>
+					</select>
+				</div>
+				<div class="signup-div">
+<!--					<button type="button" class="signup-btn" id="uploadbutton" disabled="disabled">사진등록</button>-->
+					<button type="submit" class="signup-btn" id="uploadbutton" disabled="disabled" onclick="signup()">회원가입</button>
+				</div>
+			</form>
+			<div name="fileUpload">
+				<input type="hidden" id="fileroot" name="filename" value="fail1">
+				<input type="hidden" id="fileOriroot" name="fileOriName" value="fail12">
+				<input type="hidden" id="fileDate" name="fileDate" value="fail13">
+				<input type="hidden" id="fileS3root" name="fileS3root" value="fileS3User">
+			</div>
+
+		</div>
+	</div>
+	<script>
 		document.addEventListener("DOMContentLoaded", function () {
-            const images = document.querySelectorAll('.slide-image');
-            let currentImageIndex = 0;
+			const images = document.querySelectorAll('.slide-image');
+			let currentImageIndex = 0;
+			const upimage = null;
 
-            function showImage(index) {
-                images.forEach((img, i) => {
-                    img.style.opacity = i === index ? 1 : 0;
-                });
-            }
+			function showImage(index) {
+				images.forEach((img, i) => {
+					img.style.opacity = i === index ? 1 : 0;
+				});
+			}
 
-            setInterval(() => {
-                currentImageIndex = (currentImageIndex + 1) % images.length;
-                showImage(currentImageIndex);
-            }, 3000);
-        });
+			setInterval(() => {
+				currentImageIndex = (currentImageIndex + 1) % images.length;
+				showImage(currentImageIndex);
+			}, 3000);
+		});
 
-        function signup() {
-            // 여기에 회원가입 처리 로직을 추가하세요.
-            alert('회원가입 성공!');
-        }
-        const dropArea = document.getElementById('drop-area');
-        const fileInput = document.getElementById('fileInput');
-        const uploadedImage = document.getElementById('uploadedImage');
-        function preventDefaults(e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-        function highlight() {
-            dropArea.classList.add('highlight');
-        }
-        function unhighlight() {
-            dropArea.classList.remove('highlight');
-        }
+		function signup() {
+			// 여기에 회원가입 처리 로직을 추가하세요.
+			//const input = document.getElementById('uploadedImage');
+			const fileRoot = putFile(upimage[0]);
+			console.log(fileRoot[0], fileRoot[1], fileRoot[2])
+			const fileUpload = document.getElementsByName("fileUpload");
+			//console.log($('input[name=filename]').val());
+			//fileUpload.fileOriName.value = fileRoot[1];
+			//console.log(fileRoot[1]);
+			//fileUpload.fileDate.value = fileRoot[2];
+			//console.log(fileRoot[2]);
 
-        function handleFiles(files) {
-            for (const file of files) {
-                if (file.type.startsWith('image/')) {
-                    const reader = new FileReader();
+			var data = {filename: fileRoot[0], fileOriName: fileRoot[1], fileDate: fileRoot[2], fileS3root: $("#fileS3root").val()}
+			$.ajax({
 
-                    reader.onload = function (e) {
-                        uploadedImage.src = e.target.result;
-                        uploadedImage.style.display = 'block';
-                    };
-                    reader.readAsDataURL(file);
-                } else {
-                    alert('이미지 파일만 업로드 가능합니다.');
-                }
-            }
-        }
-        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            dropArea.addEventListener(eventName, preventDefaults, false);
-            document.body.addEventListener(eventName, preventDefaults, false);
-        });
+				url: "http://localhost:8081/YOU_I/Upload.do",
+				data: data,
+				dataType: "json",
+				success: function (res) {
+					console.log("DB연결성공")
+				},
+				error: function (e) {
+					console.log("DB연결실패");					
+				}
+			})
 
-        ['dragenter', 'dragover'].forEach(eventName => {
-            dropArea.addEventListener(eventName, highlight, false);
-        });
+		alert('회원가입 성공!');
+		}
+		const dropArea = document.getElementById('drop-area');
+		const fileInput = document.getElementById('fileInput');
+		const uploadedImage = document.getElementById('uploadedImage');
+		function preventDefaults(e) {
+			e.preventDefault();
+			e.stopPropagation();
+		}
+		function highlight() {
+			dropArea.classList.add('highlight');
+		}
+		function unhighlight() {
+			dropArea.classList.remove('highlight');
+		}
 
-        ['dragleave', 'drop'].forEach(eventName => {
-            dropArea.addEventListener(eventName, unhighlight, false);
-        });
-        dropArea.addEventListener('drop', function (e) {
-            const dt = e.dataTransfer;
-            const files = dt.files;
-            handleFiles(files);
-        });
-        dropArea.addEventListener('click', () => {
-            fileInput.click();
-        });
-        fileInput.addEventListener('change', () => {
-            const files = fileInput.files;
-            handleFiles(files);
-        });
+		function handleFiles(files) {
+			for (const file of files) {
+				if (file.type.startsWith('image/')) {
+					const reader = new FileReader();
 
-        function dragOverHandler(e) {
-            preventDefaults(e);
-            highlight();
-        }
+					reader.onload = function (e) {
+						uploadedImage.src = e.target.result;
+						uploadedImage.style.display = 'block';
+					};
+					reader.readAsDataURL(file);
+				} else {
+					alert('이미지 파일만 업로드 가능합니다.');
+				}
+			}
+		}
+		['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+			dropArea.addEventListener(eventName, preventDefaults, false);
+			document.body.addEventListener(eventName, preventDefaults, false);
+		});
 
-        function dragEnterHandler(e) {
-            preventDefaults(e);
-            highlight();
-        }
+		['dragenter', 'dragover'].forEach(eventName => {
+			dropArea.addEventListener(eventName, highlight, false);
+		});
 
-        function dragLeaveHandler(e) {
-            preventDefaults(e);
-            unhighlight();
-        }
-        //이거는 전화번호 중간에 - 들어가게해줌
-        function formatPhoneNumber(input) {
+		['dragleave', 'drop'].forEach(eventName => {
+			dropArea.addEventListener(eventName, unhighlight, false);
+		});
+		dropArea.addEventListener('drop', function (e) {
+			// 파일 드랍해서 저장
+			const dt = e.dataTransfer;
+			const files = dt.files;
+			upimage = files;
+			handleFiles(files);
+			console.log(files);
+		});
+		dropArea.addEventListener('click', () => {
+			fileInput.click();
+		});
+		fileInput.addEventListener('change', () => {
+			//파일 클릭해서 저장
+			const files = fileInput.files;
+			upimage = files;
+			handleFiles(files);
+			console.log(files);
+			console.log("파일 바뀜");
+			//const input = document.getElementById('uploadedImage');
 
-            let cleaned = ('' + input).replace(/\D/g, '');
+		});
 
+		function dragOverHandler(e) {
+			preventDefaults(e);
+			highlight();
+		}
 
-            if (cleaned === '' || isNaN(cleaned)) {
-                return '';
-            }
+		function dragEnterHandler(e) {
+			preventDefaults(e);
+			highlight();
+		}
 
+		function dragLeaveHandler(e) {
+			preventDefaults(e);
+			unhighlight();
+		}
+		//이거는 전화번호 중간에 - 들어가게해줌
+		function formatPhoneNumber(input) {
 
-            let formatted = '';
-            for (let i = 0; i < cleaned.length; i++) {
-                if (i === 3 || i === 7) {
-                    formatted += '-';
-                }
-                formatted += cleaned[i];
-            }
-
-            return formatted;
-        }
-
-        const phoneInput = document.getElementById('phone');
-        phoneInput.addEventListener('input', function () {
-            this.value = formatPhoneNumber(this.value);
-        });
-        var shbtn = document.getElementById("selecthobbybtn")
-        var displayArea = document.getElementById("selectedHobbies");
-        shbtn.onclick = () => {
-            // 선택된 취미를 담을 빈 배열 생성
-            let selectedHobbies = [];
-
-            // select 요소에서 선택된 옵션들을 가져와서 배열에 추가
-            var hobbiesSelect = document.getElementById("hobbies");
-            for (var i = 0; i < hobbiesSelect.options.length; i++) {
-                if (hobbiesSelect.options[i].selected) {
-                    selectedHobbies.push(hobbiesSelect.options[i].value);
-                }
-            }
-
-            // 선택된 취미 목록을 문자열로 변환하여 표시
+			let cleaned = ('' + input).replace(/\D/g, '');
 
 
+			if (cleaned === '' || isNaN(cleaned)) {
+				return '';
+			}
 
 
-            for (var j = 0; j < selectedHobbies.length; j++) {
-                displayArea.innerHTML += selectedHobbies[j] + "  ";
-            }
-        }
-        displayArea.innerHTML = "선택한 취미 : ";
+			let formatted = '';
+			for (let i = 0; i < cleaned.length; i++) {
+				if (i === 3 || i === 7) {
+					formatted += '-';
+				}
+				formatted += cleaned[i];
+			}
 
-        for (var j = 0; j < selectedHobbies.length; j++) {
-            displayArea.innerHTML += selectedHobbies[j] + " ";
-        }
+			return formatted;
+		}
 
-        // 선택한 취미 표시 버튼에 이벤트 리스너 추가
-        document.addEventListener("DOMContentLoaded", function () {
-            console.log("DOM 컨텐츠 로드됨");
+		const phoneInput = document.getElementById('phone');
+		phoneInput.addEventListener('input', function () {
+			this.value = formatPhoneNumber(this.value);
+		});
+		var shbtn = document.getElementById("selecthobbybtn")
+		var displayArea = document.getElementById("selectedHobbies");
+		shbtn.onclick = () => {
+			// 선택된 취미를 담을 빈 배열 생성
+			let selectedHobbies = [];
 
-            var resethobbybtn = document.getElementById("resethobbybtn");
-            console.log("resethobbybtn:", resethobbybtn);
+			// select 요소에서 선택된 옵션들을 가져와서 배열에 추가
+			var hobbiesSelect = document.getElementById("hobbies");
+			for (var i = 0; i < hobbiesSelect.options.length; i++) {
+				if (hobbiesSelect.options[i].selected) {
+					selectedHobbies.push(hobbiesSelect.options[i].value);
+				}
+			}
 
-            resethobbybtn.onclick = () => {
-                displayArea.innerHTML="선택한 취미 : "
-            };
-        });
+			// 선택된 취미 목록을 문자열로 변환하여 표시
+
+
+
+
+			for (var j = 0; j < selectedHobbies.length; j++) {
+				displayArea.innerHTML += selectedHobbies[j] + "  ";
+			}
+		}
+		displayArea.innerHTML = "선택한 취미 : ";
+
+		for (var j = 0; j < selectedHobbies.length; j++) {
+			displayArea.innerHTML += selectedHobbies[j] + " ";
+		}
+
+		// 선택한 취미 표시 버튼에 이벤트 리스너 추가
+		document.addEventListener("DOMContentLoaded", function () {
+			console.log("DOM 컨텐츠 로드됨");
+
+			var resethobbybtn = document.getElementById("resethobbybtn");
+
+			resethobbybtn.onclick = () => {
+				displayArea.innerHTML = "선택한 취미 : "
+			};
+		});
+	</script>
+
+	<script>
+		$("#username").on("keyup", () => {
+			var changevar = document.getElementById("username").value
+			document.getElementById('fileS3root').value = "fileS3" + changevar;
+			console.log(document.getElementById('fileS3root').value);
+
+			$("#uploadbutton").removeAttr("disabled");
+
+		})
+
+
+/*
+		const testbutton = document.getElementById('uploadbutton');
+		testbutton.addEventListener('click', () => {
+			//const input = document.getElementById('uploadedImage');
+			const fileRoot = putFile(upimage[0]);
+			console.log(fileRoot[0], fileRoot[1], fileRoot[2])
+			const fileUpload = document.getElementsByName("fileUpload");
+			console.log($('input[name=filename]').val());
+			//fileUpload.fileOriName.value = fileRoot[1];
+			//console.log(fileRoot[1]);
+			//fileUpload.fileDate.value = fileRoot[2];
+			//console.log(fileRoot[2]);
+
+			var data = {filename: fileRoot[0], fileOriName: fileRoot[1], fileDate: fileRoot[2], fileS3root: $("#fileS3root").val()}
+			$.ajax({
+
+				url: "http://localhost:8081/YOU_I/Upload.do",
+				data: data,
+				dataType: "json",
+				success: function (res) {
+					console.log(res)
+				},
+				error: function (e) {
+					console.log(e);
+				}
+			})
+
+
+		})
+*/
 	</script>
 </body>
+
 </html>
