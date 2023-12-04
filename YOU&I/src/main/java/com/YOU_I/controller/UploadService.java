@@ -33,6 +33,8 @@ public class UploadService implements Command {
 		int fileEndIndex = 0;
 		int ThumFileIndex = 0;
 		int ThumFileEndIndex = 0;
+		String fileExtension = "";
+		String ThumFileRoot = "";
 		try {
 		System.out.println(fileOriRoot+".jpg 자르기 시작");
 		fileIndex = fileOriRoot.indexOf('.');
@@ -43,14 +45,14 @@ public class UploadService implements Command {
 		System.out.println("파일루트 자르기시작");
 		ThumFileIndex = fileRoot.indexOf('/');
 		ThumFileEndIndex = fileRoot.length();
+		fileExtension = fileOriRoot.substring(fileIndex, fileEndIndex);
+		System.out.println(".jpg 자름");
+		ThumFileRoot = fileRoot.substring(ThumFileIndex, ThumFileEndIndex);
+		System.out.println("파일루트 자름");
 		}
 		catch (Exception e) {
 			// TODO: handle exception
 		}
-		String fileExtension = fileOriRoot.substring(fileIndex, fileEndIndex);
-		System.out.println(".jpg 자름");
-		String ThumFileRoot = fileRoot.substring(ThumFileIndex, ThumFileEndIndex);
-		System.out.println("파일루트 자름");
 		
 		f_dto.setCommNo(14);
 		f_dto.setFileName(fileRoot);
