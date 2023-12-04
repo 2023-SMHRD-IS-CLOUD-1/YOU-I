@@ -19,12 +19,14 @@ import com.YOU_I.controller.SelectAllHobbyNameService;
 import com.YOU_I.controller.UpdateMyPageService;
 import com.YOU_I.controller.UploadService;
 import com.YOU_I.controller.UserMyPageService;
+import com.YOU_I.controller.acceptUserService;
 import com.YOU_I.controller.addGroupService;
 import com.YOU_I.controller.addScheduleService;
 import com.YOU_I.controller.commentService;
 import com.YOU_I.controller.communityService;
 import com.YOU_I.controller.groupKingService;
 import com.YOU_I.controller.joinGroupService;
+import com.YOU_I.controller.kingCommService;
 import com.YOU_I.controller.rankCtService;
 import com.YOU_I.controller.rankService;
 import com.YOU_I.controller.searchGroupService;
@@ -66,6 +68,8 @@ public class FrontController extends HttpServlet {
 		map.put("unregister.do", new unregisterService());
 		map.put("MyGroup.do", new MyGroupService());
 		map.put("joinGroup.do",new joinGroupService());
+		map.put("kingComm.do", new kingCommService());
+		map.put("acceptUser.do", new acceptUserService());
 		
 	}
 	

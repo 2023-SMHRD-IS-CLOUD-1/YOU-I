@@ -7,32 +7,30 @@
 <html>
 
 <head>
-	<title></title>
+	<title>가입승인</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css">
-	<meta charset='utf-8'>
-	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-	<meta name='viewport' content='width=device-width, initial-scale=1'>
-	<!-- jquery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<!-- bootstrap 4 -->
-	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="assets/css/map.css">
-	<!-- fullcalendar -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.css">
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.js"></script>
-	<style>
-		#calendarBox {
-			width: 70%;
-			padding-left: 15%;
-		}
-	</style>
-    
+	
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>가입승인</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- bootstrap 4 -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- fullcalendar -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.js"></script>
+<style>
+	
+</style>
 </head>
 
 <body class="is-preload">
@@ -40,89 +38,43 @@
 	<!-- Content -->
 	<div id="content">
 		<!-- 배너 이미지 -->
-		<section>
 		<img src="images/bg01.jpg" alt="배너 이미지" style="width: 1300px; height: 150px;" />
-		</section>
-		<section>
-		<h1>그룹일정</h1>
-		<div id="Wrapper">
-        <div id='calendar' style="width:92.5%;height:70px;"></div>
-    </div>
-
-    <!-- modal 추가 -->
-    <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		<div  id = "" name="applicant">
+			<h1 id= "applicant">가입신청자</h1>
+	    </div>
+	    <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">일정을 입력하세요.</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">신청자 정보</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="taskId" class="col-form-label">일정 내용</label>
-                        <input type="text" class="form-control" id="calendar_content" name="calendar_content">
-                        <label for="taskId" class="col-form-label">시작 날짜</label>
-                        <input type="date" class="form-control" id="calendar_start_date" name="calendar_start_date">
-                        <label for="taskId" class="col-form-label">종료 날짜</label>
-                        <input type="date" class="form-control" id="calendar_end_date" name="calendar_end_date">
-                        <label for="taskId" class="col-form-label">일정 메모</label>
-                        <textarea name="calendar_memo" id="calendar_memo" cols="60" rows="7"></textarea>
+                        <div id="userId"><h3>사용자 ID</h3>
+                        </div>
+                        <div id="gender"><h3>성별</h3>
+                        </div>
+                        <div id="area"><h3>활동지역</h3>
+                        </div>
+                        <div id="userHobby"><h3>취미</h3>
+                        </div>
+                        <div id="profileImg"><h3>프로필 사진</h3>
+                        </div>
+                       
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" id="addCalendar">추가</button>
+                    <button type="button" class="btn btn-warning" id="agree">수락</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        id="sprintSettingModalClose">취소</button>
+                        id="refuse">거절</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="memoModal" tabindex="-1" role="dialog" aria-labelledby="memoModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="memoModalLabel">일정 메모</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p id="memoModalContent"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                </div>
-            </div>
-        </div>
-    </div>
-		</section>
-		
-		<section>
-				<h2 style="align-items: center;">장소 찾기</h2>
-					<div class="map_wrap">
-    <div id="map" style="width:92.5%;height:600px;position:relative;overflow:hidden;"></div>
-
-    <div id="menu_wrap" class="bg_white">
-        <div class="option">
-            <div>
-                    <form onsubmit="searchPlaces(); return false;">
-					    <input type="text" value="광주 영화관" id="keyword" size="15"> 
-					    <button type="submit">검색</button>
-					</form>
-					                
-            </div>
-        </div>
-        <hr>
-        <ul id="placesList"></ul>
-        <div id="pagination"></div>
-    </div>
-</div>
-		</section>
 	</div>
 	<!-- Sidebar -->
 	<div id="sidebar">
@@ -145,8 +97,8 @@
 
 		<!-- Search -->
 		<section class="box search">
-			<form method="post" action="Gosearchgroup.do" style="display: flex;">
-				<button style="" name="move">소모임검색</button>
+			<form method="post" action="#">
+				<input type="text" class="text" name="search" placeholder="소모임 검색" />
 			</form>
 		</section>
 
@@ -161,6 +113,7 @@
 				</p>
 			</div>
 		</section>
+
 		<!-- Recent Posts -->
 		<!-- 
 		<section class="box recent-posts">
@@ -253,20 +206,19 @@
 				</table>
 			</div>
 		</section>
-	
+
 		<!-- Copyright -->
 		<ul id="copyright">
 			<li>&copy; Untitled.</li>
 			<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 		</ul>
-	
+
 	</div>
-	
 
 	<!-- Scripts -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=64e8fab34c9c428ba0f21c845ebc6e3f&libraries=services"></script>
-    <script src="assets/js/calendar.js"></script>
-    <script src="assets/js/map.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/util.js"></script>
 	<script>
 		let date = new Date();
 		let result_date = String(date).split(" ");
@@ -279,14 +231,49 @@
 		$(".month").html(day + " ");
 		$(".day").html(month + " ");
 		$(".year").html(year + " ");
-		
-		$("move").on("click",function(){
-			
-		})
 
 	</script>
  <script>
-	
+	  $.ajax({
+        url: "kingComm.do",
+        dataType: 'json',
+        success: function (res) {
+            console.log("통신성공")
+            console.log(res)
+            if (res == 0) {
+                $("#applicant").append("<h2>신청자가 없습니다</h>")
+            } else {
+                for (var i = 0; i < res.length; i++) {
+                    $("#applicant").append("<h2><a id='applicantLink" + i + "' href='#'>" + res[i].id + "</a></h2>");
+                    (function (index) {
+                        $("#applicantLink" + index).click(function () {
+                            $("#calendarModal").modal('show');
+                            $("#userId").html("<h2> 사용자 ID : " + res[index].id + "</h2>");
+                            $("#gender").html("<h2> 성별 : " + res[index].gender + "</h2>");
+                            $("#area").html("<h2> 활동 지역 : " + res[index].region + "</h2>");
+                            $("#userHobby").html("<h2> 취미 : " + res[index].hobby + "</h2>");
+                            $("#profileImg").html("<h2> 프로필사진 : " + res[index].profileImg + "</h2>");
+                            $("#agree").click(function(){
+								$.ajax({
+									url : 'acceptUser.do',
+									dataType:'json',
+									data:{
+										id:res[index].id,
+										groupNo:res[index].groupNo
+									},
+									success:function(){
+										console.log("통신성공")
+										 $("#calendarModal").modal('hide');
+										 $("#applicantLink" + index).remove();
+									}
+								})
+							})
+                        });
+                    })(i);
+                }
+            }
+        }
+    })
 </script>
 
 </body>

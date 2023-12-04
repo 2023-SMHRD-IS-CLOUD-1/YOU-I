@@ -154,7 +154,7 @@
 
 	<insert id="groupKing" parameterType="com.YOU_I.model.join_DTO">
 		insert into
-		tbl_joining(id,group_no,level_no) values('id 0118',#{groupNo},21)
+		tbl_joining(id,group_no,level_no,approve_join) values(#{id},#{groupNo},21,1)
 	</insert>
 
 	<select id="GroupImageTake" parameterType="java.lang.String"
@@ -258,6 +258,23 @@
 		insert into
 		tbl_joining(id,group_no,level_no) values(#{id},#{groupNo},22)
 	</insert>
+	<select id="getUserInfo"
+		parameterType="com.YOU_I.model.join_DTO"
+		resultType="com.YOU_I.model.join_DTO">
+		select A.id AS id, A.group_no AS groupNo, A.approve_join AS approveJoin,
+		B.gender AS gender, B.hobby AS hobby, B.region AS region,
+		B.profile_img AS profileImg
+		from tbl_joining A, tbl_user B
+		where a.id = b.id
+		and group_no = #{groupNo, jdbcType=INTEGER}
+		and approve_join = 0
+	</select>
+	<update id="acceptUser" parameterType="com.YOU_I.model.join_DTO">
+		UPDATE tbl_joining
+		SET approve_join = 1
+		WHERE id= #{id}
+		AND group_no = #{groupNo}
+	</update>
 
 
 

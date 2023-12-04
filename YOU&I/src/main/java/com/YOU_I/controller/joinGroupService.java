@@ -30,10 +30,11 @@ public class joinGroupService implements Command{
 		join_DAO dao = new join_DAO();
 		int result = dao.joinGroup(dto);
 		if(result>0 && oriId.equals(id)) {
+			session.setAttribute("groupNo", groupNo);
+			session.setAttribute("levelNo", 22);
 			response.setContentType("application/json"); 
 		    response.setCharacterEncoding("UTF-8");
 			response.getWriter().write("{\"redirectUrl\": \"GogroupSchedules.do\"}");
-			session.setAttribute("levelNo", 22);
 			return null;
 			
 		}else {
