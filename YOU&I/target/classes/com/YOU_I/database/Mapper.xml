@@ -7,9 +7,11 @@
 	<insert id="user_join" parameterType="com.YOU_I.model.User_DTO">
 
 		INSERT INTO TBL_USER(ID,
-		PW, GENDER, NICK, REGION, HOBBY, PHONE, TUTORIAL_ST, PROFILE_IMG, PROFILE_IMG,
+		PW, GENDER, NICK, REGION, HOBBY, PHONE, TUTORIAL_ST, PROFILE_IMG,
+		PROFILE_IMG,
 		USER_ROLE, JOINED_AT)
-		VALUES(#{id}, #{pw}, #{gender}, #{nick},
+		VALUES(#{id}, #{pw}, #{gender},
+		#{nick},
 		#{region}, #{hobby}, #{phone}, #{tutorialSt}, #{profileImg},
 		#{userRole} ,#{joinedAt})
 
@@ -154,7 +156,8 @@
 
 	<insert id="groupKing" parameterType="com.YOU_I.model.join_DTO">
 		insert into
-		tbl_joining(id,group_no,level_no,approve_join) values(#{id},#{groupNo},21,1)
+		tbl_joining(id,group_no,level_no,approve_join)
+		values(#{id},#{groupNo},21,1)
 	</insert>
 
 	<select id="GroupImageTake" parameterType="java.lang.String"
@@ -214,17 +217,20 @@
 
 	<update id="update" parameterType="com.YOU_I.model.User_DTO">
 		UPDATE tbl_user
-		SET nick=#{nick}, phone=#{phone}, region=#{region}, hobby=#{hobby}, PROFILE_IMG=#{profileImg}
+		SET
+		nick=#{nick}, phone=#{phone}, region=#{region}, hobby=#{hobby},
+		PROFILE_IMG=#{profileImg}
 		WHERE id = #{id}
 	</update>
 
 	<select id="userMypg" parameterType="com.YOU_I.model.User_DTO"
 		resultMap="userdto">
 		SELECT id, nick, phone, region, hobby, PROFILE_IMG
-		FROM TBL_USER
+		FROM
+		TBL_USER
 		WHERE id = #{id}
 	</select>
-	
+
 	<resultMap type="com.YOU_I.model.User_DTO" id="userdto">
 		<result property="id" column="ID" />
 		<result property="nick" column="NICK" />
@@ -248,19 +254,20 @@
 	<select id="MyGroup" parameterType="com.YOU_I.model.User_DTO"
 		resultMap="MyGroupRes">
 		SELECT A.ID, A.GROUP_NO, B.GROUP_NAME
-		FROM TBL_JOINING A, TBL_GROUP B
+		FROM TBL_JOINING A,
+		TBL_GROUP B
 		WHERE A.GROUP_NO=B.GROUP_NO AND A.ID=#{id}
 	</select>
 
 
-	<resultMap type="com.YOU_I.model.Group_DTO"
-		id="MyGroupRes">
+	<resultMap type="com.YOU_I.model.Group_DTO" id="MyGroupRes">
 		<result property="groupNo" column="GROUP_NO" />
 		<result property="groupName" column="GROUP_NAME" />
 		<result property="hobbyNo" column="HOBBY_NO" />
 		<result property="groupLikes" column="GROUP_LIKES" />
 		<result property="createdAt" column="CREATED_AT" />
-		<result property="groupMembershipFee" column="GROUP_MEMBERSHIP_FEE" />
+		<result property="groupMembershipFee"
+			column="GROUP_MEMBERSHIP_FEE" />
 		<result property="groupInfo" column="GROUP_INFO" />
 	</resultMap>
 
@@ -271,20 +278,29 @@
 	<select id="getUserInfo"
 		parameterType="com.YOU_I.model.join_DTO"
 		resultType="com.YOU_I.model.join_DTO">
-		select A.id AS id, A.group_no AS groupNo, A.approve_join AS approveJoin,
+		select A.id AS id, A.group_no AS groupNo, A.approve_join AS
+		approveJoin,
 		B.gender AS gender, B.hobby AS hobby, B.region AS region,
 		B.profile_img AS profileImg
 		from tbl_joining A, tbl_user B
-		where a.id = b.id
+		where a.id =
+		b.id
 		and group_no = #{groupNo, jdbcType=INTEGER}
 		and approve_join = 0
 	</select>
 	<update id="acceptUser" parameterType="com.YOU_I.model.join_DTO">
 		UPDATE tbl_joining
-		SET approve_join = 1
+		SET
+		approve_join = 1
 		WHERE id= #{id}
 		AND group_no = #{groupNo}
 	</update>
+	<delete id="refuseUser" parameterType="com.YOU_I.model.join_DTO">
+		delete from tbl_joining
+		where id = #{id}
+		and group_no = #{groupNo}
+	</delete>
+	
 
 
 

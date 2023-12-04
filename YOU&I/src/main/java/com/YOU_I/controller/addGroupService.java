@@ -18,9 +18,15 @@ public class addGroupService implements Command {
 		
 		request.setCharacterEncoding("utf-8");
 		String groupName = request.getParameter("groupName");
-		
+		String groupInfo = request.getParameter("groupInfo");
+		String hobby = request.getParameter("hobbyName");
+		int hobbyNo = Integer.parseInt(hobby);
+		System.out.println(hobby);
+		System.out.println(hobbyNo);
 		Group_DTO dto = new Group_DTO();
 		dto.setGroupName(groupName);
+		dto.setGroupInfo(groupInfo);
+		dto.setHobbyNo(hobbyNo);
 		
 		Group_DAO dao = new Group_DAO();
 		
@@ -33,5 +39,6 @@ public class addGroupService implements Command {
 		return "groupKing";
 		
 	}
+	
 
 }
