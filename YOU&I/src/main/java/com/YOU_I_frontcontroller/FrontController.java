@@ -24,6 +24,7 @@ import com.YOU_I.controller.addScheduleService;
 import com.YOU_I.controller.commentService;
 import com.YOU_I.controller.communityService;
 import com.YOU_I.controller.groupKingService;
+import com.YOU_I.controller.joinGroupService;
 import com.YOU_I.controller.myPageCtService;
 import com.YOU_I.controller.rankCtService;
 import com.YOU_I.controller.rankService;
@@ -66,6 +67,7 @@ public class FrontController extends HttpServlet {
 		map.put("UserMyPage.do", new UserMyPageService());
 		map.put("unregister.do", new unregisterService());
 		map.put("MyGroup.do", new MyGroupService());
+		map.put("joinGroup.do",new joinGroupService());
 		
 	}
 	

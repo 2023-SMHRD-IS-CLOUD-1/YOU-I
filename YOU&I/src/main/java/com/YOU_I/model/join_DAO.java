@@ -16,6 +16,11 @@ public class join_DAO {
 		int row = sqlSession.insert("groupKing", dto);
 		sqlSession.close();
 		return row;
+	}public int joinGroup(join_DTO dto) {
+		SqlSession sqlSession = factory.openSession(true);
+		int row = sqlSession.insert("joinGroup", dto);
+		sqlSession.close();
+		return row;
 	}
 
 }

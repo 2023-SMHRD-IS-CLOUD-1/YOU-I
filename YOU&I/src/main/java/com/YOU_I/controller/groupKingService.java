@@ -26,7 +26,7 @@ public class groupKingService implements Command{
 		
 		join_DAO dao = new join_DAO();
 		dao.groupKing(dto);
-		
+		session.setAttribute("levelNo", 21);
 		
 		
 		return "redirect:/GogroupSchedules.do";

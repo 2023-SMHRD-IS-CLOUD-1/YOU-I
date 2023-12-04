@@ -113,7 +113,8 @@
 	<insert id="addGroup" parameterType="com.YOU_I.model.Group_DTO"
 		useGeneratedKeys="true" keyProperty="groupNo">
 		<!-- INSERT 문 수행 -->
-		INSERT INTO tbl_group (group_name) VALUES (#{groupName})
+		INSERT INTO tbl_group (group_name,group_info,hobby_no) VALUES
+		(#{groupName},#{groupInfo},#{hobbyNo})
 		<selectKey keyProperty="groupNo" resultType="int"
 			order="AFTER">
 			SELECT tbl_group_SEQ.CURRVAL AS groupNo FROM DUAL
@@ -145,14 +146,15 @@
 
 	<select id="searchGroup" resultType="com.YOU_I.model.Group_DTO">
 		SELECT GROUP_NAME AS
-		groupName
+		groupName , GROUP_NO AS groupNo
 		FROM TBL_GROUP
-		WHERE GROUP_NAME LIKE '%' || #{groupName,
-		jdbcType=VARCHAR} || '%'
+		WHERE GROUP_NAME LIKE '%'
+		|| #{groupName, jdbcType=VARCHAR} || '%'
 	</select>
 
 	<insert id="groupKing" parameterType="com.YOU_I.model.join_DTO">
-		insert into tbl_joining(id,group_no,level_no) values('id 0118',#{groupNo},21)
+		insert into
+		tbl_joining(id,group_no,level_no) values('id 0118',#{groupNo},21)
 	</insert>
 
 	<select id="GroupImageTake" parameterType="java.lang.String"
@@ -165,7 +167,7 @@
 		AND ROWNUM &lt;= 1
 
 	</select>
-	
+
 
 	<select id="selectAll"
 		resultType="com.YOU_I.model.community_DTO">
@@ -182,9 +184,11 @@
 	</insert>
 	<select id="selectComment"
 		resultType="com.YOU_I.model.community_DTO">
-		SELECT tbl_community.comm_no, tbl_comment.comment_content, tbl_comment.id
+		SELECT tbl_community.comm_no, tbl_comment.comment_content,
+		tbl_comment.id
 		FROM tbl_community
-		INNER JOIN tbl_comment ON tbl_community.comm_no = tbl_comment.comm_no
+		INNER JOIN tbl_comment ON
+		tbl_community.comm_no = tbl_comment.comm_no
 		order by comm_no
 	</select>
 
@@ -200,8 +204,8 @@
 		<result property="ext" column="EXT" />
 		<result property="uploadedAt" column="UPLOADED_AT" />
 	</resultMap>
-	
-		<select id="mypgCt1" resultMap="SelectAllHobby">
+
+	<select id="mypgCt1" resultMap="SelectAllHobby">
 		SELECT HOBBY_NO,
 		HOBBY_NAME
 		FROM
@@ -210,41 +214,52 @@
 
 	<update id="update" parameterType="com.YOU_I.model.User_DTO">
 		UPDATE tbl_user
-		SET nick=#{nick}, phone=#{phone}, region=#{region}, hobby=#{hobby}
-		WHERE id = #{id}
+		SET
+		nick=#{nick}, phone=#{phone}, region=#{region}, hobby=#{hobby}
+		WHERE id
+		= #{id}
 	</update>
 
 	<select id="userMypg" parameterType="com.YOU_I.model.User_DTO"
 		resultType="com.YOU_I.model.User_DTO">
 		SELECT id, nick, phone, region, hobby
 		FROM TBL_USER
-		WHERE id = #{id}
+		WHERE id
+		= #{id}
 	</select>
-	
-	<delete id= "unregister" parameterType="com.YOU_I.model.User_DTO">
-	DELETE FROM TBL_USER
-    WHERE id = #{id} AND pw = #{pw}
-	</delete>
-	
-		<select id="MyGroup" parameterType="com.YOU_I.model.User_DTO" resultMap="MyGroupRes">
-	SELECT A.ID, A.GROUP_NO, B.GROUP_NAME
-	FROM TBL_JOINING A, TBL_GROUP B
-	WHERE A.GROUP_NO=B.GROUP_NO AND A.ID=#{id}
-	</select>
-	
 
-	<resultMap type="com.YOU_I.model.Group_DTO"
-		id="MyGroupRes">
+	<delete id="unregister" parameterType="com.YOU_I.model.User_DTO">
+		DELETE FROM TBL_USER
+		WHERE
+		id = #{id} AND pw = #{pw}
+	</delete>
+
+	<select id="MyGroup" parameterType="com.YOU_I.model.User_DTO"
+		resultMap="MyGroupRes">
+		SELECT A.ID, A.GROUP_NO, B.GROUP_NAME
+		FROM TBL_JOINING A,
+		TBL_GROUP B
+		WHERE A.GROUP_NO=B.GROUP_NO AND A.ID=#{id}
+	</select>
+
+
+	<resultMap type="com.YOU_I.model.Group_DTO" id="MyGroupRes">
 		<result property="groupNo" column="GROUP_NO" />
 		<result property="groupName" column="GROUP_NAME" />
 		<result property="hobbyNo" column="HOBBY_NO" />
 		<result property="groupLikes" column="GROUP_LIKES" />
 		<result property="createdAt" column="CREATED_AT" />
-		<result property="groupMembershipFee" column="GROUP_MEMBERSHIP_FEE" />
+		<result property="groupMembershipFee"
+			column="GROUP_MEMBERSHIP_FEE" />
 		<result property="groupInfo" column="GROUP_INFO" />
 	</resultMap>
-	
-	
+
+	<insert id="joinGroup" parameterType="com.YOU_I.model.join_DTO">
+		insert into
+		tbl_joining(id,group_no,level_no) values(#{id},#{groupNo},22)
+	</insert>
+
+
 
 
 
