@@ -38,6 +38,12 @@ public class community_DAO {
 		return selectComment;
 	}
 	
+	public int likes(community_DTO dto) {
+		SqlSession sqlSession = factory.openSession(true);
+		int row  = sqlSession.update("likes", dto);
+		sqlSession.close();
+		return row;
+	}
 	
 
 }
