@@ -36,7 +36,7 @@ public class addGroupService implements Command {
 		session.setAttribute("groupNo", generatedKey);
 		System.out.println(generatedKey);
 		
-		return "groupKing";
+		return "redirect:/groupKing.do";
 		
 	}
 	

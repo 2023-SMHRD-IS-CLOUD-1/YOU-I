@@ -31,6 +31,7 @@ import com.YOU_I.controller.kingCommService;
 import com.YOU_I.controller.likesService;
 import com.YOU_I.controller.rankCtService;
 import com.YOU_I.controller.rankService;
+import com.YOU_I.controller.refuseUserService;
 import com.YOU_I.controller.searchGroupService;
 import com.YOU_I.controller.selectAllScheduleService;
 import com.YOU_I.controller.selectCommentService;
@@ -74,6 +75,7 @@ public class FrontController extends HttpServlet {
 		map.put("acceptUser.do", new acceptUserService());
 		map.put("UserImageTake.do", new UserImageTakeService());
 		map.put("likes.do", new likesService());
+		map.put("refuseUser.do", new refuseUserService());
 	}
 	
 		
