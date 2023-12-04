@@ -5,7 +5,7 @@ function showMpCt() {
 
 
         $.ajax({
-            url: "http://localhost:8081/YOU_I/myPageCt.do",
+            url: "http://localhost:8081/YOU_I/SelectAllHobbyName.do",
 
             dataType: "json",
             success: function (res) {

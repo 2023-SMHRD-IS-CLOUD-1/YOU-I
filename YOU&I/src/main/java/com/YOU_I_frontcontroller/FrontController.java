@@ -25,7 +25,6 @@ import com.YOU_I.controller.commentService;
 import com.YOU_I.controller.communityService;
 import com.YOU_I.controller.groupKingService;
 import com.YOU_I.controller.joinGroupService;
-import com.YOU_I.controller.myPageCtService;
 import com.YOU_I.controller.rankCtService;
 import com.YOU_I.controller.rankService;
 import com.YOU_I.controller.searchGroupService;
@@ -62,7 +61,6 @@ public class FrontController extends HttpServlet {
 		map.put("selectCommunity.do", new selectCommunityService());
 		map.put("comment.do", new commentService());
 		map.put("selectComment.do",new selectCommentService());
-		map.put("myPageCt.do", new myPageCtService());
 		map.put("UpdateMyPage.do", new UpdateMyPageService());
 		map.put("UserMyPage.do", new UserMyPageService());
 		map.put("unregister.do", new unregisterService());
