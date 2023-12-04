@@ -29,11 +29,18 @@ public class UploadService implements Command {
 		
 		File_DTO f_dto = new File_DTO();
 		
+		int fileIndex = 0;
+		int fileEndIndex = 0;
 		System.out.println(fileOriRoot+".jpg 자르기 시작");
-		int fileIndex = fileOriRoot.indexOf('.');
+		try {
+		fileIndex = fileOriRoot.indexOf('.');
 		System.out.println(fileIndex);
-		int fileEndIndex = fileOriRoot.length();
+		fileEndIndex = fileOriRoot.length();
 		System.out.println(fileEndIndex);
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+		}
 		String fileExtension = fileOriRoot.substring(fileIndex, fileEndIndex);
 		System.out.println(".jpg 자름");
 		
