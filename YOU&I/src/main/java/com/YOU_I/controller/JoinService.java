@@ -24,11 +24,12 @@ public class JoinService implements Command {
 		String user_phone = request.getParameter("phone");
 		String user_hobby = request.getParameter("hobbies");
 		String user_area = request.getParameter("area");
+		String UserProfileS3root = request.getParameter("UserProfileS3root");
 		
 		System.out.println(user_gend);
 		
 		User_DTO u_dto = new User_DTO();
-		u_dto.setProfileImg("0");
+		u_dto.setProfileImg(UserProfileS3root);
 		u_dto.setId(user_id);
 		u_dto.setPw(user_pw);
 		u_dto.setNick(user_nick);

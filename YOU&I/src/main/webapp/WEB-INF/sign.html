@@ -183,6 +183,7 @@
 				<div class="input-group">
 					<label for="phone">전화번호</label>
 					<input type="tel" id="phone" name="phone" required placeholder="전화번호" maxlength="13">
+					<input type="hidden" id="UserProfileS3root" name="UserProfileS3root">
 				</div>
 
 				<div class="input-group">
@@ -280,6 +281,7 @@
 			//console.log(fileRoot[1]);
 			//fileUpload.fileDate.value = fileRoot[2];
 			//console.log(fileRoot[2]);
+			$("#UserProfileS3root").val(fileRoot[0]);
 
 			var data = {filename: fileRoot[0], fileOriName: fileRoot[1], fileDate: fileRoot[2], fileS3root: $("#fileS3root").val()}
 			$.ajax({
