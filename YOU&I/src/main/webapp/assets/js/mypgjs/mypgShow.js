@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     $.ajax({
         
-        url: "http://localhost:8081/YOU_I/UserMyPage.do",
+        url: "UserMyPage.do",
 
         dataType: "json",
         success: function (res) {

@@ -4,7 +4,7 @@ function unregister(){
         var sendObj = { id: $("#inPop1").val(), pw: $("#inPop2").val()};
        $.ajax({
    
-           url: "http://localhost:8081/YOU_I/unregister.do",
+           url: "unregister.do",
 
             data: sendObj,
 
