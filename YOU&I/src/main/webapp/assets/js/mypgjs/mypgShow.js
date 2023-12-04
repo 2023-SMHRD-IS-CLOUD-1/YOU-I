@@ -36,6 +36,7 @@ function profileImageTake(resolvedData) {
 		data: Groupnodata,
 		dataType: "json",
 		success: function(res) {
+				try{
 			res.forEach(function(res) {
 				console.log(res)
 				console.log("https://s3.ap-northeast-2.amazonaws.com/you-i/resize_profile" + res.fileThumb)
@@ -44,8 +45,9 @@ function profileImageTake(resolvedData) {
 				var finalUrl = bucketUrl + encodeURIComponent(imagePath);
 				$("#uploadedImage").attr("src", finalUrl);
 				$("#uploadedImage").css("display", "block");
-				
-			})
+				}
+			)}
+				catch(e){}
 		},
 		error: function(e) {
 			console.log(e);

@@ -3,7 +3,8 @@
     const picText = document.getElementById('pic');
 
     remo.addEventListener('click', function () {
-        $("uploadedImage").attr("src","");
+        $("#uploadedImage").attr("src"," ");
+        upimage = [""];
         uploadedImage.style.display = 'none';
         picText.style.display = 'block';
     });

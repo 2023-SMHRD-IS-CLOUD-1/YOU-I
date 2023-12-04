@@ -45,6 +45,7 @@ function picUp() {
 		const files = dt.files;
 		handleFiles(files);
 		upimage = files;
+		
 	});
 	dropArea.addEventListener('click', () => {
 		fileInput.click();
@@ -52,6 +53,7 @@ function picUp() {
 	fileInput.addEventListener('change', () => {
 		const files = fileInput.files;
 		upimage = files;
+		
 		handleFiles(files);
 		console.log(files);
 		console.log("파일 바뀜");
