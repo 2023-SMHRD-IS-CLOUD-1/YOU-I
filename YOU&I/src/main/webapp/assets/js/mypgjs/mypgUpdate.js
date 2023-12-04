@@ -20,7 +20,7 @@ function mypgUp(){
             var sendObj = { nick: inputValues[0], phone: inputValues[1], region:inputValues[2], ct1:mypCtValues[0]};
    $.ajax({
        
-       url: "http://localhost:8081/YOU_I/UpdateMyPage.do",
+       url: "UpdateMyPage.do",
 
        data: sendObj,
 

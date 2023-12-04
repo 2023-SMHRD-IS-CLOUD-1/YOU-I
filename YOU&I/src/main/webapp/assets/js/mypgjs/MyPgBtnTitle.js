@@ -2,7 +2,7 @@ function mypgBtn(){
     $(document).ready(function () {
         $.ajax({
 
-        url: "http://localhost:8081/YOU_I/MyGroup.do",
+        url: "MyGroup.do",
 
 
           dataType : "json",
