@@ -3,9 +3,9 @@ body {
 }
 
 #header {
-	position: fixed;
-	top:0;
-	left: 0;
+   position: fixed;
+   top:0;
+   left: 0;
     font-family: 'Nanum Gothic', sans-serif;
     font-size: xx-large;
     background-color: rgb(224, 112, 0);
@@ -29,7 +29,7 @@ body {
 
 
 .td1{
-	border: 5px solid rgb(255, 255, 255);
+   border: 5px solid rgb(255, 255, 255);
     padding: 24px;
     font-size: medium;
     text-align: center;
@@ -42,7 +42,7 @@ body {
 
 
 .td2 {
-	border: 5px solid rgb(255, 255, 255);
+   border: 5px solid rgb(255, 255, 255);
     padding: 24px;
     font-size: medium;
     text-align: center;
@@ -82,7 +82,7 @@ body {
     font-size: medium;
 }
 #mybtn:hover{
-	cursor: pointer;
+   cursor: pointer;
 }
 #out{
     width: 85px;
@@ -99,13 +99,13 @@ body {
 a{
     text-decoration: none;
     color: black;
-	
+   
 }
-	
+   
 
 .btns{
-	position: fixed;
-	display: flex;
+   position: fixed;
+   display: flex;
     align-items: center;
     justify-content: center;
     bottom: 29px;
@@ -131,9 +131,9 @@ select {
 }
 
 .mypCt{
-	margin-left: 10px;
-	margin-right: 8px;
-	width: 200px;
+   margin-left: 10px;
+   margin-right: 8px;
+   width: 200px;
 }
 
 #logo{
@@ -199,37 +199,37 @@ select {
     background-color: rgb(224, 112, 0);
  }
  #remo:hover{
-	 background-color: white;
-	 color: black;
-	 cursor: pointer;
+    background-color: white;
+    color: black;
+    cursor: pointer;
  }
 
 #table {
-	position: fixed;
-	top: 110px;
-	left: 500px;
+   position: fixed;
+   top: 110px;
+   left: 500px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 1000px; /* 전체 화면 높이에 맞게 설정 */
 }
  #mypg{
-	 position: fixed;
-	 top: 140px ;
-	 left: 207px;
-	 font-size: large;
-	 font-weight: bold;
+    position: fixed;
+    top: 140px ;
+    left: 207px;
+    font-size: large;
+    font-weight: bold;
      font-family:Pretendard;
  }
 
 .select-container{
-	border: 2px oldlace;
-	border-radius: 20px;
+   border: 2px oldlace;
+   border-radius: 20px;
 }
 
 .popup {
             position: fixed;
-			left: 50%;
+         left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
             width: 400px;
@@ -249,13 +249,13 @@ select {
 }
 
 #pop1{
-	display: none;
+   display: none;
 }
 
 #outTb{
-	position: absolute;
-	width: 350px;
-	height: 200px;
+   position: absolute;
+   width: 350px;
+   height: 200px;
     font-size: large;
     font-weight: 800;
     margin-left: 5px;
@@ -263,109 +263,108 @@ select {
 }
 
 #tdPop1{
-	align-content:center;
-	background-color: rgb(192, 192, 192);
-	width: 30%;
-	}
+   align-content:center;
+   background-color: rgb(192, 192, 192);
+   width: 30%;
+   }
 
 
 #tdPop2{
-	align-content:center;
-	background-color:rgb(233, 233, 233);
-	width: 70%;
-	
-	}
-	
+   align-content:center;
+   background-color:rgb(233, 233, 233);
+   width: 70%;
+   
+   }
+   
 .inPop{
-	height: 25px;
-	width: 200px;
+   height: 25px;
+   width: 200px;
 }
 
 #popupsub{
-	position: absolute;
-	top: 246px;
-	right: 196px;
-	width: 60px;
-	height: 31px;
-	border-radius: 10px;
-	font-size: medium;
-	border: 2px solid black;
+   position: absolute;
+   top: 246px;
+   right: 196px;
+   width: 60px;
+   height: 31px;
+   border-radius: 10px;
+   font-size: medium;
+   border: 2px solid black;
 }
 
 #popupsub:hover{
-	background-color: darkslategray;
-	cursor: pointer;
+   background-color: darkslategray;
+   cursor: pointer;
 }
 #cancel:hover{
-	background-color: darkslategray;
-	cursor: pointer;
+   background-color: darkslategray;
+   cursor: pointer;
 }
 
 #cancel{
-	position: absolute;
-	top: 246px;
-	right: 125px;
-	width: 60px;
-	height: 31px;
-	border-radius: 10px;
-	font-size: medium;
-	border: 2px solid black;
+   position: absolute;
+   top: 246px;
+   right: 125px;
+   width: 60px;
+   height: 31px;
+   border-radius: 10px;
+   font-size: medium;
+   border: 2px solid black;
 }
 
 /* 여기서부터 My Group으로 이동하기 버튼 css*/
 
 .grbtn{
-	display: inline-flex;
-	align-items: center;
-	justify-content: space-between;
-	width: 330px;
-	height: 35px;
-	border-radius: 40px;
-	border: 4px solid rgb(0, 0, 0);
-	cursor: pointer;
-	transition: background 0.3s ease;
-	padding: 10px 20px;
-	position: fixed;
-	box-shadow : 0px 4px 6px rgba(0,0,0,0.1);
-	text-decoration: none;
-	bottom: 39px;
-	left: 1519px;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	font-size: large;
+   display: inline-flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 330px;
+   height: 35px;
+   border-radius: 40px;
+   border: 4px solid rgb(0, 0, 0);
+   cursor: pointer;
+   transition: background 0.3s ease;
+   padding: 10px 20px;
+   position: fixed;
+   box-shadow : 0px 4px 6px rgba(0,0,0,0.1);
+   text-decoration: none;
+   bottom: 39px;
+   left: 1519px;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   font-size: large;
 
 }
 
 .grbtn:hover{
-	background-color: darksalmon;
+   background-color: darksalmon;
 }
 
 .arrow{
-	font-size: 30px;
-	font-weight: 800;
-	color: rgb(128, 0, 64);
-	animation: slideArrow 0.7s infinite alternate;
-	position: absolute;
-	top: 50%;
-	right: 20px;
-	transform: translateY(-50%);
+   font-size: 30px;
+   font-weight: 800;
+   color: rgb(128, 0, 64);
+   animation: slideArrow 0.7s infinite alternate;
+   position: absolute;
+   top: 50%;
+   right: 20px;
+   transform: translateY(-50%);
 }
 @keyframes slideArrow{
-	for{
-		transform: translateY(-50%) translateX(0);
-	}
-	to{
-		transform: translateY(-50%) translateX(10px)
-	}
+   for{
+      transform: translateY(-50%) translateX(0);
+   }
+   to{
+      transform: translateY(-50%) translateX(10px)
+   }
 }
 
 #gr{
-	color: rgb(159, 60, 0);
-	font-weight: bold;
-	font-size: 20px;
-	position: absolute;
-	top: 50%;
-	left: 40%;
-	transform: translate(-50%, -50%);
+   color: rgb(159, 60, 0);
+   font-weight: bold;
+   font-size: 20px;
+   position: absolute;
+   top: 50%;
+   left: 40%;
+   transform: translate(-50%, -50%);
 }
-
 

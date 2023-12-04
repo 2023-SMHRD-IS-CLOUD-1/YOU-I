@@ -21,12 +21,13 @@ public class UpdateMyPageService implements Command {
 		response.setContentType("text/html;charset=utf-8");
 		
 		HttpSession session = request.getSession(); 
-		String user_id = (String) session.getAttribute("Login");
+		String user_id = (String) session.getAttribute("id");
 		String nick =request.getParameter("nick");
 		String phone =request.getParameter("phone");
 		String region =request.getParameter("region");
 		String ct1 =request.getParameter("ct1");
-		
+		String user_profile =request.getParameter("userprofile");
+		System.out.println(user_profile);
 		System.out.println(nick);
 		System.out.println("-----------------------------------------체크1----------------------------");
 		User_DTO u_dt = new User_DTO();
@@ -35,6 +36,7 @@ public class UpdateMyPageService implements Command {
 		u_dt.setPhone(phone);
 		u_dt.setRegion(region);
 		u_dt.setHobby(ct1);
+		u_dt.setProfileImg(user_profile);
 		System.out.println("-----------------------------------------체크2----------------------------");
 		User_DAO dao = new User_DAO();
 		int row = dao.update(u_dt);

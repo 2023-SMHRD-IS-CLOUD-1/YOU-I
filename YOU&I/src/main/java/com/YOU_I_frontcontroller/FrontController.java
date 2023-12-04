@@ -18,6 +18,7 @@ import com.YOU_I.controller.MyGroupService;
 import com.YOU_I.controller.SelectAllHobbyNameService;
 import com.YOU_I.controller.UpdateMyPageService;
 import com.YOU_I.controller.UploadService;
+import com.YOU_I.controller.UserImageTakeService;
 import com.YOU_I.controller.UserMyPageService;
 import com.YOU_I.controller.acceptUserService;
 import com.YOU_I.controller.addGroupService;
@@ -70,6 +71,7 @@ public class FrontController extends HttpServlet {
 		map.put("joinGroup.do",new joinGroupService());
 		map.put("kingComm.do", new kingCommService());
 		map.put("acceptUser.do", new acceptUserService());
+		map.put("UserImageTake.do", new UserImageTakeService());
 		
 	}
 	

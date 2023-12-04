@@ -7,7 +7,7 @@
 	<insert id="user_join" parameterType="com.YOU_I.model.User_DTO">
 
 		INSERT INTO TBL_USER(ID,
-		PW, GENDER, NICK, REGION, HOBBY, PHONE, TUTORIAL_ST, PROFILE_IMG,
+		PW, GENDER, NICK, REGION, HOBBY, PHONE, TUTORIAL_ST, PROFILE_IMG, PROFILE_IMG,
 		USER_ROLE, JOINED_AT)
 		VALUES(#{id}, #{pw}, #{gender}, #{nick},
 		#{region}, #{hobby}, #{phone}, #{tutorialSt}, #{profileImg},
@@ -214,19 +214,30 @@
 
 	<update id="update" parameterType="com.YOU_I.model.User_DTO">
 		UPDATE tbl_user
-		SET
-		nick=#{nick}, phone=#{phone}, region=#{region}, hobby=#{hobby}
-		WHERE id
-		= #{id}
+		SET nick=#{nick}, phone=#{phone}, region=#{region}, hobby=#{hobby}, PROFILE_IMG=#{profileImg}
+		WHERE id = #{id}
 	</update>
 
 	<select id="userMypg" parameterType="com.YOU_I.model.User_DTO"
-		resultType="com.YOU_I.model.User_DTO">
-		SELECT id, nick, phone, region, hobby
+		resultMap="userdto">
+		SELECT id, nick, phone, region, hobby, PROFILE_IMG
 		FROM TBL_USER
-		WHERE id
-		= #{id}
+		WHERE id = #{id}
 	</select>
+	
+	<resultMap type="com.YOU_I.model.User_DTO" id="userdto">
+		<result property="id" column="ID" />
+		<result property="nick" column="NICK" />
+		<result property="phone" column="PHONE" />
+		<result property="region" column="REGION" />
+		<result property="hobby" column="HOBBY" />
+		<result property="profileImg" column="PROFILE_IMG" />
+		<result property="gender" column="GENDER" />
+		<result property="pw" column="PW" />
+		<result property="tutorialSt" column="TUTORIAL_ST" />
+		<result property="userRole" column="USER_ROLE" />
+		<result property="joinedAt" column="JOINED_AT" />
+	</resultMap>
 
 	<delete id="unregister" parameterType="com.YOU_I.model.User_DTO">
 		DELETE FROM TBL_USER
@@ -237,20 +248,19 @@
 	<select id="MyGroup" parameterType="com.YOU_I.model.User_DTO"
 		resultMap="MyGroupRes">
 		SELECT A.ID, A.GROUP_NO, B.GROUP_NAME
-		FROM TBL_JOINING A,
-		TBL_GROUP B
+		FROM TBL_JOINING A, TBL_GROUP B
 		WHERE A.GROUP_NO=B.GROUP_NO AND A.ID=#{id}
 	</select>
 
 
-	<resultMap type="com.YOU_I.model.Group_DTO" id="MyGroupRes">
+	<resultMap type="com.YOU_I.model.Group_DTO"
+		id="MyGroupRes">
 		<result property="groupNo" column="GROUP_NO" />
 		<result property="groupName" column="GROUP_NAME" />
 		<result property="hobbyNo" column="HOBBY_NO" />
 		<result property="groupLikes" column="GROUP_LIKES" />
 		<result property="createdAt" column="CREATED_AT" />
-		<result property="groupMembershipFee"
-			column="GROUP_MEMBERSHIP_FEE" />
+		<result property="groupMembershipFee" column="GROUP_MEMBERSHIP_FEE" />
 		<result property="groupInfo" column="GROUP_INFO" />
 	</resultMap>
 

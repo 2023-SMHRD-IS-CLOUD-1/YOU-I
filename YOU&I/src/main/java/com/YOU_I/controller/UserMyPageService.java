@@ -22,8 +22,8 @@ public class UserMyPageService implements Command {
 		PrintWriter out = response.getWriter();
 		
 		HttpSession session = request.getSession(); 
-		String user_id = (String)session.getAttribute("Login");
-		
+		String user_id = (String)session.getAttribute("id");
+		System.out.println(user_id + "세션 로그인값");
 		User_DTO u_dt = new User_DTO();
 		u_dt.setId(user_id);
 		

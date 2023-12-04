@@ -98,6 +98,12 @@
 
                 </table>
             </form>
+            <div name="fileUpload">
+		<input type="hidden" id="fileroot" name="filename" value="fail1">
+		<input type="hidden" id="fileOriroot" name="fileOriName" value="fail12">
+		<input type="hidden" id="fileDate" name="fileDate" value="fail13">
+		<input type="hidden" id="fileS3root" name="fileS3root" value="fileS3User">
+	</div>
         
     </div>
     
@@ -136,7 +142,9 @@
     
     <div id="footer"></div>
 
-
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.809.0.min.js"></script>
+	<script src="assets/js/awsjs/imageTake.js"></script>
+	<script src="assets/js/awsjs/UserimageUpload.js"></script>
     <script src="assets/js/mypgjs/pgdisa.js"></script>
     <script src="assets/js/mypgjs/picUp.js"></script>
     <script src="assets/js/mypgjs/picRemo.js"></script>
@@ -156,6 +164,14 @@
 			
 			
 		}
+		
+		$("#ip0").on("keyup", () => {
+			changevar = document.getElementById("ip0").value
+			document.getElementById('fileS3root').value = "fileS3" + changevar;
+			console.log(document.getElementById('fileS3root').value);
+
+
+		})
 		
 	</script>
 

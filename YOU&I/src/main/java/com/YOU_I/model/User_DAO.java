@@ -45,6 +45,9 @@ public class User_DAO {
 		SqlSession sqlSession = factory.openSession();
 		
 		result = sqlSession.selectOne("userMypg", dto);
+		String temp = result.getProfileImg();
+		String resultTemp = temp.substring(8);
+		result.setProfileImg(resultTemp);
 		sqlSession.close();
 		
 		return result;

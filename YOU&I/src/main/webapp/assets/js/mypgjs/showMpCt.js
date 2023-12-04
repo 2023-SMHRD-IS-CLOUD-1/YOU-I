@@ -1,6 +1,5 @@
 function showMpCt() {
     $(document).ready(function () {
-        var $this = $(this);
 
 
 
