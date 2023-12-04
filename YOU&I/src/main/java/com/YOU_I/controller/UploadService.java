@@ -31,22 +31,24 @@ public class UploadService implements Command {
 		
 		int fileIndex = 0;
 		int fileEndIndex = 0;
-		System.out.println(fileOriRoot+".jpg 자르기 시작");
+		int ThumFileIndex = 0;
+		int ThumFileEndIndex = 0;
 		try {
+		System.out.println(fileOriRoot+".jpg 자르기 시작");
 		fileIndex = fileOriRoot.indexOf('.');
 		System.out.println(fileIndex);
 		fileEndIndex = fileOriRoot.length();
 		System.out.println(fileEndIndex);
+		
+		System.out.println("파일루트 자르기시작");
+		ThumFileIndex = fileRoot.indexOf('/');
+		ThumFileEndIndex = fileRoot.length();
 		}
 		catch (Exception e) {
 			// TODO: handle exception
 		}
 		String fileExtension = fileOriRoot.substring(fileIndex, fileEndIndex);
 		System.out.println(".jpg 자름");
-		
-		System.out.println("파일루트 자르기시작");
-		int ThumFileIndex = fileRoot.indexOf('/');
-		int ThumFileEndIndex = fileRoot.length();
 		String ThumFileRoot = fileRoot.substring(ThumFileIndex, ThumFileEndIndex);
 		System.out.println("파일루트 자름");
 		
