@@ -21,20 +21,20 @@
 			border-radius: 8px;
 			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		}
+		
 
 		.post-content {
-			width: 910px;
-			padding: 10px;
-			border: 1px solid #ccc;
-			border-radius: 20px;
-			margin-bottom: 10px;
-			box-sizing: border-box;
-			white-space: pre-wrap;
-			/* 변경된 부분 */
-			overflow: hidden;
-			min-height: 100px;
-			color: #333;
-		}
+    width: 910px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    white-space: pre-wrap;
+    overflow: hidden;
+    min-height: 100px;
+    color: #333;
+}
 
 		#new-post-form {
 			display: flex;
@@ -70,26 +70,21 @@
 		}
 
 		.post {
-			margin: auto;
-			margin-bottom: 20px;
-			padding: 20px;
-			border-radius: 8px;
-			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-			width: 80%;
-			/* 가로 범위 조정 */
-			max-width: 2000px;
-			/* 최대 가로 폭 설정 */
-			min-width: 1000px;
-			/* 최소 가로 폭 설정 */
-			/* 최대 tpfh 폭 설정 */
-			min-height: 100px;
-
-			/* 최소 가로 폭 설정 */
-			height: auto;
-			/* 세로 범위를 콘텐츠에 맞게 자동 조정 */
-			background-color: white;
-			color: #333;
-		}
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 2000px;
+    min-width: 1000px;
+    min-height: 100px;
+    height: auto;
+    background-color: white;
+    color: #333;
+    display: flex;
+    flex-direction: column; /* 요소들을 세로로 배치 */
+}
 
 
 
@@ -100,14 +95,12 @@
 			margin-bottom: 10px;
 		}
 
-		.post-avatar {
-			border-radius: 50%;
-			margin-right: 10px;
-		}
+		
 
 		.post-nickname {
-			font-weight: bold;
-		}
+    font-weight: bold;
+    font-size: 1.2em; /* 원하는 크기로 조절하세요 */
+}
 
 		.preserve-space {
 			white-space: pre;
@@ -159,6 +152,17 @@
 		.like-count {
 			margin-right: 10px;
 		}
+		.interaction-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.comments-containerclass {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 	</style>
 
 	<script src="assets/js/breakpoints.min.js"></script>
@@ -177,9 +181,6 @@
 		<!-- 배너 이미지 -->
 		<img src="images/bg01.jpg" alt="배너 이미지" style="width: 1300px; height: 150px;" />
 		<div id="user-profile">
-			<img id="user-avatar"
-				src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSht57fvmxTIjl86JFQ2SIsSsVLFHZBP-pR4pMAssOpqQ&s"
-				alt="프로필 사진" width="50" height="50">
 			<h3 id="user-nickname">기본 닉네임</h3>
 		</div>
 
@@ -353,7 +354,7 @@
 		$(".year").html(year + " ");
 
 
-		// 초기에는 빈 배열로 시작합니다.
+		
 
 
 
@@ -387,17 +388,13 @@
 
 		// 프로필 정보 표시
 		var userNicknameElement = document.getElementById('user-nickname');
-		var userAvatarElement = document.getElementById('user-avatar');
 
 		// 데이터베이스에서 사용자 정보 가져오기 (가정)
 		var userProfile = {
 			nickname: "ㅋㅋ",
-			avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSht57fvmxTIjl86JFQ2SIsSsVLFHZBP-pR4pMAssOpqQ&s" // 데이터베이스에 저장된 경로를 사용
 		};
 
-		// 가져온 정보로 프로필 업데이트
-		userNicknameElement.textContent = userProfile.nickname;
-		userAvatarElement.src = userProfile.avatar;
+		
 		var postContent = document.getElementById('post-content').value;
 		var postElement = document.createElement('div');
 		var postContentElement = document.createElement('div');
@@ -437,7 +434,7 @@
 			post.likes++;
 
 			// UI에서 좋아요 카운트 업데이트
-			var postElement = document.querySelector('.post[data-index="' + postIndex + '"]');
+			var postElement = document.querySelector('#post[data-index="' + postIndex + '"]');
 			var likeCountElement = postElement.querySelector('.like-count');
 			likeCountElement.textContent = post.likes;
 
@@ -451,8 +448,13 @@
 
 
 
-
-		function fetchAndDisplayPosts() {
+var Listcomm_no = null;
+var finalresultCommNo = null;
+var p1 = null;
+		$(document).ready(function () {
+			p1 = new Promise(function(resolve){
+			var ListcommNo = "";
+			
 			$.ajax({
 				url: 'selectCommunity.do',
 				method: 'GET',
@@ -463,94 +465,143 @@
 
 					// 결과를 역순으로 반복
 					res.reverse().forEach(function (post) {
-
+					console.log("post확인확인"+post.comm_no)
+						ListcommNo += post.comm_no + ",";
+					console.log(ListcommNo + '최종');
 						// 게시물 엘리먼트 생성 및 컨테이너 끝에 추가
 						var postElement = $(
 
-							'<div class="post"></div>');
+							'<div id="post'+post.comm_no+'" class="post"></div>');
 						postElement.html(`
                     <div class="post-header">
-                        <img class="post-avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSht57fvmxTIjl86JFQ2SIsSsVLFHZBP-pR4pMAssOpqQ&amp;s" alt="프로필 사진" width="30" height="30">
                         <div class="post-nickname">ID : ${post.id}</div>
                     </div>
                     <div class="post-content">${post.commContent}</div>
                     <div class="interaction-container">
                         <button class="like-button"></button>
                         <span class="like-count">0</span>
-                        <div class="comments-container">
-                            <ul class="comment-list"></ul>
-                            <textarea class="comment-input" id="comment-input" placeholder="댓글을 입력하세요"></textarea>
-                            <button onclick="addComment" class="commentbtn">댓글 추가</button>
                         </div>
-                    </div>
+                        <div id="comments-container${post.comm_no}" class="comments-containerclass">
+                            <ul class="comment-list${post.comm_no}"></ul>
+                            <textarea class="comment-input" id="comment-input" placeholder="댓글을 입력하세요"></textarea>
+                            <button class="commentbtn" value="${post.comm_no}">댓글 추가</button>
+                        </div>
+                    
                     
                 `);
 
 						$('#posts-container').append(postElement);
+						
 					});
-
+				console.log(ListcommNo + "나가가전 값")
+				resolve(ListcommNo);
 				},
 				error: function (error) {
 					console.error('데이터를 가져오는 중 오류 발생:', error);
 				}
 			});
-		}
+			
+			
+			})
+			
+		
 
+			p1.then(function(resolve){
+				console.log(resolve + "리졸브값 가져오기")
+				Listcomm_no = resolve;
+				console.log(Listcomm_no + "리졸브값 적용")
+				
+			})
 
 		// 문서가 로드될 때 서버에서 데이터 가져와 게시물 표시
-		$(document).ready(function () {
-			fetchAndDisplayPosts();
+		
+			
+			//fetchAndDisplayPosts();
+			//fetchAndDisplayComments();
 		});
 
 
-		$(document).on("input", ".comment-input", function () {
-			console.log("댓글쓰는중")
-			$.ajax({
-				url: 'selectCommunity.do',
-				method: 'GET',
-				dataType: 'json',
-				success: function (res) {
+	//	$(document).on("input", ".comment-input", function () {
+		//	console.log("댓글쓰는중")
+		//	$.ajax({
+		//		url: 'selectCommunity.do',
+		//		method: 'GET',
+		////		dataType: 'json',
+		//		success: function (res) {
+//
+		//		},
+		//		error: function (error) {
+		////			console.error('데이터를 가져오는 중 오류 발생:', error);
+		//		}
+		//	});
+//
+		//});
 
-				},
-				error: function (error) {
-					console.error('데이터를 가져오는 중 오류 발생:', error);
-				}
-			});
 
-		});
-
-
-		$(document).on('click', ".commentbtn", function () {
+	
+		
+		
+	var commentInput = null;
+	$(document).ready(function () {
+	$(document).on('click', ".commentbtn", function (value) {
+	console.log(Listcomm_no + "확인해보자==============================================")
+	
+	var sperList = Listcomm_no.split(",");
+	sperList.pop();
+	console.log(sperList)
     var $this = $(this);
-    var commentInput = $this.closest('.comments-container').find('.comment-input');
-    var commentContent = commentInput.val();
-
+   	var comm_no = this.value
+    sperList.forEach(function(res){
+    commentInput = $this.closest('#comments-container'+res).find('.comment-input');
+    console.log(commentInput+"이건제대로 들어오냐 ?")
+    var comment_content = commentInput.val();
+    if(comment_content!=""&&comment_content!=null){
+		
+	
+    console.log(comment_content+"글씨에 왜 null값이 ??")
     $.ajax({
         method: 'POST',
         url: 'comment.do',
-        data: { comment_content: commentContent },
+        data: { comment_content: comment_content,
+        		Lastcomm_no : comm_no},
         success: function (response) {
             console.log("댓글 추가 성공");
-            // 댓글이 성공적으로 추가된 경우, 댓글 목록을 업데이트
+            
+            // After successfully adding a comment, refresh and display comments
             fetchAndDisplayComments();
+            
+            // Clear the comment input
+            commentInput.val('');
         },
         error: function (request, status, error) {
             console.error('댓글 추가 중 오류 발생:', error);
         }
     });
+    }
 });
-function fetchAndDisplayComments() {
+});
+$(document).ready(function () {
+	fetchAndDisplayComments();
+	})
+		
+		
+		
+		
+		
+		function fetchAndDisplayComments() {
     $.ajax({
         url: 'selectComment.do',
         method: 'GET',
         dataType: 'json',
         success: function (res) {
             // 댓글 목록을 초기화
-            $('.comment-list').empty();
-
+            res.forEach(function(res){
+            $('.comment-list'+res.comm_no).empty();
+})
             // 새로 불러온 댓글로 목록을 업데이트
             res.forEach(function (comment) {
-                addComment(comment);
+                var commentHTML = '<li>' + "닉네임" + ': ' + comment.comment_content + '</li>';
+                $('.comment-list'+comment.comm_no).append(commentHTML);
             });
         },
         error: function (request, status, error) {
@@ -558,29 +609,28 @@ function fetchAndDisplayComments() {
         }
     });
 }
-		function addComment(comment) {
-    // 댓글을 위한 HTML 생성
-    var commentHTML = '<li>' + "닉네임" + ': ' + comment.comment_content + '</li>';
+})
+	//	function addComment(comment) {
+			// 댓글을 위한 HTML 생성
+			
+			
 
-    // 댓글을 댓글 목록에 추가
-    $('.comment-list').append(commentHTML);
-}
-		$(document).ready(function () {
+			// 댓글을 댓글 목록에 추가
+			
+		//}
+	//	$(document).ready(function () {
 			// 서버에서 댓글을 가져오기 위한 AJAX 요청
-			$.ajax({
-				url: 'selectComment.do',
-				method: 'GET',
-				dataType: 'json',
-				success: function (res) {
-					// 댓글을 순회하며 페이지에 추가
-					res.forEach(function (comment) {
-						addComment(comment);
-					});
-				},
-				error: function (request, status, error) {
-					console.error('댓글을 가져오는 중 오류 발생:', error);
-				}
-			});
+		//	$.ajax({
+			//	url: 'selectComment.do',
+			//	method: 'GET',
+			//	dataType: 'json',
+			///	success: function (res) {
+			//		console.log("댓글ㅈ")
+			//	},
+			//	error: function (request, status, error) {
+				//	console.error('댓글을 가져오는 중 오류 발생:', error);
+			//	}
+			//});
 
 			// 서버에서 사용자 닉네임을 가져오기 위한 AJAX 요청
 			//$.ajax({
@@ -588,14 +638,14 @@ function fetchAndDisplayComments() {
 			//	method: 'GET',
 			//	dataType: 'json',
 			//	success: function (userProfile) {
-					// 가져온 사용자 프로필로 닉네임 업데이트
+			// 가져온 사용자 프로필로 닉네임 업데이트
 			//		$('.user-nickname').text(userProfile.nickname);
 			//	},
-				//error: function (request, status, error) {
-				//	console.error('사용자 프로필을 가져오는 중 오류 발생:', error);
-				//}
+			//error: function (request, status, error) {
+			//	console.error('사용자 프로필을 가져오는 중 오류 발생:', error);
+			//}
 			//});
-		});
+		//});
 
 		//$(document).ready(function () {
 		//	$.ajax({
