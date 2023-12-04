@@ -35,4 +35,18 @@ public class join_DAO {
 		int row = sqlSession.update("acceptUser", dto);
 		return row;
 	}
+	public int refuseUser(join_DTO dto) {
+		SqlSession sqlSession = factory.openSession(true);
+		int row = sqlSession.delete("refuseUser", dto);
+		return row;
+	}
+
+	public join_DTO findKing(join_DTO dto) {
+		SqlSession sqlSession = factory.openSession();
+		join_DTO result = sqlSession.selectOne("findKing", dto);
+
+		sqlSession.close();
+		return result;
+
+	}
 }
