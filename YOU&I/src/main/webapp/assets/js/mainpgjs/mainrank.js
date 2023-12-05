@@ -18,7 +18,7 @@ function rank() {
 					console.log(Groupno);
 					$(".groupinfo" + i).after("<tr><td class='grouptd'>" + res.groupInfo + "</td></tr>");
 					$(".groupinfo" + i).after("<tr><td class='grouptd'>" + res.groupName + "</td></tr>");
-					$(".groupinfo" + i).after("<tr><td class='grouptd'>" + res.hobbyName + "</td></tr>");
+					$(".groupinfo" + i).after("<tr><td class='grouptd'>" + flaticonHobby(res.hobbyNo) + res.hobbyName + "</td></tr>");
 					i++;
 
 				});
@@ -65,6 +65,10 @@ rank().then(function(resolvedData) {
 	})
 })
 
+function flaticonHobby(resolveData) {
+	return `<span id="flaticon${resolveData}" ><img src='assets/css/flaticon/${resolveData}.png' class="flaticon">`
 
+
+}
 
 
