@@ -132,7 +132,7 @@
 	<insert id="commContent"
 		parameterType="com.YOU_I.model.community_DTO">
 		insert into tbl_community (group_no,comm_title,comm_content,id)
-		values(2,'title',#{commContent},{#id})
+		values(2,'title',#{commContent},#{id})
 		<selectKey keyProperty="comm_no" resultType="int"
 			order="AFTER">
 			SELECT tbl_community_SEQ.CURRVAL AS comm_no FROM DUAL

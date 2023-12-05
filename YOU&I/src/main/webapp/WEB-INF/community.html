@@ -15,16 +15,21 @@
 	<style>
 		#post-form {
     max-width: 600px;
-    margin: 20px 0; /* 여백을 위 아래로만 주도록 수정 */
+    margin: 20px auto 20px 150px; /* 위아래 여백은 그대로 두고 왼쪽 여백을 50px로 조절 */
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-#post-content{
-	resize:none;
-	min-height:200px;
-	
+#post-content {
+    resize: none;
+    height: 50px;
+    border-radius: 8px;
+    font-size: 16px; /* 원하는 글씨 크기로 조절하세요 */
+    font-weight: bold; /* normal 또는 bold로 조절하세요 */
+}
+#content{
+	background-color: #eaeaea;
 	
 }
 
@@ -34,12 +39,16 @@
     border-radius: 20px;      /* 20px 반지름의 둥근 테두리를 적용합니다. */
     padding: 8px;             /* 내부 여백을 지정합니다. */
     margin-bottom: 8px;       /* 각 댓글 사이에 여백을 지정하여 간격을 조절합니다. */
-    min-width:800px;
-    background-color:antiquewhite;
+    width:850px;
+     white-space: pre-wrap;
+    overflow: hidden;
+    
+
 }
 		.post-content {
-	background-color:antiquewhite;
+	
     width: 910px;
+    min-height: 300px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 20px;
@@ -47,10 +56,13 @@
     box-sizing: border-box;
     white-space: pre-wrap;
     overflow: hidden;
-    min-height: 150px;
     color: #333;
     resize:none;
+     font-size: 1.3em; /* 원하는 크기로 조절하세요 */
+    font-weight: bold; /* normal 또는 bold로 조절하세요 */
+    margin-bottom: 10px; /* 위아래 간격 조절 */
 }
+
 
 		#new-post-form {
     display: flex;
@@ -123,18 +135,48 @@
 			white-space: pre;
 		}
 
-		.modal {
-			display: none;
-			position: fixed;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			padding: 20px;
-			background-color: #fff;
-			border-radius: 8px;
-			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-			z-index: 999;
-		}
+		#modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+#modal h2 {
+    font-size: 1.5em; /* 원하는 크기로 조절하세요 */
+    font-weight: bold; /* normal 또는 bold로 조절하세요 */
+    margin-bottom: 20px; /* 위아래 간격 조절 */
+}
+
+#modal-content {
+    font-size: 1.5em; /* 원하는 크기로 조절하세요 */
+    font-weight: bold; /* normal 또는 bold로 조절하세요 */
+    margin-bottom: 15px; /* 위아래 간격 조절 */
+}
+
+#modal-form label {
+    font-size: 1.5em; /* 원하는 크기로 조절하세요 */
+    font-weight: bold; /* normal 또는 bold로 조절하세요 */
+    margin-bottom: 10px; /* 위아래 간격 조절 */
+}
+
+#modal-form textarea {
+    font-size: 1.5em; /* 원하는 크기로 조절하세요 */
+    font-weight: bold; /* normal 또는 bold로 조절하세요 */
+    margin-bottom: 15px; /* 위아래 간격 조절 */
+}
+
+#modal-form button {
+    font-size: 18px; /* 원하는 크기로 조절하세요 */
+    font-weight: bold; /* normal 또는 bold로 조절하세요 */
+}
 
 		.overlay {
 			display: none;
@@ -157,7 +199,7 @@
 			width: 30px;
 			/* 이미지의 크기에 맞게 조정 */
 			height: 30px;
-			background-image: url('https://cdn-icons-png.flaticon.com/512/6611/6611465.png');
+			background-image: url('data:image/jpeg;base64,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');
 			/* 이미지 파일의 경로로 바꿔주세요 */
 			background-size: cover;
 			/* 이미지를 버튼 크기에 맞게 조정 */
@@ -166,9 +208,14 @@
 			padding: 0;
 			/* 내부 여백 제거 */
 		}
+		
 
 		.like-count {
 			margin-right: 10px;
+			font-size:1.3em;
+			font-weight: bold;
+			color:black;
+			
 		}
 		.interaction-container {
     display: flex;
@@ -179,6 +226,9 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+.like-button{
+	background-color:white;
 }
 
 	</style>
@@ -205,6 +255,7 @@
 			<form id="new-post-form" action="community.do" method="post" name="postSubmitform">
 				<textarea id="post-content" name="commContent" rows="4" required onclick="openModal()"></textarea>
 				<br>
+				<input type="file" id="file-input">
 				<button id="postSubmit" type="submit">게시</button>
 			</form>
 		</div>
@@ -213,7 +264,7 @@
 			<h2>글쓰기</h2>
 			<form id="modal-form">
 				<label for="modal-content">내용:</label>
-				<textarea id="modal-content" name="modal-content" rows="30" cols="200" required></textarea>
+				<textarea id="modal-content" name="modal-content" rows="20" cols="200" required></textarea>
 				<br>
 				<button type="button" onclick="closeModal()">닫기</button>
 				<button type="button" onclick="updateTextarea()">저장</button>
@@ -251,7 +302,7 @@
 	<div id="sidebar">
 
 		<!-- Logo -->
-		<h1 id="logo"><a href="#">YOU & I</a></h1>
+		<h1 id="logo"><a href="#" id="group-name"></a></h1>
 
 		<!-- Nav -->
 		<nav id="nav">
@@ -442,10 +493,6 @@
 			document.getElementById('post-content').value = modalContent;
 			closeModal();
 		}
-
-
-
-
 		function likePost(postIndex) {
 			var post = posts[postIndex];
 			post.likes = post.likes || 0;
@@ -461,10 +508,6 @@
 			var likeButton = postElement.querySelector('.like-button');
 			likeButton.disabled = true;
 		}
-
-
-
-
 var Listcomm_no = null;
 var finalresultCommNo = null;
 var p1 = null;
@@ -478,6 +521,9 @@ var p1 = null;
 				dataType: 'json',
 				success: function (res) {
 					// 기존 게시물 삭제
+					console.log("그룹이름잘들어옴 ? "+res[0].group_name)
+					$('#group-name').text(res[0].group_name);
+					
 					$('#posts-container').empty();
 
 					// 결과를 역순으로 반복
@@ -491,7 +537,7 @@ var p1 = null;
 							'<div id="post'+post.comm_no+'" class="post"></div>');
 						postElement.html(`
                     <div class="post-header">
-                        <div class="post-nickname">ID : ${post.id}</div>
+                        <div class="post-nickname">글작성자   :   ${post.id}</div>
                     </div>
                     <div class="post-content">${post.commContent}</div>
                     <div class="interaction-container">
@@ -505,10 +551,7 @@ var p1 = null;
                         </div>
                 `);
 						$('#posts-container').append(postElement);
-						
-						
 					});
-					
 				console.log(ListcommNo + "나가가전 값")
 				resolve(ListcommNo);
 				},
@@ -516,13 +559,7 @@ var p1 = null;
 					console.error('데이터를 가져오는 중 오류 발생:', error);
 				}
 			});
-			
-			
 			})
-			
-		
-		
-
 			p1.then(function(resolve){
 				console.log(resolve + "리졸브값 가져오기")
 				Listcomm_no = resolve;
@@ -652,7 +689,9 @@ $(document).ready(function () {
         dataType: 'json',
         success: function (res) {
             // 댓글 목록을 초기화
+            
             res.forEach(function(res){
+				
             $('#comment-list'+res.comm_no).empty();
 })
             // 새로 불러온 댓글로 목록을 업데이트
@@ -738,6 +777,23 @@ $(document).ready(function () {
         console.log(xhr)
     }
 });
+ //$(document).ready(function () {
+	
+        
+  //     $.ajax({
+    //        url: 'selectcommunity.do',  // 실제로 그룹 이름을 가져올 엔드포인트에 대한 URL을 업데이트하세요.
+    //        dataType: 'json',
+     //       success: function (res) {
+    //            // 자리 표시자에서 그룹 이름 업데이트
+   //             console.log("그룹이름잘들어옴 ? "+res.group_name)
+    //            $('#group-name').text(res.group_name);
+    //        },
+    //        error: function (xhr, status, error) {
+   //             console.error('그룹 이름을 가져오는 중 오류 발생:', error);
+    //            console.log(xhr);
+   //         }
+   //     });
+  //  });
 	</script>
 
 
