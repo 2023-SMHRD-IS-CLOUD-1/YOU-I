@@ -42,7 +42,14 @@ public class GroupImageTakeService implements Command {
 		List<File_DTO> resultData = new ArrayList<File_DTO>();
 		for(String a : LData) {
 			System.out.println(a + "============================foreach List");
-			resultData.add(f_dao.GroupImageTake(a));
+			File_DTO temp_dto = f_dao.GroupImageTake(a); 
+			if(temp_dto != null) {
+				resultData.add(temp_dto);				
+			} else {
+				resultData.add(null);								
+			}
+				
+			
 		}
 		
 		

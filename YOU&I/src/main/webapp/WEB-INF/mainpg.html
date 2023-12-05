@@ -309,7 +309,7 @@
 			var Groupno = new Array;
 			var StringNo = null;
 			$.ajax({
-				url: "http://localhost:8081/YOU_I/rankCt.do",
+				url: "rankCt.do",
 
 				data: sendObj,
 
@@ -368,16 +368,18 @@
 			var bucketUrl = "https://s3.ap-northeast-2.amazonaws.com/you-i/"
 			$.ajax({
 
-				url: "http://localhost:8081/YOU_I/GroupImageTake.do",
+				url: "GroupImageTake.do",
 				data: Groupnodata,
 				dataType: "json",
 				success: function (res) {
 					res.forEach(function (res) {
 						try {
+							if(res!=null){
 							console.log("https://s3.ap-northeast-2.amazonaws.com/you-i/resize_profile" + res.fileThumb)
 							var imagePath = "resize_profile" + res.fileThumb;
 							var finalUrl = bucketUrl + encodeURIComponent(imagePath);
 							$("#groupThum" + l).attr("src", finalUrl);
+							}
 
 							l++;
 						}
@@ -445,6 +447,14 @@
 				}
 			})
 		})
+	</script>
+	<script>
+		function flaticonHobby(resolveData){
+				return `<span id="flaticon${resolveData}" ><img src='assets/css/flaticon/${resolveData}.png' class="flaticon">`
+				
+				
+			}
+		
 	</script>
 </body>
 
