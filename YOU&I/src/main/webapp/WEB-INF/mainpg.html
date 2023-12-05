@@ -460,10 +460,11 @@
 
                dataType: "json",
                success: function (res) {
+				  
 					 $("#grBtns").append("<span id='mygrtx'>My Groups</span>")
 
                   res.forEach(function (item) {
-                 $("#grBtns").append(`<a class="grBtn">${item['groupName']}</a>`)
+                 $("#grBtns").append(`<a class="grBtn" href="Gocommunity.do">${item['groupName']}</a>`)
                });
              },
 
