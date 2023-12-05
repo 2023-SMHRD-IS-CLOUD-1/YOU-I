@@ -64,8 +64,11 @@
 	<div class="row no-gutters" style="height: 100px;"></div>
 
 	<div class="pl-md-5 ml-md-5 mb-5" id="whatcl">
-		<a id='ckb'>What are your hobbies?</a>
-		<a href="#pop1" class="btn" id="clkbtn">click</a>
+		<span><a id='ckb'>What are your hobbies?</a></span>
+		<span><a href="#pop1" class="btn" id="clkbtn">click</a></span>
+		
+		<div id = "grBtns">
+		</div>
 	</div>
 
 	<div class="popup" id="pop1">
@@ -447,6 +450,35 @@
 				}
 			})
 		})
+	</script>
+	<script>
+		  $(document).ready(function () {
+
+            $.ajax({
+
+               url: "MyGroup.do",
+
+               dataType: "json",
+               success: function (res) {
+					 $("#grBtns").append("<span id='mygrtx'>My Groups</span>")
+
+                  res.forEach(function (item) {
+                 $("#grBtns").append(`<a class="grBtn">${item['groupName']}</a>`)
+               });
+             },
+
+               error: function (e) {
+                  console.log(e);
+
+                  
+               }
+            })
+         })
+   
+      
+		
+	
+
 	</script>
 	
 </body>

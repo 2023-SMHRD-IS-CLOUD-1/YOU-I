@@ -24,7 +24,7 @@ public class MyGroupService implements Command {
 		PrintWriter out = response.getWriter();
 
 		HttpSession session = request.getSession();
-		String user_id = (String) session.getAttribute("Login");
+		String user_id = (String) session.getAttribute("id");
 
 		User_DTO u_dt = new User_DTO();
 		u_dt.setId(user_id);

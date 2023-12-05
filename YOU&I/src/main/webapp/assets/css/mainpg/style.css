@@ -46,6 +46,40 @@
 /*body>div:nth-child(6) {
   background-color: #ccc;
 }*/
+#grBtns > span{
+	position: absolute;
+	margin-top: -30px;
+	margin-right: 8px;
+	font-weight: 500;
+	text-decoration: underline solid #dc3545;
+}
+
+#grBtns{
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 250px;
+}
+
+.grBtn{
+	margin-left: 60px;
+	display: flex;
+  	justify-content: center; /* 가로 방향 가운데 정렬 */
+    align-items: center;
+	padding: 10px 10px;
+  	width: 200px; 
+  	height: 100px; 
+	background-color: #f8d7da;
+	border-radius: 20px;
+	line-height: normal;
+	font-weight: 500;
+
+	
+}
+
+.grBtn:hover{
+	cursor: pointer;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
 
 .btn:hover {
   background-color: #f8d7da;
