@@ -233,17 +233,7 @@
 
 	</script>
  <script>
-	 $.ajax({
-		 url : 'findKing.do',
-		 dataType:'json',
-		 success:function(res){
-			 console.log("방장찾기 통신성공")
-			 console.log(res)
-			 if(res.levelNo==21){
-				 $("#sideService").append("<li><a href='GogroupKing.do'>그룹일정</a></li>")
-			 }
-		 }
-	 })
+	
 	  $.ajax({
         url: "kingComm.do",
         dataType: 'json',
