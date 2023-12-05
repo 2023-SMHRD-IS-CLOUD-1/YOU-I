@@ -55,10 +55,23 @@
 
 #ckb {
   margin-left: 10%;
-  border-radius: 10px;
-  font-size: 30px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 33px;
+  font-family: "BMHANNAPro";
+  box-sizing: border-box; 
+  border-right-width: 0px; 
+  border-bottom: #000000 2px solid; 
+  border-left: rgb(255, 128, 0) 8px solid;
+  letter-spacing: 1px; 
+  line-height: 1.5; 
+  border-top-width: 0px; 
+  padding: 3px 5px 3px 5px;
+  
 
+}
+@font-face{
+	font-family: "BMHANNAPro";
+	src: url("../fonts/bamin/BMHANNAPro.ttf");
+	font-weight: normal;
 }
 
 table {
@@ -88,89 +101,108 @@ table td {
 	background-color: rgb(131, 131, 131);
 	border-radius: 15%;
 	color: whitesmoke;
+	font-size: 22px;
 }
 #flaticon2{
 	background-color: rgb(187, 255, 255);
 	border-radius: 15%;	
-	
+	font-size: 22px;
 }
 #flaticon3{
 	background-color: rgb(89, 89, 172);
 	border-radius: 15%;
-	color: whitesmoke;	
+	color: whitesmoke;
+	font-size: 22px;	
 }
 #flaticon4{
 	background-color: rgb(255, 255, 255);
 	border-radius: 15%;	
+	font-size: 22px;
 }
 #flaticon5{
 	background-color: rgb(255, 185, 151);
 	border-radius: 15%;	
 	color: whitesmoke;
+	font-size: 22px;
 }
 #flaticon6{
 	background-color: rgb(255, 157, 157);
 	border-radius: 15%;	
 	color: black;
+	font-size: 22px;
 }
 #flaticon7{
 	background-color: rgb(255, 83, 255);
 	border-radius: 15%;	
 	color: whitesmoke;
+	font-size: 22px;
 }
 #flaticon8{
 	background-color: rgb(255, 255, 255);
 	border-radius: 15%;	
+	font-size: 22px;
 }
 #flaticon9{
 	background-color: rgb(128, 128, 0);
 	border-radius: 15%;	
 	color: whitesmoke;
+	font-size: 22px;
 }
 #flaticon10{
 	background-color: rgb(111, 111, 255);
 	border-radius: 15%;	
 	color: whitesmoke;
+	font-size: 22px;
 }
 #flaticon11{
 	background-color: rgb(223, 191, 255);
 	border-radius: 15%;	
+	font-size: 22px;
 }
 #flaticon12{
 	background-color: rgb(179, 255, 179);
-	border-radius: 15%;	
+	border-radius: 15%;
+	font-size: 22px;	
 }
 #flaticon13{
 	background-color: rgb(179, 217, 255);
-	border-radius: 15%;	
+	border-radius: 15%;
+	font-size: 22px;	
 }
 #flaticon14{
 	background-color: rgb(225, 245, 255);
 	border-radius: 15%;	
+	font-size: 22px;
 }
 #flaticon15{
 	background-color: rgb(170, 255, 191);
 	border-radius: 15%;	
+	font-size: 22px;
 }
 #flaticon16{
 	background-color: rgb(255, 181, 181);
 	border-radius: 15%;	
+	font-size: 22px;
 }
 #flaticon17{
 	background-color: rgb(223, 255, 223);
-	border-radius: 15%;	
+	border-radius: 15%;
+	font-size: 22px;	
 }
 #flaticon18{
 	background-color: rgb(176, 193, 230);
 	border-radius: 15%;	
+	font-size: 22px;
 }
 #flaticon19{
 	background-color: rgb(205, 239, 177);
 	border-radius: 15%;	
+	font-size: 22px;
 }
 #flaticon20{
 	background-color: rgb(242, 176, 234);
 	border-radius: 15%;	
+	font-size: 22px;
 }
 
 .grouptd {
@@ -280,13 +312,14 @@ input[type="checkbox"] {
   
   width: 1500px;
   border-radius: 40px;
-  background-color: #e2e6ea;
+  background-color: #FDF4E3;
   margin-bottom: 150px;
   
   text-align: center;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	border: 3px solid #e9ecef
   
 }
 
@@ -346,13 +379,12 @@ section {
  display: flex;
 	padding-left: 20px;
 	align-items: center;
-	border: 1px solid #181818;
+	border: 4px solid rgb(255, 169, 82);
 	font-size: x-large;
 	font-weight: bold;
 	height: 200px;
 	border-radius: 30px;
-	background-color: aliceblue;
-	border-color: aliceblue;
+	background-color: #f1f1f1 ;
 	text-align: left;
 	min-width: 500px;
   
