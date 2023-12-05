@@ -309,7 +309,7 @@
 			var Groupno = new Array;
 			var StringNo = null;
 			$.ajax({
-				url: "http://localhost:8081/YOU_I/rankCt.do",
+				url: "rankCt.do",
 
 				data: sendObj,
 
@@ -329,7 +329,7 @@
 						console.log(Groupno);
 						tag = [`<div class='item color${j}'>` + `<div class='pt${i}'>` + `<table class='grouptable'>` + `<tr class='groupinfo${i}'>` + `<td rowspan=4>` + `<div id='groupimg${i}' class='groupimg'></div>`]
 
-						tag += "<tr><td class='grouptd'>" + res.hobbyName + "</td></tr>"
+						tag += "<tr><td class='grouptd'>" + flaticonHobby(res.hobbyNo) + res.hobbyName + "</td></tr>"
 						tag += "<tr><td class='grouptd'>" + res.groupName + "</td></tr>"
 						tag += "<tr><td class='grouptd'>" + res.groupInfo + "</td></tr>"
 
@@ -368,16 +368,18 @@
 			var bucketUrl = "https://s3.ap-northeast-2.amazonaws.com/you-i/"
 			$.ajax({
 
-				url: "http://localhost:8081/YOU_I/GroupImageTake.do",
+				url: "GroupImageTake.do",
 				data: Groupnodata,
 				dataType: "json",
 				success: function (res) {
 					res.forEach(function (res) {
 						try {
+							if(res!=null){
 							console.log("https://s3.ap-northeast-2.amazonaws.com/you-i/resize_profile" + res.fileThumb)
 							var imagePath = "resize_profile" + res.fileThumb;
 							var finalUrl = bucketUrl + encodeURIComponent(imagePath);
 							$("#groupThum" + l).attr("src", finalUrl);
+							}
 
 							l++;
 						}
@@ -446,6 +448,7 @@
 			})
 		})
 	</script>
+	
 </body>
 
 </html>

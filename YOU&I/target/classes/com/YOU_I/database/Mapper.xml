@@ -48,11 +48,11 @@
 	<select id="rank" resultMap="gr_rank">
 
 		SELECT GROUP_LIKES, GROUP_NAME,
-		HOBBY_NAME, GROUP_INFO, GROUP_NO
+		HOBBY_NAME, HOBBY_NO, GROUP_INFO, GROUP_NO
 		FROM (SELECT
 		A.GROUP_LIKES,
 		A.GROUP_NAME,
-		B.HOBBY_NAME, A.GROUP_INFO, A.GROUP_NO
+		B.HOBBY_NAME, A.GROUP_INFO, A.GROUP_NO, B.HOBBY_NO
 		FROM TBL_GROUP A
 		INNER JOIN TBL_HOBBY B
 		ON
@@ -67,6 +67,7 @@
 
 	<resultMap type="com.YOU_I.model.Group_DTO" id="gr_rank">
 		<result property="hobbyName" column="HOBBY_NAME" />
+		<result property="hobbyNo" column="HOBBY_NO" />
 		<result property="groupLikes" column="GROUP_LIKES" />
 		<result property="groupName" column="GROUP_NAME" />
 		<result property="groupInfo" column="GROUP_INFO" />
@@ -76,10 +77,10 @@
 	<select id="rankCt" parameterType="com.YOU_I.model.Group_DTO"
 		resultMap="gr_rankCt">
 		SELECT GROUP_LIKES, GROUP_NAME , HOBBY_NAME, GROUP_INFO,
-		GROUP_NO
+		GROUP_NO, HOBBY_NO
 		FROM
 		( SELECT A.GROUP_LIKES, A.GROUP_NAME, B.HOBBY_NAME,
-		A.GROUP_INFO , A.GROUP_NO
+		A.GROUP_INFO , A.GROUP_NO, B.HOBBY_NO
 		FROM
 		TBL_GROUP A INNER JOIN TBL_HOBBY B
 		ON
@@ -95,6 +96,7 @@
 		<result property="groupName" column="GROUP_NAME" />
 		<result property="groupInfo" column="GROUP_INFO" />
 		<result property="groupNo" column="GROUP_NO" />
+		<result property="hobbyNo" column="HOBBY_NO" />
 	</resultMap>
 
 
