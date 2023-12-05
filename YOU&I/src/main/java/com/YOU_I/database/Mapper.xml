@@ -181,7 +181,7 @@
 
 	<select id="selectAll"
 		resultType="com.YOU_I.model.community_DTO">
-		select comm_No, id , comm_content AS commContent
+		select comm_No, id , comm_content AS commContent, comm_likes AS likes
 		from
 		tbl_community
 		where group_no=2
@@ -314,7 +314,12 @@
 		where group_no = #{groupNo}
 		and id = #{id}
 	</select>
-
+	<update id="likes" parameterType="com.YOU_I.model.calendar_DTO">
+		UPDATE tbl_community
+		SET
+		comm_likes=#{likes}
+		where comm_no=#{comm_no}
+	</update>
 
 
 
