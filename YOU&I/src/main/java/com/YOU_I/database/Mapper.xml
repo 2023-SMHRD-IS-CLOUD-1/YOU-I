@@ -53,11 +53,13 @@
 		A.GROUP_LIKES,
 		A.GROUP_NAME,
 		B.HOBBY_NAME, A.GROUP_INFO, A.GROUP_NO, B.HOBBY_NO
-		FROM TBL_GROUP A
+		FROM
+		TBL_GROUP A
 		INNER JOIN TBL_HOBBY B
 		ON
 		A.HOBBY_NO = B.HOBBY_NO
-		ORDER BY GROUP_LIKES
+		ORDER BY
+		GROUP_LIKES
 		DESC)
 		WHERE ROWNUM &lt;=4
 
@@ -79,14 +81,17 @@
 		SELECT GROUP_LIKES, GROUP_NAME , HOBBY_NAME, GROUP_INFO,
 		GROUP_NO, HOBBY_NO
 		FROM
-		( SELECT A.GROUP_LIKES, A.GROUP_NAME, B.HOBBY_NAME,
+		( SELECT A.GROUP_LIKES, A.GROUP_NAME,
+		B.HOBBY_NAME,
 		A.GROUP_INFO , A.GROUP_NO, B.HOBBY_NO
 		FROM
-		TBL_GROUP A INNER JOIN TBL_HOBBY B
+		TBL_GROUP A
+		INNER JOIN TBL_HOBBY B
 		ON
 		A.HOBBY_NO = B.HOBBY_NO
 		ORDER BY
-		GROUP_LIKES DESC)
+		GROUP_LIKES
+		DESC)
 		WHERE HOBBY_NAME =
 		#{hobbyName} AND ROWNUM &lt;= 4
 	</select>
@@ -302,7 +307,13 @@
 		where id = #{id}
 		and group_no = #{groupNo}
 	</delete>
-	
+	<select id="findKing" parameterType="com.YOU_I.model.join_DTO"
+		resultType="com.YOU_I.model.join_DTO">
+		select id AS id, level_no AS levelNo, group_no AS groupNo
+		from tbl_joining
+		where group_no = #{groupNo}
+		and id = #{id}
+	</select>
 
 
 

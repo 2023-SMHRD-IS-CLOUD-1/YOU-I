@@ -233,60 +233,85 @@
 
 	</script>
  <script>
-	
-	  $.ajax({
-        url: "kingComm.do",
-        dataType: 'json',
-        success: function (res) {
-            console.log("통신성공")
-            console.log(res)
-            if (res.length == 0) {
-                $("#applicant").append("<h2>신청자가 없습니다</h>")
-            } else {
-                for (var i = 0; i < res.length; i++) {
-                    $("#applicant").append("<h2><a id='applicantLink" + i + "' href='#'>" + res[i].id + "</a></h2>");
-                    (function (index) {
-                        $("#applicantLink" + index).click(function () {
-                            $("#calendarModal").modal('show');
-                            $("#userId").html("<h2> 사용자 ID : " + res[index].id + "</h2>");
-                            $("#gender").html("<h2> 성별 : " + res[index].gender + "</h2>");
-                            $("#area").html("<h2> 활동 지역 : " + res[index].region + "</h2>");
-                            $("#userHobby").html("<h2> 취미 : " + res[index].hobby + "</h2>");
-                            $("#profileImg").html("<h2> 프로필사진 : " + res[index].profileImg + "</h2>");
-                            $("#agree").click(function(){
-								$.ajax({
-									url : 'acceptUser.do',
-									dataType:'json',
-									data:{
-										id:res[index].id,
-										groupNo:res[index].groupNo
-									},
-									success:function(){
-										console.log("통신성공")
-										 $("#calendarModal").modal('hide');
-										 $("#applicantLink" + index).remove();
-									}
-								})
-							})
-                        });
-                        $("#refuse").click(function(){
-							$.ajax({
-								url : 'refuseUser.do',
-								dataType: 'json',
-								data : {  id: res[index].id,
-                                        groupNo: res[index].groupNo},
-                                success:function(){
-									console.log("거절통신 성공")
-								}
-								
-							})
-						})
-                        
-                    })(i);
+	 $.ajax({
+    url: 'findKing.do',
+    dataType: 'json',
+    success: function (findKingData) {
+        console.log(findKingData);
+        console.log(findKingData.levelNo)
+        if(findKingData.levelNo==21){
+			$("#sideService").append("<li><a href='GogroupKing.do'>가입승인</a></li>")
+		}
+    },
+     error: function (xhr, status, error) {
+        console.error('Error occurred in findKing.do:', error);
+        console.log(xhr)
+    }
+});
+    $(document).ready(function () {
+		
+        $.ajax({
+            url: "kingComm.do",
+            dataType: 'json',
+            success: function (res) {
+                console.log("통신성공");
+                console.log(res);
+				
+                if (res.length == 0) {
+                    $("#applicant").append("<h2>신청자가 없습니다</h2>");
+                } else {
+					
+                    for (var i = 0; i < res.length; i++) {
+                        $("#applicant").append("<h2><a id='applicantLink" + i + "' href='#'>" + res[i].id + "</a></h2>");
+                        (function (index) {
+                            $("#applicantLink" + index).click(function () {
+                                $("#calendarModal").modal('show');
+                                $("#userId").html("<h2> 사용자 ID : " + res[index].id + "</h2>");
+                                $("#gender").html("<h2> 성별 : " + res[index].gender + "</h2>");
+                                $("#area").html("<h2> 활동 지역 : " + res[index].region + "</h2>");
+                                $("#userHobby").html("<h2> 취미 : " + res[index].hobby + "</h2>");
+                                $("#profileImg").html("<h2> 프로필사진 : " + res[index].profileImg + "</h2>");
+
+                                // agree 클릭 이벤트
+                                $("#agree").off().on("click", function () {
+                                    $.ajax({
+                                        url: 'acceptUser.do',
+                                        dataType: 'json',
+                                        data: {
+                                            id: res[index].id,
+                                            groupNo: res[index].groupNo
+                                        },
+                                        success: function () {
+                                            console.log("수락 통신 성공");
+                                            $("#calendarModal").modal('hide');
+                                            $("#applicantLink" + index).remove();
+                                        }
+                                    });
+                                });
+
+                                // refuse 클릭 이벤트
+                                $("#refuse").off().on("click", function () {
+                                    $.ajax({
+                                        url: 'refuseUser.do',
+                                        dataType: 'json',
+                                        data: {
+                                            id: res[index].id,
+                                            groupNo: res[index].groupNo
+                                        },
+                                        success: function () {
+                                            console.log("거절 통신 성공");
+                                            $("#calendarModal").modal('hide');
+                                            $("#applicantLink" + index).remove();
+                                        }
+                                    });
+                                });
+                            });
+                        })(i);
+                    }
                 }
             }
-        }
-    })
+        });
+    });
 </script>
 
 </body>

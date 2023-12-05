@@ -25,6 +25,7 @@ import com.YOU_I.controller.addGroupService;
 import com.YOU_I.controller.addScheduleService;
 import com.YOU_I.controller.commentService;
 import com.YOU_I.controller.communityService;
+import com.YOU_I.controller.findKingService;
 import com.YOU_I.controller.groupKingService;
 import com.YOU_I.controller.joinGroupService;
 import com.YOU_I.controller.kingCommService;
@@ -76,6 +77,7 @@ public class FrontController extends HttpServlet {
 		map.put("UserImageTake.do", new UserImageTakeService());
 		map.put("likes.do", new likesService());
 		map.put("refuseUser.do", new refuseUserService());
+		map.put("findKing.do", new findKingService());
 	}
 	
 		
