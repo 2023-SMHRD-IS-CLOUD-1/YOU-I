@@ -329,7 +329,7 @@
 						console.log(Groupno);
 						tag = [`<div class='item color${j}'>` + `<div class='pt${i}'>` + `<table class='grouptable'>` + `<tr class='groupinfo${i}'>` + `<td rowspan=4>` + `<div id='groupimg${i}' class='groupimg'></div>`]
 
-						tag += "<tr><td class='grouptd'>" + res.hobbyName + "</td></tr>"
+						tag += "<tr><td class='grouptd'>" + flaticonHobby(res.hobbyNo) + res.hobbyName + "</td></tr>"
 						tag += "<tr><td class='grouptd'>" + res.groupName + "</td></tr>"
 						tag += "<tr><td class='grouptd'>" + res.groupInfo + "</td></tr>"
 
