@@ -33,6 +33,19 @@ body {
 	line-height: 1;
 }
 
+#tables{
+	position: relative;
+	top:321px;
+	left: -801px;
+}
+
+#memb{
+	border: 1px solid #1b252a;
+	width: 450px;
+	height: 200px;
+}
+
+
 ol, ul {
 	list-style: none;
 }

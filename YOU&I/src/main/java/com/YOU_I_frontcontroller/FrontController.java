@@ -30,6 +30,7 @@ import com.YOU_I.controller.groupKingService;
 import com.YOU_I.controller.joinGroupService;
 import com.YOU_I.controller.kingCommService;
 import com.YOU_I.controller.likesService;
+import com.YOU_I.controller.memberInfoService;
 import com.YOU_I.controller.rankCtService;
 import com.YOU_I.controller.rankService;
 import com.YOU_I.controller.refuseUserService;
@@ -78,6 +79,7 @@ public class FrontController extends HttpServlet {
 		map.put("likes.do", new likesService());
 		map.put("refuseUser.do", new refuseUserService());
 		map.put("findKing.do", new findKingService());
+		map.put("memberInfo.do", new memberInfoService());
 	}
 	
 		

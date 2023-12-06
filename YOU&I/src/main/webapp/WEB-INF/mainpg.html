@@ -311,7 +311,7 @@
 		var k = 5;
 		var i = 5;
 		var l = 5;
-		$(document).on("click","#popupsub" ,popsub);
+		$(document).on("click", "#popupsub", popsub);
 		function popsub() {
 
 
@@ -361,9 +361,9 @@
 
 						//$(".container1").append("</td></tr></table></div></div>");
 						$("#groupimg" + i).append(`<img id=groupThum${i} style="style=object-fit: fill; width:155px;height:155px" src="assets/css/images/defaultimg.jpg">`);
-							$(`#tagA${i}`).attr("href", "GojoinGroup.do?groupNo=" + res.groupNo);
-						
-						
+						$(`#tagA${i}`).attr("href", "GojoinGroup.do?groupNo=" + res.groupNo);
+
+
 
 						r++
 						i++
@@ -466,30 +466,46 @@
 			})
 		})
 	</script>
+
 	<script>
+
 		$(document).ready(function () {
-
 			$.ajax({
-
 				url: "MyGroup.do",
-
 				dataType: "json",
 				success: function (res) {
+					$("#grBtns").append("<span id='mygrtx'>My Groups</span>");
 
-					$("#grBtns").append("<span id='mygrtx'>My Groups</span>")
-
-					res.forEach(function (item) {
-						$("#grBtns").append(`<a class="grBtn" href="Gocommunity.do">${item['groupName']}</a>`)
+					res.forEach(function (item, i) {
+						$("#grBtns").append(`<a class="grBtn" id="grBtn${i}">${item['groupName']}</a>`);
 					});
 				},
-
 				error: function (e) {
 					console.log(e);
-
-
 				}
-			})
-		})
+			});
+
+
+			$("#grBtns").on("click", ".grBtn", function () {
+				var sendObj = {data: $(this).text()}; // 클릭된 요소의 텍스트 가져오기
+
+				$.ajax({
+					url: "memberInfo.do",
+					data: sendObj,
+					dataType: "json",
+					success: function (res) {
+						console.log("요청성공!");
+						console.log(res);
+						localStorage.setItem('members', JSON.stringify(res));
+						window.location.href = "Gocommunity.do";
+					},
+					error: function (e) {
+						console.log(e);
+					}
+				});
+			});
+		});
+
 
 
 	</script>
