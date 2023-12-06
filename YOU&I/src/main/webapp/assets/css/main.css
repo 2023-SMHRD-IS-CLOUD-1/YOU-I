@@ -35,15 +35,20 @@ body {
 
 #tables{
 	position: relative;
-	top:321px;
-	left: -801px;
+	top:380px;
+	left: -941px;
 }
 
-#memb{
-	border: 1px solid #1b252a;
-	width: 450px;
-	height: 200px;
-}
+
+.memtb{
+	width: 400px;
+	height: 150px;
+	margin-top: 100px;
+	border-collapse: collapse;
+	background-color: rgb(255, 163, 70);
+	border-radius: 20px;
+	font-weight: bold;
+	}
 
 
 ol, ul {
