@@ -132,13 +132,13 @@
 
 		<!-- Nav -->
 		<nav id="nav">
-			<ul id = "sideService">
-				<li><a href="Gomodifyprofile.do">프로필설정</a></li>
-				<li><a href="Goclubmember.do">멤버</a></li>
-				<li><a href="Gocommunity.do">게시글</a></li>
-				<li><a href="Goclubfee.do">회비관리</a></li>
-				<li><a href="#">채팅방</a></li>
-				<li><a href="GogroupSchedules.do">그룹일정</a></li>
+			<ul id = "">
+			<li><a id = "modifyprofile"href="Gomodifyprofile.do">프로필설정</a></li>
+				<li><a id = "clubmember" href="Goclubmember.do">멤버</a></li>
+				<li><a id = "community" href="Gocommunity.do">게시글</a></li>
+				<li><a id = "clubfee" href="Goclubfee.do">회비관리</a></li>
+				<li><a id = "" href="#">채팅방</a></li>
+				<li><a id = "groupSchedules" href="GogroupSchedules.do">그룹일정</a></li>
 			</ul>
 		</nav>
 
@@ -285,21 +285,7 @@
 
 	</script>
  <script>
-	 $.ajax({
-    url: 'findKing.do',
-    dataType: 'json',
-    success: function (findKingData) {
-        console.log(findKingData);
-        console.log(findKingData.levelNo)
-        if(findKingData.levelNo==21){
-			$("#sideService").append("<li><a href='GogroupKing.do'>가입승인</a></li>")
-		}
-    },
-     error: function (xhr, status, error) {
-        console.error('Error occurred in findKing.do:', error);
-        console.log(xhr)
-    }
-});
+	 
 </script>
 
 </body>

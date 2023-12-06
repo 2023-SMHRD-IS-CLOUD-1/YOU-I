@@ -19,7 +19,9 @@ public class findKingService implements Command {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("utf-8");
 		join_DTO dto = new join_DTO();
-		int groupNo = (int) session.getAttribute("groupNo");
+		String group = request.getParameter("groupNo");
+		int groupNo = Integer.parseInt(group);
+		System.out.println("findkinggroupNo"+groupNo);
 		String id = (String) session.getAttribute("id");
 		dto.setGroupNo(groupNo);
 		dto.setId(id);

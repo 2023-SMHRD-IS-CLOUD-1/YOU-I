@@ -41,8 +41,9 @@
 		resultType="com.YOU_I.model.calendar_DTO">
 		SELECT SCHE_NO AS scheNo, SCHE_TITLE AS scheTitle,
 		SCHE_ST_DATE AS scheStDate, SCHE_END_DATE AS scheEndDate, SCHE_CONTENT
-		AS scheContent
+		AS scheContent, GROUP_NO AS groupNo
 		FROM TBL_SCHEDULE
+		WHERE GROUP_NO = #{groupNo}
 	</select>
 
 	<select id="rank" resultMap="gr_rank">
@@ -264,7 +265,7 @@
 		SELECT A.ID, A.GROUP_NO, B.GROUP_NAME
 		FROM TBL_JOINING A,
 		TBL_GROUP B
-		WHERE A.GROUP_NO=B.GROUP_NO AND A.ID=#{id}
+		WHERE A.GROUP_NO=B.GROUP_NO AND A.ID=#{id} AND A.APPROVE_JOIN = 1
 	</select>
 
 

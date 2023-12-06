@@ -10,9 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		selectable: true, // 드래그 가능하도록 설정
 		events: function(info, successCallback, failureCallback) {
 			$.ajax({
-				url: 'selectAllScheduleService.do',
-				type: 'POST',
-				contentType: 'application/json;charset=utf-8',
+				url: 'selectAllScheduleService.do?groupNo='+GroupNo,
 				dataType: 'json',
 				success: function(data) {
 					var events = [];
@@ -66,8 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						} else {
 							console.log(content, start_date, end_date, memo)
 							$.ajax({
-								url: 'addSchedule.do',
-								type: 'POST',
+								url: 'addSchedule.do?groupNo='+GroupNo,
 								dataType: 'json',
 								data: {
 									calendar_content: content,
@@ -170,8 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				} else {
 					console.log(content, start_date, end_date, memo)
 					$.ajax({
-						url: 'addSchedule.do',
-						type: 'POST',
+						url: 'addSchedule.do?groupNo='+GroupNo,
 						dataType: 'json',
 						data: {
 							calendar_content: content,
@@ -225,8 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				} else {
 					console.log(content, start_date, end_date, memo)
 					$.ajax({
-						url: 'addSchedule.do',
-						type: 'POST',
+						url: 'addSchedule.do?groupNo='+GroupNo,
 						dataType: 'json',
 						data: {
 							calendar_content: content,

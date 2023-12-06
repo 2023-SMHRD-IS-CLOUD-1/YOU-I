@@ -21,11 +21,12 @@ public class kingCommService implements Command {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		System.out.println("사용자 id"+id);
-		int groupNO = (int) session.getAttribute("groupNo");
-		System.out.println("그룹넘버"+groupNO);
+		String group= request.getParameter("groupNo");
+		int groupNo = Integer.parseInt(group);
+		System.out.println("그룹넘버"+groupNo);
 		join_DTO dto = new join_DTO();
 		dto.setId(id);
-		dto.setGroupNo(groupNO);
+		dto.setGroupNo(groupNo);
 		join_DAO dao = new join_DAO();
 		
 		Gson gson = new Gson();

@@ -481,7 +481,7 @@
                   res.forEach(function (item) {
 					console.log(item)
 					console.log(item['groupNo']);
-                 $("#grBtns").append(`<a class="grBtn" id="grBtn${item['groupNo']}" href="Goclubmain.do?groupNo=${item['groupNo']}">${item['groupName']}</a>`)
+                 $("#grBtns").append(`<a class="grBtn" href="GogroupSchedules.do?groupNo=${item.groupNo}">${item.groupName}</a>`)
                  
                });
              },

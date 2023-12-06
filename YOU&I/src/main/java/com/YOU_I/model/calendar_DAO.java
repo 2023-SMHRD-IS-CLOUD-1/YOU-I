@@ -16,9 +16,9 @@ public class calendar_DAO {
 		sqlSession.close();
 		return row;
 	}
-	public List<calendar_DTO> getSchedules() {
+	public List<calendar_DTO> getSchedules(calendar_DTO dto) {
 	    SqlSession sqlSession = factory.openSession(true);
-	    List<calendar_DTO> schedules = sqlSession.selectList("getSchedules");
+	    List<calendar_DTO> schedules = sqlSession.selectList("getSchedules",dto);
 	    sqlSession.close();
 	    return schedules;
 	}

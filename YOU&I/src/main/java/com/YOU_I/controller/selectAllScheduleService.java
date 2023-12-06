@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.YOU_I.model.calendar_DAO;
 import com.YOU_I.model.calendar_DTO;
@@ -18,8 +19,13 @@ public class selectAllScheduleService implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.addHeader("Access-Control-Allow-Origin","*");	
+		calendar_DTO dto = new calendar_DTO();
+		String group = request.getParameter("groupNo");
+		int groupNo = Integer.parseInt(group);
+		dto.setGroupNo((long) groupNo);
+		System.out.println("selectAllScheduleGroupNo"+groupNo);
 	calendar_DAO dao = new calendar_DAO();
-	List<calendar_DTO> allSchedules = dao.getSchedules();
+	List<calendar_DTO> allSchedules = dao.getSchedules(dto);
 	System.out.println(allSchedules);
 	Gson gson = new GsonBuilder().serializeNulls().create();
 	String allSchedulesJson = gson.toJson(allSchedules);

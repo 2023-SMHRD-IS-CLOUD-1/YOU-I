@@ -85,12 +85,12 @@
 		<!-- Nav -->
 		<nav id="nav">
 			<ul id="sideService">
-				<li><a href="Gomodifyprofile.do">프로필설정</a></li>
-				<li><a href="Goclubmember.do">멤버</a></li>
-				<li><a href="Gocommunity.do">게시글</a></li>
-				<li><a href="Goclubfee.do">회비관리</a></li>
-				<li><a href="#">채팅방</a></li>
-				<li><a href="GogroupSchedules.do">그룹일정</a></li>
+				<li><a id = "modifyprofile"href="Gomodifyprofile.do">프로필설정</a></li>
+				<li><a id = "clubmember" href="Goclubmember.do">멤버</a></li>
+				<li><a id = "community" href="Gocommunity.do">게시글</a></li>
+				<li><a id = "clubfee" href="Goclubfee.do">회비관리</a></li>
+				<li><a id = "" href="#">채팅방</a></li>
+				<li><a id = "groupSchedules" href="GogroupSchedules.do">그룹일정</a></li>
 			</ul>
 		</nav>
 
@@ -218,6 +218,7 @@
 	<script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/browser.min.js"></script>
     <script src="assets/js/util.js"></script>
+    <script src="assets/js/communiyjs/findking.js"></script>
 	<script>
 		let date = new Date();
 		let result_date = String(date).split(" ");
@@ -232,26 +233,12 @@
 		$(".year").html(year + " ");
 
 	</script>
+	<script src="assets/js/communiyjs/findking.js"></script>
  <script>
-	 $.ajax({
-    url: 'findKing.do',
-    dataType: 'json',
-    success: function (findKingData) {
-        console.log(findKingData);
-        console.log(findKingData.levelNo)
-        if(findKingData.levelNo==21){
-			$("#sideService").append("<li><a href='GogroupKing.do'>가입승인</a></li>")
-		}
-    },
-     error: function (xhr, status, error) {
-        console.error('Error occurred in findKing.do:', error);
-        console.log(xhr)
-    }
-});
     $(document).ready(function () {
 		
         $.ajax({
-            url: "kingComm.do",
+            url: "kingComm.do?groupNo="+GroupNo,
             dataType: 'json',
             success: function (res) {
                 console.log("통신성공");
