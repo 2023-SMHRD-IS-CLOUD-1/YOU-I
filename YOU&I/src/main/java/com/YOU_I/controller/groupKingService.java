@@ -29,7 +29,7 @@ public class groupKingService implements Command{
 		session.setAttribute("levelNo", 21);
 		
 		
-		return "redirect:/GogroupSchedules.do";
+		return "redirect:/Gomainpg.do";
 	}
 
 	

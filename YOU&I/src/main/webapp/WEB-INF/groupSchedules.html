@@ -31,7 +31,7 @@
 			padding-left: 15%;
 		}
 	</style>
-    
+
 
 </head>
 
@@ -41,87 +41,88 @@
 	<div id="content">
 		<!-- 배너 이미지 -->
 		<section>
-		<img src="images/bg01.jpg" alt="배너 이미지" style="width: 1300px; height: 150px;" />
+			<img src="images/bg01.jpg" alt="배너 이미지" style="width: 1300px; height: 150px;" />
 		</section>
 		<section>
-		<h1>그룹일정</h1>
-		<div id="Wrapper">
-        <div id='calendar' style="width:92.5%;height:70px;"></div>
-    </div>
+			<h1>그룹일정</h1>
+			<div id="Wrapper">
+				<div id='calendar' style="width:92.5%;height:70px;"></div>
+			</div>
 
-    <!-- modal 추가 -->
-    <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">일정을 입력하세요.</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="taskId" class="col-form-label">일정 내용</label>
-                        <input type="text" class="form-control" id="calendar_content" name="calendar_content">
-                        <label for="taskId" class="col-form-label">시작 날짜</label>
-                        <input type="date" class="form-control" id="calendar_start_date" name="calendar_start_date">
-                        <label for="taskId" class="col-form-label">종료 날짜</label>
-                        <input type="date" class="form-control" id="calendar_end_date" name="calendar_end_date">
-                        <label for="taskId" class="col-form-label">일정 메모</label>
-                        <textarea name="calendar_memo" id="calendar_memo" cols="60" rows="7"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" id="addCalendar">추가</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        id="sprintSettingModalClose">취소</button>
-                </div>
-            </div>
-        </div>
-    </div>
+			<!-- modal 추가 -->
+			<div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">일정을 입력하세요.</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<label for="taskId" class="col-form-label">일정 내용</label>
+								<input type="text" class="form-control" id="calendar_content" name="calendar_content">
+								<label for="taskId" class="col-form-label">시작 날짜</label>
+								<input type="date" class="form-control" id="calendar_start_date"
+									name="calendar_start_date">
+								<label for="taskId" class="col-form-label">종료 날짜</label>
+								<input type="date" class="form-control" id="calendar_end_date" name="calendar_end_date">
+								<label for="taskId" class="col-form-label">일정 메모</label>
+								<textarea name="calendar_memo" id="calendar_memo" cols="60" rows="7"></textarea>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-warning" id="addCalendar">추가</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal"
+								id="sprintSettingModalClose">취소</button>
+						</div>
+					</div>
+				</div>
+			</div>
 
-    <div class="modal fade" id="memoModal" tabindex="-1" role="dialog" aria-labelledby="memoModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="memoModalLabel">일정 메모</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p id="memoModalContent"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                </div>
-            </div>
-        </div>
-    </div>
+			<div class="modal fade" id="memoModal" tabindex="-1" role="dialog" aria-labelledby="memoModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="memoModalLabel">일정 메모</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p id="memoModalContent"></p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</section>
-		
-		<section>
-				<h2 style="align-items: center;">장소 찾기</h2>
-					<div class="map_wrap">
-    <div id="map" style="width:92.5%;height:600px;position:relative;overflow:hidden;"></div>
 
-    <div id="menu_wrap" class="bg_white">
-        <div class="option">
-            <div>
-                    <form onsubmit="searchPlaces(); return false;">
-					    <input type="text" value="광주 영화관" id="keyword" size="15"> 
-					    <button type="submit">검색</button>
-					</form>
-					                
-            </div>
-        </div>
-        <hr>
-        <ul id="placesList"></ul>
-        <div id="pagination"></div>
-    </div>
-</div>
+		<section>
+			<h2 style="align-items: center;">장소 찾기</h2>
+			<div class="map_wrap">
+				<div id="map" style="width:92.5%;height:600px;position:relative;overflow:hidden;"></div>
+
+				<div id="menu_wrap" class="bg_white">
+					<div class="option">
+						<div>
+							<form onsubmit="searchPlaces(); return false;">
+								<input type="text" value="광주 영화관" id="keyword" size="15">
+								<button type="submit">검색</button>
+							</form>
+
+						</div>
+					</div>
+					<hr>
+					<ul id="placesList"></ul>
+					<div id="pagination"></div>
+				</div>
+			</div>
 		</section>
 	</div>
 	<!-- Sidebar -->
@@ -132,13 +133,13 @@
 
 		<!-- Nav -->
 		<nav id="nav">
-			<ul id = "sideService">
-			<li><a id = "modifyprofile"href="Gomodifyprofile.do">프로필설정</a></li>
-				<li><a id = "clubmember" href="Goclubmember.do">멤버</a></li>
-				<li><a id = "community" href="Gocommunity.do">게시글</a></li>
-				<li><a id = "clubfee" href="Goclubfee.do">회비관리</a></li>
-				<li><a id = "" href="#">채팅방</a></li>
-				<li><a id = "groupSchedules" href="GogroupSchedules.do">그룹일정</a></li>
+			<ul id="sideService">
+				<li><a id="modifyprofile" href="Gomodifyprofile.do">프로필설정</a></li>
+				<li><a id="clubmember" href="Goclubmember.do">멤버</a></li>
+				<li><a id="community" href="Gocommunity.do">게시글</a></li>
+				<li><a id="clubfee" href="Goclubfee.do">회비관리</a></li>
+				<li><a id="" href="#">채팅방</a></li>
+				<li><a id="groupSchedules" href="GogroupSchedules.do">그룹일정</a></li>
 			</ul>
 		</nav>
 
@@ -252,22 +253,22 @@
 				</table>
 			</div>
 		</section>
-	
+
 		<!-- Copyright -->
 		<ul id="copyright">
 			<li>&copy; Untitled.</li>
 			<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 		</ul>
-	
+
 	</div>
-	
+
 
 	<!-- Scripts -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=64e8fab34c9c428ba0f21c845ebc6e3f&libraries=services"></script>
-    <script src="assets/js/calendar.js"></script>
-    <script src="assets/js/map.js"></script>
-    <script src="assets/js/communiyjs/findking.js"
-	<script>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=64e8fab34c9c428ba0f21c845ebc6e3f&libraries=services"></script>
+	<script src="assets/js/calendar.js"></script>
+	<script src="assets/js/map.js"></script>
+	<script src="assets/js/communiyjs/findking.js" <script>
 		let date = new Date();
 		let result_date = String(date).split(" ");
 		let day = result_date[2];
@@ -279,15 +280,33 @@
 		$(".month").html(day + " ");
 		$(".day").html(month + " ");
 		$(".year").html(year + " ");
-		
-		$("move").on("click",function(){
-			
+
+		$("move").on("click", function () {
+
 		})
 
 	</script>
- <script>
-	 
-</script>
+	<script>
+		$("#clubmember").on("click", function () {
+			console.log(GroupNo);
+			var sendObj = {groupNo: GroupNo};
+			$.ajax({
+				url: "memberInfo.do",
+				type: 'GET',
+				data: sendObj,
+				dataType: "json",
+				success: function (res) {
+					console.log("요청성공!");
+					console.log(res);
+					localStorage.setItem('members', JSON.stringify(res));
+				},
+				error: function (e) {
+					console.log(e);
+				}
+			});
+		});
+
+	</script>
 
 </body>
 
