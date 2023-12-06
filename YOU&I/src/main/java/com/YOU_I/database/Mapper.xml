@@ -200,7 +200,7 @@
 		FROM tbl_community
 		INNER JOIN tbl_comment ON
 		tbl_community.comm_no = tbl_comment.comm_no
-		order by comm_no
+		order by comment_no
 	</select>
 
 	<resultMap type="com.YOU_I.model.File_DTO"
