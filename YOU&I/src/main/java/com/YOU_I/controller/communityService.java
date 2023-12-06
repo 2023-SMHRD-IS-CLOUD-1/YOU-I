@@ -17,12 +17,14 @@ public class communityService implements Command {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String result = (String)session.getAttribute("id");
-		//int groupNo = (int) session.getAttribute("groupNo");
+		String group = request.getParameter("groupNo");
+		int groupNo = Integer.parseInt(group);
 		 request.setCharacterEncoding("utf-8");
 		 System.out.println("oo");
 		String commContent = request.getParameter("commContent");
 		community_DTO dto = new community_DTO();
 		dto.setId(result);
+		dto.setGroupNo(groupNo);
 		System.out.println("아이디확인"+result);
 		dto.setCommContent(commContent);
 		community_DAO dao = new community_DAO();
