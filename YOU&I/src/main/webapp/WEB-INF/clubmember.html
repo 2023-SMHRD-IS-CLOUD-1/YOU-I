@@ -23,7 +23,9 @@
 	<div id="content">
 		<!-- 배너 이미지 -->
 		<img src="images/bg01.jpg" alt="배너 이미지" style="width: 1300px; height: 150px;" />
-		멤버
+	</div>
+	
+	<div id = "tables">
 	</div>
 	
 	<!-- Sidebar -->
@@ -208,6 +210,32 @@
         console.log(xhr)
     }
 });
+</script>
+<script>
+		let members = JSON.parse(localStorage.getItem('members'));
+		console.log(members);
+	
+	
+
+		members.forEach(function(member) {
+		    var newTable = $('<table></table>'); 
+		
+		    newTable.append(
+		        `<tr>
+		            <td rowspan="3">사진</td>
+		            <td>${member['nick']}</td>
+		        </tr>
+		        <tr>
+		            <td>${member['phone']}</td>
+		        </tr>
+		        <tr>
+		            <td>${member['userRole']}</td>
+		        </tr>`
+		    );
+		
+		    // 새로 생성된 테이블을 #tables 요소 안에 추가
+		    $("#tables").append($('<div></div>').append(newTable));
+	})
 </script>
 
 </body>

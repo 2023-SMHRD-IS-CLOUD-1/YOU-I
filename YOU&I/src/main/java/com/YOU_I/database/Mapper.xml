@@ -181,7 +181,8 @@
 
 	<select id="selectAll"
 		resultType="com.YOU_I.model.community_DTO">
-		select comm_No, id , comm_content AS commContent, comm_likes AS likes
+		select comm_No, id , comm_content AS commContent,
+		comm_likes AS likes
 		from
 		tbl_community
 		where group_no=2
@@ -320,6 +321,15 @@
 		comm_likes=#{likes}
 		where comm_no=#{comm_no}
 	</update>
+
+	<select id="memberInfo"
+		parameterType="com.YOU_I.model.Group_DTO" resultMap="userdto">
+		SELECT nick, phone, user_role
+		FROM TBL_JOINING A
+		INNER JOIN TBL_GROUP B ON A.GROUP_NO = B.GROUP_NO
+		INNER JOIN tbl_user C ON A.id = C.id
+		WHERE B.group_name = #{groupName}
+	</select>
 
 
 

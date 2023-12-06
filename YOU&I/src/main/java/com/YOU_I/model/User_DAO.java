@@ -1,5 +1,7 @@
 package com.YOU_I.model;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -62,6 +64,18 @@ public class User_DAO {
 		return res;
 		
 	}
+	
+	public List<User_DTO> member(Group_DTO dto) {
+		
+		
+		SqlSession sqlSession = factory.openSession();
+		
+		List<User_DTO> result = sqlSession.selectList("memberInfo", dto);
+		sqlSession.close();
+		
+		return result;
+	}
+	
 	
 }
 
