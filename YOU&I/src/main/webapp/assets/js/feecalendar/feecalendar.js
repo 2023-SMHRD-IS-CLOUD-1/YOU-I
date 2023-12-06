@@ -53,7 +53,7 @@ function input2() {
 }
 
 function input3() {
-    $.getJSON('http://127.0.0.1:8081/new/result.json', function(response_json) {
+    $.getJSON('result.json', function(response_json) {
         let year = response_json['images'][0]['receipt']['result']['paymentInfo']['date']['formatted']['year'];
         let month = response_json['images'][0]['receipt']['result']['paymentInfo']['date']['formatted']['month'];
         let day = response_json['images'][0]['receipt']['result']['paymentInfo']['date']['formatted']['day'];
