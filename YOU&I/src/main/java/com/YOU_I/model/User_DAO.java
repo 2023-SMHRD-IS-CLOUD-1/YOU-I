@@ -48,8 +48,12 @@ public class User_DAO {
 		
 		result = sqlSession.selectOne("userMypg", dto);
 		String temp = result.getProfileImg();
-		String resultTemp = temp.substring(8);
-		result.setProfileImg(resultTemp);
+		try {
+			String resultTemp = temp.substring(8);
+			result.setProfileImg(resultTemp);			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		sqlSession.close();
 		
 		return result;
