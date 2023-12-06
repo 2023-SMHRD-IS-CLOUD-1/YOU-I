@@ -23,7 +23,7 @@ public class kingCommService implements Command {
 		System.out.println("사용자 id"+id);
 		String group= request.getParameter("groupNo");
 		int groupNo = Integer.parseInt(group);
-		System.out.println("그룹넘버"+groupNo);
+		System.out.println("가입승인그룹넘버"+groupNo);
 		join_DTO dto = new join_DTO();
 		dto.setId(id);
 		dto.setGroupNo(groupNo);

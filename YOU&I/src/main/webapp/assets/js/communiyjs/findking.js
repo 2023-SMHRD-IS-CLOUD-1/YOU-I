@@ -10,6 +10,7 @@ $("#clubmember").attr("href", "Goclubmember.do?groupNo=" + GroupNo);
 $("#community").attr("href", "Gocommunity.do?groupNo=" + GroupNo);
 $("#clubfee").attr("href", "Goclubfee.do?groupNo=" + GroupNo);
 $("#groupSchedules").attr("href", "GogroupSchedules.do?groupNo=" + GroupNo);
+$("#groupKing").attr("href", "GogroupKing.do?groupNo=" + GroupNo);
 
 $.ajax({
     url: 'findKing.do?groupNo='+GroupNo,
@@ -18,7 +19,7 @@ $.ajax({
         console.log(findKingData);
         console.log(findKingData.levelNo)
         if(findKingData.levelNo==21){
-			$("#sideService").append("<li><a href='GogroupKing.do?groupNo='"+GroupNo+">가입승인</a></li>")
+			$("#sideService").append(`<li><a id='groupKing' href='GogroupKing.do?groupNo=${GroupNo}'>가입승인</a></li>`)
 		}
     },
      error: function (xhr, status, error) {
