@@ -200,7 +200,7 @@
 		FROM tbl_community
 		INNER JOIN tbl_comment ON
 		tbl_community.comm_no = tbl_comment.comm_no
-		order by comm_no
+		order by comment_no
 	</select>
 
 	<resultMap type="com.YOU_I.model.File_DTO"
@@ -328,7 +328,7 @@
 		FROM TBL_JOINING A
 		INNER JOIN TBL_GROUP B ON A.GROUP_NO = B.GROUP_NO
 		INNER JOIN tbl_user C ON A.id = C.id
-		WHERE B.group_name = #{groupName}
+		WHERE B.group_no = #{groupNo}
 	</select>
 
 

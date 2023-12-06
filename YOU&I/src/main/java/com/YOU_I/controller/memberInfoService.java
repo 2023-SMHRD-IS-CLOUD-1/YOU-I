@@ -20,28 +20,28 @@ public class memberInfoService implements Command {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		
+
 		request.setCharacterEncoding("utf-8");
 
-		String data = request.getParameter("data");
-		System.out.println("그룹이름 들어왔냐고>>>>>>>>>>>>>>>>>>>"+data);
-		
+		String groupNo = request.getParameter("groupNo");
+		int groupNo1 = Integer.parseInt(groupNo);
+		System.out.println("그룹이름 들어왔냐고>>>>>>>>>>>>>>>>>>>" + groupNo);
+
 		Group_DTO dto = new Group_DTO();
-		dto.setGroupName(data);
-		
+		dto.setGroupNo(groupNo1);
+
 		System.out.println("된거야만거야" + dto);
-		
+
 		User_DAO dao = new User_DAO();
-		List<User_DTO> res= dao.member(dto);
-		
+		List<User_DTO> res = dao.member(dto);
+
 		System.out.println("결과값 맞냐고>>>>>>>>>>>>>>>" + res);
-		
-		
+
 		if (res.isEmpty()) {
 			out.print("false");
 		} else {
 			Gson gson = new Gson();
-			String result= gson.toJson(res);
+			String result = gson.toJson(res);
 			out.print(result);
 		}
 		return null;
