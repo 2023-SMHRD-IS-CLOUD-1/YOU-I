@@ -469,21 +469,30 @@
 
 	<script>
 
-		$(document).ready(function () {
-			$.ajax({
-				url: "MyGroup.do",
-				dataType: "json",
-				success: function (res) {
-					$("#grBtns").append("<span id='mygrtx'>My Groups</span>");
+		 $(document).ready(function () {
 
-					res.forEach(function (item, i) {
-						$("#grBtns").append(`<a class="grBtn" id="grBtn${i}">${item['groupName']}</a>`);
-					});
-				},
-				error: function (e) {
-					console.log(e);
-				}
-			});
+            $.ajax({
+
+               url: "MyGroup.do",
+
+               dataType: "json",
+               success: function (res) {
+					 $("#grBtns").append("<span id='mygrtx'>My Groups</span>")
+                  res.forEach(function (item) {
+					console.log(item)
+					console.log(item['groupNo']);
+                 $("#grBtns").append(`<a class="grBtn" id="grBtn${item['groupNo']}" href="Goclubmain.do?groupNo=${item['groupNo']}">${item['groupName']}</a>`)
+                 
+               });
+             },
+
+               error: function (e) {
+                  console.log(e);
+
+                  
+               }
+            })
+         
 
 
 			$("#grBtns").on("click", ".grBtn", function () {
