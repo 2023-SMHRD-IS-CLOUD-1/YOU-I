@@ -340,6 +340,12 @@
 	
 	</select>
 
+<select id="getGroupName" parameterType="com.YOU_I.model.Group_DTO" resultType="com.YOU_I.model.Group_DTO">
+	SELECT GROUP_NAME AS groupName
+	FROM TBL_GROUP
+	WHERE GROUP_NO=#{groupNo}
+	</select>
+
 
 
 

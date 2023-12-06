@@ -27,6 +27,7 @@ import com.YOU_I.controller.addScheduleService;
 import com.YOU_I.controller.commentService;
 import com.YOU_I.controller.communityService;
 import com.YOU_I.controller.findKingService;
+import com.YOU_I.controller.getGroupNameService;
 import com.YOU_I.controller.groupKingService;
 import com.YOU_I.controller.joinGroupService;
 import com.YOU_I.controller.kingCommService;
@@ -82,6 +83,7 @@ public class FrontController extends HttpServlet {
 		map.put("findKing.do", new findKingService());
 		map.put("memberInfo.do", new memberInfoService());
 		map.put("SelectAllComunity.do", new SelectAllComunityService());
+		map.put("getGroupName.do", new getGroupNameService());
 	}
 	
 		
