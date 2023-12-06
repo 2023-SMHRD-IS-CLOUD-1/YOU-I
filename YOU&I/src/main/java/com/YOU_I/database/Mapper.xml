@@ -130,7 +130,7 @@
 		</selectKey>
 	</insert>
 	<insert id="commContent"
-		parameterType="com.YOU_I.model.community_DTO">
+		parameterType="com.YOU_I.model.community_DTO" useGeneratedKeys="true" keyProperty="comm_no">
 		insert into tbl_community (group_no,comm_title,comm_content,id)
 		values(2,'title',#{commContent},#{id})
 		<selectKey keyProperty="comm_no" resultType="int"
