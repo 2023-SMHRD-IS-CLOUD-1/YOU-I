@@ -189,8 +189,6 @@
 	<script>
 		     $("#clubmember").on("click", function () {
 				 
-			var groupNo = $(this).attr('href').split('=')[1];
-			console.log(groupNo);
 			var sendObj = {groupNo : groupNo};
             $.ajax({
                url: "memberInfo.do",
