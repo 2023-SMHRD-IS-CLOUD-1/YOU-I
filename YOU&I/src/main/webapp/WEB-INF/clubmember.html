@@ -171,15 +171,10 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/communiyjs/takeGroupNo.js"></script>
+    <script src="assets/js/communiyjs/findking.js"></script>
 	<script>
-		var TempGroup = window.location
-		const searchParams = new URL(TempGroup).searchParams;
-		const GroupNo = searchParams.get('groupNo')
-		console.log(GroupNo);
-		$("#modifyprofile").attr("href","Gomodifyprofile.do?groupNo="+GroupNo);
-		$("#clubmember").attr("href","Goclubmember.do?groupNo="+GroupNo);
-		$("#community").attr("href","Gocommunity.do?groupNo="+GroupNo);
-		$("#clubfee").attr("href","Goclubfee.do?groupNo="+GroupNo);
+		
 		
 		let date = new Date();
 		let result_date = String(date).split(" ");
@@ -194,23 +189,7 @@
 		$(".year").html(year + " ");
 
 	</script>
- <script>
-	$.ajax({
-    url: 'findKing.do',
-    dataType: 'json',
-    success: function (findKingData) {
-        console.log(findKingData);
-        console.log(findKingData.levelNo)
-        if(findKingData.levelNo==21){
-			$("#sideService").append("<li><a href='GogroupKing.do'>가입승인</a></li>")
-		}
-    },
-     error: function (xhr, status, error) {
-        console.error('Error occurred in findKing.do:', error);
-        console.log(xhr)
-    }
-});
-</script>
+
 <script>
 		let members = JSON.parse(localStorage.getItem('members'));
 		console.log(members);
