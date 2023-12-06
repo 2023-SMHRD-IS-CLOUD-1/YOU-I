@@ -681,7 +681,21 @@ $(document).ready(function () {
     });
 }
 })
-
+$(document).ready(function () {
+		
+        $.ajax({
+            url: 'getGroupName.do?groupNo='+GroupNo,  
+            dataType: 'json',
+            success: function (data) {
+              
+            //    $('#group-name').text(data.groupName);
+            },
+            error: function (xhr, status, error) {
+                console.error('그룹 이름을 가져오는 중 오류 발생:', error);
+                console.log(xhr);
+            }
+        });
+    });
 	</script>
 
 

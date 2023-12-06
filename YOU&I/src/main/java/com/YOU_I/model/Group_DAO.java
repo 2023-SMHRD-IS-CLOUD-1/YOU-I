@@ -47,5 +47,11 @@ public class Group_DAO {
 		sqlSession.close();
 		return myGroup;
 	}
+	public Group_DTO getGroupName(Group_DTO dto) {
+		SqlSession sqlSession = factory.openSession();
+		Group_DTO result = sqlSession.selectOne("getGroupName",dto);
+		sqlSession.close();
+		return result;
+	}
 
 }
