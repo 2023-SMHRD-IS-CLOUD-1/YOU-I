@@ -20,16 +20,18 @@ public class community_DAO {
 	public List<community_DTO> selectAll(community_DTO dto) {
 
 		SqlSession sqlSession = factory.openSession(true);
-		List<community_DTO> resultList = sqlSession.selectList("selectAll",dto);
+		List<community_DTO> resultList = sqlSession.selectList("selectAll", dto);
 		sqlSession.close();
 		return resultList;
 	}
+
 	public int comment(community_DTO dto) {
 		SqlSession sqlSession = factory.openSession(true);
 		int row = sqlSession.insert("comment", dto);
 		sqlSession.close();
 		return row;
 	}
+
 	public List<community_DTO> selectComment() {
 
 		SqlSession sqlSession = factory.openSession(true);
@@ -37,13 +39,23 @@ public class community_DAO {
 		sqlSession.close();
 		return selectComment;
 	}
-	
+
 	public int likes(community_DTO dto) {
 		SqlSession sqlSession = factory.openSession(true);
-		int row  = sqlSession.update("likes", dto);
+		int row = sqlSession.update("likes", dto);
 		sqlSession.close();
 		return row;
 	}
-	
+
+	public int GetlastCommNo() {
+
+		SqlSession sqlSession = factory.openSession();
+		community_DTO c_dto = sqlSession.selectOne("GetlastCommNo");
+		int result = c_dto.getComm_no();
+		System.out.println(result);
+		sqlSession.close();
+
+		return result;
+	}
 
 }

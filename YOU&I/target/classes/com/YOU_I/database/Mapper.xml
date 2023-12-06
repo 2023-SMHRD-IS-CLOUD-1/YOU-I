@@ -111,11 +111,10 @@
 		INSERT INTO
 		TBL_FILE(COMM_NO, FILE_NAME, FILE_ORI_NAME, FILE_THUMB,
 		FILE_S3_PATH,
-		FILE_SIZE, EXT, UPLOADED_AT)
+		FILE_SIZE, EXT)
 		VALUES(#{commNo} , #{fileName},
 		#{fileOriName}, #{fileThumb}, #{fileS3Path},
-		#{fileSize}, #{ext},
-		#{uploadedAt})
+		#{fileSize}, #{ext})
 
 	</insert>
 
@@ -330,6 +329,15 @@
 		INNER JOIN TBL_GROUP B ON A.GROUP_NO = B.GROUP_NO
 		INNER JOIN tbl_user C ON A.id = C.id
 		WHERE B.group_no = #{groupNo}
+	</select>
+	
+	<select id="GetlastCommNo" resultType="com.YOU_I.model.community_DTO">
+	SELECT COMM_NO
+	FROM (SELECT COMM_NO
+	FROM TBL_COMMUNITY
+	ORDER BY COMM_NO DESC)
+	WHERE ROWNUM &lt;= 1
+	
 	</select>
 
 

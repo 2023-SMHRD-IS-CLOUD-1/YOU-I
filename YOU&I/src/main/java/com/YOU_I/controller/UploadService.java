@@ -25,7 +25,22 @@ public class UploadService implements Command {
 		String fileOriRoot = request.getParameter("fileOriName");
 		String fileDate = request.getParameter("fileDate");
 		String fileS3Root = request.getParameter("fileS3root");
-				
+		System.out.println(fileRoot);
+		System.out.println(fileOriRoot);
+		System.out.println(fileDate);
+		System.out.println(fileS3Root);		
+		
+		int commNo = 14;
+		try {
+			String tempcommNo = request.getParameter("commNo");
+			if(!tempcommNo.isEmpty()) {
+			System.out.println(tempcommNo + "commNo 값 받아옴");
+			commNo = Integer.parseInt(tempcommNo);
+			commNo += 1;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}	
 		
 		File_DTO f_dto = new File_DTO();
 		
@@ -54,7 +69,7 @@ public class UploadService implements Command {
 			// TODO: handle exception
 		}
 		
-		f_dto.setCommNo(14);
+		f_dto.setCommNo(commNo);
 		f_dto.setFileName(fileRoot);
 		f_dto.setFileOriName(fileOriRoot);
 		f_dto.setFileThumb(ThumFileRoot);

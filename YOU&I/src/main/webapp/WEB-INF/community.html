@@ -264,9 +264,15 @@ input[type="file"]::file-selector-button:active {
 			<form id="new-post-form" action="community.do" method="POST" name="postSubmitform">
 				<textarea id="post-content" name="commContent" rows="4" required onclick="openModal()"></textarea>
 				<br>
-				<input type="file" id="file-input">
-				<button id="postSubmit" type="submit">게시</button>
+				<input type="file" id="file-input" name="filename" accept="image/*">
+				<button id="postSubmit" type="button" onclick="postonbtn()">게시</button>
 			</form>
+			<div name="fileUpload">
+				<input type="hidden" id="fileroot" name="filename" value="fail1">
+				<input type="hidden" id="fileOriroot" name="fileOriName" value="fail12">
+				<input type="hidden" id="fileDate" name="fileDate" value="fail13">
+				<input type="hidden" id="fileS3root" name="fileS3root" value="fileS3User">
+			</div>
 		</div>
 		<div class="overlay" id="overlay"></div>
 		<div class="modal" id="modal">
@@ -397,6 +403,8 @@ input[type="file"]::file-selector-button:active {
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
     <script src="assets/js/communiyjs/findking.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.809.0.min.js"></script>
+	<script src="assets/js/awsjs/CommimageUpload.js"></script>
 <script>
     $("#postSubmit").on("click",function(){
 		  $('#new-post-form').attr('action', 'community.do?groupNo='+GroupNo);
@@ -406,17 +414,21 @@ input[type="file"]::file-selector-button:active {
 
 	<script>
 		
-		let date = new Date();
-		let result_date = String(date).split(" ");
-		let day = result_date[2];
-		let month = result_date[1];
-		let year = result_date[3];
+		date = new Date();
+		result_date = String(date).split(" ");
+		day = result_date[2];
+		month = result_date[1];
+		year = result_date[3];
 
 		console.log(day);
 
 		$(".month").html(day + " ");
 		$(".day").html(month + " ");
 		$(".year").html(year + " ");
+		
+		document.getElementById("fileS3root").value = GroupNo;
+		console.log(document.getElementById("fileS3root").value + "S3 루트 확인용")
+		
 
 		function openModal() {
 			document.getElementById('overlay').style.display = 'block';
@@ -486,6 +498,19 @@ var p1 = null;
 					console.error('데이터를 가져오는 중 오류 발생:', error);
 				}
 			});
+			$.ajax({
+					
+					url:"SelectAllComunity.do",
+					dataType:"json",
+					success : function(res){
+						console.log(res + "최근 글 번호 가져오기 @@@@@@@")
+						lastcommNo = res;
+					},
+					error : function(e){
+						console.log(e)
+					}
+					
+				})
 			})
 			p1.then(function(resolve){
 				console.log(resolve + "리졸브값 가져오기")
@@ -517,6 +542,69 @@ function btnclick(postno){
 			
 		})
 	}
+	
+}
+function postonbtn(){
+	
+	//<textarea id="post-content" name="commContent" rows="4" required onclick="openModal()"></textarea>
+	//			<br>
+	//			<input type="file" id="file_input" name="filename" accept="image/*">
+	//			<button id="postSubmit" type="submit" onclick="postonbtn()">게시</button>
+	//<form id="new-post-form" action="community.do" method="post" name="postSubmitform">
+	//			<textarea id="post-content" name="commContent" rows="4" required onclick="openModal()"></textarea>
+	//			<br>
+	//			<input type="file" id="file_input" name="filename" accept="image/*">
+	//			<button id="postSubmit" type="submit" onclick="postonbtn()">게시</button>
+	//		</form>
+	var post_content = $("#post-content").val();
+	console.log(post_content);
+	
+	data = { commContent : post_content	}
+	$.ajax({
+		url : "community.do?groupNo="+GroupNo,
+		data : data ,
+		dataType :"json",
+		success: function(res){
+			console.log(res + "글 작성됨")
+		},
+		error : function(e){
+			console.log(e)
+		}
+	})
+	
+	
+	
+	
+	const files = document.getElementById("file-input");
+	var upimage = files.files;
+	console.log("파일 바뀜 글작성페이지")
+	// 여기에 회원가입 처리 로직을 추가하세요.
+			//const input = document.getElementById('uploadedImage');
+			const fileRoot = putFile(upimage[0]);
+			console.log(fileRoot[0], fileRoot[1], fileRoot[2])
+			const fileUpload = document.getElementsByName("fileUpload");
+			//console.log($('input[name=filename]').val());
+			//fileUpload.fileOriName.value = fileRoot[1];
+			//console.log(fileRoot[1]);
+			//fileUpload.fileDate.value = fileRoot[2];
+			//console.log(fileRoot[2]);
+			//$("#UserProfileS3root").val(fileRoot[0]);
+
+			var data = {filename: fileRoot[0], fileOriName: fileRoot[1], fileDate: fileRoot[2], fileS3root: $("#fileS3root").val(), commNo :lastcommNo}
+			$.ajax({
+
+				url: "Upload.do",
+				data: data,
+				dataType: "json",
+				success: function (res) {
+					console.log("DB연결성공")
+					window.location.href = "Gocommunity.do?groupNo="+GroupNo;
+					
+				},
+				error: function (e) {
+					console.log("DB연결실패");					
+				}
+			})
 	
 }
 
