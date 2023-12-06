@@ -35,6 +35,16 @@ public class User_DTO {
 
 	// 가입일자
 	private String joinedAt;
+	
+	private int levelNo;
+
+	public int getLevelNo() {
+		return levelNo;
+	}
+
+	public void setLevelNo(int levelNo) {
+		this.levelNo = levelNo;
+	}
 
 	public String getId() {
 		return id;

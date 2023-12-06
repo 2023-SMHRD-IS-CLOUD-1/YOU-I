@@ -36,20 +36,27 @@ body {
 #tables{
 	position: relative;
 	top:380px;
-	left: -941px;
+	left: -995px;
 }
 
 
 .memtb{
-	width: 400px;
-	height: 150px;
-	margin-top: 100px;
+	width: 500px;
+	height: 200px;
+	margin-top: 9px;
 	border-collapse: collapse;
-	background-color: rgb(255, 163, 70);
 	border-radius: 20px;
 	font-weight: bold;
 	}
 
+.memdiv{
+	border: 3px solid darkred;
+	border-radius: 20px;
+	width: 500px;
+	height: 200px;
+	margin-top: 100px;
+	
+}
 
 ol, ul {
 	list-style: none;

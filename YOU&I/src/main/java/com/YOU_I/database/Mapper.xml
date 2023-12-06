@@ -324,7 +324,7 @@
 
 	<select id="memberInfo"
 		parameterType="com.YOU_I.model.Group_DTO" resultMap="userdto">
-		SELECT nick, phone, user_role
+		SELECT nick, phone, level_no as levelNo
 		FROM TBL_JOINING A
 		INNER JOIN TBL_GROUP B ON A.GROUP_NO = B.GROUP_NO
 		INNER JOIN tbl_user C ON A.id = C.id

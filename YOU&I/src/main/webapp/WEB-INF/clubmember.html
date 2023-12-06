@@ -207,15 +207,28 @@
             <td>${member['phone']}</td>
         </tr>
         <tr>
-            <td>${member['userRole']}</td>
+            <td class="ur">${member['levelNo']}</td>
         </tr>`
 			);
 
-			$("#tables").append($('<div></div>').append(newTable));
+			$("#tables").append($('<div class = "memdiv"></div>').append(newTable));
 
 			i++;
 		});
 	</script>
+	
+	<script>
+	$(".ur").each(function() {
+    var text = $(this).text(); 
+    if (text === "21") {
+        $(this).text("팀장");
+    } else if (text === "22") {
+        $(this).text("멤버");
+    }
+});
+
+	</script>
+
 
 </body>
 
