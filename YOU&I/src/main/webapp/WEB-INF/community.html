@@ -261,7 +261,7 @@ input[type="file"]::file-selector-button:active {
 
 		<div id="post-form">
 			<h2>글작성</h2>
-			<form id="new-post-form" action="community.do" method="post" name="postSubmitform">
+			<form id="new-post-form" action="community.do" method="POST" name="postSubmitform">
 				<textarea id="post-content" name="commContent" rows="4" required onclick="openModal()"></textarea>
 				<br>
 				<input type="file" id="file-input">
@@ -397,7 +397,12 @@ input[type="file"]::file-selector-button:active {
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
     <script src="assets/js/communiyjs/findking.js"></script>
-
+<script>
+    $("#postSubmit").on("click",function(){
+		  $('#new-post-form').attr('action', 'community.do?groupNo='+GroupNo);
+		  
+	})
+</script>
 
 	<script>
 		
@@ -440,7 +445,7 @@ var p1 = null;
 			var ListcommNo = "";
 			
 			$.ajax({
-				url: 'selectCommunity.do',
+				url: 'selectCommunity.do?groupNo='+GroupNo,
 				method: 'GET',
 				dataType: 'json',
 				success: function (res) {
@@ -566,7 +571,7 @@ $(document).ready(function () {
 		
 		function fetchAndDisplayComments() {
     $.ajax({
-        url: 'selectComment.do',
+        url: 'selectComment.do?groupNo='+GroupNo,
         method: 'GET',
         dataType: 'json',
         success: function (res) {

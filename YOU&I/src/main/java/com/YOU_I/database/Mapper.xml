@@ -133,7 +133,7 @@
 	<insert id="commContent"
 		parameterType="com.YOU_I.model.community_DTO" useGeneratedKeys="true" keyProperty="comm_no">
 		insert into tbl_community (group_no,comm_title,comm_content,id)
-		values(2,'title',#{commContent},#{id})
+		values(#{groupNo},'title',#{commContent},#{id})
 		<selectKey keyProperty="comm_no" resultType="int"
 			order="AFTER">
 			SELECT tbl_community_SEQ.CURRVAL AS comm_no FROM DUAL
@@ -186,7 +186,7 @@
 		comm_likes AS likes
 		from
 		tbl_community
-		where group_no=2
+		where group_no=#{groupNo}
 		order by comm_no
 	</select>
 	<insert id="comment"

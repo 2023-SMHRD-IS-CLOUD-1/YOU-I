@@ -33,7 +33,7 @@ public class communityService implements Command {
 		session.setAttribute("comm_no", generatedKey);
 		System.out.println("이건 커뮤니티서비스 확인용  : "  + generatedKey);
 		
-		return "redirect:/Gocommunity.do";
+		return "redirect:/Gocommunity.do?groupNo="+groupNo;
 	}
 	
 	

@@ -26,7 +26,13 @@ public class selectCommunityService implements Command{
 			throws ServletException, IOException {
 		
 			community_DAO dao = new community_DAO();
-			List<community_DTO> resultList = dao.selectAll();
+			community_DTO dto = new community_DTO();
+			String group = request.getParameter("groupNo");
+			int groupNo = Integer.parseInt(group);
+			dto.setGroupNo(groupNo);
+			System.out.println("그룹그룹그룹그룹"+groupNo);
+			List<community_DTO> resultList = dao.selectAll(dto);
+			
 			Gson gson = new GsonBuilder().serializeNulls().create();
 			String selectCommunityJson = gson.toJson(resultList);
 			request.setAttribute("resultList", resultList);

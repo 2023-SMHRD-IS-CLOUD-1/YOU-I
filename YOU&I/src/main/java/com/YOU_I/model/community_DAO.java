@@ -17,10 +17,10 @@ public class community_DAO {
 		return row;
 	}
 
-	public List<community_DTO> selectAll() {
+	public List<community_DTO> selectAll(community_DTO dto) {
 
 		SqlSession sqlSession = factory.openSession(true);
-		List<community_DTO> resultList = sqlSession.selectList("selectAll");
+		List<community_DTO> resultList = sqlSession.selectList("selectAll",dto);
 		sqlSession.close();
 		return resultList;
 	}
