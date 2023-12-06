@@ -52,8 +52,9 @@ function input2() {
     document.getElementById('input_money2').value = null;
 }
 
+	
 function input3() {
-    $.getJSON('result.json', function(response_json) {
+    $.getJSON("result.json", function(response_json) {
         let year = response_json['images'][0]['receipt']['result']['paymentInfo']['date']['formatted']['year'];
         let month = response_json['images'][0]['receipt']['result']['paymentInfo']['date']['formatted']['month'];
         let day = response_json['images'][0]['receipt']['result']['paymentInfo']['date']['formatted']['day'];
