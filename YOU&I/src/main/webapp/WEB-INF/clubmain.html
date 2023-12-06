@@ -186,6 +186,29 @@
 		$(".year").html(year + " ");
 
 	</script>
+	<script>
+		     $("#clubmember").on("click", function () {
+				 
+			var groupNo = $(this).attr('href').split('=')[1];
+			console.log(groupNo);
+			var sendObj = {groupNo : groupNo};
+            $.ajax({
+               url: "memberInfo.do",
+               type: 'GET',
+               data: sendObj,
+               dataType: "json",
+               success: function (res) {
+                  console.log("요청성공!");
+                  console.log(res);
+                  localStorage.setItem('members', JSON.stringify(res));
+               },
+               error: function (e) {
+                  console.log(e);
+               }
+            });
+         });
+    
+	</script>
  
 
 </body>
