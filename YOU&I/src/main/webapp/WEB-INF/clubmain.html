@@ -35,10 +35,10 @@
 		<!-- Nav -->
 		<nav id="nav">
 			<ul id="sideService">
-				<li><a href="Gomodifyprofile.do">프로필설정</a></li>
-				<li><a href="Goclubmember.do">멤버</a></li>
-				<li><a href="Gocommunity.do">게시글</a></li>
-				<li><a href="Goclubfee.do">회비관리</a></li>
+				<li><a id="modifyprofile" href="Gomodifyprofile.do">프로필설정</a></li>
+				<li><a id="clubmember" href="Goclubmember.do">멤버</a></li>
+				<li><a id="community" href="Gocommunity.do">게시글</a></li>
+				<li><a id="clubfee" href="Goclubfee.do">회비관리</a></li>
 				<li><a href="#">채팅방</a></li>
 			</ul>
 		</nav>
@@ -170,6 +170,15 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/util.js"></script>
 	<script>
+		var TempGroup = window.location
+		const searchParams = new URL(TempGroup).searchParams;
+		const GroupNo = searchParams.get('groupNo')
+		console.log(GroupNo);
+		$("#modifyprofile").attr("href","Gomodifyprofile.do?groupNo="+GroupNo);
+		$("#clubmember").attr("href","Goclubmember.do?groupNo="+GroupNo);
+		$("#community").attr("href","Gocommunity.do?groupNo="+GroupNo);
+		$("#clubfee").attr("href","Goclubfee.do?groupNo="+GroupNo);
+		
 		let date = new Date();
 		let result_date = String(date).split(" ");
 		let day = result_date[2];
