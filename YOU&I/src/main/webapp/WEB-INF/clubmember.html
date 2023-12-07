@@ -210,29 +210,29 @@
 	</script>
 
 	<script>
-		var members = JSON.parse(localStorage.getItem('members'));
+		let members = JSON.parse(localStorage.getItem('members'));
 		console.log(members);
 
 		var i = 0;
 		members.forEach(function (member) {
-			var newTable = $(`<table id="memtb${i}" class = "memtb"></table>`); // 템플릿 리터럴을 사용하여 ID 부여
+		var newTable = $(`<table id="memtb${i}" class = "memtb"></table>`); // 템플릿 리터럴을 사용하여 ID 부여
 
 			newTable.append(
 				`<tr>
-            <td rowspan="3">사진</td>
-            <td>${member['nick']}</td>
-        </tr>
-        <tr>
-            <td>${member['phone']}</td>
-        </tr>
-        <tr>
-            <td class="ur">${member['levelNo']}</td>
-        </tr>`
-			);
-
-			$("#content #tables").append($('<div class = "memdiv"></div>').append(newTable));
-
-			i++;
+		            <td rowspan="3">사진</td>
+		            <td>${member['nick']}</td>
+		        </tr>
+		        <tr>
+		            <td>${member['phone']}</td>
+		        </tr>
+		        <tr>
+		            <td class="ur">${member['levelNo']}</td>
+		        </tr>`
+					);
+		
+					$("#tables").append($('<div class = "memdiv"></div>').append(newTable));
+		
+					i++;
 		});
 	</script>
 

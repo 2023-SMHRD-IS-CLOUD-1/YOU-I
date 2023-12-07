@@ -329,7 +329,7 @@
 
 	<select id="memberInfo"
 		parameterType="com.YOU_I.model.Group_DTO" resultMap="userdto">
-		SELECT nick,
+		SELECT profile_img, nick,
 		phone, level_no as levelNo, approve_join as approveJoin
 		FROM
 		TBL_JOINING A
