@@ -38,7 +38,9 @@
 
 	<!-- Content -->
 	<div id="content">
+		<img src="assets/css/images/배너배너.png" alt="배너 이미지" style="width: 1300px; height: 330px;" />
 		<!-- 배너 이미지 -->
+		
 		<div id="dd"></div>
 		<div>
 			<div id="feecalendar">
@@ -200,7 +202,7 @@
 				<li><a id="clubmember" href="Goclubmember.do">멤버</a></li>
 				<li><a id="community" href="Gocommunity.do">게시글</a></li>
 				<li><a id="clubfee" href="Goclubfee.do">회비관리</a></li>
-				<li><a id="" href="채팅방.html">채팅방</a></li>
+				<li><a id="" href="#">채팅방</a></li>
 				<li><a id="groupSchedules" href="GogroupSchedules.do">그룹일정</a></li>
 			</ul>
 		</nav>
@@ -216,10 +218,10 @@
 		<section class="box text-style1">
 			<div class="inner">
 				<p>
-					<strong>그룹소개</strong>
+					<strong>공지사항 !</strong>
 				</p>
-				<p id="groupinfo">
-					
+				<p>
+					12월 2일 토요일수업 잊지말기!
 				</p>
 			</div>
 		</section>
@@ -333,19 +335,17 @@
 	<script src="assets/js/main.js"></script>
 	<script src="assets/js/communiyjs/findking.js"></script>
 	<script>
-		let date = new Date();
-		let result_date = String(date).split(" ");
-		let day = result_date[2];
-		let month = result_date[1];
-		let year = result_date[3];
+		 date = new Date();
+		 result_date = String(date).split(" ");
+		 day = result_date[2];
+		 month = result_date[1];
+		 year = result_date[3];
 
 		console.log(day);
 
 		$(".month").html(day + " ");
 		$(".day").html(month + " ");
 		$(".year").html(year + " ");
-		</script>
-		<script>
 $(document).ready(function () {
 		
         $.ajax({
@@ -354,7 +354,6 @@ $(document).ready(function () {
             success: function (data) {
               
                 $('#dd').text(data.groupName);
-                $('#groupinfo').text(data.groupInfo)
             },
             error: function (xhr, status, error) {
                 console.error('그룹 이름을 가져오는 중 오류 발생:', error);
