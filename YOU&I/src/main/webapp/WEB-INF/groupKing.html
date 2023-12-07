@@ -11,26 +11,26 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css">
-	
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>가입승인</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <!-- jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- bootstrap 4 -->
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<!-- FullCalendar CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.css">
 
-    <!-- fullcalendar -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.js"></script>
-<style>
-	
-</style>
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Bootstrap JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<!-- FullCalendar JS -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.js"></script>
+
+	<style>
+
+	</style>
 </head>
 
 <body class="is-preload">
@@ -39,42 +39,46 @@
 	<div id="content">
 		<!-- 배너 이미지 -->
 		<img src="images/bg01.jpg" alt="배너 이미지" style="width: 1300px; height: 150px;" />
-		<div  id = "" name="applicant">
-			<h1 id= "applicant">가입신청자</h1>
-	    </div>
-	    <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">신청자 정보</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <div id="userId"><h3>사용자 ID</h3>
-                        </div>
-                        <div id="gender"><h3>성별</h3>
-                        </div>
-                        <div id="area"><h3>활동지역</h3>
-                        </div>
-                        <div id="userHobby"><h3>취미</h3>
-                        </div>
-                        <div id="profileImg"><h3>프로필 사진</h3>
-                        </div>
-                       
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" id="agree">수락</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        id="refuse">거절</button>
-                </div>
-            </div>
-        </div>
-    </div>
+		<div id="" name="applicant">
+			<h1 id="applicant">가입신청자</h1>
+		</div>
+		<div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">신청자 정보</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<div id="userId">
+								<h3>사용자 ID</h3>
+							</div>
+							<div id="gender">
+								<h3>성별</h3>
+							</div>
+							<div id="area">
+								<h3>활동지역</h3>
+							</div>
+							<div id="userHobby">
+								<h3>취미</h3>
+							</div>
+							<div id="profileImg">
+								<h3>프로필 사진</h3>
+							</div>
+
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-warning" id="agree">수락</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal" id="refuse">거절</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- Sidebar -->
 	<div id="sidebar">
@@ -85,12 +89,12 @@
 		<!-- Nav -->
 		<nav id="nav">
 			<ul id="sideService">
-				<li><a id = "modifyprofile"href="Gomodifyprofile.do">프로필설정</a></li>
-				<li><a id = "clubmember" href="Goclubmember.do">멤버</a></li>
-				<li><a id = "community" href="Gocommunity.do">게시글</a></li>
-				<li><a id = "clubfee" href="Goclubfee.do">회비관리</a></li>
-				<li><a id = "" href="#">채팅방</a></li>
-				<li><a id = "groupSchedules" href="GogroupSchedules.do">그룹일정</a></li>
+				<li><a id="modifyprofile" href="Gomodifyprofile.do">프로필설정</a></li>
+				<li><a id="clubmember" href="Goclubmember.do">멤버</a></li>
+				<li><a id="community" href="Gocommunity.do">게시글</a></li>
+				<li><a id="clubfee" href="Goclubfee.do">회비관리</a></li>
+				<li><a id="" href="#">채팅방</a></li>
+				<li><a id="groupSchedules" href="GogroupSchedules.do">그룹일정</a></li>
 			</ul>
 		</nav>
 
@@ -216,8 +220,8 @@
 
 	<!-- Scripts -->
 	<script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/util.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/util.js"></script>
 	<script>
 		let date = new Date();
 		let result_date = String(date).split(" ");
@@ -233,72 +237,76 @@
 
 	</script>
 	<script src="assets/js/communiyjs/findking.js"></script>
- <script>
-    $(document).ready(function () {
-		
-        $.ajax({
-            url: "kingComm.do?groupNo="+GroupNo,
-            dataType: 'json',
-            success: function (res) {
-                console.log("통신성공");
-                console.log(res);
-				
-                if (res.length == 0) {
-                    $("#applicant").append("<h2>신청자가 없습니다</h2>");
-                } else {
-					
-                    for (var i = 0; i < res.length; i++) {
-                        $("#applicant").append("<h2><a id='applicantLink" + i + "' href='#'>" + res[i].id + "</a></h2>");
-                        (function (index) {
-                            $("#applicantLink" + index).click(function () {
-                                $("#calendarModal").modal('show');
-                                $("#userId").html("<h2> 사용자 ID : " + res[index].id + "</h2>");
-                                $("#gender").html("<h2> 성별 : " + res[index].gender + "</h2>");
-                                $("#area").html("<h2> 활동 지역 : " + res[index].region + "</h2>");
-                                $("#userHobby").html("<h2> 취미 : " + res[index].hobby + "</h2>");
-                                $("#profileImg").html("<h2> 프로필사진 : " + res[index].profileImg + "</h2>");
+	<script>
+		$(document).ready(function () {
+			$("#calendarModal").on("show.bs.modal", function (event) {
+				var button = $(event.relatedTarget);
+				var index = button.data("index"); // data-index 속성을 통해 인덱스 얻기
+				var res = button.data("res");
 
-                                // agree 클릭 이벤트
-                                $("#agree").off().on("click", function () {
-                                    $.ajax({
-                                        url: 'acceptUser.do',
-                                        dataType: 'json',
-                                        data: {
-                                            id: res[index].id,
-                                            groupNo: res[index].groupNo
-                                        },
-                                        success: function () {
-                                            console.log("수락 통신 성공");
-                                            $("#calendarModal").modal('hide');
-                                            $("#applicantLink" + index).remove();
-                                        }
-                                    });
-                                });
+				$("#userId").html("<h2> 사용자 ID : " + res[index].id + "</h2>");
+				$("#gender").html("<h2> 성별 : " + res[index].gender + "</h2>");
+				$("#area").html("<h2> 활동 지역 : " + res[index].region + "</h2>");
+				$("#userHobby").html("<h2> 취미 : " + res[index].hobby + "</h2>");
+				$("#profileImg").html("<h2> 프로필사진 : " + res[index].profileImg + "</h2>");
 
-                                // refuse 클릭 이벤트
-                                $("#refuse").off().on("click", function () {
-                                    $.ajax({
-                                        url: 'refuseUser.do',
-                                        dataType: 'json',
-                                        data: {
-                                            id: res[index].id,
-                                            groupNo: res[index].groupNo
-                                        },
-                                        success: function () {
-                                            console.log("거절 통신 성공");
-                                            $("#calendarModal").modal('hide');
-                                            $("#applicantLink" + index).remove();
-                                        }
-                                    });
-                                });
-                            });
-                        })(i);
-                    }
-                }
-            }
-        });
-    });
-</script>
+				// agree 클릭 이벤트
+				$("#agree").off().on("click", function (event) {
+					$.ajax({
+						url: 'acceptUser.do',
+						dataType: 'json',
+						data: {
+							id: res[index].id,
+							groupNo: res[index].groupNo
+						},
+						success: function () {
+							console.log("수락 통신 성공");
+							$("#calendarModal").modal('hide');
+							$("#applicantLink" + index).remove();
+							window.location.href = window.location.href;
+						}, error: function (jqXHR, textStatus, errorThrown) {
+							console.error("Ajax request failed: " + textStatus, errorThrown);
+						}
+					});
+				});
+
+				// refuse 클릭 이벤트
+				$("#refuse").off().on("click", function (event) {
+					$.ajax({
+						url: 'refuseUser.do',
+						dataType: 'json',
+						data: {
+							id: res[index].id,
+							groupNo: res[index].groupNo
+						},
+						success: function () {
+							console.log("거절 통신 성공");
+							$("#calendarModal").modal('hide');
+							$("#applicantLink" + index).remove();
+							window.location.href = window.location.href;
+						}
+					});
+				});
+			});
+
+			$.ajax({
+				url: "kingComm.do?groupNo=" + GroupNo,
+				dataType: 'json',
+				success: function (res) {
+					console.log("통신성공");
+					console.log(res);
+
+					if (res.length == 0) {
+						$("#applicant").append("<h2>신청자가 없습니다</h2>");
+					} else {
+						for (var i = 0; i < res.length; i++) {
+							$("#applicant").append("<h2><a id='applicantLink" + i + "' href='#' data-toggle='modal' data-target='#calendarModal' data-index='" + i + "' data-res='" + JSON.stringify(res) + "'>" + res[i].id + "</a></h2>");
+						}
+					}
+				}
+			});
+		});
+	</script>
 
 </body>
 
