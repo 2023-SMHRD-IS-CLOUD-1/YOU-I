@@ -45,7 +45,7 @@
 
 
 		<div id="tables">
-		</div>	
+		</div>
 	</div>
 	<!-- Sidebar -->
 	<div id="sidebar">
@@ -79,7 +79,7 @@
 					<strong>그룹소개</strong>
 				</p>
 				<p id="groupinfo">
-					
+
 				</p>
 			</div>
 		</section>
@@ -210,41 +210,62 @@
 	</script>
 
 	<script>
-		let members = JSON.parse(localStorage.getItem('members'));
-		console.log(members);
+$(document).ready(function () {
+    var sendObj = { groupNo: GroupNo };
+    $.ajax({
+        url: "memberInfo.do?groupNo=" + GroupNo,
+        type: 'GET',
+        data: sendObj,
+        dataType: "json",
+        success: function (res) {
+            console.log("요청성공!");
+            console.log(res);
+            var i = 0;
+            res.forEach(function (member) {
+                var newTable = $(`<table id="memtb${i}" class="memtb"></table>`);
 
-		var i = 0;
-		members.forEach(function (member) {
-		var newTable = $(`<table id="memtb${i}" class = "memtb"></table>`); // 템플릿 리터럴을 사용하여 ID 부여
+                newTable.append(
+                    `<tr>
+                        <td rowspan="3">사진</td>
+                        <td>${member['nick']}</td>
+                    </tr>
+                    <tr>
+                        <td>${member['phone']}</td>
+                    </tr>
+                    <tr>
+                        <td class='ur'>${member['levelNo']}</td>
+                    </tr>`
+                );
 
-			newTable.append(
-				`<tr>
-		            <td rowspan="3">사진</td>
-		            <td>${member['nick']}</td>
-		        </tr>
-		        <tr>
-		            <td>${member['phone']}</td>
-		        </tr>
-		        <tr>
-		            <td class="ur">${member['levelNo']}</td>
-		        </tr>`
-					);
+                $("#tables").append($('<div></div>').append(newTable));
+
+                if (member['levelNo'] == '21') {
+                    $(`#memtb${i} .ur`).html('방장');
+                } else {
+                    $(`#memtb${i} .ur`).html('멤버');
+                }
+
+                i++;
+            });
+        },
+        error: function (e) {
+            console.log(e);
+        }
+    });
+});
+
+         
+	
 		
-					$("#tables").append($('<div class = "memdiv"></div>').append(newTable));
 		
-					i++;
-		});
+		
+		
+	
+
 	</script>
 
 	<script>
-		$(".ur").each(function () {
-			var text = $(this).text();
-			if (text === "21") {
-				$(this).text("팀장");
-			} else if (text === "22") {
-				$(this).text("멤버");
-			}
-		});
+		
 
 		$(document).ready(function () {
 

@@ -39,6 +39,16 @@ public class User_DTO {
 	private int levelNo;
 	
 	private int approveJoin;
+	
+	private int groupNo;
+
+	public int getGroupNo() {
+		return groupNo;
+	}
+
+	public void setGroupNo(int groupNo) {
+		this.groupNo = groupNo;
+	}
 
 	public int getApproveJoin() {
 		return approveJoin;

@@ -69,7 +69,7 @@ public class User_DAO {
 		
 	}
 	
-	public List<User_DTO> member(Group_DTO dto) {
+	public List<User_DTO> member(User_DTO dto) {
 		
 		
 		SqlSession sqlSession = factory.openSession();

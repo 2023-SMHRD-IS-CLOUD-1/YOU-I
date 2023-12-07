@@ -304,24 +304,6 @@
 
 	</script>
 	<script>
-		$("#clubmember").on("click", function () {
-			console.log(GroupNo);
-			var sendObj = {groupNo: GroupNo};
-			$.ajax({
-				url: "memberInfo.do",
-				type: 'GET',
-				data: sendObj,
-				dataType: "json",
-				success: function (res) {
-					console.log("요청성공!");
-					console.log(res);
-					localStorage.setItem('members', JSON.stringify(res));
-				},
-				error: function (e) {
-					console.log(e);
-				}
-			});
-		});
 
 $(document).ready(function () {
 		

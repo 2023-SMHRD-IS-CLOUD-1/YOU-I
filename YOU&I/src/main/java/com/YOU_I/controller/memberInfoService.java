@@ -27,7 +27,7 @@ public class memberInfoService implements Command {
 		int groupNo1 = Integer.parseInt(groupNo);
 		System.out.println("그룹이름 들어왔냐고>>>>>>>>>>>>>>>>>>>" + groupNo);
 
-		Group_DTO dto = new Group_DTO();
+		User_DTO dto = new User_DTO();
 		dto.setGroupNo(groupNo1);
 
 		System.out.println("된거야만거야" + dto);

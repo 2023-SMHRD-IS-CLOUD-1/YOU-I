@@ -37,7 +37,8 @@
 	</insert>
 
 
-	<select id="getSchedules" parameterType="com.YOU_I.model.calendar_DTO"
+	<select id="getSchedules"
+		parameterType="com.YOU_I.model.calendar_DTO"
 		resultType="com.YOU_I.model.calendar_DTO">
 		SELECT SCHE_NO AS scheNo, SCHE_TITLE AS scheTitle,
 		SCHE_ST_DATE AS scheStDate, SCHE_END_DATE AS scheEndDate, SCHE_CONTENT
@@ -327,17 +328,11 @@
 		where comm_no=#{comm_no}
 	</update>
 
-	<select id="memberInfo"
-		parameterType="com.YOU_I.model.Group_DTO" resultMap="userdto">
-		SELECT profile_img, nick,
-		phone, level_no as levelNo, approve_join as approveJoin
-		FROM
-		TBL_JOINING A
-		INNER JOIN TBL_GROUP B ON A.GROUP_NO = B.GROUP_NO
-		INNER
-		JOIN tbl_user C ON A.id = C.id
-		WHERE B.group_no = #{groupNo} and
-		A.approve_join = 1;
+	<select id="memberInfo" parameterType="com.YOU_I.model.User_DTO"
+		resultType="com.YOU_I.model.User_DTO">
+		SELECT A.PROFILE_IMG AS profileImg ,A.phone AS phone, A.NICK AS nick, B.LEVEL_NO AS levelNo, B.APPROVE_JOIN AS approveJoin
+FROM TBL_USER A INNER JOIN TBL_JOINING B ON
+A.ID=B.ID WHERE B.GROUP_NO=#{groupNo} AND APPROVE_JOIN=1
 	</select>
 
 
@@ -346,7 +341,8 @@
 		SELECT COMM_NO
 		FROM (SELECT COMM_NO
 		FROM TBL_COMMUNITY
-		ORDER BY COMM_NO DESC)
+		ORDER
+		BY COMM_NO DESC)
 		WHERE ROWNUM &lt;= 1
 
 	</select>
