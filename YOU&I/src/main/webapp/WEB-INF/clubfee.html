@@ -11,36 +11,183 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="assets/css/feecalendar/feecalendar.css">
+	<script src="assets/js/feecalendar/feecalendarHead.js"></script>
 
-<style>
-	
-</style>
+	<style>
+
+	</style>
 </head>
 
 <body class="is-preload">
+	<script src="assets/js/feecalendar/feecalendar.js"></script>
 
 	<!-- Content -->
 	<div id="content">
 		<!-- 배너 이미지 -->
 		<img src="images/bg01.jpg" alt="배너 이미지" style="width: 1300px; height: 150px;" />
-		회비관리
+		<div>
+			<div id="feecalendar">
+				<table id="Calendar1" class="Calendar">
+					<thead>
+						<tr>
+							<td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
+							<td colspan="5">
+								<span id="calYear"></span>년
+								<span id="calMonth"></span>월
+							</td>
+							<td onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
+						</tr>
+						<tr>
+							<td>일</td>
+							<td>월</td>
+							<td>화</td>
+							<td>수</td>
+							<td>목</td>
+							<td>금</td>
+							<td>토</td>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<div>
+				<table id="Calendar2" class="Calendar">
+
+					<head>
+					</head>
+					<thead>
+						<tr>
+							<td colspan="10">
+								<p>
+								<h2>이번달 사용 내역</h2>
+								연/월/일 &emsp;&emsp;
+								이름 &emsp;&emsp;
+								금액 &emsp;&emsp;
+								</p>
+								<input id="input_date" type="date">
+								<input id="input_name" type="text" size="4">
+								<input id="input_money" type="text" size="5">
+								<input type="submit" onclick="input()" value="입력">
+								<p> 영수증으로 사용내역 입력하기</p>
+								<form action="/upload" method="post" enctype="multipart/form-data">
+									<input type="file" name="image" accept="image/*">
+								</form>
+								<input type="submit" onclick="input3()" value="업로드">
+							</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<div>
+				<table id="Calendar3" class="Calendar">
+					<thead>
+						<tr>
+							<td colspan="10">
+								<p>
+								<h2>이번달 회비 납부하기 </h2>
+								이름 &emsp;&emsp;
+								금액 &emsp;&emsp;&emsp;&emsp;
+								</p>
+								<input id="input_name2" type="text" size="5">
+								<input id="input_money2" type="text" size="5">
+								&emsp;
+								<input type="submit" onclick="input2()" value="입력">
+							</td>
+						</tr>
+					</thead>
+				</table>
+				<div class="totalbox">
+									<h2>이번달 가계부</h2>
+					<table>
+						<thead>
+							<tr>
+								<!--<td colspan="10">-->
+							</tr>
+							<tr>
+									<td>연/월/일</td>
+									<td>이름</td>
+									<td>수입</td>
+									<td>지출</td>
+									<td>잔액</td>
+								
+							</tr>
+							</tr>
+							<tr>
+								<td class="textbox">
+									<p id="date"></p>
+								</td>
+								<td class="textbox2">
+									<p id="name_"></p>
+								</td>
+								<td class="textbox5">
+									<p id="none"></p>
+								</td>
+								<td class="textbox3">
+									<p id="money"></p>
+								</td>
+								<td class="textbox4">
+									<p id="outcome"></p>
+								</td>
+							</tr>
+							<tr>
+								<td class="textbox5">
+									<p id="date2"></p>
+								</td>
+								<td class="textbox6">
+									<p id="name2"></p>
+								</td>
+								<td class="textbox7">
+									<p id="money2"></p>
+								</td>
+								<td class="textbox5">
+									<p id="none"></p>
+								</td>
+								<td class="textbox8">
+									<p id="income"></p>
+								</td>
+							</tr>
+							<tr>
+								<td class="textbox9">
+									<p id="date3"></p>
+								</td>
+								<td class="textbox10">
+									<p id="name3"></p>
+								</td>
+								<td class="textbox5">
+									<p id="none"></p>
+								</td>
+								<td class="textbox11">
+									<p id="money3"></p>
+								</td>
+								<td class="textbox12">
+									<p id="outcome2"></p>
+								</td>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+		</div>
+
 	</div>
 
 	<!-- Sidebar -->
 	<div id="sidebar">
 
 		<!-- Logo -->
-		<h1 id="logo"><a href="Gomainpg.do">YOU & I</a></h1>
+		<h1 id="logo"><a href="#">YOU & I</a></h1>
 
 		<!-- Nav -->
 		<nav id="nav">
 			<ul id="sideService">
-				<li><a id = "modifyprofile"href="Gomodifyprofile.do">프로필설정</a></li>
-				<li><a id = "clubmember" href="Goclubmember.do">멤버</a></li>
-				<li><a id = "community" href="Gocommunity.do">게시글</a></li>
-				<li><a id = "clubfee" href="Goclubfee.do">회비관리</a></li>
-				<li><a id = "" href="채팅방.html">채팅방</a></li>
-				<li><a id = "groupSchedules" href="GogroupSchedules.do">그룹일정</a></li>
+				<li><a id="modifyprofile" href="Gomodifyprofile.do">프로필설정</a></li>
+				<li><a id="clubmember" href="Goclubmember.do">멤버</a></li>
+				<li><a id="community" href="Gocommunity.do">게시글</a></li>
+				<li><a id="clubfee" href="Goclubfee.do">회비관리</a></li>
+				<li><a id="" href="#">채팅방</a></li>
+				<li><a id="groupSchedules" href="GogroupSchedules.do">그룹일정</a></li>
 			</ul>
 		</nav>
 
@@ -166,11 +313,11 @@
 
 	<!-- Scripts -->
 	<script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/communiyjs/findking.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/communiyjs/findking.js"></script>
 	<script>
 		let date = new Date();
 		let result_date = String(date).split(" ");
@@ -184,24 +331,10 @@
 		$(".day").html(month + " ");
 		$(".year").html(year + " ");
 
+
+
 	</script>
- <script>
-	$.ajax({
-    url: 'findKing.do',
-    dataType: 'json',
-    success: function (findKingData) {
-        console.log(findKingData);
-        console.log(findKingData.levelNo)
-        if(findKingData.levelNo==21){
-			$("#sideService").append("<li><a href='GogroupKing.do'>가입승인</a></li>")
-		}
-    },
-     error: function (xhr, status, error) {
-        console.error('Error occurred in findKing.do:', error);
-        console.log(xhr)
-    }
-});
-</script>
+
 
 </body>
 
