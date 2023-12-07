@@ -26,10 +26,26 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.css">
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.js"></script>
 	<style>
+		@font-face {
+    font-family: 'iceJaram-Rg';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/iceJaram-Rg.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 		#calendarBox {
 			width: 70%;
 			padding-left: 15%;
 		}
+		#dd{
+	font-size:100px;
+	font-family: 'iceJaram-Rg';
+	text-align: center;
+	color: black;
+	margin-right: 300px;
+	margin-top:130px;
+	margin-bottom:150px;
+     
+	}
 	</style>
 
 
@@ -41,7 +57,7 @@
 	<div id="content">
 		<!-- 배너 이미지 -->
 		<section>
-			<img src="images/bg01.jpg" alt="배너 이미지" style="width: 1300px; height: 150px;" />
+			<div id="dd"></div>
 		</section>
 		<section>
 			<h1>그룹일정</h1>
@@ -307,6 +323,32 @@
 			});
 		});
 
+$(document).ready(function () {
+		
+        $.ajax({
+            url: 'getGroupName.do?groupNo='+GroupNo,  
+            dataType: 'json',
+            success: function (data) {
+              
+                $('#dd').text(data.groupName);
+            },
+            error: function (xhr, status, error) {
+                console.error('그룹 이름을 가져오는 중 오류 발생:', error);
+                console.log(xhr);
+            }
+        });
+    });
+    window.onload = function() {
+            var ddElement = document.getElementById('dd');
+            var textWidth = ddElement.offsetWidth;
+
+            var marginLeft = (window.innerWidth - textWidth) / 2;
+   
+            var leftMargin = -600;
+
+            ddElement.style.marginLeft = (marginLeft + leftMargin) + 'px';
+        };
+        
 	</script>
 
 </body>

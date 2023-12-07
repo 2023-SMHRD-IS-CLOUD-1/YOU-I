@@ -13,21 +13,40 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 
 	<style>
+		@font-face {
+			font-family: 'iceJaram-Rg';
+			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/iceJaram-Rg.woff2') format('woff2');
+			font-weight: normal;
+			font-style: normal;
+		}
 
+		#dd {
+			width: 1300px;
+			height: 200px;
+			font-size: 100px !important;
+			font-family: 'iceJaram-Rg' !important;
+			text-align: center !important;
+			color: black !important;
+			text-align: center;
+			margin-top: 130px;
+
+
+		}
 	</style>
 </head>
 
 <body class="is-preload">
 
 	<div id="content">
-		<!-- 배너 이미지 -->
 		<img src="assets/css/images/배너배너.png" alt="배너 이미지" style="width: 1300px; height: 330px;" />
+		<!-- 배너 이미지 -->
+		<div id="dd"></div>
+
+
+
+		<div id="tables">
+		</div>	
 	</div>
-
-
-	<div id="tables">
-	</div>
-
 	<!-- Sidebar -->
 	<div id="sidebar">
 
@@ -37,7 +56,7 @@
 		<!-- Nav -->
 		<nav id="nav">
 			<ul id="sideService">
-				<li><a id="modifyprofile" href="Gomodifyprofile.do">프로필설정</a></li>
+				<li><a id="modifyprofile" href="Gomypg.do">프로필설정</a></li>
 				<li><a id="clubmember" href="Goclubmember.do">멤버</a></li>
 				<li><a id="community" href="Gocommunity.do">게시글</a></li>
 				<li><a id="clubfee" href="Goclubfee.do">회비관리</a></li>
@@ -211,22 +230,47 @@
         </tr>`
 			);
 
-			$("#tables").append($('<div class = "memdiv"></div>').append(newTable));
+			$("#content #tables").append($('<div class = "memdiv"></div>').append(newTable));
 
 			i++;
 		});
 	</script>
-	
-	<script>
-	$(".ur").each(function() {
-    var text = $(this).text(); 
-    if (text === "21") {
-        $(this).text("팀장");
-    } else if (text === "22") {
-        $(this).text("멤버");
-    }
-});
 
+	<script>
+		$(".ur").each(function () {
+			var text = $(this).text();
+			if (text === "21") {
+				$(this).text("팀장");
+			} else if (text === "22") {
+				$(this).text("멤버");
+			}
+		});
+
+		$(document).ready(function () {
+
+			$.ajax({
+				url: 'getGroupName.do?groupNo=' + GroupNo,
+				dataType: 'json',
+				success: function (data) {
+
+					$('#dd').text(data.groupName);
+				},
+				error: function (xhr, status, error) {
+					console.error('그룹 이름을 가져오는 중 오류 발생:', error);
+					console.log(xhr);
+				}
+			});
+		});
+   // window.onload = function() {
+    //        var ddElement = document.getElementById('dd');
+    //        var textWidth = ddElement.offsetWidth;
+
+    //        var marginLeft = (window.innerWidth - textWidth) / 2;
+   //
+    //        var leftMargin = -600;
+//
+     //       ddElement.style.marginLeft = (marginLeft + leftMargin) + 'px';
+    //    };
 	</script>
 
 

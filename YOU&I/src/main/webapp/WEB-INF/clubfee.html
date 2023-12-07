@@ -15,7 +15,21 @@
 	<script src="assets/js/feecalendar/feecalendarHead.js"></script>
 
 	<style>
-
+		@font-face {
+    font-family: 'iceJaram-Rg';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/iceJaram-Rg.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+#dd{
+	font-size:100px;
+	font-family: 'iceJaram-Rg';
+	text-align: center;
+	color: black;
+	margin-top:130px;
+	margin-bottom:150px;
+     
+	}
 	</style>
 </head>
 
@@ -25,7 +39,7 @@
 	<!-- Content -->
 	<div id="content">
 		<!-- 배너 이미지 -->
-		<img src="images/bg01.jpg" alt="배너 이미지" style="width: 1300px; height: 150px;" />
+		<div id="dd"></div>
 		<div>
 			<div id="feecalendar">
 				<table id="Calendar1" class="Calendar">
@@ -182,7 +196,7 @@
 		<!-- Nav -->
 		<nav id="nav">
 			<ul id="sideService">
-				<li><a id="modifyprofile" href="Gomodifyprofile.do">프로필설정</a></li>
+				<li><a id="modifyprofile" href="Gomypg.do">프로필설정</a></li>
 				<li><a id="clubmember" href="Goclubmember.do">멤버</a></li>
 				<li><a id="community" href="Gocommunity.do">게시글</a></li>
 				<li><a id="clubfee" href="Goclubfee.do">회비관리</a></li>
@@ -330,7 +344,31 @@
 		$(".month").html(day + " ");
 		$(".day").html(month + " ");
 		$(".year").html(year + " ");
+$(document).ready(function () {
+		
+        $.ajax({
+            url: 'getGroupName.do?groupNo='+GroupNo,  
+            dataType: 'json',
+            success: function (data) {
+              
+                $('#dd').text(data.groupName);
+            },
+            error: function (xhr, status, error) {
+                console.error('그룹 이름을 가져오는 중 오류 발생:', error);
+                console.log(xhr);
+            }
+        });
+    });
+    window.onload = function() {
+            var ddElement = document.getElementById('dd');
+            var textWidth = ddElement.offsetWidth;
 
+            var marginLeft = (window.innerWidth - textWidth) / 2;
+   
+            var leftMargin = -600;
+
+            ddElement.style.marginLeft = (marginLeft + leftMargin) + 'px';
+        };
 
 
 	</script>
