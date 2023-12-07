@@ -37,7 +37,7 @@
 	</insert>
 
 
-	<select id="getSchedules"
+	<select id="getSchedules" parameterType="com.YOU_I.model.calendar_DTO"
 		resultType="com.YOU_I.model.calendar_DTO">
 		SELECT SCHE_NO AS scheNo, SCHE_TITLE AS scheTitle,
 		SCHE_ST_DATE AS scheStDate, SCHE_END_DATE AS scheEndDate, SCHE_CONTENT

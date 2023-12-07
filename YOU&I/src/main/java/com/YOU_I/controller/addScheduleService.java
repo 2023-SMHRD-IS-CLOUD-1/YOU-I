@@ -32,7 +32,9 @@ public class addScheduleService implements Command {
         String endDateString = request.getParameter("calendar_end_date");
         System.out.println(endDateString+"확인용");
         String memo = request.getParameter("calendar_memo");
-        int groupNo = (int) session.getAttribute("groupNo");
+        String group = request.getParameter("groupNo");
+        int groupNo = Integer.parseInt(group);
+        System.out.println("addSchedule그룹넘버 "+groupNo);
         calendar_DTO dto = new calendar_DTO();
         dto.setScheTitle(content);
 
