@@ -81,26 +81,45 @@
 }
 
 .grBtn{
-	margin-left: 60px;
-	display: flex;
-  	justify-content: center; /* 가로 방향 가운데 정렬 */
-    align-items: center;
-	padding: 10px 10px;
-  	width: 200px; 
-  	height: 100px; 
-	background-color: #f8d7da;
-	border-radius: 20px;
-	line-height: normal;
-	font-weight: 500;
-	color: black;
+   margin-left: 60px;
+   display: inline-block;
+   justify-content: center; /* 가로 방향 가운데 정렬 */
+   align-items: center;
+   padding: 20px 60px;
+   width: 200px; 
+   height: 100px; 
+   border-radius: 20px;
+   line-height: normal;
+   font-weight: 500;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   color: rgb(0, 0, 0);
+   font-size: 18px;
+   font-weight: bold;
+   transition: top .01s linear;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+    background-color: rgb(255, 198, 140);
+    box-shadow: 0 0 0 1px rgb(255, 149, 43) inset,
+                0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+                0 8px 0 0 rgb(255, 159, 64),
+                0 8px 0 1px rgba(0, 0, 0, .4),
+                0 8px 8px 1px rgba(0, 0, 0, 0.5);
 
-	
+   
 }
 
 .grBtn:hover{
-	cursor: pointer;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+   cursor: pointer;
+   color: rgb(0, 0, 0);
+   background-color: rgb(255, 140, 85)
 }
+
+
+.grBtn:active {
+        box-shadow: 0 0 0 1px #6191C2 inset,
+        0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+        0 0 0 1px rgba(0, 0, 0, 0.4);
+        }
+
 
 .btn:hover {
   background-color: #f8d7da;
@@ -411,14 +430,14 @@ section {
 }
 
 .banner {
-  width: 1500px;
-  height: 300px;
+  width: 1358px;
+  height: 272px;
   background-color: #f1f1f1;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 10%;
+  margin-left: 270px;
   min-width: 600px;
 }
 
