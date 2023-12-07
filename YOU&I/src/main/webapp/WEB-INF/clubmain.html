@@ -70,10 +70,10 @@
 		<section class="box text-style1">
 			<div class="inner">
 				<p>
-					<strong>공지사항 !</strong>
+					<strong>그룹소개</strong>
 				</p>
-				<p>
-					12월 2일 토요일수업 잊지말기!
+				<p id="groupinfo">
+					
 				</p>
 			</div>
 		</section>
@@ -208,6 +208,7 @@
 				success: function (data) {
 
 					$('#dd').text(data.groupName);
+					$('#groupinfo').text(data.groupInfo)
 				},
 				error: function (xhr, status, error) {
 					console.error('그룹 이름을 가져오는 중 오류 발생:', error);
