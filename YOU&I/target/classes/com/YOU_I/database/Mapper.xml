@@ -43,7 +43,8 @@
 		SCHE_ST_DATE AS scheStDate, SCHE_END_DATE AS scheEndDate, SCHE_CONTENT
 		AS scheContent, GROUP_NO AS groupNo
 		FROM TBL_SCHEDULE
-		WHERE GROUP_NO = #{groupNo}
+		WHERE GROUP_NO =
+		#{groupNo}
 	</select>
 
 	<select id="rank" resultMap="gr_rank">
@@ -113,7 +114,8 @@
 		FILE_S3_PATH,
 		FILE_SIZE, EXT)
 		VALUES(#{commNo} , #{fileName},
-		#{fileOriName}, #{fileThumb}, #{fileS3Path},
+		#{fileOriName},
+		#{fileThumb}, #{fileS3Path},
 		#{fileSize}, #{ext})
 
 	</insert>
@@ -130,7 +132,8 @@
 		</selectKey>
 	</insert>
 	<insert id="commContent"
-		parameterType="com.YOU_I.model.community_DTO" useGeneratedKeys="true" keyProperty="comm_no">
+		parameterType="com.YOU_I.model.community_DTO" useGeneratedKeys="true"
+		keyProperty="comm_no">
 		insert into tbl_community (group_no,comm_title,comm_content,id)
 		values(#{groupNo},'title',#{commContent},#{id})
 		<selectKey keyProperty="comm_no" resultType="int"
@@ -186,7 +189,8 @@
 		from
 		tbl_community
 		where group_no=#{groupNo}
-		order by comm_no
+		order by
+		comm_no
 	</select>
 	<insert id="comment"
 		parameterType="com.YOU_I.model.community_DTO">
@@ -264,7 +268,8 @@
 		SELECT A.ID, A.GROUP_NO, B.GROUP_NAME
 		FROM TBL_JOINING A,
 		TBL_GROUP B
-		WHERE A.GROUP_NO=B.GROUP_NO AND A.ID=#{id} AND A.APPROVE_JOIN = 1
+		WHERE A.GROUP_NO=B.GROUP_NO AND A.ID=#{id} AND
+		A.APPROVE_JOIN = 1
 	</select>
 
 
@@ -324,28 +329,36 @@
 
 	<select id="memberInfo"
 		parameterType="com.YOU_I.model.Group_DTO" resultMap="userdto">
-		SELECT nick, phone, level_no as levelNo
-		FROM TBL_JOINING A
+		SELECT nick,
+		phone, level_no as levelNo, approve_join as approveJoin
+		FROM
+		TBL_JOINING A
 		INNER JOIN TBL_GROUP B ON A.GROUP_NO = B.GROUP_NO
-		INNER JOIN tbl_user C ON A.id = C.id
-		WHERE B.group_no = #{groupNo}
-	</select>
-	
-	<select id="GetlastCommNo" resultType="com.YOU_I.model.community_DTO">
-	SELECT COMM_NO
-	FROM (SELECT COMM_NO
-	FROM TBL_COMMUNITY
-	ORDER BY COMM_NO DESC)
-	WHERE ROWNUM &lt;= 1
-	
+		INNER
+		JOIN tbl_user C ON A.id = C.id
+		WHERE B.group_no = #{groupNo} and
+		A.approve_join = 1;
 	</select>
 
-<select id="getGroupName" parameterType="com.YOU_I.model.Group_DTO" resultType="com.YOU_I.model.Group_DTO">
-	SELECT GROUP_NAME AS groupName
-	FROM TBL_GROUP
-	WHERE GROUP_NO=#{groupNo}
+
+	<select id="GetlastCommNo"
+		resultType="com.YOU_I.model.community_DTO">
+		SELECT COMM_NO
+		FROM (SELECT COMM_NO
+		FROM TBL_COMMUNITY
+		ORDER BY COMM_NO DESC)
+		WHERE ROWNUM &lt;= 1
+
 	</select>
-	
+
+	<select id="getGroupName"
+		parameterType="com.YOU_I.model.Group_DTO"
+		resultType="com.YOU_I.model.Group_DTO">
+		SELECT GROUP_NAME AS groupName
+		FROM TBL_GROUP
+		WHERE GROUP_NO=#{groupNo}
+	</select>
+
 	<select id="CommunityImageTake" parameterType="java.lang.String"
 		resultMap="GroupImagetake">
 
@@ -353,7 +366,7 @@
 		FROM TBL_FILE
 		WHERE FILE_S3_PATH = #{fileS3Path}
 		ORDER BY COMM_NO DESC
-		
+
 	</select>
 
 

@@ -37,6 +37,16 @@ public class User_DTO {
 	private String joinedAt;
 	
 	private int levelNo;
+	
+	private int approveJoin;
+
+	public int getApproveJoin() {
+		return approveJoin;
+	}
+
+	public void setApproveJoin(int approveJoin) {
+		this.approveJoin = approveJoin;
+	}
 
 	public int getLevelNo() {
 		return levelNo;
