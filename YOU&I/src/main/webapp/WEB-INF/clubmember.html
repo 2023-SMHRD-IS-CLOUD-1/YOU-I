@@ -226,7 +226,7 @@ $(document).ready(function () {
 
                 newTable.append(
                     `<tr>
-                        <td rowspan="3">사진</td>
+                        <td rowspan="3"><img  id=groupThum${i} style="object-fit: fill; width:300px;height:200px display=flex;" src="assets/css/images/defaultimg.jpg"></td>
                         <td>${member['nick']}</td>
                     </tr>
                     <tr>
@@ -244,6 +244,21 @@ $(document).ready(function () {
                 } else {
                     $(`#memtb${i} .ur`).html('멤버');
                 }
+                console.log(member['profileImg']);
+				
+				var bucketUrl = "https://s3.ap-northeast-2.amazonaws.com/you-i/"
+
+					try {
+						i = 0;
+							console.log("https://s3.ap-northeast-2.amazonaws.com/you-i/resize_profile" + member['profileImg'])
+							var imagePath = "resize_" + member['profileImg'];
+							console.log(imagePath);
+							var finalUrl = bucketUrl + encodeURIComponent(imagePath);
+							$("#groupThum"+i).attr("src", finalUrl);
+							$("#groupThum"+i).css("display", "block");
+						}
+					catch (e) { }
+                
 
                 i++;
             });
