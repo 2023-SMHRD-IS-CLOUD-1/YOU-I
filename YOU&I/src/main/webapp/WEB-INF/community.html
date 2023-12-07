@@ -580,31 +580,38 @@ function postonbtn(){
 	console.log("파일 바뀜 글작성페이지")
 	// 여기에 회원가입 처리 로직을 추가하세요.
 			//const input = document.getElementById('uploadedImage');
-			const fileRoot = putFile(upimage[0]);
-			console.log(fileRoot[0], fileRoot[1], fileRoot[2])
-			const fileUpload = document.getElementsByName("fileUpload");
-			//console.log($('input[name=filename]').val());
-			//fileUpload.fileOriName.value = fileRoot[1];
-			//console.log(fileRoot[1]);
-			//fileUpload.fileDate.value = fileRoot[2];
-			//console.log(fileRoot[2]);
-			//$("#UserProfileS3root").val(fileRoot[0]);
+			try {
+				const fileRoot = putFile(upimage[0]);
+				console.log(fileRoot[0], fileRoot[1], fileRoot[2])
+				const fileUpload = document.getElementsByName("fileUpload");
 
-			var data = {filename: fileRoot[0], fileOriName: fileRoot[1], fileDate: fileRoot[2], fileS3root: $("#fileS3root").val(), commNo :lastcommNo}
-			$.ajax({
+				var data = {filename: fileRoot[0], fileOriName: fileRoot[1], fileDate: fileRoot[2], fileS3root: $("#fileS3root").val(), commNo: lastcommNo}
+				$.ajax({
 
-				url: "Upload.do",
-				data: data,
-				dataType: "json",
-				success: function (res) {
-					console.log("DB연결성공")
-					window.location.href = "Gocommunity.do?groupNo="+GroupNo;
-					
-				},
-				error: function (e) {
-					console.log("DB연결실패");					
-				}
-			})
+					url: "Upload.do",
+					data: data,
+					dataType: "json",
+					success: function (res) {
+						console.log("DB연결성공")
+
+						setTimeout(function(){
+							alert('작성이 완료되었습니다.');
+						window.location.href = "Gocommunity.do?groupNo=" + GroupNo;
+							
+						}, 2500);
+
+					},
+					error: function (e) {
+						console.log("DB연결실패");
+					}
+				})
+			} catch {
+						setTimeout(function(){
+							alert('작성이 실패되었습니다.');
+						window.location.href = "Gocommunity.do?groupNo=" + GroupNo;
+							
+						}, 2500);
+			}
 	
 }
 
@@ -653,7 +660,40 @@ $(document).ready(function () {
 	fetchAndDisplayComments();
 	})
 		
-		
+		p1.then(function (resolve) {
+				Listcomm_no = resolve;
+				console.log(Listcomm_no + "사진 listcomm_no")
+
+
+				var Groupnodata = {data: Listcomm_no}
+				var bucketUrl = "https://s3.ap-northeast-2.amazonaws.com/you-i/"
+				$.ajax({
+
+					url: "CommunityImageTake.do?groupNo=" + GroupNo,
+					data: Groupnodata,
+					dataType: "json",
+					success: function (res) {
+						var i = 1;
+						res.forEach(function (res) {
+							console.log("https://s3.ap-northeast-2.amazonaws.com/you-i/resize_images" + res.fileThumb)
+							var imagePath = "resize_images" + res.fileThumb;
+							var finalUrl = bucketUrl + encodeURIComponent(imagePath);
+							console.log(res.commNo)
+							$("#post" + res.commNo).prepend(`<img style="object-fit: fill; width:900px; height:500px; margin-bottom:20px;" src=${finalUrl}>`);
+							i++;
+							
+						}
+						
+						)
+					},
+					error: function (e) {
+						console.log(e);
+					}
+				})
+
+
+
+			})
 		
 		
 		

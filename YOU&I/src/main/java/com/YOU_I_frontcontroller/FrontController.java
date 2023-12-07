@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.YOU_I.controller.Command;
+import com.YOU_I.controller.CommunityImageTakeService;
 import com.YOU_I.controller.GroupImageTakeService;
 import com.YOU_I.controller.JoinService;
 import com.YOU_I.controller.LoginService;
@@ -84,6 +85,7 @@ public class FrontController extends HttpServlet {
 		map.put("memberInfo.do", new memberInfoService());
 		map.put("SelectAllComunity.do", new SelectAllComunityService());
 		map.put("getGroupName.do", new getGroupNameService());
+		map.put("CommunityImageTake.do", new CommunityImageTakeService());
 	}
 	
 		

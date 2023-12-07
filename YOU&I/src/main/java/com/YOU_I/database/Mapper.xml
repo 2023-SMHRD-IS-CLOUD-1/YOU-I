@@ -345,6 +345,16 @@
 	FROM TBL_GROUP
 	WHERE GROUP_NO=#{groupNo}
 	</select>
+	
+	<select id="CommunityImageTake" parameterType="java.lang.String"
+		resultMap="GroupImagetake">
+
+		SELECT *
+		FROM TBL_FILE
+		WHERE FILE_S3_PATH = #{fileS3Path}
+		ORDER BY COMM_NO DESC
+		
+	</select>
 
 
 
