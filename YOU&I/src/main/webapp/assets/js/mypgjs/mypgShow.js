@@ -28,30 +28,18 @@ $(document).ready(function () {
 }
 function profileImageTake(resolvedData) {
 	console.log(resolvedData);
-	var Groupnodata = { data: resolvedData }
 	var bucketUrl = "https://s3.ap-northeast-2.amazonaws.com/you-i/"
-	$.ajax({
 
-		url: "UserImageTake.do",
-		data: Groupnodata,
-		dataType: "json",
-		success: function(res) {
+			console.log("요청옴" + resolvedData)
 				try{
-			res.forEach(function(res) {
-				console.log(res)
-				console.log("https://s3.ap-northeast-2.amazonaws.com/you-i/resize_profile" + res.fileThumb)
-				var imagePath = "resize_profile" + res.fileThumb;
+				console.log(resolvedData)
+				console.log("https://s3.ap-northeast-2.amazonaws.com/you-i/resize_profile" + resolvedData)
+				var imagePath = "resize_profile/" + resolvedData;
 				console.log(imagePath);
 				var finalUrl = bucketUrl + encodeURIComponent(imagePath);
 				$("#uploadedImage").attr("src", finalUrl);
 				$("#uploadedImage").css("display", "block");
-				}
-			)}
+			}
 				catch(e){}
-		},
-		error: function(e) {
-			console.log(e);
 		}
-	})
-}
 mypgShow();
