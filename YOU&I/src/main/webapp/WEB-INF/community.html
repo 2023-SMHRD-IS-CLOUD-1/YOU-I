@@ -14,168 +14,186 @@
 
 	<style>
 		@font-face {
-    font-family: 'iceJaram-Rg';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/iceJaram-Rg.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
+			font-family: 'iceJaram-Rg';
+			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/iceJaram-Rg.woff2') format('woff2');
+			font-weight: normal;
+			font-style: normal;
+		}
+
 		#post-form {
-    max-width: 600px;
-    margin: 20px auto 20px 150px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: 1px solid black;
-}
-#post-content {
-    resize: none;
-    height: 50px;
-    border-radius: 8px;
-    font-size: 16px; 
-    font-weight: bold; 
-    border: 1px solid black;
-}
-#content{
-	background-color: #eaeaea;
-	
-}
+			max-width: 600px;
+			margin: 20px auto 20px 150px;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 8px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			border: 1px solid black;
+		}
+
+		#post-content {
+			resize: none;
+			height: 50px;
+			border-radius: 8px;
+			font-size: 16px;
+			font-weight: bold;
+			border: 1px solid black;
+		}
+
+		#content {
+			background-color: #eaeaea;
+
+		}
 
 		.comment-list li {
-    border: 1px solid #ccc;   
-    border-radius: 20px;      
-    padding: 8px;             
-    margin-bottom: 8px;       
-    width:850px;
-     white-space: pre-wrap;
-    overflow: hidden;
-    background-color: white;
-    border: 1px solid black;
-    
+			border: 1px solid #ccc;
+			border-radius: 20px;
+			padding: 8px;
+			margin-bottom: 8px;
+			width: 850px;
+			white-space: pre-wrap;
+			overflow: hidden;
+			background-color: white;
+			border: 1px solid black;
 
-}
+
+		}
+
 		.post-content {
-	
-    width: 910px;
-    min-height: 300px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    white-space: pre-wrap;
-    overflow: hidden;
-    color: #333;
-    resize:none;
-     font-size: 1.3em; 
-    font-weight: bold;
-    margin-bottom: 10px; 
-     border: 1px solid black;
-}
-		#new-post-form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 0; 
-}
 
-#new-post-form button {
-    align-self: flex-end;
-}
+			width: 910px;
+			min-height: 300px;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 20px;
+			margin-bottom: 10px;
+			box-sizing: border-box;
+			white-space: pre-wrap;
+			overflow: hidden;
+			color: #333;
+			resize: none;
+			font-size: 1.3em;
+			font-weight: bold;
+			margin-bottom: 10px;
+			border: 1px solid black;
+		}
+
+		#new-post-form {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			margin-left: 0;
+		}
+
+		#new-post-form button {
+			align-self: flex-end;
+		}
+
 		#user-profile {
 			display: flex;
 			align-items: center;
 			margin-bottom: 10px;
 		}
+
 		#user-profile img {
 			border-radius: 50%;
 			margin-right: 10px;
 		}
+
 		#user-profile h3 {
 			margin: 0;
 		}
+
 		#posts-container {
 			max-width: 600px;
 			margin: 20px 0;
 			white-space: pre;
 		}
+
 		.post {
-    margin: auto;
-    margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 2000px;
-    min-width: 1000px;
-    min-height: 100px;
-    height: auto;
-    background-color: #FDF4E3;
-    color: #333;
-    display: flex;
-    flex-direction: column; 
-    border: 2px solid #FD6A25; 
-}
-.post-content{
-	background-color:white;
-}.post-header {
+			margin: auto;
+			margin-bottom: 20px;
+			padding: 20px;
+			border-radius: 8px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			width: 80%;
+			max-width: 2000px;
+			min-width: 1000px;
+			min-height: 100px;
+			height: auto;
+			background-color: #FDF4E3;
+			color: #333;
+			display: flex;
+			flex-direction: column;
+			border: 2px solid #FD6A25;
+		}
+
+		.post-content {
+			background-color: white;
+		}
+
+		.post-header {
 			display: flex;
 			align-items: center;
-			margin-bottom: 10px;}
+			margin-bottom: 10px;
+		}
+
 		.post-nickname {
-    font-weight: bold;
-    font-size: 1.2em; 
-}
+			font-weight: bold;
+			font-size: 1.2em;
+		}
+
 		.preserve-space {
 			white-space: pre;
 		}
+
 		#modal {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 999;
-    text-align: center;
-    border: 2px solid black;
-}
-.comment-input{
-	border: 1px solid black;
-}
+			display: none;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 8px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			z-index: 999;
+			text-align: center;
+			border: 2px solid black;
+		}
 
-#modal h2 {
-    font-size: 1.5em; 
-    font-weight: bold; 
-    margin-bottom: 20px; 
-}
+		.comment-input {
+			border: 1px solid black;
+		}
 
-#modal-content {
-    font-size: 1.5em; 
-    font-weight: bold; 
-    margin-bottom: 15px; 
-}
+		#modal h2 {
+			font-size: 1.5em;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
 
-#modal-form label {
-    font-size: 1.5em; 
-    font-weight: bold; 
-    margin-bottom: 10px; 
-}
+		#modal-content {
+			font-size: 1.5em;
+			font-weight: bold;
+			margin-bottom: 15px;
+		}
 
-#modal-form textarea {
-    font-size: 1.5em; 
-    font-weight: bold; 
-    margin-bottom: 15px; 
-    border: 2px solid black;
-}
+		#modal-form label {
+			font-size: 1.5em;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
 
-#modal-form button {
-    font-size: 18px; 
-    font-weight: bold; 
-}
+		#modal-form textarea {
+			font-size: 1.5em;
+			font-weight: bold;
+			margin-bottom: 15px;
+			border: 2px solid black;
+		}
+
+		#modal-form button {
+			font-size: 18px;
+			font-weight: bold;
+		}
 
 		.overlay {
 			display: none;
@@ -187,10 +205,12 @@
 			background: rgba(0, 0, 0, 0.5);
 			z-index: 998;
 		}
+
 		.comment-input {
 			width: 500px;
-			resize:none;
+			resize: none;
 		}
+
 		.like-button {
 			cursor: pointer;
 			width: 30px;
@@ -200,80 +220,80 @@
 			border: none;
 			padding: 0;
 		}
-		
+
 		.like-count {
 			margin-right: 10px;
-			font-size:1.3em;
+			font-size: 1.3em;
 			font-weight: bold;
-			color:black;
-			
+			color: black;
+
 		}
+
 		.interaction-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-.comments-containerclass {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.like-button{
-	background-color:white;
-	
-}
-input[type="file"]::file-selector-button::before {
-  content: "이미지 선택";
-}
-input[type="file"]::file-selector-button {
-  border-radius: 4px;
-  padding: 0 16px;
-  height: 40px;
-  cursor: pointer;
-  background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
-  margin-right: 16px;
-  transition: background-color 200ms;
-}
+			display: flex;
+			align-items: center;
+			margin-bottom: 10px;
+		}
 
-input[type="file"]::file-selector-button:hover {
-  background-color: #f3f4f6;
-}
+		.comments-containerclass {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
 
-input[type="file"]::file-selector-button:active {
-  background-color: #e5e7eb;
-}
-.like-button {
-  width: 40px; 
-  height: 40px; 
-}
-#dd{
-	font-size:100px;
-	font-family: 'iceJaram-Rg';
-	text-align: center;
-	color: black;
-	margin-top:130px;
-	margin-bottom:150px;
-     
-	}
+		.like-button {
+			background-color: white;
 
+		}
+
+		input[type="file"]::file-selector-button::before {
+			content: "이미지 선택";
+		}
+
+		input[type="file"]::file-selector-button {
+			border-radius: 4px;
+			padding: 0 16px;
+			height: 40px;
+			cursor: pointer;
+			background-color: white;
+			border: 1px solid rgba(0, 0, 0, 0.16);
+			box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+			margin-right: 16px;
+			transition: background-color 200ms;
+		}
+
+		input[type="file"]::file-selector-button:hover {
+			background-color: #f3f4f6;
+		}
+
+		input[type="file"]::file-selector-button:active {
+			background-color: #e5e7eb;
+		}
+
+		.like-button {
+			width: 40px;
+			height: 40px;
+		}
+
+		#dd {
+			font-size: 100px;
+			font-family: 'iceJaram-Rg';
+			text-align: center;
+			color: black;
+			margin-top: 130px;
+			margin-bottom: 150px;
+
+		}
 	</style>
 
-	
+
 </head>
 
 
 
 <body class="is-preload">
-
-
-	<!-- Content -->
 	<div id="content">
-		<!-- 배너 이미지 -->
 		<div id="dd"></div>
-		
-
 		<div id="post-form">
 			<h2>글작성</h2>
 			<form id="new-post-form" action="community.do" method="POST" name="postSubmitform">
@@ -303,40 +323,30 @@ input[type="file"]::file-selector-button:active {
 		<div id="posts-container">
 		</div>
 	</div>
-	
-
-	<!-- Sidebar -->
 	<div id="sidebar">
-
-		<!-- Logo -->
 		<h1 id="logo"><a href="Gomainpg.do" id="group-name">YOU & I</a></h1>
-
-		<!-- Nav -->
 		<nav id="nav">
 			<ul id="sideService">
-				<li><a id = "modifyprofile"href="Gomypg.do">프로필설정</a></li>
-				<li><a id = "clubmember" href="Goclubmember.do">멤버</a></li>
-				<li><a id = "community" href="Gocommunity.do">게시글</a></li>
-				<li><a id = "clubfee" href="Goclubfee.do">회비관리</a></li>
-				<li><a id = "" href="채팅방.html">채팅방</a></li>
-				<li><a id = "groupSchedules" href="GogroupSchedules.do">그룹일정</a></li>
+				<li><a id="modifyprofile" href="Gomypg.do">프로필설정</a></li>
+				<li><a id="clubmember" href="Goclubmember.do">멤버</a></li>
+				<li><a id="community" href="Gocommunity.do">게시글</a></li>
+				<li><a id="clubfee" href="Goclubfee.do">회비관리</a></li>
+				<li><a id="" href="채팅방.html">채팅방</a></li>
+				<li><a id="groupSchedules" href="GogroupSchedules.do">그룹일정</a></li>
 			</ul>
 		</nav>
-		<!-- Search -->
 		<section class="box search">
 			<form method="post" action="#">
 				<input type="text" class="text" name="search" placeholder="소모임 검색" />
 			</form>
 		</section>
-
-		<!-- Text -->
 		<section class="box text-style1">
 			<div class="inner">
 				<p>
 					<strong>그룹소개</strong>
 				</p>
 				<p id="groupinfo">
-					
+
 				</p>
 			</div>
 		</section>
@@ -411,84 +421,69 @@ input[type="file"]::file-selector-button:active {
 
 	</div>
 	<!-- Scripts -->
-	<script>console.log("확인용")</script>
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/browser.min.js"></script>
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
-    <script src="assets/js/communiyjs/findking.js"></script>
-    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.809.0.min.js"></script>
+	<script src="assets/js/communiyjs/findking.js"></script>
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.809.0.min.js"></script>
 	<script src="assets/js/awsjs/CommimageUpload.js"></script>
-<script>
-    $("#postSubmit").on("click",function(){
-		  $('#new-post-form').attr('action', 'community.do?groupNo='+GroupNo);
-		  
-	})
-</script>
+	<script>
+		$("#postSubmit").on("click", function () {
+			$('#new-post-form').attr('action', 'community.do?groupNo=' + GroupNo);
+
+		})
+	</script>
 
 	<script>
-		
 		date = new Date();
 		result_date = String(date).split(" ");
 		day = result_date[2];
 		month = result_date[1];
 		year = result_date[3];
-
-		console.log(day);
-
 		$(".month").html(day + " ");
 		$(".day").html(month + " ");
 		$(".year").html(year + " ");
-		
-		document.getElementById("fileS3root").value = GroupNo;
-		console.log(document.getElementById("fileS3root").value + "S3 루트 확인용")
-		
 
+		document.getElementById("fileS3root").value = GroupNo;
 		function openModal() {
 			document.getElementById('overlay').style.display = 'block';
 			document.getElementById('modal').style.display = 'block';
-
-			// 현재 텍스트 창 내용을 모달에 미리 채우려는 경우
 			var postContent = document.getElementById('post-content').value;
 			document.getElementById('modal-content').value = postContent;
 		}
-
 		function closeModal() {
 			document.getElementById('overlay').style.display = 'none';
 			document.getElementById('modal').style.display = 'none';
 		}
-
 		function updateTextarea() {
 			var modalContent = document.getElementById('modal-content').value;
 			document.getElementById('post-content').value = modalContent;
 			closeModal();
 		}
-var Listcomm_no = null;
-var finalresultCommNo = null;
-var p1 = null;
+
+
+
+
+		var Listcomm_no = null;
+		var finalresultCommNo = null;
+		var p1 = null;
+		//게시글조회
 		$(document).ready(function () {
-			p1 = new Promise(function(resolve){
-			var ListcommNo = "";
-			
-			$.ajax({
-				url: 'selectCommunity.do?groupNo='+GroupNo,
-				method: 'GET',
-				dataType: 'json',
-				success: function (res) {
-		
-					$('#posts-container').empty();
-
-					// 결과를 역순으로 반복
-					res.reverse().forEach(function (post) {
-					console.log("post확인확인"+post.comm_no)
-						ListcommNo += post.comm_no + ",";
-					console.log(ListcommNo + '최종');
-						// 게시물 엘리먼트 생성 및 컨테이너 끝에 추가
-						var postElement = $(
-
-							'<div id="post'+post.comm_no+'" class="post"></div>');
-						postElement.html(`
+			p1 = new Promise(function (resolve) {
+				var ListcommNo = "";
+				$.ajax({
+					url: 'selectCommunity.do?groupNo=' + GroupNo,
+					method: 'GET',
+					dataType: 'json',
+					success: function (res) {
+						$('#posts-container').empty();
+						res.reverse().forEach(function (post) {
+							ListcommNo += post.comm_no + ",";
+							var postElement = $(
+								'<div id="post' + post.comm_no + '" class="post"></div>');
+							postElement.html(`
                     <div class="post-header">
                         <div class="post-nickname">글작성자   :   ${post.id}</div>
                     </div>
@@ -503,265 +498,168 @@ var p1 = null;
                             <button class="commentbtn" value="${post.comm_no}">댓글 추가</button>
                         </div>
                 `);
-						$('#posts-container').append(postElement);
-					});
-				console.log(ListcommNo + "나가가전 값")
-				resolve(ListcommNo);
-				//fetchAndDisplayComments();
-				},
-				error: function (error) {
-					console.error('데이터를 가져오는 중 오류 발생:', error);
-				}
-			});
-			$.ajax({
-					
-					url:"SelectAllComunity.do",
-					dataType:"json",
-					success : function(res){
-						console.log(res + "최근 글 번호 가져오기 @@@@@@@")
+							$('#posts-container').append(postElement);
+						});
+						resolve(ListcommNo);
+					},
+
+				});
+				$.ajax({
+					url: "SelectAllComunity.do",
+					dataType: "json",
+					success: function (res) {
 						lastcommNo = res;
 					},
-					error : function(e){
-						console.log(e)
-					}
-					
 				})
 			})
-			p1.then(function(resolve){
-				console.log(resolve + "리졸브값 가져오기")
+			p1.then(function (resolve) {
 				Listcomm_no = resolve;
-				console.log(Listcomm_no + "리졸브값 적용")
-				
+
 			})
 		});
 
-function btnclick(postno){
-	if(document.getElementById("post111"+postno) == document.getElementById("like-button".postno)){
-		console.log("글번호와 라이크번호가 같다");
-		var likes = document.getElementById("like-count"+postno);
-		var templikes = likes.innerText++
-		console.log(templikes);
-		data = {likes : templikes , likesNo : postno}
-		$.ajax({
-			url : "likes.do",
-			data : data,
-			dataType :"json",
-			success : function(res){
-				console.log(res + "성공함");
-				
-			},
-			error : function(e){
-				console.log(e)
+
+		//좋아요기능
+		function btnclick(postno) {
+			if (document.getElementById("post111" + postno) == document.getElementById("like-button".postno)) {
+				var likes = document.getElementById("like-count" + postno);
+				var templikes = likes.innerText++
+				data = {likes: templikes, likesNo: postno}
+				$.ajax({
+					url: "likes.do",
+					data: data,
+					dataType: "json",
+					success: function (res) {
+					},
+				})
 			}
-			
-			
-		})
-	}
-	
-}
-function postonbtn(){
-	
-	//<textarea id="post-content" name="commContent" rows="4" required onclick="openModal()"></textarea>
-	//			<br>
-	//			<input type="file" id="file_input" name="filename" accept="image/*">
-	//			<button id="postSubmit" type="submit" onclick="postonbtn()">게시</button>
-	//<form id="new-post-form" action="community.do" method="post" name="postSubmitform">
-	//			<textarea id="post-content" name="commContent" rows="4" required onclick="openModal()"></textarea>
-	//			<br>
-	//			<input type="file" id="file_input" name="filename" accept="image/*">
-	//			<button id="postSubmit" type="submit" onclick="postonbtn()">게시</button>
-	//		</form>
-	var post_content = $("#post-content").val();
-	console.log(post_content);
-	
-	data = { commContent : post_content	}
-	$.ajax({
-		url : "community.do?groupNo="+GroupNo,
-		data : data ,
-		dataType :"json",
-		success: function(res){
-			console.log(res + "글 작성됨")
-		},
-		error : function(e){
-			console.log(e)
+
 		}
-	})
-	
-	
-	
-	
-	const files = document.getElementById("file-input");
-	var upimage = files.files;
-	console.log("파일 바뀜 글작성페이지")
-	// 여기에 회원가입 처리 로직을 추가하세요.
-			//const input = document.getElementById('uploadedImage');
+		//댓글추가기능
+		function postonbtn() {
+			var post_content = $("#post-content").val();
+			data = {commContent: post_content}
+			$.ajax({
+				url: "community.do?groupNo=" + GroupNo,
+				data: data,
+				dataType: "json",
+				success: function (res) {
+				},
+			})
+			const files = document.getElementById("file-input");
+			var upimage = files.files;
 			try {
 				const fileRoot = putFile(upimage[0]);
-				console.log(fileRoot[0], fileRoot[1], fileRoot[2])
 				const fileUpload = document.getElementsByName("fileUpload");
 
 				var data = {filename: fileRoot[0], fileOriName: fileRoot[1], fileDate: fileRoot[2], fileS3root: $("#fileS3root").val(), commNo: lastcommNo}
 				$.ajax({
-
 					url: "Upload.do",
 					data: data,
 					dataType: "json",
 					success: function (res) {
-						console.log("DB연결성공")
-
-						setTimeout(function(){
+						setTimeout(function () {
 							alert('작성이 완료되었습니다.');
-						window.location.href = "Gocommunity.do?groupNo=" + GroupNo;
-							
-						}, 2500);
+							window.location.href = "Gocommunity.do?groupNo=" + GroupNo;
 
+						}, 2500);
 					},
-					error: function (e) {
-						console.log("DB연결실패");
-					}
 				})
 			} catch {
-						setTimeout(function(){
-							alert('작성이 실패되었습니다.');
-						window.location.href = "Gocommunity.do?groupNo=" + GroupNo;
-							
-						}, 2500);
+				setTimeout(function () {
+					alert('작성이 실패되었습니다.');
+					window.location.href = "Gocommunity.do?groupNo=" + GroupNo;
+
+				}, 2500);
 			}
-	
-}
+		}
+		var commentInput = null;
+		$(document).ready(function () {
+			$(document).on('click', ".commentbtn", function (value) {
 
-	
-		
-		
-	var commentInput = null;
-	$(document).ready(function () {
-	$(document).on('click', ".commentbtn", function (value) {
-	console.log(Listcomm_no + "확인해보자==============================================")
-	
-	var sperList = Listcomm_no.split(",");
-	sperList.pop();
-	console.log(sperList)
-    var $this = $(this);
+				var sperList = Listcomm_no.split(",");
+				sperList.pop();
+				var $this = $(this);
 
-   	var comm_no = this.value
-    sperList.forEach(function(res){
-    commentInput = $this.closest('#comments-container'+res).find('.comment-input');
-    console.log(commentInput+"이건제대로 들어오냐 ?")
-    var comment_content = commentInput.val();
-    if(comment_content!=""&&comment_content!=null){
-		
-	
-    console.log(comment_content+"글씨에 왜 null값이 ??")
-    $.ajax({
-        method: 'POST',
-        url: 'comment.do',
-        data: { comment_content: comment_content,
-        		Lastcomm_no : comm_no},
-        success: function (response) {
-            console.log("댓글 추가 성공");
- 
-            fetchAndDisplayComments();
-
-            commentInput.val('');
-        },
-        error: function (request, status, error) {
-            console.error('댓글 추가 중 오류 발생:', error);
-        }
-    });
-    }
-});
-});
-$(document).ready(function () {
-	fetchAndDisplayComments();
-	})
-		
-		p1.then(function (resolve) {
+				var comm_no = this.value
+				sperList.forEach(function (res) {
+					commentInput = $this.closest('#comments-container' + res).find('.comment-input');
+					var comment_content = commentInput.val();
+					if (comment_content != "" && comment_content != null) {
+						$.ajax({
+							method: 'POST',
+							url: 'comment.do',
+							data: {
+								comment_content: comment_content,
+								Lastcomm_no: comm_no
+							},
+							success: function (response) {
+								fetchAndDisplayComments();
+								commentInput.val('');
+							},
+						});
+					}
+				});
+			});
+			$(document).ready(function () {
+				fetchAndDisplayComments();
+			})
+			p1.then(function (resolve) {
 				Listcomm_no = resolve;
-				console.log(Listcomm_no + "사진 listcomm_no")
-
-
 				var Groupnodata = {data: Listcomm_no}
 				var bucketUrl = "https://s3.ap-northeast-2.amazonaws.com/you-i/"
 				$.ajax({
-
 					url: "CommunityImageTake.do?groupNo=" + GroupNo,
 					data: Groupnodata,
 					dataType: "json",
 					success: function (res) {
 						var i = 1;
 						res.forEach(function (res) {
-							console.log("https://s3.ap-northeast-2.amazonaws.com/you-i/resize_images" + res.fileThumb)
 							var imagePath = "resize_images" + res.fileThumb;
 							var finalUrl = bucketUrl + encodeURIComponent(imagePath);
-							console.log(res.commNo)
 							$("#post" + res.commNo).prepend(`<img style="object-fit: fill; width:900px; height:500px; margin-bottom:20px;" src=${finalUrl}>`);
 							i++;
-							
 						}
-						
 						)
 					},
-					error: function (e) {
-						console.log(e);
-					}
 				})
-
-
-
 			})
-		
-		
-		
-		function fetchAndDisplayComments() {
-    $.ajax({
-        url: 'selectComment.do?groupNo='+GroupNo,
-        method: 'GET',
-        dataType: 'json',
-        success: function (res) {
-            // 댓글 목록을 초기화
-            
-            res.forEach(function(res){
-				
-            $('#comment-list'+res.comm_no).empty();
-})
-            // 새로 불러온 댓글로 목록을 업데이트
-            res.forEach(function (comment) {
-                var commentHTML = '<li>' + comment.id + '  : ' + comment.comment_content + '</li>';
-                $('#comment-list'+comment.comm_no).append(commentHTML);
-            });
-        },
-        error: function (request, status, error) {
-            console.error('댓글을 가져오는 중 오류 발생:', error);
-        }
-    });
-}
-})
-$(document).ready(function () {
-		
-        $.ajax({
-            url: 'getGroupName.do?groupNo='+GroupNo,  
-            dataType: 'json',
-            success: function (data) {
-              
-                $('#dd').text(data.groupName);
-                $('#groupinfo').text(data.groupInfo)
-            },
-            error: function (xhr, status, error) {
-                console.error('그룹 이름을 가져오는 중 오류 발생:', error);
-                console.log(xhr);
-            }
-        });
-    });
-    window.onload = function() {
-            var ddElement = document.getElementById('dd');
-            var textWidth = ddElement.offsetWidth;
+			//댓글조회기능
+			function fetchAndDisplayComments() {
+				$.ajax({
+					url: 'selectComment.do?groupNo=' + GroupNo,
+					method: 'GET',
+					dataType: 'json',
+					success: function (res) {
+						res.forEach(function (res) {
+							$('#comment-list' + res.comm_no).empty();
+						})
+						res.forEach(function (comment) {
+							var commentHTML = '<li>' + comment.id + '  : ' + comment.comment_content + '</li>';
+							$('#comment-list' + comment.comm_no).append(commentHTML);
+						});
+					},
+				});
+			}
+		})
+		$(document).ready(function () {
 
-            var marginLeft = (window.innerWidth - textWidth) / 2;
-   
-            var leftMargin = -600;
-
-            ddElement.style.marginLeft = (marginLeft + leftMargin) + 'px';
-        };
+			$.ajax({
+				url: 'getGroupName.do?groupNo=' + GroupNo,
+				dataType: 'json',
+				success: function (data) {
+					$('#dd').text(data.groupName);
+					$('#groupinfo').text(data.groupInfo)
+				},
+			});
+		});
+		window.onload = function () {
+			var ddElement = document.getElementById('dd');
+			var textWidth = ddElement.offsetWidth;
+			var marginLeft = (window.innerWidth - textWidth) / 2;
+			var leftMargin = -600;
+			ddElement.style.marginLeft = (marginLeft + leftMargin) + 'px';
+		};
 	</script>
 
 
