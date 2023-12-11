@@ -153,7 +153,6 @@
 
         window.onload = function () {
             var groupNo = getParameterByName('groupNo');
-            console.log('그룹넘버확인', groupNo);
             $("#joinGroup").on("click",function(){
 				$.ajax({
                 url: "joinGroup.do",
@@ -165,13 +164,10 @@
 					 },
 					 dataType: 'json',
                 success: function (response) {
-                    console.log( response);
                     
                      window.location.href = response.redirectUrl;
                 },
-                error: function (error) {
-                    console.error(error);
-                }
+                
             });  
 			})
  				      

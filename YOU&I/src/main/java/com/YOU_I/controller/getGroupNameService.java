@@ -16,15 +16,19 @@ public class getGroupNameService implements Command{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Group_DTO dto = new Group_DTO();
+		
 		String group = request.getParameter("groupNo");
 		int groupNo = Integer.parseInt(group);
+		
+		Group_DTO dto = new Group_DTO();
 		dto.setGroupNo(groupNo);
+		
 		Group_DAO dao = new Group_DAO();
 		Group_DTO dto2 = dao.getGroupName(dto);
-		System.out.println("sssssssssssssssssssssss"+groupNo);
+		
 		Gson gson = new Gson();
 		String result = gson.toJson(dto2);
+		
 		response.setContentType("application/json");
 	    response.setCharacterEncoding("UTF-8");
 	    response.getWriter().write(result);

@@ -18,15 +18,18 @@ public class findKingService implements Command {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("utf-8");
-		join_DTO dto = new join_DTO();
+		
 		String group = request.getParameter("groupNo");
 		int groupNo = Integer.parseInt(group);
-		System.out.println("findkinggroupNo"+groupNo);
 		String id = (String) session.getAttribute("id");
+		
+		join_DTO dto = new join_DTO();
 		dto.setGroupNo(groupNo);
 		dto.setId(id);
+		
 		join_DAO dao = new join_DAO();
 		dao.findKing(dto);
+		
 		join_DTO findKingData = dao.findKing(dto);
 
 	    Gson gson = new Gson();

@@ -7,15 +7,10 @@ public class community_DTO {
 		private int comment_no;
 		
 		private int groupNo;
-	    //게시자아이디
 	    private String id;
-	    //올린내용
 	    private String commContent;
-	    //댓글내용
 	    private String comment_content;
-	    // 게시 일자
 	    private Date postDate;
-	    //좋아요
 	    private int likes;
 		public int getComm_no() {
 			return comm_no;

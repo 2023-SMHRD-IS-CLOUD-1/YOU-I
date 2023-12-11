@@ -15,7 +15,6 @@ public class Hobby_DAO {
 		
 		SqlSession sqlSession = factory.openSession();
 		List<Hobby_DTO> result = sqlSession.selectList("SelectAllHobbyName");
-		System.out.println(result);
 		sqlSession.close();
 		
 		return result;
@@ -25,7 +24,6 @@ public class Hobby_DAO {
 
 		SqlSession sqlSession = factory.openSession();
 		List<Hobby_DTO> result = sqlSession.selectList("mypgCt1");
-		System.out.println(result);
 		sqlSession.close();
 
 		return result;

@@ -1,8 +1,6 @@
 package com.YOU_I.controller;
 
 import java.io.IOException;
-import java.sql.Date;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,8 +24,6 @@ public class JoinService implements Command {
 		String user_area = request.getParameter("area");
 		String UserProfileS3root = request.getParameter("UserProfileS3root");
 		
-		System.out.println(user_gend);
-		
 		User_DTO u_dto = new User_DTO();
 		u_dto.setProfileImg(UserProfileS3root);
 		u_dto.setId(user_id);
@@ -45,13 +41,10 @@ public class JoinService implements Command {
 		User_DAO u_dao = new User_DAO();
 		int result = u_dao.user_Join(u_dto);
 		
-		System.out.println("service 접속");
 		
 		if(result > 0) {
-			System.out.println("로그인성공");
 			return "redirect:/Gologin.do";
 		} else {
-			System.out.println("로그인실패");
 			return "redirect:/Gologin.do";
 			
 		}

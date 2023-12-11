@@ -18,17 +18,18 @@ public class refuseUserService implements Command{
 			throws ServletException, IOException {
 		
 		String id = request.getParameter("id");
-		System.out.println("삭제할 ID"+id);
 		String group = request.getParameter("groupNo");
 		int groupNo = Integer.parseInt(group);
+		
 		join_DTO dto = new join_DTO();
-		System.out.println("삭제할ID의그룹넘버"+groupNo);
 		dto.setId(id);
 		dto.setGroupNo(groupNo);
+		
 		join_DAO dao = new join_DAO();
 
 		Gson gson = new Gson();
 		String jsonResponse = gson.toJson(dao.refuseUser(dto));
+		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 

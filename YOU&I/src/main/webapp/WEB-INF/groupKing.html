@@ -131,35 +131,7 @@
 			</div>
 		</section>
 
-		<!-- Recent Posts -->
-		<!-- 
-		<section class="box recent-posts">
-			
-			<header>
-				<h2>Recent Posts</h2>
-			</header>
-			<ul>
-				<li><a href="#">Lorem ipsum dolor</a></li>
-				<li><a href="#">Feugiat nisl aliquam</a></li>
-				<li><a href="#">Sed dolore magna</a></li>
-				<li><a href="#">Malesuada commodo</a></li>
-				<li><a href="#">Ipsum metus nullam</a></li>
-			</ul>
-			
-		</section>
-
-		<!-- Recent Comments ->
-		<section class="box recent-comments">
-			<header>
-				<h2>Recent Comments</h2>
-			</header>
-			<ul>
-				<li>case on <a href="#">Lorem ipsum dolor</a></li>
-				<li>molly on <a href="#">Sed dolore magna</a></li>
-				<li>case on <a href="#">Sed dolore magna</a></li>
-			</ul>
-		</section>
-		-->
+		
 		<!-- Calendar -->
 		<section class="box calendar">
 			<div class="inner">
@@ -243,7 +215,6 @@
 		let month = result_date[1];
 		let year = result_date[3];
 
-		console.log(day);
 
 		$(".month").html(day + " ");
 		$(".day").html(month + " ");
@@ -255,7 +226,7 @@
 		$(document).ready(function () {
 			$("#calendarModal").on("show.bs.modal", function (event) {
 				var button = $(event.relatedTarget);
-				var index = button.data("index"); // data-index 속성을 통해 인덱스 얻기
+				var index = button.data("index"); 
 				var res = button.data("res");
 
 				$("#userId").html("<h2> 사용자 ID : " + res[index].id + "</h2>");
@@ -274,13 +245,10 @@
 							groupNo: res[index].groupNo
 						},
 						success: function () {
-							console.log("수락 통신 성공");
 							$("#calendarModal").modal('hide');
 							$("#applicantLink" + index).remove();
 							window.location.href = window.location.href;
-						}, error: function (jqXHR, textStatus, errorThrown) {
-							console.error("Ajax request failed: " + textStatus, errorThrown);
-						}
+						},
 					});
 				});
 
@@ -294,7 +262,6 @@
 							groupNo: res[index].groupNo
 						},
 						success: function () {
-							console.log("거절 통신 성공");
 							$("#calendarModal").modal('hide');
 							$("#applicantLink" + index).remove();
 							window.location.href = window.location.href;
@@ -302,14 +269,11 @@
 					});
 				});
 			});
-
+			// 가입신청자 전부 불러오기
 			$.ajax({
 				url: "kingComm.do?groupNo=" + GroupNo,
 				dataType: 'json',
 				success: function (res) {
-					console.log("통신성공");
-					console.log(res);
-
 					if (res.length == 0) {
 						$("#applicant").append("<h2>신청자가 없습니다</h2>");
 					} else {
@@ -330,10 +294,7 @@
                 $('#dd').text(data.groupName);
                 $('#groupinfo').text(data.groupInfo)
             },
-            error: function (xhr, status, error) {
-                console.error('그룹 이름을 가져오는 중 오류 발생:', error);
-                console.log(xhr);
-            }
+           
         });
     });
     window.onload = function() {
