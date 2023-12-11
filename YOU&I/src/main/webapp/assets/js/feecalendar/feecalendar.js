@@ -16,7 +16,6 @@ function input() {
     } else {
         outcome = money2;
     }
-    console.log(date, name_, money, outcome); 
     document.getElementById("outcome").innerHTML = outcome + "원";
 
     document.getElementById('input_date').value = null;
@@ -44,7 +43,6 @@ function input2() {
     } else {
         income = money2
     }
-    console.log(date, name_, money2, income + "원");
 
     document.getElementById("income").innerHTML = income + "원";
 
