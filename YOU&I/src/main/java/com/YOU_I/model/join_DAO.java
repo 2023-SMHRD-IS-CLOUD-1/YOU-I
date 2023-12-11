@@ -26,7 +26,6 @@ public class join_DAO {
 	public List<join_DTO> getUserInfo(join_DTO dto) {
 	    SqlSession sqlSession = factory.openSession();
 	    List<join_DTO> users = sqlSession.selectList("getUserInfo",dto);
-	    System.out.println(users);
 	    sqlSession.close();
 	    return users;
 	}

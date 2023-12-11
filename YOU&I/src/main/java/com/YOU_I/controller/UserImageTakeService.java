@@ -25,29 +25,21 @@ public class UserImageTakeService implements Command {
 		
 		PrintWriter out = response.getWriter();
 		String data = request.getParameter("data");
-		System.out.println(data + "---------------그룹 이미지 테이크 서비스");
 		
 		String[] Ldata = data.split(",");
 		int i = 0;
 		for(String a : Ldata) {
 			Ldata[i] = a;
-			System.out.println(Ldata[i] + "============================foreach");
 			i++;
 		}
 		List<String> LData = new ArrayList<String>();
 		LData = Arrays.asList(Ldata);
-		//HashMap<String, List<String>> hm = new HashMap<String, List<String>>();
-		//hm.put("groupNo", LData);
 		File_DAO f_dao = new File_DAO();
 		List<File_DTO> resultData = new ArrayList<File_DTO>();
 		for(String a : LData) {
-			System.out.println(a + "============================foreach List");
 			resultData.add(f_dao.GroupImageTake(a));
 		}
 		
-		
-		
-		System.out.println(resultData);
 		Gson gson = new Gson();
 		String result= gson.toJson(resultData);
 		

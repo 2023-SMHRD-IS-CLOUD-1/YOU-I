@@ -17,19 +17,19 @@ public class searchGroupService implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		
-		
 		response.setContentType("text/html;charset=utf-8");
 		
 		String sendGroupName= request.getParameter("sendGroupName");
+		
 		Group_DTO dto = new Group_DTO() ;
 		dto.setGroupName(sendGroupName);
-		System.out.println(sendGroupName);
+		
 		Group_DAO dao = new Group_DAO();
 		List<Group_DTO> allGroups = dao.searchGroup(dto);
+		
 		Gson gson = new Gson();
 		String allgroupJson = gson.toJson(allGroups);
-		System.out.println(allgroupJson);
+		
 		response.setContentType("application/json");
 	    response.setCharacterEncoding("UTF-8");
 	    response.getWriter().write(allgroupJson);

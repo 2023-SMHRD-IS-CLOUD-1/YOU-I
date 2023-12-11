@@ -24,7 +24,6 @@ public class SelectAllHobbyNameService implements Command {
 		PrintWriter out = response.getWriter();
 		
 		String data = request.getParameter("data");
-		System.out.println("요청옴" + data);
 		
 		Hobby_DAO h_dao = new Hobby_DAO();
 		
@@ -33,8 +32,6 @@ public class SelectAllHobbyNameService implements Command {
 		String result = gson.toJson(h_dto);
 		if(!result.isEmpty()) {
 			out.print(result);
-		}else {
-			System.out.println("실패");
 		}
 		
 		return null;

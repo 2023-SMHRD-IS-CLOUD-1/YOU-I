@@ -5,7 +5,6 @@
 <mapper namespace="com.YOU_I.model.DAO">
 
 	<insert id="user_join" parameterType="com.YOU_I.model.User_DTO">
-
 		INSERT INTO TBL_USER(ID,
 		PW, GENDER, NICK, REGION, HOBBY, PHONE, TUTORIAL_ST, PROFILE_IMG,
 		USER_ROLE, JOINED_AT)
@@ -13,16 +12,13 @@
 		#{nick},
 		#{region}, #{hobby}, #{phone}, #{tutorialSt}, #{profileImg},
 		#{userRole} ,#{joinedAt})
-
 	</insert>
 
 	<select id="user_login" parameterType="com.YOU_I.model.User_DTO"
 		resultType="com.YOU_I.model.User_DTO">
-
 		SELECT ID
 		FROM TBL_USER
 		WHERE id = #{id} AND pw = #{pw}
-
 	</select>
 
 
@@ -48,7 +44,6 @@
 	</select>
 
 	<select id="rank" resultMap="gr_rank">
-
 		SELECT GROUP_LIKES, GROUP_NAME,
 		HOBBY_NAME, HOBBY_NO, GROUP_INFO, GROUP_NO
 		FROM (SELECT
@@ -64,8 +59,6 @@
 		GROUP_LIKES
 		DESC)
 		WHERE ROWNUM &lt;=4
-
-
 	</select>
 
 
@@ -97,6 +90,7 @@
 		WHERE HOBBY_NAME =
 		#{hobbyName} AND ROWNUM &lt;= 4
 	</select>
+	
 	<resultMap type="com.YOU_I.model.Group_DTO" id="gr_rankCt">
 		<result property="hobbyName" column="HOBBY_NAME" />
 		<result property="groupLikes" column="GROUP_LIKES" />
@@ -108,7 +102,6 @@
 
 
 	<insert id="fileUpload" parameterType="com.YOU_I.model.File_DTO">
-
 		INSERT INTO
 		TBL_FILE(COMM_NO, FILE_NAME, FILE_ORI_NAME, FILE_THUMB,
 		FILE_S3_PATH,
@@ -117,13 +110,11 @@
 		#{fileOriName},
 		#{fileThumb}, #{fileS3Path},
 		#{fileSize}, #{ext})
-
 	</insert>
 
 
 	<insert id="addGroup" parameterType="com.YOU_I.model.Group_DTO"
 		useGeneratedKeys="true" keyProperty="groupNo">
-		<!-- INSERT 문 수행 -->
 		INSERT INTO tbl_group (group_name,group_info,hobby_no) VALUES
 		(#{groupName},#{groupInfo},#{hobbyNo})
 		<selectKey keyProperty="groupNo" resultType="int"
@@ -131,6 +122,7 @@
 			SELECT tbl_group_SEQ.CURRVAL AS groupNo FROM DUAL
 		</selectKey>
 	</insert>
+	
 	<insert id="commContent"
 		parameterType="com.YOU_I.model.community_DTO" useGeneratedKeys="true"
 		keyProperty="comm_no">
@@ -172,13 +164,11 @@
 
 	<select id="GroupImageTake" parameterType="java.lang.String"
 		resultMap="GroupImagetake">
-
 		SELECT *
 		FROM TBL_FILE
 		WHERE REGEXP_LIKE(FILE_NAME,
 		#{fileName})
 		AND ROWNUM &lt;= 1
-
 	</select>
 
 
@@ -192,11 +182,13 @@
 		order by
 		comm_no
 	</select>
+	
 	<insert id="comment"
 		parameterType="com.YOU_I.model.community_DTO">
 		INSERT INTO tbl_comment (comm_no,comment_content,id)
 		VALUES (#{comm_no},#{comment_content},#{id})
 	</insert>
+	
 	<select id="selectComment"
 		resultType="com.YOU_I.model.community_DTO">
 		SELECT tbl_community.comm_no, tbl_comment.comment_content,
@@ -288,6 +280,7 @@
 		insert into
 		tbl_joining(id,group_no,level_no) values(#{id},#{groupNo},22)
 	</insert>
+	
 	<select id="getUserInfo"
 		parameterType="com.YOU_I.model.join_DTO"
 		resultType="com.YOU_I.model.join_DTO">
@@ -301,6 +294,7 @@
 		and group_no = #{groupNo, jdbcType=INTEGER}
 		and approve_join = 0
 	</select>
+	
 	<update id="acceptUser" parameterType="com.YOU_I.model.join_DTO">
 		UPDATE tbl_joining
 		SET
@@ -308,11 +302,13 @@
 		WHERE id= #{id}
 		AND group_no = #{groupNo}
 	</update>
+	
 	<delete id="refuseUser" parameterType="com.YOU_I.model.join_DTO">
 		delete from tbl_joining
 		where id = #{id}
 		and group_no = #{groupNo}
 	</delete>
+	
 	<select id="findKing" parameterType="com.YOU_I.model.join_DTO"
 		resultType="com.YOU_I.model.join_DTO">
 		select id AS id, level_no AS levelNo, group_no AS groupNo
@@ -320,6 +316,7 @@
 		where group_no = #{groupNo}
 		and id = #{id}
 	</select>
+	
 	<update id="likes" parameterType="com.YOU_I.model.calendar_DTO">
 		UPDATE tbl_community
 		SET
@@ -330,10 +327,9 @@
 	<select id="memberInfo" parameterType="com.YOU_I.model.User_DTO"
 		resultType="com.YOU_I.model.User_DTO">
 		SELECT A.PROFILE_IMG AS profileImg ,A.phone AS phone, A.NICK AS nick, B.LEVEL_NO AS levelNo, B.APPROVE_JOIN AS approveJoin
-FROM TBL_USER A INNER JOIN TBL_JOINING B ON
-A.ID=B.ID WHERE B.GROUP_NO=#{groupNo} AND APPROVE_JOIN=1
+        FROM TBL_USER A INNER JOIN TBL_JOINING B ON
+        A.ID=B.ID WHERE B.GROUP_NO=#{groupNo} AND APPROVE_JOIN=1
 	</select>
-
 
 	<select id="GetlastCommNo"
 		resultType="com.YOU_I.model.community_DTO">
@@ -343,7 +339,6 @@ A.ID=B.ID WHERE B.GROUP_NO=#{groupNo} AND APPROVE_JOIN=1
 		ORDER
 		BY COMM_NO DESC)
 		WHERE ROWNUM &lt;= 1
-
 	</select>
 
 	<select id="getGroupName"
@@ -356,28 +351,11 @@ A.ID=B.ID WHERE B.GROUP_NO=#{groupNo} AND APPROVE_JOIN=1
 
 	<select id="CommunityImageTake" parameterType="java.lang.String"
 		resultMap="GroupImagetake">
-
 		SELECT *
 		FROM TBL_FILE
 		WHERE FILE_S3_PATH = #{fileS3Path}
 		ORDER BY COMM_NO DESC
-
 	</select>
-
-
-
-
-
-
-
-
-
-
-
-	<!-- <parameterMap type="com.YOU_I.model.calendar_DTO" id="addschedule"> 
-		<parameter property="scheTitle"/> <parameter property="scheContent"/> <parameter 
-		property="scheStDate, jdbcType=DATE"/> <parameter property="scheEndDate, 
-		jdbcType=DATE"/> </parameterMap> -->
 
 
 </mapper>

@@ -20,9 +20,10 @@ public class SelectAllComunityService implements Command {
 		
 		community_DAO dao = new community_DAO();
 		int resultList = dao.GetlastCommNo();
+		
 		Gson gson = new GsonBuilder().serializeNulls().create();
-		System.out.println(resultList + "최근 커뮤니티 번호 확인용@@@@@@@@@@");
 		String selectCommunityJson = gson.toJson(resultList);
+		
 		response.setContentType("application/json");
 	    response.setCharacterEncoding("UTF-8");
 	    response.getWriter().write(selectCommunityJson);

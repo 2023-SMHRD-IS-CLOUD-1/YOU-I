@@ -1,45 +1,20 @@
 package com.YOU_I.model;
 
 public class User_DTO {
-	// 웹페이지 사용자
 
-	// 사용자 아이디
 	private String id;
-
-	// 사용자 비밀번호
 	private String pw;
-
-	// 사용자 성별
 	private String gender;
-
-	// 사용자 닉네임
 	private String nick;
-
-	// 사용자 활동지역
 	private String region;
-
-	// 사용자 관심취미
 	private String hobby;
-
-	// 사용자 전화번호
 	private String phone;
-
-	// 사용자 튜토리얼유무
 	private String tutorialSt;
-
-	// 사용자 프로필사진
 	private String profileImg;
-
-	// 사용자 권한
 	private String userRole;
-
-	// 가입일자
 	private String joinedAt;
-	
 	private int levelNo;
-	
 	private int approveJoin;
-	
 	private int groupNo;
 
 	public int getGroupNo() {

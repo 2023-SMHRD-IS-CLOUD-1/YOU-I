@@ -27,9 +27,7 @@ public class UpdateMyPageService implements Command {
 		String region =request.getParameter("region");
 		String ct1 =request.getParameter("ct1");
 		String user_profile =request.getParameter("userprofile");
-		System.out.println(user_profile);
-		System.out.println(nick);
-		System.out.println("-----------------------------------------체크1----------------------------");
+		
 		User_DTO u_dt = new User_DTO();
 		u_dt.setId(user_id);
 		u_dt.setNick(nick);
@@ -37,20 +35,16 @@ public class UpdateMyPageService implements Command {
 		u_dt.setRegion(region);
 		u_dt.setHobby(ct1);
 		u_dt.setProfileImg(user_profile);
-		System.out.println("-----------------------------------------체크2----------------------------");
+		
 		User_DAO dao = new User_DAO();
 		int row = dao.update(u_dt);
 		
 		
-		System.out.println("-----------------------------------------체크3----------------------------");
 		
 		if(row > 0 ) {
-			System.out.println("-----------------------------------------체크4----------------------------");
 			return "redirect:/Gomypg.do";
 		}
 		else {
-			System.out.println("실패");
-			
 			return "redirect:/Gomypg.do";
 		}
 		

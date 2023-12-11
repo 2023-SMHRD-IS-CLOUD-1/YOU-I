@@ -3,14 +3,8 @@ package com.YOU_I.model;
 
 public class Group_DTO {
 	private int groupNo;
-
-    // 그룹 이름 
     private String groupName;
-
-    // 취미 번호 
     private int hobbyNo;
-    
-    // 취미 이름
     private String hobbyName;
 
     public String getHobbyName() {
@@ -21,16 +15,9 @@ public class Group_DTO {
 		this.hobbyName = hobbyName;
 	}
 
-	// 좋아요수 
     private int groupLikes;
-
-    // 만든 날짜 
     private String createdAt;
-
-    // 가입비 
     private Integer groupMembershipFee;
-
-    // 그룹 소개 
     private String groupInfo;
 
     public int getGroupNo() {

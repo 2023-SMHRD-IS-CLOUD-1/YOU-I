@@ -18,11 +18,14 @@ public class acceptUserService implements Command {
 			throws ServletException, IOException {
 
 		String id = request.getParameter("id");
+		
 		String group = request.getParameter("groupNo");
 		int groupNo = Integer.parseInt(group);
+		
 		join_DTO dto = new join_DTO();
 		dto.setId(id);
 		dto.setGroupNo(groupNo);
+		
 		join_DAO dao = new join_DAO();
 
 		Gson gson = new Gson();
