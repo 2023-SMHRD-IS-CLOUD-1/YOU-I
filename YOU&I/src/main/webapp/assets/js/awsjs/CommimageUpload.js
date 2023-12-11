@@ -13,8 +13,8 @@
 		console.log(fileS3Root);
 		const albumBucketName = 'you-i'; // S3의 버킷 이름
 		const region = 'ap-northeast-2'; // 서울
-		const accessKeyId = 'AKIAS2TBJHQUIT2KMAMT'; // IAM에서 생성한 사용자의 accessKeyId
-		const secretAccessKey = 'CVhXVkdniOuMbuDBUcEi474/HNYKPQcxvac7jlz+'; // IAM에서 생성한 사용자의 secretAccessKey
+		const accessKeyId = ''; // IAM에서 생성한 사용자의 accessKeyId
+		const secretAccessKey = ''; // IAM에서 생성한 사용자의 secretAccessKey
 
 		AWS.config.update({
 			region,
