@@ -99,7 +99,6 @@ public class FrontController extends HttpServlet {
 		int cp_lenght = cp.length() + 1;
 		String finaluri = uri.substring(cp_lenght);
 		
-		System.out.println(finaluri);
 		String path = null;
 		Command com = null;
 		
@@ -107,18 +106,13 @@ public class FrontController extends HttpServlet {
 		if(finaluri.contains("Go")) {
 			
 			path = finaluri.substring(2).replaceAll(".do","");
-			System.out.println("Go"+path);
 		} else {
 			com = map.get(finaluri);
 			path = com.execute(request, response);
-			System.out.println("error");
-			System.out.println("NoGo"+path);
 		}
 		
 		if(path == null) {
-			System.out.println("ajax");
 		} else if (path.contains("redirect:/")) {
-			System.out.println(path.substring(10));
 			response.sendRedirect(path.substring(10));
 		} else {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/" + path + ".html");

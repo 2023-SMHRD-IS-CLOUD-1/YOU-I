@@ -177,35 +177,7 @@
 				</p>
 			</div>
 		</section>
-		<!-- Recent Posts -->
-		<!-- 
-		<section class="box recent-posts">
-			
-			<header>
-				<h2>Recent Posts</h2>
-			</header>
-			<ul>
-				<li><a href="#">Lorem ipsum dolor</a></li>
-				<li><a href="#">Feugiat nisl aliquam</a></li>
-				<li><a href="#">Sed dolore magna</a></li>
-				<li><a href="#">Malesuada commodo</a></li>
-				<li><a href="#">Ipsum metus nullam</a></li>
-			</ul>
-			
-		</section>
-
-		<!-- Recent Comments ->
-		<section class="box recent-comments">
-			<header>
-				<h2>Recent Comments</h2>
-			</header>
-			<ul>
-				<li>case on <a href="#">Lorem ipsum dolor</a></li>
-				<li>molly on <a href="#">Sed dolore magna</a></li>
-				<li>case on <a href="#">Sed dolore magna</a></li>
-			</ul>
-		</section>
-		-->
+		
 		<!-- Calendar -->
 		<section class="box calendar">
 			<div class="inner">
@@ -292,8 +264,6 @@
 		let month = result_date[1];
 		let year = result_date[3];
 
-		console.log(day);
-
 		$(".month").html(day + " ");
 		$(".day").html(month + " ");
 		$(".year").html(year + " ");
@@ -315,10 +285,7 @@ $(document).ready(function () {
                 $('#dd').text(data.groupName);
                 $('#groupinfo').text(data.groupInfo)
             },
-            error: function (xhr, status, error) {
-                console.error('그룹 이름을 가져오는 중 오류 발생:', error);
-                console.log(xhr);
-            }
+           
         });
     });
     window.onload = function() {

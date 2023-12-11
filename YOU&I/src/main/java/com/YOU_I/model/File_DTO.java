@@ -2,31 +2,14 @@ package com.YOU_I.model;
 
 public class File_DTO {
 
-	// 파일 번호 
     private int fileNo;
-
-    // 글 번호 
     private int commNo;
-
-    // 파일 이름 
     private String fileName;
-
-    // 파일 원본 
     private String fileOriName;
-
-    // 파일 썸네일 
     private String fileThumb;
-
-    // AWS S3경로 
     private String fileS3Path;
-
-    // 파일 사이즈 
     private Integer fileSize;
-
-    // 파일 확장자 
     private String ext;
-
-    // 업로드 일자 
     private String uploadedAt;
 
     public int getFileNo() {

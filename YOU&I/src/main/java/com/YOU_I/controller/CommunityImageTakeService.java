@@ -25,13 +25,10 @@ public class CommunityImageTakeService implements Command {
 
 		PrintWriter out = response.getWriter();
 		String data = request.getParameter("groupNo");
-		System.out.println(data + "---------------커뮤니티 이미지 테이크 서비스");
 
 		File_DAO f_dao = new File_DAO();
 		List<File_DTO> resultData = f_dao.CommunityImageTake(data);
-		System.out.println(data + "============================foreach List");
 
-		System.out.println(resultData);
 		Gson gson = new Gson();
 		String result = gson.toJson(resultData);
 

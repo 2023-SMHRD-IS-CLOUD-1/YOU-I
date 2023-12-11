@@ -18,23 +18,24 @@ public class selectAllScheduleService implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.addHeader("Access-Control-Allow-Origin","*");	
+
+		response.addHeader("Access-Control-Allow-Origin", "*");
+
 		calendar_DTO dto = new calendar_DTO();
 		String group = request.getParameter("groupNo");
 		int groupNo = Integer.parseInt(group);
 		dto.setGroupNo((long) groupNo);
-		System.out.println("selectAllScheduleGroupNo"+groupNo);
-	calendar_DAO dao = new calendar_DAO();
-	List<calendar_DTO> allSchedules = dao.getSchedules(dto);
-	System.out.println(allSchedules);
-	Gson gson = new GsonBuilder().serializeNulls().create();
-	String allSchedulesJson = gson.toJson(allSchedules);
-	System.out.println(allSchedulesJson);
-	response.setContentType("application/json");
-    response.setCharacterEncoding("UTF-8");
-    response.getWriter().write(allSchedulesJson);
-		
-		
+
+		calendar_DAO dao = new calendar_DAO();
+		List<calendar_DTO> allSchedules = dao.getSchedules(dto);
+
+		Gson gson = new GsonBuilder().serializeNulls().create();
+		String allSchedulesJson = gson.toJson(allSchedules);
+
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(allSchedulesJson);
+
 		return null;
 	}
 

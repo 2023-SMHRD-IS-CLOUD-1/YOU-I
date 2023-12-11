@@ -7,19 +7,19 @@ import com.google.gson.annotations.SerializedName;
 public class calendar_DTO {
 
 	@SerializedName("SCHE_NO")
-	private Long scheNo; // NUMBER(18, 0)
+	private Long scheNo; 
 	@SerializedName("SCHE_TITLE")
-    private String scheTitle; // VARCHAR2(1500)
+    private String scheTitle; 
 	@SerializedName("SCHE_CONTENT")
-    private String scheContent; // CLOB
+    private String scheContent; 
 	@SerializedName("SCHE_ST_DATE")
-    private Date scheStDate; // DATE
+    private Date scheStDate; 
 	@SerializedName("SCHE_END_DATE")
-    private Date scheEndDate; // DATE
+    private Date scheEndDate; 
 	@SerializedName("GROUP_NO")
-    private Long groupNo; // NUMBER(18, 0)
+    private Long groupNo; 
 	@SerializedName("SCHE_COLOR")
-    private String scheColor; // VARCHAR2(12)
+    private String scheColor; 
 	private char scheDoneCheck;
 	public Long getScheNo() {
 		return scheNo;

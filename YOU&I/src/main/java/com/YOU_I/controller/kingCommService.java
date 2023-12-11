@@ -18,34 +18,29 @@ public class kingCommService implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
+		
 		String id = (String) session.getAttribute("id");
-		System.out.println("사용자 id"+id);
 		String group= request.getParameter("groupNo");
 		int groupNo = Integer.parseInt(group);
-		System.out.println("가입승인그룹넘버"+groupNo);
+		
 		join_DTO dto = new join_DTO();
 		dto.setId(id);
 		dto.setGroupNo(groupNo);
+		
 		join_DAO dao = new join_DAO();
 		
 		Gson gson = new Gson();
 		response.setContentType("application/json");
 	    response.setCharacterEncoding("UTF-8");
+	    
 	    try {
             List<join_DTO> userList = dao.getUserInfo(dto);
             if (userList != null && !userList.isEmpty()) {
-                for (join_DTO user : userList) {
-                    System.out.println("User ID: " + user.getId());
-                    System.out.println("User GroupNo: " + user.getGroupNo());
-                    // 나머지 필드에 대한 출력 추가
-                }
                 String resultJson = gson.toJson(userList);
-                System.out.println(resultJson);
                 response.getWriter().write(resultJson);
-            } else {
-                System.out.println("User list is empty.");
-            }
+            } 
         } catch (Exception e) {
             e.printStackTrace();
         }

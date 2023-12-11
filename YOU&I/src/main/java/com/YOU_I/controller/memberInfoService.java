@@ -18,6 +18,7 @@ public class memberInfoService implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 
@@ -25,17 +26,13 @@ public class memberInfoService implements Command {
 
 		String groupNo = request.getParameter("groupNo");
 		int groupNo1 = Integer.parseInt(groupNo);
-		System.out.println("그룹이름 들어왔냐고>>>>>>>>>>>>>>>>>>>" + groupNo);
 
 		User_DTO dto = new User_DTO();
 		dto.setGroupNo(groupNo1);
 
-		System.out.println("된거야만거야" + dto);
-
 		User_DAO dao = new User_DAO();
 		List<User_DTO> res = dao.member(dto);
 
-		System.out.println("결과값 맞냐고>>>>>>>>>>>>>>>" + res);
 
 		if (res.isEmpty()) {
 			out.print("false");

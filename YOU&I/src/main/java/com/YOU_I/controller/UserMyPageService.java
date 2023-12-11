@@ -23,23 +23,15 @@ public class UserMyPageService implements Command {
 		
 		HttpSession session = request.getSession(); 
 		String user_id = (String)session.getAttribute("id");
-		System.out.println(user_id + "세션 로그인값");
 		User_DTO u_dt = new User_DTO();
 		u_dt.setId(user_id);
 		
 		User_DAO dao = new User_DAO();
 		User_DTO result =dao.userMypg(u_dt);
-		System.out.println(result);
 		
 		Gson gson = new Gson();
 		String res = gson.toJson(result);
-		System.out.println(result);
 		out.print(res);
-
-		
-		
-		
-		
 		
 		
 		return null;

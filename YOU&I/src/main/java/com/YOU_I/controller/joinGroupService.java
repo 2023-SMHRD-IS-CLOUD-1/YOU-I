@@ -15,20 +15,22 @@ public class joinGroupService implements Command{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("utf-8");
+		
 		String id =request.getParameter("selectGroup");
-		String group = request.getParameter("groupNo");
-		System.out.println("그룹넘버"+group);
 		String oriId = (String)session.getAttribute("id");
-		System.out.println("세션아이디"+ oriId);
-		System.out.println("확인아이디"+ id);
+		String group = request.getParameter("groupNo");
 		int groupNo = Integer.parseInt(group);
+		
 		join_DTO dto = new join_DTO();
 		dto.setId(id);
 		dto.setGroupNo(groupNo);
+		
 		join_DAO dao = new join_DAO();
 		int result = dao.joinGroup(dto);
+		
 		if(result>0 && oriId.equals(id)) {
 			session.setAttribute("levelNo", 22);
 			response.setContentType("application/json"); 

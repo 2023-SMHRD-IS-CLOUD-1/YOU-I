@@ -22,7 +22,6 @@ public class rankCtService implements Command {
 		request.setCharacterEncoding("utf-8");
 		
 		String data = request.getParameter("data");
-		System.out.println("요청받은 데이터 >> " + data);
 		
 		Group_DTO gr_dto = new Group_DTO();
 		gr_dto.setHobbyName(data);
@@ -30,11 +29,8 @@ public class rankCtService implements Command {
 		
 		Group_DAO dao = new Group_DAO();
 		List<Group_DTO> gr_dto2 = dao.rankCt(gr_dto);
-		
 
 		PrintWriter out = response.getWriter();
-		
-		
 
 		if (gr_dto2.isEmpty()) {
 			out.print("false");

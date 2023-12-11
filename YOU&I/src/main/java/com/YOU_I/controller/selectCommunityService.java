@@ -27,19 +27,21 @@ public class selectCommunityService implements Command{
 		
 			community_DAO dao = new community_DAO();
 			community_DTO dto = new community_DTO();
+			
 			String group = request.getParameter("groupNo");
 			int groupNo = Integer.parseInt(group);
+			
 			dto.setGroupNo(groupNo);
-			System.out.println("그룹그룹그룹그룹"+groupNo);
 			List<community_DTO> resultList = dao.selectAll(dto);
 			
 			Gson gson = new GsonBuilder().serializeNulls().create();
 			String selectCommunityJson = gson.toJson(resultList);
+			
 			request.setAttribute("resultList", resultList);
 			response.setContentType("application/json");
 		    response.setCharacterEncoding("UTF-8");
 		    response.getWriter().write(selectCommunityJson);
-		    System.out.println(resultList);
+		    
 			return null;
 		
 	

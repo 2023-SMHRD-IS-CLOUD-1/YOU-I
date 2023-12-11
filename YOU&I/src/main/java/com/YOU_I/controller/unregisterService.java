@@ -25,9 +25,6 @@ public class unregisterService implements Command {
 		u_DTO.setId(u_id);
 		u_DTO.setPw(u_pw);
 
-		System.out.println(u_DTO.getId());
-		System.out.println(u_DTO.getPw());
-		
 		User_DAO dao = new User_DAO();
 		int res = dao.unregister(u_DTO);
 		
@@ -37,11 +34,7 @@ public class unregisterService implements Command {
 			
 			out.print("{\"name\":\""+res+"\"}");
 			
-			
 		}
-		
-		
-	
 
 		return null;
 	}

@@ -15,8 +15,10 @@ public class groupKingService implements Command{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("utf-8");
+		
 		int groupNo = (int) session.getAttribute("groupNo");
 		String id = (String) session.getAttribute("id");
 		

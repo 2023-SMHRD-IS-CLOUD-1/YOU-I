@@ -52,7 +52,6 @@ public class community_DAO {
 		SqlSession sqlSession = factory.openSession();
 		community_DTO c_dto = sqlSession.selectOne("GetlastCommNo");
 		int result = c_dto.getComm_no();
-		System.out.println(result);
 		sqlSession.close();
 
 		return result;
