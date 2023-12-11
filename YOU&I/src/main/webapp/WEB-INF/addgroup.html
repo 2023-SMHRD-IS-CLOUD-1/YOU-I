@@ -137,8 +137,8 @@
 					<script src="assets/js/communiyjs/findking.js"></script>
 					
 					<script>
+						// DB에 저장된 취미 이름 ajax로 불러오기
 						$(document).ready( function (event) {
-						    console.log("화면로드완료");
 						    $.ajax({
 						        url: 'SelectAllHobbyName.do',
 						        dataType: 'json',
