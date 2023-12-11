@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-	Striped by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 
 <head>
@@ -39,7 +34,6 @@
 
 	<div id="content">
 		<img src="assets/css/images/배너배너.png" alt="배너 이미지" style="width: 1300px; height: 330px;" />
-		<!-- 배너 이미지 -->
 		<div id="dd"></div>
 
 
@@ -47,13 +41,10 @@
 		<div id="tables">
 		</div>
 	</div>
-	<!-- Sidebar -->
 	<div id="sidebar">
 
-		<!-- Logo -->
 		<h1 id="logo"><a href="Gomainpg.do">YOU & I</a></h1>
 
-		<!-- Nav -->
 		<nav id="nav">
 			<ul id="sideService">
 				<li><a id="modifyprofile" href="Gomypg.do">프로필설정</a></li>
@@ -64,15 +55,11 @@
 				<li><a id="groupSchedules" href="GogroupSchedules.do">그룹일정</a></li>
 			</ul>
 		</nav>
-
-		<!-- Search -->
 		<section class="box search">
 			<form method="post" action="#">
 				<input type="text" class="text" name="search" placeholder="소모임 검색" />
 			</form>
 		</section>
-
-		<!-- Text -->
 		<section class="box text-style1">
 			<div class="inner">
 				<p>
@@ -83,37 +70,6 @@
 				</p>
 			</div>
 		</section>
-
-		<!-- Recent Posts -->
-		<!-- 
-		<section class="box recent-posts">
-			
-			<header>
-				<h2>Recent Posts</h2>
-			</header>
-			<ul>
-				<li><a href="#">Lorem ipsum dolor</a></li>
-				<li><a href="#">Feugiat nisl aliquam</a></li>
-				<li><a href="#">Sed dolore magna</a></li>
-				<li><a href="#">Malesuada commodo</a></li>
-				<li><a href="#">Ipsum metus nullam</a></li>
-			</ul>
-			
-		</section>
-
-		<!-- Recent Comments ->
-		<section class="box recent-comments">
-			<header>
-				<h2>Recent Comments</h2>
-			</header>
-			<ul>
-				<li>case on <a href="#">Lorem ipsum dolor</a></li>
-				<li>molly on <a href="#">Sed dolore magna</a></li>
-				<li>case on <a href="#">Sed dolore magna</a></li>
-			</ul>
-		</section>
-		-->
-		<!-- Calendar -->
 		<section class="box calendar">
 			<div class="inner">
 				<table>
@@ -176,16 +132,11 @@
 				</table>
 			</div>
 		</section>
-
-		<!-- Copyright -->
 		<ul id="copyright">
 			<li>&copy; Untitled.</li>
 			<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 		</ul>
-
 	</div>
-
-	<!-- Scripts -->
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/browser.min.js"></script>
 	<script src="assets/js/jquery.min.js"></script>
@@ -201,7 +152,6 @@
 		let month = result_date[1];
 		let year = result_date[3];
 
-		console.log(day);
 
 		$(".month").html(day + " ");
 		$(".day").html(month + " ");
@@ -210,22 +160,19 @@
 	</script>
 
 	<script>
-$(document).ready(function () {
-    var sendObj = { groupNo: GroupNo };
-    $.ajax({
-        url: "memberInfo.do?groupNo=" + GroupNo,
-        type: 'GET',
-        data: sendObj,
-        dataType: "json",
-        success: function (res) {
-            console.log("요청성공!");
-            console.log(res);
-            var i = 0;
-            res.forEach(function (member) {
-                var newTable = $(`<table id="memtb${i}" class="memtb"></table>`);
-
-                newTable.append(
-                    `<tr>
+		$(document).ready(function () {
+			var sendObj = {groupNo: GroupNo};
+			$.ajax({
+				url: "memberInfo.do?groupNo=" + GroupNo,
+				type: 'GET',
+				data: sendObj,
+				dataType: "json",
+				success: function (res) {
+					var i = 0;
+					res.forEach(function (member) {
+						var newTable = $(`<table id="memtb${i}" class="memtb"></table>`);
+						newTable.append(
+							`<tr>
                         <td rowspan="3"><img  id=groupThum${i} style="object-fit: fill; width:300px;height:200px display=flex;" src="assets/css/images/defaultimg.jpg"></td>
                         <td>${member['nick']}</td>
                     </tr>
@@ -235,53 +182,35 @@ $(document).ready(function () {
                     <tr>
                         <td class='ur'>${member['levelNo']}</td>
                     </tr>`
-                );
+						);
 
-                $("#tables").append($('<div></div>').append(newTable));
+						$("#tables").append($('<div></div>').append(newTable));
 
-                if (member['levelNo'] == '21') {
-                    $(`#memtb${i} .ur`).html('방장');
-                } else {
-                    $(`#memtb${i} .ur`).html('멤버');
-                }
-                console.log(member['profileImg']);
-				
-				var bucketUrl = "https://s3.ap-northeast-2.amazonaws.com/you-i/"
-
-					try {
-						i = 0;
-							console.log("https://s3.ap-northeast-2.amazonaws.com/you-i/resize_profile" + member['profileImg'])
-							var imagePath = "resize_" + member['profileImg'];
-							console.log(imagePath);
-							var finalUrl = bucketUrl + encodeURIComponent(imagePath);
-							$("#groupThum"+i).attr("src", finalUrl);
-							$("#groupThum"+i).css("display", "block");
+						if (member['levelNo'] == '21') {
+							$(`#memtb${i} .ur`).html('방장');
+						} else {
+							$(`#memtb${i} .ur`).html('멤버');
 						}
-					catch (e) { }
-                
+						var bucketUrl = "https://s3.ap-northeast-2.amazonaws.com/you-i/"
 
-                i++;
-            });
-        },
-        error: function (e) {
-            console.log(e);
-        }
-    });
-});
+						try {
+							i = 0;
+							var imagePath = "resize_" + member['profileImg'];
+							var finalUrl = bucketUrl + encodeURIComponent(imagePath);
+							$("#groupThum" + i).attr("src", finalUrl);
+							$("#groupThum" + i).css("display", "block");
+						}
+						catch (e) { }
 
-         
-	
-		
-		
-		
-		
-	
+
+						i++;
+					});
+				},
+			});
+		});
 
 	</script>
-
 	<script>
-		
-
 		$(document).ready(function () {
 
 			$.ajax({
@@ -292,22 +221,8 @@ $(document).ready(function () {
 					$('#dd').text(data.groupName);
 					$('#groupinfo').text(data.groupInfo)
 				},
-				error: function (xhr, status, error) {
-					console.error('그룹 이름을 가져오는 중 오류 발생:', error);
-					console.log(xhr);
-				}
 			});
 		});
-   // window.onload = function() {
-    //        var ddElement = document.getElementById('dd');
-    //        var textWidth = ddElement.offsetWidth;
-
-    //        var marginLeft = (window.innerWidth - textWidth) / 2;
-   //
-    //        var leftMargin = -600;
-//
-     //       ddElement.style.marginLeft = (marginLeft + leftMargin) + 'px';
-    //    };
 	</script>
 
 
