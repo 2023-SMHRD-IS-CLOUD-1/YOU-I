@@ -211,7 +211,7 @@ select {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 1000px; /* 전체 화면 높이에 맞게 설정 */
+    height: 1000px; 
 }
  #mypg{
     position: fixed;
@@ -312,7 +312,6 @@ select {
    border: 2px solid black;
 }
 
-/* 여기서부터 My Group으로 이동하기 버튼 css*/
 
 .grbtn{
    display: inline-flex;

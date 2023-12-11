@@ -1,9 +1,4 @@
-/*!
- * Bootstrap v4.2.1 (https://getbootstrap.com/)
- * Copyright 2011-2018 The Bootstrap Authors
- * Copyright 2011-2018 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -63,9 +58,7 @@
 }
 
 
-/*body>div:nth-child(6) {
-  background-color: #ccc;
-}*/
+
 #grBtns > span{
 	position: absolute;
 	margin-top: -30px;
@@ -83,7 +76,7 @@
 .grBtn{
    margin-left: 60px;
    display: inline-block;
-   justify-content: center; /* 가로 방향 가운데 정렬 */
+   justify-content: center; 
    align-items: center;
    padding: 20px 60px;
    width: 200px; 
@@ -153,14 +146,13 @@ table {
   width: 100%;
 }
 
-/* 테이블 셀 스타일링 */
+
 table td {
   border: 0px solid #ddd;
 	padding-right: 10px;
 	padding-left: 10px;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	/* 테이블 셀 안의 여백 설정 */
 	font-size: large;
 
 }
@@ -300,10 +292,10 @@ table td {
   font-weight: bold;
 }
 
-/* checkbox 스타일링 */
+
 input[type="checkbox"] {
   margin-right: 10px;
-  /* checkbox 오른쪽 여백 설정 */
+
 }
 
 .btn {
@@ -378,8 +370,6 @@ input[type="checkbox"] {
 }
 
 
-
-
 .main {
   padding: 60px 10px;
   margin-left: 10%;
@@ -399,8 +389,6 @@ input[type="checkbox"] {
 
 .hide {
   display: none;
-  /* 초기에 숨겨진 상태 */
-
 }
 
 
@@ -461,9 +449,6 @@ section {
 	background-color: #f1f1f1 ;
 	text-align: left;
 	min-width: 500px;
-  
-  
-
 }
 
 
@@ -1079,9 +1064,7 @@ pre code {
 .table-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  /* 최소 너비 300px, 유동적으로 분할 */
   gap: 20px;
-  /* 테이블 사이 간격 */
 }
 
 .row {
@@ -13307,22 +13290,18 @@ textarea.form-control {
 }
 
 .ftco-footer .subscribe-form .form-group input::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .ftco-footer .subscribe-form .form-group input::-moz-placeholder {
-  /* Firefox 19+ */
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .ftco-footer .subscribe-form .form-group input:-ms-input-placeholder {
-  /* IE 0+ */
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .ftco-footer .subscribe-form .form-group input:-moz-placeholder {
-  /* Firefox 18- */
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
@@ -13907,7 +13886,6 @@ textarea.form-control {
   color: gray;
 }
 
-/* Blog*/
 .post-info {
   font-size: 12px;
   text-transform: uppercase;
@@ -14067,22 +14045,18 @@ textarea.form-control {
 }
 
 .subscribe-form .form-group input::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .subscribe-form .form-group input::-moz-placeholder {
-  /* Firefox 19+ */
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .subscribe-form .form-group input:-ms-input-placeholder {
-  /* IE 10+ */
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .subscribe-form .form-group input:-moz-placeholder {
-  /* Firefox 18- */
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
