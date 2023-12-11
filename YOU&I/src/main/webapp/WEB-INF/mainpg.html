@@ -7,27 +7,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
 	<link rel="stylesheet" href="assets/css/mainpg/open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/mainpg/animate.css">
-
 	<link rel="stylesheet" href="assets/css/mainpg/owl.carousel.min.css">
 	<link rel="stylesheet" href="assets/css/mainpg/owl.theme.default.min.css">
 	<link rel="stylesheet" href="assets/css/mainpg/magnific-popup.css">
-
 	<link rel="stylesheet" href="assets/css/mainpg/aos.css">
-
 	<link rel="stylesheet" href="assets/css/mainpg/ionicons.min.css">
-
 	<link rel="stylesheet" href="assets/css/mainpg/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="assets/css/mainpg/jquery.timepicker.css">
-
-
 	<link rel="stylesheet" href="assets/css/mainpg/flaticon.css">
 	<link rel="stylesheet" href="assets/css/mainpg/icomoon.css">
 	<link rel="stylesheet" href="assets/css/mainpg/style.css">
-
-
 
 </head>
 
@@ -59,9 +50,6 @@
 	<!-- <div style=" width: 90%;  height: 300px; margin-left: 5%; background-image: url('images/march.png'); background-repeat: no-repeat;"></div> -->
 	<!-- END nav -->
 
-
-
-
 	<div class="row no-gutters" style="height: 100px;"></div>
 
 	<div class="pl-md-5 ml-md-5 mb-5" id="whatcl">
@@ -82,48 +70,13 @@
 
 				<tr>
 					<td align="left" id="check" style="height: 360px; max-height: 360px; vertical-align: top;">
-
-						<!--
-                  <label>축구/풋살</label>
-                  <input type="radio" name="sports" value="socc" onclick="logText(this)">
-                  <label>자전거</label>
-                  <input type="radio" name="sports" value="bicycle" onclick="logText(this)">
-                  <label>볼링</label>
-                  <input type="radio" name="sports" value="bowl" onclick="logText(this)">
-                  <label>등산</label>
-                  <input type="radio" name="sports" value="mclimbing" onclick="logText(this)">
-                  <label>독서</label>
-                  <input type="radio" name="sports" value="book" onclick="logText(this)">
-                  <label>캠핑</label>
-                  <input type="radio" name="sports" value="camp" onclick="logText(this)">
-                  <label>배드민턴</label>
-                  <input type="radio" name="sports" value="badmin" onclick="logText(this)">
-                  <label>요가/필라테스</label>
-                  <input type="radio" name="sports" value="yoga" onclick="logText(this)">
-                  <label>수영/스쿠버다이빙</label>
-                  <input type="radio" name="sports" value="swim" onclick="logText(this)">
-                  <label>탁구</label>
-                  <input type="radio" name="sports" value="pingpong" onclick="logText(this)">
-                  <label>복싱</label>
-                  <input type="radio" name="sports" value="boxing" onclick="logText(this)">
-                  <label>클라이밍</label>
-                  <input type="radio" name="sports" value="climbing" onclick="logText(this)">
-                  <label>골프</label>
-                  <input type="radio" name="sports" value="golf" onclick="logText(this)">
-   -->
 					</td>
 				</tr>
-
 
 			</table>
 			<td><input type="submit" id="popupsub" class="popupsub" style="margin-top: 6px;" value="결정"></td>
 		</form>
 	</div>
-
-	</div>
-
-
-
 
 	<div class="main" id="main">
 		<div class="container1">
@@ -261,131 +214,80 @@
 
 	<script>
 
+	//모든 취미 버튼 추가하기
 		$(document).ready(function () {
-
 			var data = {data: "SelectAllHobbyName"};
-			console.log("ajax 보낼 준비 완료");
 			$(".onbtn").remove();
 			$.ajax({
 				url: "SelectAllHobbyName.do",
 				data: data,
 				dataType: "json",
+				
 				success: function (res) {
-					console.log(res);
+					
 					res.forEach(function (res) {
-
+						
 						$("#check").append("<button class='onbtn first'>" + res.hobbyName + "</button>");
-
-					});
-				},
+						});
+					},
 				error: function (e) {
-					console.log(e);
-				}
+					}
+				})
 			})
-
-
-
-		})
-
-
-
-
-
-
 	</script>
-
-
-
-
-
-
-
-
 	<script>
+		
+		// 원하는 취미를 눌렀을 때 그룹 노출추가
 		var wantHobbyGroup = null;
 		$(document).on("click", ".onbtn", (e) => {
 			wantHobbyGroup = e.target.innerHTML;
-			console.log(wantHobbyGroup);
-
 		})
 		var k = 5;
 		var i = 5;
 		var l = 5;
 		$(document).on("click", "#popupsub", popsub);
 		function popsub() {
-
-
-			console.log(wantHobbyGroup);
-
 			var sendObj = {data: wantHobbyGroup};
 			var Groupno = new Array;
 			var StringNo = null;
 			$.ajax({
 				url: "rankCt.do",
-
 				data: sendObj,
-
 				dataType: "json",
 				success: function (res) {
 					var j = 1;
 					var r = 0;
 					StringNo = "";
-
 					$("#whatcl").after(
 						`<div class="main no${k}">` + `<div class= "container1" >`)
-
-
 					res.forEach(function (res) {
 						var temp = res.groupNo
 						StringNo += temp + ",";
 						Groupno.push(StringNo);
-						console.log(Groupno);
 						tag = [`<a href='#' id="tagA${i}"><div class='item color${j}'>` + `<div class='pt${i}'>` + `<table class='grouptable'>` + `<tr class='groupinfo${i}'>` + `<td rowspan=4>` + `<div id='groupimg${i}' class='groupimg'></div>`]
-
 						tag += "<tr><td class='grouptd'>" + flaticonHobby(res.hobbyNo) + res.hobbyName + "</td></tr>"
 						tag += "<tr><td class='grouptd'>" + res.groupName + "</td></tr>"
 						tag += "<tr><td class='grouptd'>" + res.groupInfo + "</td></tr></a>"
 
-
 						$(`body > div.main.no${k} > div`).append(tag);
-
-						//$(".container1").append("<div class='pt'"+i+">");
-						//$(".container1").append("<table class='grouptable'>");
-						//$(".container1").append("<tr class=groupinfo"+i+">");
-						//$(".container1").append("<td rowspan=4>");
-						//$(".container1").append("<div id=groupimg"+i+" class=groupimg>사진들어오는곳</div>");
-
-						//$(".container1").append("<tr><td class='grouptd'>" + res.hobbyName + "</td></tr>");
-						//$(".container1").append("<tr><td class='grouptd'>" + res.groupName + "</td></tr>");
-						//$(".container1").append("<tr><td class='grouptd'>" + res.groupLikes + "</td></tr>");
-
-						//$(".container1").append("</td></tr></table></div></div>");
 						$("#groupimg" + i).append(`<img id=groupThum${i} style="style=object-fit: fill; width:155px;height:155px" src="assets/css/images/defaultimg.jpg">`);
 						$(`#tagA${i}`).attr("href", "GojoinGroup.do?groupNo=" + res.groupNo);
-
-
-
 						r++
 						i++
 						j++
-					});
+						});
 					k++;
 					imagetake(StringNo);
-
-				},
-
+					},
 				error: function (e) {
-					console.log(e);
-
-				}
-			})
-		}
+					}
+				})
+			}
+			// 그룹 썸네일 사진파일 S3에 가져오기
 		function imagetake(StringNo) {
-			console.log(StringNo);
 			var Groupnodata = {data: StringNo}
 			var bucketUrl = "https://s3.ap-northeast-2.amazonaws.com/you-i/"
 			$.ajax({
-
 				url: "GroupImageTake.do",
 				data: Groupnodata,
 				dataType: "json",
@@ -393,94 +295,61 @@
 					res.forEach(function (res) {
 						try {
 							if (res != null) {
-								console.log("https://s3.ap-northeast-2.amazonaws.com/you-i/resize_profile" + res.fileThumb)
 								var imagePath = "resize_profile" + res.fileThumb;
 								var finalUrl = bucketUrl + encodeURIComponent(imagePath);
 								$("#groupThum" + l).attr("src", finalUrl);
 							}
-
 							l++;
 						}
 						catch (e) {
-							console.log("사진없음")
 						}
 					})
 				},
 				error: function (e) {
-					console.log(e);
 				}
 			})
-
-
 		}
 	</script>
 	<script>
+		//로그인했을때 유저아이디 화면에 띄우기
 		function mypgShow() {
 			$(document).ready(function () {
-
 				$.ajax({
-
 					url: "UserMyPage.do",
-
 					dataType: "json",
 					success: function (res) {
-
-						console.log(res);
 						$("#ckb").html(res['id'] + "님 취미를 선택해주세요!");
-
-
-
-
 					},
-
 					error: function (e) {
-						console.log(e);
 					}
 				})
 			})
 		}
 		mypgShow();
-
 	</script>
 	<script>
+		//로그아웃
 		$(document).ready(function () {
-
 			$.ajax({
-
 				url: "UserMyPage.do",
-
-				dataType: "json",
+				dataType:"json",
 				success: function (res) {
-
-					console.log(res);
 					document.getElementById("log").innerHTML = "로그아웃";
-
-
-
-
 				},
-
 				error: function (e) {
-					console.log(e);
 				}
 			})
 		})
 	</script>
-
 	<script>
-
+		//가입한 그룹커뮤니티로 이동하기
 		 $(document).ready(function () {
-			 
-
             $.ajax({
-
                url: "MyGroup.do",
                dataType: "json",
                success: function (res) {
 					 $("#grBtns").append("<span id='mygrtx'>My Groups</span>")
                   res.forEach(function (item) {
-					console.log(item)
-					console.log(item['groupNo']);
                  $("#grBtns").append(`<a class="grBtn" href="GogroupSchedules.do?groupNo=${item.groupNo}">${item.groupName}</a>`)
                  
                });
@@ -494,7 +363,7 @@
             })
          
 
-
+			//그룹에 있는 그룹내의 정보를 로컬 스토리지에 저장
 			$("#grBtns").on("click", ".grBtn", function () {
 				var sendObj = {data: $(this).text()}; // 클릭된 요소의 텍스트 가져오기
 

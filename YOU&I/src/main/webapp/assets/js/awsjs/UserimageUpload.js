@@ -1,16 +1,12 @@
-
-
-	
+// 유저 프로필 파일 업로드 기능	
 	let date = new Date();
 	console.log(date);
 	let year = date.getFullYear();
 	let month = date.getMonth() + 1;
 	let day = date.getDate();
 
-	console.log(year + "_" + month + "_" + day);
 	const putFile = file => {
 		let fileS3Root = document.getElementById("fileS3root").value;
-		console.log(fileS3Root);
 		const albumBucketName = 'you-i'; // S3의 버킷 이름
 		const region = 'ap-northeast-2'; // 서울
 		const accessKeyId = ''; // IAM에서 생성한 사용자의 accessKeyId

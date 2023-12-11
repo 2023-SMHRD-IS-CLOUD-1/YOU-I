@@ -1,4 +1,3 @@
-
     const remo = document.getElementById('remo');
     const picText = document.getElementById('pic');
 

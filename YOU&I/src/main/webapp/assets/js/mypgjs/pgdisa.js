@@ -14,9 +14,6 @@ function disa() {
         for (var i = 0; i < ip.length; i++) {
             ip[i].disabled = true;
         }
-
-
-
     }
 }
 disa();

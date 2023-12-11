@@ -1,6 +1,5 @@
-
-
 	
+	//게시글 사진 업로드 기능
 	var date = new Date();
 	console.log(date);
 	var year = date.getFullYear();
@@ -8,6 +7,7 @@
 	var day = date.getDate();
 
 	console.log(year + "_" + month + "_" + day);
+	//S3 정보 입력
 	const putFile = file => {
 		let fileS3Root = document.getElementById("fileS3root").value;
 		console.log(fileS3Root);
@@ -24,6 +24,7 @@
 
 		let randomRoot = guid();
 
+		// 업로드 파일 정보 입력
 		const upload = new AWS.S3.ManagedUpload({
 			params: {
 				Bucket: albumBucketName,
@@ -45,6 +46,8 @@
 		);
 		return ['images/Group' + fileS3Root+ '/' + randomRoot + '_' + year + '_' + month + '_' + day + '_' + file.name, file.name, year + '_' + month + '_' + day]
 	};
+	
+	// uuid 입력함수
 	function guid() {
 		function s4() {
 			return ((1 + Math.random()) * 0x10000 | 0).toString(16).substring(1);

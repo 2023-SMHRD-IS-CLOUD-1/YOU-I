@@ -1,25 +1,16 @@
-// **DO THIS**:
-//   Replace BUCKET_NAME with the bucket name.
-//
+// S3에서 이미지 가져오는 기능
 var albumBucketName = 'you-i';
 
-// **DO THIS**:
-//   Replace this block of code with the sample code located at:
-//   Cognito -- Manage Identity Pools -- [identity_pool_name] -- Sample Code -- JavaScript
-//
-// Initialize the Amazon Cognito credentials provider
 AWS.config.region = 'ap-northeast-2'; // Region
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 	IdentityPoolId: '',
 });
 
-// Create a new service object
 var s3 = new AWS.S3({
 	apiVersion: '2006-03-01',
 	params: { Bucket: albumBucketName }
 });
 
-// A utility function to create HTML.
 function getHtml(template) {
 	console.log(template.join('\n') + "조인 확인용");
 	return template.join('\n');
@@ -95,7 +86,6 @@ function viewAlbum(albumName) {
 
 		]
 		document.getElementById('viewer').innerHTML = getHtml(htmlTemplate);
-		//document.getElementsByTagName('img')[0].setAttribute('style', 'display:none;');
 
 	});
 }
