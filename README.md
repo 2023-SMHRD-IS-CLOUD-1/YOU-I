@@ -10,7 +10,6 @@
   ![image](https://github.com/2023-SMHRD-IS-CLOUD-1/YOU-I/assets/149571615/67627a8b-1866-401c-856b-8e1dc11a57a4)
 # 시스템 아키텍처
   ![image](https://github.com/2023-SMHRD-IS-CLOUD-1/YOU-I/assets/149571615/e05baff8-0474-4fdc-a38a-d33f3ce7d68f)
-# copy
 ## 4. 핵심 기능
 우리의 서비스의 핵심기능은 AWS, OCR 및 API를 이용한 그룹 커뮤니티 기능입니다.
 사용자는 본인이 원하는 취미를 등록하여 가입하고싶은 그룹에 가입해 그룹원들과
