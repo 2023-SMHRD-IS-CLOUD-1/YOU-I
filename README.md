@@ -1,16 +1,16 @@
 
 # YOU-I
-# 서비스 소개 / 서비스 설명
+## 1. 서비스 소개 / 서비스 설명
 - 지역별, 취미별로 그룹을 만들어 모임을 가질수 있는 기능제공
 - 그룹별 커뮤니티 사이트 제공
 - 사용자의 취미에 평가가 좋은 그룹순으로 볼수 있음.
-# 사용한 언어
+## 2. 사용한 언어
   ![image](https://github.com/2023-SMHRD-IS-CLOUD-1/YOU-I/assets/149571615/581a4aff-5a5f-43a4-adbe-7f46ac4cc31c)
-# ERD
+## 3. ERD
   ![image](https://github.com/2023-SMHRD-IS-CLOUD-1/YOU-I/assets/149571615/67627a8b-1866-401c-856b-8e1dc11a57a4)
-# 시스템 아키텍처
+## 4. 시스템 아키텍처
   ![image](https://github.com/2023-SMHRD-IS-CLOUD-1/YOU-I/assets/149571615/e05baff8-0474-4fdc-a38a-d33f3ce7d68f)
-## 4. 핵심 기능
+## 5. 핵심 기능
 우리의 서비스의 핵심기능은 AWS, OCR 및 API를 이용한 그룹 커뮤니티 기능입니다.
 사용자는 본인이 원하는 취미를 등록하여 가입하고싶은 그룹에 가입해 그룹원들과
 게시글, 사진 공유 및 그룹일정관리 , 회비관리등 을 이용 할 수 있는 사이트입니다.
@@ -19,18 +19,18 @@
 <summary><b>핵심 기능 설명 펼치기</b></summary>
 <div markdown="1">
 
-### 4.1. 전체 흐름도
+### 5.1. 전체 흐름도
 ![image](https://github.com/chanhyuckkim/copy/assets/149571615/0eb8ff0b-0cdf-46ee-8761-cc1886f75038)
 
 
-### 4.2. 메인페이지 핵심기능
+### 5.2. 메인페이지 핵심기능
 
 - **본인 취미에 맞는 그룹 노출** :pushpin: [코드 확인](https://github.com/2023-SMHRD-IS-CLOUD-1/YOU-I/blob/85cf700df6aed74bfe6b06e964702aaf8430bd45/YOU%26I/src/main/webapp/assets/js/mainpgjs/mainrank.js#L3)
 - ![image](https://github.com/chanhyuckkim/copy/assets/149571615/59ca12fd-10c1-4fa4-aa7c-fb3757f01928)
 
   - 본인이 선택한 취미에 맞는 그룹이 사용자들의 좋아요 갯수가 많은 그룹부터 차례대로 노출됩니다.
   - 취미에 맞는 프로필사진을 AWS에서 불러옵니다.
-### 4.3.  커뮤니티 사이트 핵심기능
+### 5.3.  커뮤니티 사이트 핵심기능
 
 - **글/사진 등록** :pushpin: [코드 확인](https://github.com/2023-SMHRD-IS-CLOUD-1/YOU-I/blob/85cf700df6aed74bfe6b06e964702aaf8430bd45/YOU%26I/src/main/webapp/WEB-INF/community.html#L472)
   ![image](https://github.com/chanhyuckkim/copy/assets/149571615/2f4963a6-c3c2-4436-a1c3-3c0c035a3fc4)
@@ -64,7 +64,7 @@
 </br>
 
 
-## 5. 개발 기간 및 작업관리
+## 6. 개발 기간 및 작업관리
 
 ### 개발 기간
 * 전체 개발 기간 : 2023-11-22 ~ 2023-12-07
