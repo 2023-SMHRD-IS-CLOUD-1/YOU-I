@@ -1,5 +1,7 @@
 
 # YOU-I
+![image](https://github.com/2023-SMHRD-IS-CLOUD-1/YOU-I/assets/149571615/b5568cb9-954d-4bb7-a8fc-a7a4c5a0528b)
+
 ## 1. 서비스 소개 / 서비스 설명
 - 지역별, 취미별로 그룹을 만들어 모임을 가질수 있는 기능제공
 - 그룹별 커뮤니티 사이트 제공
