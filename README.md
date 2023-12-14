@@ -5,7 +5,18 @@
 - 그룹별 커뮤니티 사이트 제공
 - 사용자의 취미에 평가가 좋은 그룹순으로 볼수 있음.
 ## 2. 사용한 언어
-  ![image](https://github.com/2023-SMHRD-IS-CLOUD-1/YOU-I/assets/149571615/581a4aff-5a5f-43a4-adbe-7f46ac4cc31c)
+![js](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white)
+![html](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![css](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![boot](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+![jquery](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)
+![flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![AWS](https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![S3](https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
+![oracle](https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=Oracle&logoColor=white)
+![eclipse](https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white)
 ## 3. ERD
   ![image](https://github.com/2023-SMHRD-IS-CLOUD-1/YOU-I/assets/149571615/67627a8b-1866-401c-856b-8e1dc11a57a4)
 ## 4. 시스템 아키텍처
@@ -74,6 +85,8 @@
 * 매일 프로젝트를 진행하기 전 작업 순서와 방향성에 대해 회의를 하고 새롭게 배운 내용을 공유하는 시간을 가졌습니다.
 
 
+## 7. 팀원소개
+![image](https://github.com/2023-SMHRD-IS-CLOUD-1/YOU-I/assets/149571615/6fa8e414-7abb-4f01-9bb9-1490ce0549a7)
 
 
 
