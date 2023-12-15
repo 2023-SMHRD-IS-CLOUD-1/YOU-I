@@ -91,13 +91,16 @@
 ![image](https://github.com/2023-SMHRD-IS-CLOUD-1/YOU-I/assets/149571615/6fa8e414-7abb-4f01-9bb9-1490ce0549a7)
 
 
-
-
-
 ## 8. 트러블 슈팅
 * [AJAX 동시 사용 이슈](https://github.com/2023-SMHRD-IS-CLOUD-1/YOU-I/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%852_AJAX_%EB%8F%99%EC%8B%9C_%EC%82%AC%EC%9A%A9%EC%9D%B4%EC%8A%88#ajax-%EB%8F%99%EC%8B%9C-%EC%82%AC%EC%9A%A9%EC%9D%B4%EC%8A%88)
 * [AWS S3 사진 파일 관리](https://github.com/2023-SMHRD-IS-CLOUD-1/YOU-I/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%853_AWS_S3_%EC%82%AC%EC%A7%84%EA%B4%80%EB%A6%AC_%EB%AC%B8%EC%A0%9C)
 * [AWS Lambda](https://github.com/2023-SMHRD-IS-CLOUD-1/YOU-I/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%854_%EC%9B%90%EB%B3%B8%ED%8C%8C%EC%9D%BC,_%EB%A6%AC%EC%82%AC%EC%9D%B4%EC%A7%95_%ED%8C%8C%EC%9D%BC_%EB%8F%99%EC%8B%9C_%EC%97%85%EB%A1%9C%EB%93%9C%EB%AC%B8%EC%A0%9C)
+
+## 9. API
+### 풀캘린더  https://fullcalendar.io/
+### 카카오맵  https://apis.map.kakao.com/
+### 네이버클로바 https://clova.ai/
+### Vchat CLoud https://www.vchatcloud.com/
 
 
 
